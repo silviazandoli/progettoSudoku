@@ -1,7 +1,8 @@
 import scala.io.Source
 
 object Sudoku {
-  val puzzle: Array[Array[Int]] = Array.ofDim[Int](9, 9)
+  val dimSudoku = 9
+  val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
   val nameFile = "input/sudoku11.txt"
 
   def main(args: Array[String]): Unit = {
@@ -32,7 +33,7 @@ object Sudoku {
   }
 
   def validate(row: Int, col: Int, num: Int): Boolean = {
-    for (i <- 0 until 9) {
+    for (i <- 0 until dimSudoku) {
       if (puzzle(row)(i) == num || puzzle(i)(col) == num) {
         return false
       }
@@ -64,8 +65,8 @@ object Sudoku {
   }
 
   def puzzleSolved(): Boolean = {
-    for (i <- 0 until 9) {
-      for (j <- 0 until 9) {
+    for (i <- 0 until dimSudoku) {
+      for (j <- 0 until dimSudoku) {
         if (puzzle(i)(j) == 0) {
           return false
         }
@@ -89,7 +90,7 @@ object Sudoku {
     } else if (puzzle(row)(col) > 0) {
       return next(row, col)
     } else {
-      for (i <- 1 to 9) {
+      for (i <- 1 to dimSudoku) {
         if (validate(row, col, i)) {
           puzzle(row)(col) = i
 
