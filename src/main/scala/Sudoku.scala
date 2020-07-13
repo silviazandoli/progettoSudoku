@@ -2,27 +2,20 @@ import scala.io.Source
 
 object Sudoku {
   val puzzle: Array[Array[Int]] = Array.ofDim[Int](9, 9)
-
-  val nameFile = "input/sudoku01.txt"
+  val nameFile = "input/sudoku11.txt"
 
   def main(args: Array[String]): Unit = {
     parsePuzzle(readFile(nameFile).toList, 0)
-
     display()
     solve(0, 0)
     display()
-
-    closeFile(nameFile)
   }
 
-  def readFile(filename: String): Array[String] = {
-    val file = Source.fromFile(filename)
+  def readFile(fileName: String): Array[String] = {
+    val file = Source.fromFile(fileName)
     val it = file.getLines()
-    it.toArray
-  }
-
-  def closeFile(fileName: String): Unit = {
     Source.fromFile(fileName).close()
+    it.toArray
   }
 
   def parsePuzzle(puzzleInput: List[String], row: Int): Unit = {
@@ -78,6 +71,7 @@ object Sudoku {
         }
       }
     }
+
     true
   }
 
