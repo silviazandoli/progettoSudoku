@@ -1,6 +1,6 @@
 import scala.io.Source
 
-object Sudoku {
+object FullExploration {
   val dimSudoku = 9
   val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
   val nameFile = "input/sudoku11.txt"
