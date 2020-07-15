@@ -6,7 +6,7 @@ class SudokuMatrix {
 
   val nameFile = "input/sudoku11.txt"
 
-  def initList() = {
+  def initList(): Seq[Unit] = {
     for {
       i <- 1 until dimSudoku
       j <- 1 until dimSudoku
