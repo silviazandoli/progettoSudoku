@@ -1,13 +1,16 @@
 import scala.io.Source
 
 object FullExploration {
-  val dimSudoku = 9
-  val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-  val nameFile = "input/sudoku11.txt"
+  import Sudoku.{puzzle,dimSudoku}
 
   def main(args: Array[String]): Unit = {
-    parsePuzzle(readFile(nameFile).toList, 0)
+    println("start sudoku")
+
+    /*
+    loadPuzzle(nameFile, 0)
     display()
+    */
+
     solve(0, 0)
     display()
   }
@@ -17,6 +20,10 @@ object FullExploration {
     val it = file.getLines()
     Source.fromFile(fileName).close()
     it.toArray
+  }
+
+  def loadPuzzle(nameFile: String, numRiga: Int): Unit = {
+    parsePuzzle(readFile(nameFile).toList, numRiga)
   }
 
   def parsePuzzle(puzzleInput: List[String], row: Int): Unit = {
@@ -57,6 +64,7 @@ object FullExploration {
   }
 
   def display(): Unit = {
+    println()
     for (i <- puzzle.indices) {
       print(util.formatSudokuLine(puzzle(i)))
       println()

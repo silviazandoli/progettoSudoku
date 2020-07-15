@@ -1,15 +1,12 @@
-class SudokuMatrix {
-  val dimSudoku = 9
-  val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
+object SudokuMatrix {
+  import Sudoku.{puzzle,dimSudoku}
 
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
 
-  val nameFile = "input/sudoku11.txt"
-
   def initList(): Seq[Unit] = {
     for {
-      i <- 1 until dimSudoku
-      j <- 1 until dimSudoku
+      i <- 0 until dimSudoku
+      j <- 0 until dimSudoku
     } yield matList(i)(j) = createList(i, j)
   }
 
@@ -18,35 +15,36 @@ class SudokuMatrix {
       return Nil
     }
 
-    val arrayNum = Array.ofDim[Int](dimSudoku+1)
+    val arrayNum = Array.ofDim[Int](dimSudoku)
 
     // inizializzazione vettore 1 ... n
     for {
-      k <- 1 until dimSudoku
-    } yield arrayNum(k) = k
+      k <- 0 until dimSudoku
+    } yield arrayNum(k) = k + 1
 
     // eliminazione numeri riga
     for {
       k <- 0 until dimSudoku
       if puzzle(row)(k) > 0
-    } yield arrayNum(puzzle(row)(k)) = 0
+    } yield arrayNum(puzzle(row)(k)-1) = 0
 
     // eliminazione numeri colonna
     for {
       k <- 0 until dimSudoku
       if puzzle(k)(col) > 0
-    } yield arrayNum(puzzle(k) (col)) = 0
+    } yield arrayNum(puzzle(k) (col)-1) = 0
 
     // eliminazione numeri quadrato
     val r = (row / 3) * 3
     val c = (col / 3) * 3
-    for (i <- r until r + 3) {
-      for (j <- c until c + 3) {
-        if (puzzle(i) (j) > 0) {
-          arrayNum(puzzle(i) (j)) = 0
-        }
-      }
-    }
+
+    for {
+      i <- r until r + 3
+      j <- c until c + 3
+      if puzzle(i) (j) > 0
+    } yield arrayNum(puzzle(i) (j)-1) = 0
+
+    if (row == 0 && col != 10) println(arrayNum.toList)
 
     arrayNum.filter(elem => elem > 0).toList
   }
@@ -61,5 +59,21 @@ class SudokuMatrix {
       i <- 1 until dimSudoku
       j <- 1 until dimSudoku
     } yield printList(print, matList(i)(j))
+  }
+
+  def minList(): (Int, Int) = {
+    var ijMin = (0, 0)
+    var minLength = dimSudoku + 1
+
+    for {
+      i <- 0 until dimSudoku
+      j <- 0 until dimSudoku
+      if (matList(i)(j).length > 0 && matList(i)(j).length < minLength)
+    } {
+      minLength = matList(i)(j).length
+      ijMin = (i, j)
+    }
+
+    ijMin
   }
 }
