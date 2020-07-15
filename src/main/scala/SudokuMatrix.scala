@@ -1,5 +1,3 @@
-import scala.annotation.tailrec
-
 class SudokuMatrix {
   val dimSudoku = 9
   val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
@@ -9,11 +7,10 @@ class SudokuMatrix {
   val nameFile = "input/sudoku11.txt"
 
   def initList() = {
-    for (i <- 0 until dimSudoku) {
-      for (j <- 0 until dimSudoku) {
-        matList(i)(j) = createList(i, j)
-      }
-    }
+    for {
+      i <- 1 until dimSudoku
+      j <- 1 until dimSudoku
+    } yield matList(i)(j) = createList(i, j)
   }
 
   def createList(row: Int, col: Int): List[Int] = {
@@ -28,19 +25,31 @@ class SudokuMatrix {
       arrayNum(k) = k
     }
 
-    // eliminazione numeri riga
+    // eliminazione numeri riga & colonna
     for (k <- 0 until dimSudoku) {
       if (puzzle(row) (k) > 0) {
         arrayNum(puzzle(row) (k)) = 0
       }
+      if (puzzle(k) (col) > 0) {
+        arrayNum(puzzle(k) (col)) = 0
+      }
     }
 
+    /*
+    for {
+      k <- 0 until dimSudoku
+      if puzzle(row) (k) > 0
+    } yield arrayNum(puzzle(row) (k)) = 0
+     */
+
+    /*
     // eliminazione numeri colonna
     for (k <- 0 until dimSudoku) {
       if (puzzle(k) (col) > 0) {
         arrayNum(puzzle(k) (col)) = 0
       }
     }
+     */
 
     // eliminazione numeri quadrato
     val r = (row / 3) * 3
@@ -67,5 +76,4 @@ class SudokuMatrix {
       j <- 1 until dimSudoku
     } yield printList(print, matList(i)(j))
   }
-
 }
