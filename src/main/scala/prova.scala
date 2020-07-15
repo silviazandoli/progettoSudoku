@@ -24,15 +24,23 @@ object prova extends App {
      */
   }
 
-  def azerPuzzle(row: Int) = {
+  def azerPuzzle(row: Int, col: Int) = {
     for {
       k <- 0 until dimSudoku
       if puzzle(row)(k) > 0
     } yield arrayNum(puzzle(row)(k)) = 0
+
+    for {
+      k <- 0 until dimSudoku
+      if puzzle(k)(col) > 0
+    } yield arrayNum(puzzle(k) (col)) = 0
+
+    // yield arrayNum(puzzle(k) (col)) = 0
+    //arrayNum(puzzle(k) (col)) = 0
   }
 
   initPuzzle()
-  azerPuzzle(5)
+  azerPuzzle(5, 6)
 
-  println(arrayNum)
+  println(arrayNum.toList)
 }

@@ -21,35 +21,21 @@ class SudokuMatrix {
     val arrayNum = Array.ofDim[Int](dimSudoku+1)
 
     // inizializzazione vettore 1 ... n
-    for (k <- 1 until dimSudoku) {
-      arrayNum(k) = k
-    }
+    for {
+      k <- 1 until dimSudoku
+    } yield arrayNum(k) = k
 
-    // eliminazione numeri riga & colonna
-    for (k <- 0 until dimSudoku) {
-      if (puzzle(row) (k) > 0) {
-        arrayNum(puzzle(row) (k)) = 0
-      }
-      if (puzzle(k) (col) > 0) {
-        arrayNum(puzzle(k) (col)) = 0
-      }
-    }
-
-    /*
+    // eliminazione numeri riga
     for {
       k <- 0 until dimSudoku
-      if puzzle(row) (k) > 0
-    } yield arrayNum(puzzle(row) (k)) = 0
-     */
+      if puzzle(row)(k) > 0
+    } yield arrayNum(puzzle(row)(k)) = 0
 
-    /*
     // eliminazione numeri colonna
-    for (k <- 0 until dimSudoku) {
-      if (puzzle(k) (col) > 0) {
-        arrayNum(puzzle(k) (col)) = 0
-      }
-    }
-     */
+    for {
+      k <- 0 until dimSudoku
+      if puzzle(k)(col) > 0
+    } yield arrayNum(puzzle(k) (col)) = 0
 
     // eliminazione numeri quadrato
     val r = (row / 3) * 3
