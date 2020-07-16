@@ -11,12 +11,13 @@ object Sudoku extends App {
   display()
 
   initList()
+  strategyList()
 
+  /*
   val coppiaMin = minList()
-
   println(coppiaMin)
-
   println(matList(coppiaMin._1) (coppiaMin._2))
+   */
 
   //solve(0, 0)
 

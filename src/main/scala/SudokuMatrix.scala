@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 object SudokuMatrix {
   import Sudoku.{puzzle,dimSudoku}
 
@@ -22,17 +24,13 @@ object SudokuMatrix {
       k <- 0 until dimSudoku
     } yield arrayNum(k) = k + 1
 
-    // eliminazione numeri riga
+    // eliminazione numeri riga & colonna
     for {
       k <- 0 until dimSudoku
-      if puzzle(row)(k) > 0
-    } yield arrayNum(puzzle(row)(k)-1) = 0
-
-    // eliminazione numeri colonna
-    for {
-      k <- 0 until dimSudoku
-      if puzzle(k)(col) > 0
-    } yield arrayNum(puzzle(k) (col)-1) = 0
+    } yield {
+      if (puzzle(row)(k) > 0) arrayNum(puzzle(row)(k)-1) = 0
+      if (puzzle(k)(col) > 0) arrayNum(puzzle(k)(col)-1) = 0
+    }
 
     // eliminazione numeri quadrato
     val r = (row / 3) * 3
@@ -48,7 +46,7 @@ object SudokuMatrix {
 
     arrayNum.filter(elem => elem > 0).toList
   }
-
+  
   final def printList[T](f: T => Unit, list: List[T]): Unit = list match {
     case h :: t => (f(h), printList(f, t))
     case _ =>
@@ -59,6 +57,21 @@ object SudokuMatrix {
       i <- 1 until dimSudoku
       j <- 1 until dimSudoku
     } yield printList(print, matList(i)(j))
+  }
+
+  /*
+  strategia di gioco
+   */
+  def strategyList() = {
+    var elem = 0
+    do {
+      val rowCol = minList()
+      elem = setUnitList(rowCol)
+
+      println("elem = " + elem)
+
+      if (elem != 0) updateList(rowCol, elem) // assegna valore lista unitaria
+    } while (elem != 0)
   }
 
   def minList(): (Int, Int) = {
@@ -75,5 +88,46 @@ object SudokuMatrix {
     }
 
     ijMin
+  }
+
+  def setUnitList(rowCol: (Int, Int)): Int = {
+    if (matList(rowCol._1)(rowCol._2).length == 1) {
+      val elem = matList(rowCol._1)(rowCol._2).head
+
+      puzzle(rowCol._1)(rowCol._2) = elem
+      matList(rowCol._1)(rowCol._2) = Nil
+
+      return elem
+    }
+    0
+  }
+
+  def updateList(rowCol: (Int, Int), elem: Int): Unit = {
+
+    val row = rowCol._1
+    val col = rowCol._2
+
+    /*
+    aggiornamento per riga e per colonna
+     */
+    for {
+      i <- 0 until dimSudoku
+    } yield {
+      if (i != col) matList(row)(i) = matList(row)(i).filter(e => e != elem)
+      if (i != row) matList(i)(col) = matList(i)(col).filter(e => e != elem)
+    }
+
+    val r = (row / 3) * 3
+    val c = (col / 3) * 3
+
+    /*
+    aggiornamento sotto - quadrato
+     */
+    for {
+      i <- r until r + 3
+      j <- c until c + 3
+    } yield {
+      if (i != row && j != col) matList(i)(j) = matList(i)(j).filter(e => e != elem)
+    }
   }
 }
