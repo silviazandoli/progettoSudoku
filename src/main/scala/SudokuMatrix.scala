@@ -51,9 +51,9 @@ object SudokuMatrix {
   }
 
   /*
-  strategia di gioco
+  strategia con assegnazione numero di liste unitarie
    */
-  def strategyList() = {
+  def strategyList1(): Any = {
     var elem = 0
     do {
       val rowCol = minList()
@@ -70,7 +70,7 @@ object SudokuMatrix {
     for {
       i <- 0 until dimSudoku
       j <- 0 until dimSudoku
-      if (matList(i)(j).length > 0 && matList(i)(j).length < minLength)
+      if matList(i)(j).nonEmpty && matList(i)(j).length < minLength
     } {
       minLength = matList(i)(j).length
       ijMin = (i, j)
