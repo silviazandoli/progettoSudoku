@@ -5,7 +5,7 @@ import scala.io.Source
 object SudokuLoad {
   val dimSudoku = 9
   val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-  val nameFile = "input/sudoku11.txt"
+  val nameFile = "input/sudoku23.txt"
 
   var elemEmpty: Int = dimSudoku * dimSudoku
 
