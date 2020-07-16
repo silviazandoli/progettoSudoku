@@ -1,42 +1,9 @@
-import scala.io.Source
-
 object FullExploration {
-  import Sudoku.{puzzle,dimSudoku}
+  import SudokuLoad.{puzzle,dimSudoku, display}
 
   def main(args: Array[String]): Unit = {
-    println("start sudoku")
-
-    /*
-    loadPuzzle(nameFile, 0)
-    display()
-    */
-
     solve(0, 0)
     display()
-  }
-
-  def readFile(fileName: String): Array[String] = {
-    val file = Source.fromFile(fileName)
-    val it = file.getLines()
-    Source.fromFile(fileName).close()
-    it.toArray
-  }
-
-  def loadPuzzle(nameFile: String, numRiga: Int): Unit = {
-    parsePuzzle(readFile(nameFile).toList, numRiga)
-  }
-
-  def parsePuzzle(puzzleInput: List[String], row: Int): Unit = {
-    puzzleInput match {
-        case h :: t => ({
-          var col = 0
-          h.foreach(ch => {
-            puzzle(row)(col) = ch.asDigit
-            col+=1
-          })
-        }, parsePuzzle(t, row+1))
-        case _ =>
-      }
   }
 
   def validate(row: Int, col: Int, num: Int): Boolean = {
@@ -56,20 +23,6 @@ object FullExploration {
       }
     }
     true
-  }
-
-  object util {
-    def formatSudokuLine(l:Array[Int]): String =
-      l.map(y => if (y == 0) "_" else y.toString).mkString(" ")
-  }
-
-  def display(): Unit = {
-    println()
-    for (i <- puzzle.indices) {
-      print(util.formatSudokuLine(puzzle(i)))
-      println()
-    }
-    println()
   }
 
   def puzzleSolved(): Boolean = {
