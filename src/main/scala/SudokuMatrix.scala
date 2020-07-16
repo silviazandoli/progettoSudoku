@@ -1,7 +1,5 @@
-import scala.annotation.tailrec
-
 object SudokuMatrix {
-  import Sudoku.{puzzle,dimSudoku}
+  import SudokuLoad.{puzzle,dimSudoku, elemEmpty, printList}
 
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
 
@@ -42,14 +40,7 @@ object SudokuMatrix {
       if puzzle(i) (j) > 0
     } yield arrayNum(puzzle(i) (j)-1) = 0
 
-    if (row == 0 && col != 10) println(arrayNum.toList)
-
     arrayNum.filter(elem => elem > 0).toList
-  }
-  
-  final def printList[T](f: T => Unit, list: List[T]): Unit = list match {
-    case h :: t => (f(h), printList(f, t))
-    case _ =>
   }
 
   def printMatrix(): Unit = {
@@ -67,8 +58,6 @@ object SudokuMatrix {
     do {
       val rowCol = minList()
       elem = setUnitList(rowCol)
-
-      println("elem = " + elem)
 
       if (elem != 0) updateList(rowCol, elem) // assegna valore lista unitaria
     } while (elem != 0)
@@ -96,6 +85,8 @@ object SudokuMatrix {
 
       puzzle(rowCol._1)(rowCol._2) = elem
       matList(rowCol._1)(rowCol._2) = Nil
+
+      elemEmpty = elemEmpty - 1
 
       return elem
     }
