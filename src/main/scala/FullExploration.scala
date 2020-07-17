@@ -1,10 +1,5 @@
 object FullExploration {
-  import SudokuLoad.{puzzle,dimSudoku, display}
-
-  def main(args: Array[String]): Unit = {
-    solve(0, 0)
-    display()
-  }
+  import SudokuLoad.{puzzle,dimSudoku}
 
   def validate(row: Int, col: Int, num: Int): Boolean = {
     for (i <- 0 until dimSudoku) {
