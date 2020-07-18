@@ -1,8 +1,11 @@
-object FullExploration {
-  import SudokuLoad.{puzzle,dimSudoku}
 
-  def validate(row: Int, col: Int, num: Int): Boolean = {
+
+object FullExploration {
+  import SudokuLoad.{dimSudoku, puzzle}
+
+ /* def validate(row: Int, col: Int, num: Int): Boolean = {
     for (i <- 0 until dimSudoku) {
+
       if (puzzle(row)(i) == num || puzzle(i)(col) == num) {
         return false
       }
@@ -18,19 +21,29 @@ object FullExploration {
       }
     }
     true
-  }
+  }*/
+ def validate(position:(Int,Int),value:Int): Boolean = {
+   //for each row, column and block 3*3
+   val v=puzzle.transpose
+   val ci = position._1 / 3
+   val cj = position._2 / 3
+   val squareCells = puzzle.grouped(3).toList(ci).flatMap { x => x.grouped(3).toList(cj) }
 
-  def puzzleSolved(): Boolean = {
-    for (i <- 0 until dimSudoku) {
-      for (j <- 0 until dimSudoku) {
-        if (puzzle(i)(j) == 0) {
-          return false
-        }
-      }
-    }
+   !puzzle(position._1).contains(value) && !v(position._2).contains(value) && !squareCells.contains(value)
 
-    true
-  }
+ }
+
+  def puzzleSolved(): Boolean = puzzle.flatten.forall(_.!=(0))
+ /*def puzzleSolved(): Boolean = {
+   for (i <- 0 until 9) {
+     for (j <- 0 until 9) {
+       if (puzzle(i)(j) == 0) {
+         return false
+       }
+     }
+   }
+   true
+ }*/
 
   def next(row: Int, col: Int): Boolean = {
     if (col >= 8) {
@@ -41,13 +54,12 @@ object FullExploration {
   }
 
   def solve(row: Int, col: Int): Boolean = {
-    if (puzzleSolved()) {
-      return true
-    } else if (puzzle(row)(col) > 0) {
+    if (puzzleSolved()) return true
+    else if (puzzle(row)(col) > 0) {
       return next(row, col)
     } else {
       for (i <- 1 to dimSudoku) {
-        if (validate(row, col, i)) {
+        if (validate((row, col), i)) {
           puzzle(row)(col) = i
 
           if (next(row, col)) {
