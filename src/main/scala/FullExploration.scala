@@ -20,21 +20,20 @@ object FullExploration {
 
   def solve(row: Int, col: Int): Boolean = {
     if (puzzleSolved()) return true
-
-    if (puzzle(row)(col) > 0) {
-      return next(row, col)
-    } else {
-      for {
-        i <- 1 to dimSudoku
-        if validate((row, col), i)
-      } yield {
-        puzzle(row)(col) = i
-        if (next(row, col)) {
-          return true
+    puzzle(row)(col) match {
+      case 0 =>
+        for {
+          i <- 1 to dimSudoku
+          if validate((row, col), i)
+        } yield {
+          puzzle(row)(col) = i
+          if (next(row, col)) {
+            return true
+          }
+          puzzle(row)(col) = 0
         }
-        puzzle(row)(col) = 0
-      }
+        false
+      case _ => next(row, col)
     }
-    false
   }
 }
