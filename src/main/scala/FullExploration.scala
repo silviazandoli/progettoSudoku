@@ -13,17 +13,15 @@ object FullExploration {
 
   def puzzleSolved(): Boolean = puzzle.flatten.forall(_.!=(0))
 
-  def next(row: Int, col: Int): Boolean = {
-    if (col >= 8) {
-      solve(row + 1, 0)
-    } else {
-      solve(row, col + 1)
-    }
+  def next(row: Int, col: Int): Boolean = col match {
+    case 8 | 9 => solve(row + 1, 0)
+    case _ => solve(row, col + 1)
   }
 
   def solve(row: Int, col: Int): Boolean = {
     if (puzzleSolved()) return true
-    else if (puzzle(row)(col) > 0) {
+
+    if (puzzle(row)(col) > 0) {
       return next(row, col)
     } else {
       for {
