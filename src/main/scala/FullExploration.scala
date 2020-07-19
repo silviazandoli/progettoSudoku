@@ -34,16 +34,6 @@ object FullExploration {
  }
 
   def puzzleSolved(): Boolean = puzzle.flatten.forall(_.!=(0))
- /*def puzzleSolved(): Boolean = {
-   for (i <- 0 until dimSudoku) {
-     for (j <- 0 until simSudoku) {
-       if (puzzle(i)(j) == 0) {
-         return false
-       }
-     }
-   }
-   true
- }*/
 
   def next(row: Int, col: Int): Boolean = {
     if (col >= 8) {
