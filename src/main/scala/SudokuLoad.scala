@@ -46,15 +46,24 @@ object SudokuLoad {
 
   def display(title: String): Unit = {
     println(title + " " + elemEmpty)
+    /*
     for (i <- puzzle.indices) {
+      print(util.formatSudokuLine(puzzle(i)))
+      println()
+    }
+     */
+    for {
+      i <- puzzle.indices
+    } yield {
       print(util.formatSudokuLine(puzzle(i)))
       println()
     }
     println()
   }
 
+  @tailrec
   final def printList[T](f: T => Unit, list: List[T]): Unit = list match {
-    case h :: t => (f(h), printList(f, t))
+    case h :: t => f(h); printList(f, t)
     case _ =>
   }
 
