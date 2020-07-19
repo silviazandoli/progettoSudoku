@@ -14,7 +14,7 @@ object FullExploration {
   def puzzleSolved(): Boolean = puzzle.flatten.forall(_.!=(0))
 
   def next(row: Int, col: Int): Boolean = col match {
-    case 8 | 9 => solve(row + 1, 0)
+    case 8 => solve(row + 1, 0)
     case _ => solve(row, col + 1)
   }
 
