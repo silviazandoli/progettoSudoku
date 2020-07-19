@@ -6,7 +6,7 @@ import scala.io.Source
 object SudokuLoad {
   val dimSudoku = 9
   val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-  val nameFile = "input/sudoku23.txt"
+  val nameFile = "input/sudoku01.txt"
 
   var elemEmpty: Int = dimSudoku * dimSudoku
 
@@ -46,12 +46,6 @@ object SudokuLoad {
 
   def display(title: String): Unit = {
     println(title + " " + elemEmpty)
-    /*
-    for (i <- puzzle.indices) {
-      print(util.formatSudokuLine(puzzle(i)))
-      println()
-    }
-     */
     for {
       i <- puzzle.indices
     } yield {

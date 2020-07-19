@@ -26,16 +26,15 @@ object FullExploration {
     else if (puzzle(row)(col) > 0) {
       return next(row, col)
     } else {
-      for (i <- 1 to dimSudoku) {
-        if (validate((row, col), i)) {
-          puzzle(row)(col) = i
-
-          if (next(row, col)) {
-            return true
-          }
-
-          puzzle(row)(col) = 0
+      for {
+        i <- 1 to dimSudoku
+        if validate((row, col), i)
+      } yield {
+        puzzle(row)(col) = i
+        if (next(row, col)) {
+          return true
         }
+        puzzle(row)(col) = 0
       }
     }
     false
