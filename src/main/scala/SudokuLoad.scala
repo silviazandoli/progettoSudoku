@@ -1,5 +1,6 @@
 import SudokuMatrix.matList
 
+import scala.annotation.tailrec
 import scala.io.Source
 
 object SudokuLoad {
@@ -20,6 +21,7 @@ object SudokuLoad {
     parsePuzzle(readFile(nameFile).toList, numRiga)
   }
 
+  @tailrec
   def parsePuzzle(puzzleInput: List[String], row: Int): Unit = {
     puzzleInput match {
       case h :: t => ({
@@ -29,7 +31,7 @@ object SudokuLoad {
           if (puzzle(row)(col) > 0) elemEmpty-=1
           col+=1
         })
-      }, parsePuzzle(t, row+1))
+      ; parsePuzzle(t, row+1)})
       case _ =>
     }
   }
