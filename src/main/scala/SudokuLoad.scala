@@ -6,7 +6,7 @@ import scala.io.Source
 object SudokuLoad {
   val dimSudoku = 9
   val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-  val nameFile = "input/sudoku05.txt"
+  val nameFile = "input/sudoku11.txt"
 
   var elemEmpty: Int = dimSudoku * dimSudoku
 
@@ -24,14 +24,16 @@ object SudokuLoad {
   @tailrec
   def parsePuzzle(puzzleInput: List[String], row: Int): Unit = {
     puzzleInput match {
-      case h :: t => ({
+      case h :: t =>
         var col = 0
-        h.foreach(ch => {
-          puzzle(row)(col) = ch.asDigit
+        def closurePuzzle(ch: Char): Unit = {
           if (puzzle(row)(col) > 0) elemEmpty-=1
+          puzzle(row)(col) = ch.asDigit
           col+=1
-        })
-      ; parsePuzzle(t, row+1)})
+        }
+
+        computeOnList(closurePuzzle, h.toList)
+      ; parsePuzzle(t, row+1)
       case _ =>
     }
   }
@@ -56,13 +58,13 @@ object SudokuLoad {
   }
 
   @tailrec
-  final def printList[T](f: T => Unit, list: List[T]): Unit = list match {
-    case h :: t => f(h); printList(f, t)
+  final def computeOnList[T](f: T => Unit, list: List[T]): Unit = list match {
+    case h :: t => f(h); computeOnList(f, t)
     case _ =>
   }
 
   def displayList(row: Int, col: Int): Unit = {
     print("[" + row + " " + col + "]  ")
-    printList(print, matList(row)(col))
+    computeOnList(print, matList(row)(col))
   }
 }
