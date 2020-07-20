@@ -10,7 +10,6 @@ object Sudoku extends App {
   initList() // costruzione liste
   displayList(0, 0)
 
-
   val timeStamp = TimeStampImpl(System.currentTimeMillis())
   strategyList1()
   timeStamp.calculateDiff(System.currentTimeMillis())

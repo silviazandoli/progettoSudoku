@@ -1,5 +1,5 @@
 object SudokuMatrix {
-  import SudokuLoad.{puzzle,dimSudoku, elemEmpty, printList}
+  import SudokuLoad.{puzzle,dimSudoku, elemEmpty, computeOnList}
 
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
 
@@ -47,7 +47,7 @@ object SudokuMatrix {
     for {
       i <- 1 until dimSudoku
       j <- 1 until dimSudoku
-    } yield printList(print, matList(i)(j))
+    } yield computeOnList(print, matList(i)(j))
   }
 
   /*
