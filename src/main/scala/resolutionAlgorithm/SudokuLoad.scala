@@ -50,7 +50,7 @@ object SudokuLoad {
 
   def display(title: String): List[String] = {
     println(title + " " + elemEmpty)
-    var list = List[String]()
+    val list = List[String]()
     for {
       i <- puzzle.indices
     } yield {
