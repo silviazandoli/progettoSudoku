@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 object SudokuMatrix {
   import SudokuLoad.{puzzle,dimSudoku, elemEmpty, computeOnList}
 
@@ -61,6 +63,41 @@ object SudokuMatrix {
 
       if (elem != 0) updateList(rowCol, elem) // assegna valore lista unitaria
     } while (elem != 0)
+  }
+
+  @tailrec
+  def findCouplePuzzle(row: Int, col: Int): Unit = {
+    val listCouple = findCouple(row, col)
+
+    if (listCouple != Nil) {
+      listCouple(0)
+      listCouple(1)
+    }
+
+    if (row < dimSudoku) findCouplePuzzle(row + 3, col)
+  }
+
+  /*
+  data una cella cerca ogni possibile coppia nel suo sottoquadrato
+   */
+  def findCouple(row: Int, col: Int): List[(Int, Int)] = {
+    val r = (row / 3) * 3
+    val c = (col / 3) * 3
+
+    val coupleFirst = (row, col)
+    var coupleSecond = (row, col)
+
+    for {
+      i <- r until r + 3
+      j <- c until c + 3
+      if i != row && j != col
+    } yield {
+      if (matList(row)(col) == matList(i) (j)) {
+        coupleSecond = (i, j)
+        return List(coupleFirst, coupleSecond)
+      }
+    }
+    Nil
   }
 
   def minList(): (Int, Int) = {
