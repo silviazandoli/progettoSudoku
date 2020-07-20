@@ -48,15 +48,19 @@ object SudokuLoad {
     display("")
   }
 
-  def display(title: String): Unit = {
+  def display(title: String): List[String] = {
     println(title + " " + elemEmpty)
+    var list = List[String]()
     for {
       i <- puzzle.indices
     } yield {
-      print(util.formatSudokuLine(puzzle(i)))
+      val strTemp = util.formatSudokuLine(puzzle(i))
+      print(strTemp)
       println()
+      list.+(strTemp)
     }
     println()
+    list
   }
 
   @tailrec
