@@ -3,7 +3,7 @@ package testFull
 import org.scalatest.FunSuite
 import resolutionAlgorithm.HiddenPair
 import resolutionAlgorithm.SudokuLoad.{display, loadPuzzle, nameFile, puzzle}
-import resolutionAlgorithm.SudokuMatrix.matList
+
 class TestHiddenPair extends FunSuite {
 
   test("pair") {
@@ -11,12 +11,13 @@ class TestHiddenPair extends FunSuite {
     loadPuzzle(nameFile, 0)
     println(puzzle.toString)
 
-    println(matList)
+
 
     display()
     //setup
     val ml=HiddenPair.createMatlist(puzzle)
-    println(ml)
+
+    //println(ml)
     //verify
   }
 
