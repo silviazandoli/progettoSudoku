@@ -51,7 +51,7 @@ object SudokuMatrix {
   }
 
   /*
-  strategia HiddenSingles con assegnazione numero di liste unitarie
+  strategia con assegnazione numero di liste unitarie
    */
   def strategyList1(): Any = {
     var elem = 0
