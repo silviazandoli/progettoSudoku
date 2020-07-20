@@ -5,7 +5,7 @@ import resolutionAlgorithm.FullExploration.solve
 import resolutionAlgorithm.SudokuLoad.{display, loadPuzzle, nameFile}
 
 class testFull extends FunSuite {
-  
+
   val nameSolved = "outputSolved/sudoku11.txt"
 
   test("TestSudoku11") {
