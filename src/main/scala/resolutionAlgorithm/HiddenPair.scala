@@ -1,10 +1,32 @@
 package resolutionAlgorithm
 
+import resolutionAlgorithm.SudokuLoad.dimSudoku
 import resolutionAlgorithm.SudokuMatrix.matList
-import SudokuLoad.dimSudoku
-import scala.annotation.tailrec
 
 object HiddenPair {
+  //inserisce in ogni cella i numeri possibili
+  def createMatlist(puzzle: Array[Array[Int]]) = {
+   for(i<-0 until dimSudoku){
+     for(j<-0 until dimSudoku){
+       val row=puzzle(i).toList.filter(_!=0).toSet
+       val col=puzzle.toList.map(_(j)).filter(_!=0).toSet
+     }
+
+   }
+    //1 escludo quelli per riga
+    val row0=puzzle(0).toList.filter(_!=0).toSet
+    println(row0)
+    //2 escludo quelli per colonna
+    val col0=puzzle.toList.map(_(0)).filter(_!=0).toSet
+
+    //3 escludo quelli per blocco 3*3
+    val block0=puzzle.take(3).toList.map(_.take(3).toList).flatten.filter(_!=0).toSet
+    val un=row0.union(col0).union(block0)
+    val possible=(1 to dimSudoku).toSet.diff(un)
+    println(possible)
+    matList(0)(0)=possible.toList
+  }
+
   //A hidden pair occurs when a pair of numbers appears in exactly two squares in a row, column, or block,
   // but those two numbers aren't the only ones in their squares.you can get rid of the other candidates in those squares
 
@@ -12,7 +34,7 @@ object HiddenPair {
   /*
   implementazione provvisoria di trovare coppie nel puzzle
    */
-  @tailrec
+
   def findCouplePuzzle(row: Int, col: Int): Unit = {
     val listCouple = findCouple(row, col)
 
