@@ -1,5 +1,7 @@
-import SudokuMatrix.{matList, updateList}
-import SudokuLoad.{dimSudoku, puzzle}
+package resolutionAlgorithm
+
+import resolutionAlgorithm.SudokuLoad.{puzzle, dimSudoku}
+import resolutionAlgorithm.SudokuMatrix.{matList, updateList}
 
 object HiddenSingles {
 

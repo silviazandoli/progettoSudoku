@@ -1,5 +1,7 @@
+package resolutionAlgorithm
+
 object FullExploration {
-  import SudokuLoad.{puzzle,dimSudoku}
+  import SudokuLoad.{dimSudoku, puzzle}
 
  def validate(position:(Int,Int),value:Int): Boolean = {
    //for each row, column and block 3*3

@@ -1,6 +1,9 @@
-import FullExploration.solve
-import SudokuMatrix._
-import SudokuLoad.{display, loadPuzzle, nameFile, displayList}
+package resolutionAlgorithm
+
+import resolutionAlgorithm.FullExploration.solve
+import resolutionAlgorithm.SudokuLoad.{display, displayList, loadPuzzle, nameFile}
+import resolutionAlgorithm.SudokuMatrix.{initList, strategyList1}
+import util.TimeStampImpl
 
 object Sudoku extends App {
   print("Puzzle: " + nameFile)

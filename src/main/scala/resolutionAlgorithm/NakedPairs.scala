@@ -1,7 +1,8 @@
-import SudokuMatrix.matList
+package resolutionAlgorithm
+
+import resolutionAlgorithm.SudokuMatrix.matList
 import SudokuLoad.dimSudoku
 
-import scala.annotation.tailrec
 object NakedPairs {
 
   def solve(row: Int, col: Int): Unit = {
@@ -12,9 +13,11 @@ object NakedPairs {
           /*rimuovo da tutte le altre quei due elementi*/
           for(k <- 0 until dimSudoku){
             /* TODO: Cancellare gli elementi che sono presenti ed uguali in matList di Row/Col e quelli di i/j da tutta la riga/colonna */
+            /*
             if (matList(i)(k).find(matList(i)(j)(0)) || (matList(i)(k).find(matList(i)(j)(1)))){
               matList(i)(k)()
             }
+             */
           }
         }
       }
@@ -27,19 +30,3 @@ object NakedPairs {
     }
   }
 }
-  /*def solve(row: Int, col: Int): Boolean = {
-    var result: java.lang.Boolean = false
-    var k: Int = 0
-    while (k < 9 && !result) {
-      if (naked_pair_unit(puzzle(k) || naked_pair_unit(puzzle(k)) ||
-        naked_pair_unit(box(k))) {
-        result = true
-      }
-      { k += 1; k - 1 }
-    }
-    return result;
-  }
-  def naked_pair_unit(C: Int[9][2]): Unit ={
-
-  }*/
-

@@ -1,4 +1,6 @@
-import SudokuMatrix.matList
+package resolutionAlgorithm
+
+import resolutionAlgorithm.SudokuMatrix.matList
 
 import scala.annotation.tailrec
 import scala.io.Source

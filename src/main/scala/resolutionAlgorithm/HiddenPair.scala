@@ -1,6 +1,7 @@
-import SudokuMatrix.matList
-import SudokuLoad.dimSudoku
+package resolutionAlgorithm
 
+import resolutionAlgorithm.SudokuMatrix.matList
+import SudokuLoad.dimSudoku
 import scala.annotation.tailrec
 
 object HiddenPair {

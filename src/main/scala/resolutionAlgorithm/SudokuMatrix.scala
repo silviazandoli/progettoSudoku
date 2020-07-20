@@ -1,5 +1,7 @@
+package resolutionAlgorithm
+
 object SudokuMatrix {
-  import SudokuLoad.{puzzle,dimSudoku, elemEmpty, computeOnList}
+  import SudokuLoad.{computeOnList, dimSudoku, elemEmpty, puzzle}
 
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
 

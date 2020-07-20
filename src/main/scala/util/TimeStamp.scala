@@ -1,3 +1,5 @@
+package util
+
 trait TimeStamp {
   def timeStart: Long
 
