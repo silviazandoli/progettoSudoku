@@ -8,11 +8,13 @@ object NakedPairs {
     for (i <- 0 until dimSudoku) { //per ogni riga
       for (j <- 0 until dimSudoku) { // per ogni colonna
         //controllo che sia di lunghezza
-        if (matList(i)(j).size == 2 && matList(i)(j) == matList(row)(col) && i != row && j != col) {
+        if (i != row && j != col && matList(i)(j).size == 2 && matList(i)(j) == matList(row)(col)) {
           /*rimuovo da tutte le altre quei due elementi*/
           for(k <- 0 until dimSudoku){
-            // TODO: Cancellare gli elementi che sono presenti ed uguali in matList di Row/Col e quelli
-            // di i/j da tutta la riga/colonna.
+            /* TODO: Cancellare gli elementi che sono presenti ed uguali in matList di Row/Col e quelli di i/j da tutta la riga/colonna */
+            if (matList(i)(k).find(matList(i)(j)(0)) || (matList(i)(k).find(matList(i)(j)(1)))){
+              matList(i)(k)()
+            }
           }
         }
       }
