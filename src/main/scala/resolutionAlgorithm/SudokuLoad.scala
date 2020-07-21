@@ -38,23 +38,27 @@ object SudokuLoad {
     }
   }
 
-  object util {
-    def formatSudokuLine(l:Array[Int]): String =
-      l.map(y => if (y == 0) "_" else y.toString).mkString(" ")
-  }
   def display(): Unit = {
     display("")
   }
 
   def display(title: String): Array[Array[Int]] = {
+    def closureSudokuLine(l:Array[Int]): String = {
+      l.map {
+        case 0 => "_"
+        case y => `y`.toString
+      }.mkString(" ")
+    }
+
+    println(title)
     for {
       i <- puzzle.indices
     } yield {
-      val strTemp = util.formatSudokuLine(puzzle(i))
-      print(strTemp)
+      computeOnList(print, closureSudokuLine(puzzle(i)).toList)
       println()
     }
     println()
+
     puzzle
   }
 
