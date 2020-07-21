@@ -6,10 +6,10 @@ import resolutionAlgorithm.SudokuMatrix.{initList, strategyList1}
 import util.TimeStampImpl
 
 object Sudoku extends App {
-  val nameFile = "input/sudoku22.txt"
+  val nameFile = "input/sudoku03.txt"
 
   print("Puzzle: " + nameFile)
-  loadPuzzle(nameFile, 0)
+  loadPuzzle(nameFile)
   display("Schema iniziale")
 
   initList() // costruzione liste

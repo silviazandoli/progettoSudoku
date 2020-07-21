@@ -7,8 +7,11 @@ import scala.io.Source
 
 object SudokuLoad {
   val dimSudoku = 9
-  val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-  var elemEmpty: Int = dimSudoku * dimSudoku
+  var puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
+
+  def getPuzzle: Array[Array[Int]] = {
+    puzzle
+  }
 
   def readFile(fileName: String): Array[String] = {
     val file = Source.fromFile(fileName)
@@ -17,8 +20,8 @@ object SudokuLoad {
     it.toArray
   }
 
-  def loadPuzzle(nameFile: String, numRiga: Int): Unit = {
-    parsePuzzle(readFile(nameFile).toList, numRiga)
+  def loadPuzzle(nameFile: String): Unit = {
+    parsePuzzle(readFile(nameFile).toList, 0)
   }
 
   @tailrec
@@ -26,8 +29,8 @@ object SudokuLoad {
     puzzleInput match {
       case h :: t =>
         var col = 0
+
         def closurePuzzle(ch: Char): Unit = {
-          if (puzzle(row)(col) > 0) elemEmpty-=1
           puzzle(row)(col) = ch.asDigit
           col+=1
         }
@@ -42,7 +45,7 @@ object SudokuLoad {
     display("")
   }
 
-  def display(title: String): Array[Array[Int]] = {
+  def display(title: String): Unit = {
     def closureSudokuLine(l:Array[Int]): String = {
       l.map {
         case 0 => "_"
@@ -52,14 +55,12 @@ object SudokuLoad {
 
     println(title)
     for {
-      i <- puzzle.indices
+      i <- 0 until dimSudoku
     } yield {
       computeOnList(print, closureSudokuLine(puzzle(i)).toList)
       println()
     }
     println()
-
-    puzzle
   }
 
   @tailrec

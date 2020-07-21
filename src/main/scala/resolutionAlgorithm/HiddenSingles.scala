@@ -5,7 +5,7 @@ import resolutionAlgorithm.SudokuMatrix.{matList, updateList}
 
 object HiddenSingles {
 
-  def method(row: Int, col: Int) = {
+  def method(row: Int, col: Int): Unit = {
     for (i <- 1 to dimSudoku) {
       val colFound = searchInRow(i, row)
       if (colFound != -1) {

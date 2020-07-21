@@ -2,7 +2,7 @@ package resolutionAlgorithm
 
 object SudokuMatrix {
 
-  import SudokuLoad.{computeOnList, dimSudoku, elemEmpty, puzzle}
+  import SudokuLoad.{computeOnList, dimSudoku, puzzle}
 
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
 
@@ -81,7 +81,6 @@ object SudokuMatrix {
 
       puzzle(rowCol._1)(rowCol._2) = elem
       matList(rowCol._1)(rowCol._2) = Nil
-      elemEmpty = elemEmpty - 1
 
       elem
     case _ => 0

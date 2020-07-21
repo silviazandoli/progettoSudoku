@@ -9,7 +9,7 @@ class TestHiddenPair extends FunSuite {
 
   test("Hidden Pair") {
     //init
-    loadPuzzle(nameFile, 0)
+    loadPuzzle(nameFile)
     println(puzzle.toString)
 
 

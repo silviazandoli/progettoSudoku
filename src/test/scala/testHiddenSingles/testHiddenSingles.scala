@@ -1,9 +1,16 @@
 package testHiddenSingles
 
-import org.scalatest.FlatSpec
+import org.scalatest.FunSuite
+import resolutionAlgorithm.HiddenSingles
+import resolutionAlgorithm.SudokuLoad.loadPuzzle
 
-class testHiddenSingles extends FlatSpec {
+class testHiddenSingles extends FunSuite {
+  val nameFile = "input/sudoku11.txt"
+  val nameSolved = "outputSolved/sudoku11.txt"
 
-  it
+  test("") {
+    loadPuzzle(nameFile)
+    //HiddenSingles.method()
 
+  }
 }
