@@ -9,11 +9,11 @@ object SudokuMatrix {
   def initList(): Unit = {
     for {
       i<-0 until dimSudoku
-    } yield {
+    } {
       val rowExcl = puzzle(i).toList.filter(_ != 0).toSet
       for {
         j<-0 until dimSudoku
-      } yield {
+      } {
         puzzle(i)(j) match {
           case 0 => matList(i)(j) = possible(rowExcl, i,j)
           case _ => matList(i)(j) = List()
@@ -75,18 +75,16 @@ object SudokuMatrix {
     ijMin
   }
 
-  def setUnitList(rowCol: (Int, Int)): Int = {
-    if (matList(rowCol._1)(rowCol._2).length == 1) {
+  def setUnitList(rowCol: (Int, Int)): Int = matList(rowCol._1)(rowCol._2).length match {
+    case 1 =>
       val elem = matList(rowCol._1)(rowCol._2).head
 
       puzzle(rowCol._1)(rowCol._2) = elem
       matList(rowCol._1)(rowCol._2) = Nil
-
       elemEmpty = elemEmpty - 1
 
-      return elem
-    }
-    0
+      elem
+    case _ => 0
   }
 
   def updateList(rowCol: (Int, Int), elem: Int): Unit = {
