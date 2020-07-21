@@ -6,7 +6,7 @@ import resolutionAlgorithm.SudokuLoad.{display, loadPuzzle, nameFile, puzzle}
 
 class TestHiddenPair extends FunSuite {
 
-  test("pair") {
+  test("Hidden Pair") {
     //init
     loadPuzzle(nameFile, 0)
     println(puzzle.toString)
