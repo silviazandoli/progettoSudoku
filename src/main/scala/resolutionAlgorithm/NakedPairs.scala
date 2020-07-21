@@ -12,12 +12,12 @@ object NakedPairs {
         if (i != row && j != col && matList(i)(j).size == 2 && matList(i)(j) == matList(row)(col)) {
           /*rimuovo da tutte le altre quei due elementi*/
           for(k <- 0 until dimSudoku){
-            /* TODO: Cancellare gli elementi che sono presenti ed uguali in matList di Row/Col e quelli di i/j da tutta la riga/colonna */
-            /*
-            if (matList(i)(k).find(matList(i)(j)(0)) || (matList(i)(k).find(matList(i)(j)(1)))){
-              matList(i)(k)()
+            for(number <- matList(i)(k)){
+              if (number == matList(i)(j)(0) || number == matList(i)(j)(1)){
+                /* rimuovere elemento dalla lista*/
+                matList(i)(k) = Nil
+              }
             }
-             */
           }
         }
       }
