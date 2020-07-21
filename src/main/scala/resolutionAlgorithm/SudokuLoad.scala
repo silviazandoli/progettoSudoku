@@ -48,8 +48,8 @@ object SudokuLoad {
     display("")
   }
 
-  def display(title: String): List[String] = {
-    println(title + " " + elemEmpty)
+  def display(title: String): Array[Array[Int]] = {
+    //println(title + " " + elemEmpty)
     val list = List[String]()
     for {
       i <- puzzle.indices
@@ -57,10 +57,11 @@ object SudokuLoad {
       val strTemp = util.formatSudokuLine(puzzle(i))
       print(strTemp)
       println()
-      list.+(strTemp)
+      //list.+(strTemp)
     }
     println()
-    list
+    //list
+    puzzle
   }
 
   @tailrec

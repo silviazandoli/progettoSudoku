@@ -1,15 +1,59 @@
 package resolutionAlgorithm
 
 object SudokuMatrix {
+
   import SudokuLoad.{computeOnList, dimSudoku, elemEmpty, puzzle}
 
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
 
-  def initList(): Seq[Unit] = {
+  def initList(): Unit = {
+    /*
     for {
       i <- 0 until dimSudoku
       j <- 0 until dimSudoku
     } yield matList(i)(j) = createList(i, j)
+     */
+
+    createMatlist()
+  }
+
+  def possible(rowExcl: Set[Int], row:Int,col:Int):List[Int] = {
+    /*
+    //escludo per riga
+    val rowExcl = puzzle(row).toList.filter(_ != 0).toSet
+     */
+
+    //escludo per colonna
+    val colExcl = puzzle.toList.map(_ (col)).filter(_ != 0).toSet
+
+    //escludo per blocco 3*3
+    val ci = row / 3
+    val cj = col / 3
+
+    val block = puzzle.grouped(3).toList(ci).flatMap { x => x.grouped(3).toList(cj) }.filter(_ != 0).toList.toSet
+    println(" riga" + row + " colonna" + col + " numeri riga: " + rowExcl + " numeri colonna: " + colExcl + " blocco:" + block)
+
+    //faccio l'unione per riga, per blocco e colonna
+    val unity = rowExcl.union(colExcl).union(block)
+
+    //faccio un set differenza, in possible ci metti tutti i numeri che non sono nell'unione
+    val possible = (1 to dimSudoku).toSet.diff(unity).toList
+    println(possible)
+
+    //println(" matList nella posizione " + row + "," + col+ " è " + possible)
+    possible
+  }
+
+  def createMatlist() = {
+    for(i<-0 until dimSudoku) {
+      //escludo per riga
+      val rowExcl = puzzle(i).toList.filter(_ != 0).toSet
+
+      for(j<-0 until dimSudoku) {
+        matList(i)(j)=possible(rowExcl, i,j)
+        println(" matList nella posizione " + i + "," + j+ " è " + matList(i)(j))
+      }
+    }
   }
 
   def createList(row: Int, col: Int): List[Int] = {
