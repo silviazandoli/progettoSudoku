@@ -2,9 +2,10 @@ package testFull
 
 import org.scalatest.FunSuite
 import resolutionAlgorithm.HiddenPair
-import resolutionAlgorithm.SudokuLoad.{display, loadPuzzle, nameFile, puzzle}
+import resolutionAlgorithm.SudokuLoad.{display, loadPuzzle, puzzle}
 
 class TestHiddenPair extends FunSuite {
+  val nameFile = "input/sudoku01.txt"
 
   test("Hidden Pair") {
     //init

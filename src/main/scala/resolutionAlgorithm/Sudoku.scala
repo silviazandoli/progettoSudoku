@@ -1,11 +1,13 @@
 package resolutionAlgorithm
 
 import resolutionAlgorithm.FullExploration.solve
-import resolutionAlgorithm.SudokuLoad.{display, displayList, loadPuzzle, nameFile}
+import resolutionAlgorithm.SudokuLoad.{display, displayList, loadPuzzle}
 import resolutionAlgorithm.SudokuMatrix.{initList, strategyList1}
 import util.TimeStampImpl
 
 object Sudoku extends App {
+  val nameFile = "input/sudoku22.txt"
+
   print("Puzzle: " + nameFile)
   loadPuzzle(nameFile, 0)
   display("Schema iniziale")

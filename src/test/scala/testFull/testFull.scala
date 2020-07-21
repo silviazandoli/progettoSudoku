@@ -2,10 +2,10 @@ package testFull
 
 import org.scalatest.FunSuite
 import resolutionAlgorithm.FullExploration.solve
-import resolutionAlgorithm.SudokuLoad.{display, loadPuzzle, nameFile}
+import resolutionAlgorithm.SudokuLoad.{display, loadPuzzle}
 
 class testFull extends FunSuite {
-
+  val nameFile = "input/sudoku01.txt"
   val nameSolved = "outputSolved/sudoku11.txt"
 
   test("TestSudoku11") {

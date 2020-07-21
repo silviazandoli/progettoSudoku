@@ -7,22 +7,10 @@ object SudokuMatrix {
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
 
   def initList(): Unit = {
-    /*
-    for {
-      i <- 0 until dimSudoku
-      j <- 0 until dimSudoku
-    } yield matList(i)(j) = createList(i, j)
-     */
-
     createMatlist()
   }
 
   def possible(rowExcl: Set[Int], row:Int,col:Int):List[Int] = {
-    /*
-    //escludo per riga
-    val rowExcl = puzzle(row).toList.filter(_ != 0).toSet
-     */
-
     //escludo per colonna
     val colExcl = puzzle.toList.map(_ (col)).filter(_ != 0).toSet
 
@@ -31,26 +19,16 @@ object SudokuMatrix {
     val cj = col / 3
 
     val block = puzzle.grouped(3).toList(ci).flatMap { x => x.grouped(3).toList(cj) }.filter(_ != 0).toList.toSet
-    //println(" riga" + row + " colonna" + col + " numeri riga: " + rowExcl + " numeri colonna: " + colExcl + " blocco:" + block)
-
-    println("riga = " + " " + rowExcl)
-    println("colonna = " + " " + colExcl)
-    println("blocco = " + " " + block)
 
     //faccio l'unione per riga, per blocco e colonna
     val unity = rowExcl.union(colExcl).union(block)
 
-    println("unity = " + " " + unity)
-
     //faccio un set differenza, in possible ci metti tutti i numeri che non sono nell'unione
-    val possible = (1 to dimSudoku).toSet.diff(unity).toList
-    println("possible " + possible)
-
-    //println(" matList nella posizione " + row + "," + col+ " è " + possible)
-    possible
+    (1 to dimSudoku).toSet.diff(unity).toList
   }
 
   def createMatlist() = {
+    ///*
     for(i<-0 until dimSudoku) {
       //escludo per riga
       val rowExcl = puzzle(i).toList.filter(_ != 0).toSet
@@ -62,39 +40,23 @@ object SudokuMatrix {
         println(" matList nella posizione " + i + "," + j+ " è " + matList(i)(j))
       }
     }
-  }
+    //*/
 
-  def createList(row: Int, col: Int): List[Int] = {
-    if (puzzle(row) (col) > 0) {
-      return Nil
-    }
-
-    val arrayNum = Array.ofDim[Int](dimSudoku)
-
-    // inizializzazione vettore 1 ... n
+    /*
     for {
-      k <- 0 until dimSudoku
-    } yield arrayNum(k) = k + 1
-
-    // eliminazione numeri riga & colonna
-    for {
-      k <- 0 until dimSudoku
+      i <- 0 until dimSudoku
     } yield {
-      if (puzzle(row)(k) > 0) arrayNum(puzzle(row)(k)-1) = 0
-      if (puzzle(k)(col) > 0) arrayNum(puzzle(k)(col)-1) = 0
+      val rowExcl = puzzle(i).toList.filter(_ != 0).toSet
+      for {
+        j<-0 until dimSudoku
+      } yield {
+        puzzle(i)(j) match {
+          case 0 => matList(i)(j) = List()
+          case _ => matList(i)(j)=possible(rowExcl, i,j)
+        }
+      }
     }
-
-    // eliminazione numeri quadrato
-    val r = (row / 3) * 3
-    val c = (col / 3) * 3
-
-    for {
-      i <- r until r + 3
-      j <- c until c + 3
-      if puzzle(i) (j) > 0
-    } yield arrayNum(puzzle(i) (j)-1) = 0
-
-    arrayNum.filter(elem => elem > 0).toList
+     */
   }
 
   def printMatrix(): Unit = {

@@ -8,8 +8,6 @@ import scala.io.Source
 object SudokuLoad {
   val dimSudoku = 9
   val puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-  val nameFile = "input/sudoku11.txt"
-
   var elemEmpty: Int = dimSudoku * dimSudoku
 
   def readFile(fileName: String): Array[String] = {
@@ -49,18 +47,14 @@ object SudokuLoad {
   }
 
   def display(title: String): Array[Array[Int]] = {
-    //println(title + " " + elemEmpty)
-    val list = List[String]()
     for {
       i <- puzzle.indices
     } yield {
       val strTemp = util.formatSudokuLine(puzzle(i))
       print(strTemp)
       println()
-      //list.+(strTemp)
     }
     println()
-    //list
     puzzle
   }
 
