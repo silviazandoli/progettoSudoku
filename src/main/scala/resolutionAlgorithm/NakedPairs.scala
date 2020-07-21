@@ -39,22 +39,20 @@ object NakedPairs {
     cycle()
     //controllo che sia di lunghezza 2
     if (matList(row)(col).size == 2) {
-      val i:Int =0
-      list(i).toSet(row) //-> aggiunta di riga e colonna nella lista
-      list(i).toSet(col)
+      list.appended(row,col)
       /*rimuovo da tutte le altre quei due elementi*/
       if(list.size == 2) {
         for (k <- 0 until dimSudoku) {
           for (number <- matList(row)(k)) {
             if (number == matList(row)(col)(0) || number == matList(row)(col)(1)) {
               /* rimuovere elemento dalla lista*/
-              /* TODO: FARE UNA FUNZIONE APPOSITA*/
+              /* TODO: FARE UNA FUNZIONE APPOSITA PER ELIMINAZIONE*/
               matList(row)(k) = Nil
             }
           }
         }
-        list = list.filter(_ > 0)
-        list = list.
+        //eliminare elementi dalla lista
+        list = list.dropWhile(list.size == 0)
       }
     }
   }
