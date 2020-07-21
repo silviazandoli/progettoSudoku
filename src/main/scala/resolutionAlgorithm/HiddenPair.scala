@@ -7,15 +7,34 @@ object HiddenPair {
   //A hidden pair occurs when a pair of numbers appears in exactly two squares in a row, column, or block,
   // but those two numbers aren't the only ones in their squares.you can get rid of the other candidates in those squares
   //per
+ // val emptyCells: List[(Int,Int)]
   def solveHiddenPair(row: Int, col: Int): Unit = {
-    val regions = List("row", "col", "block")
-    val remainingDigits = List.empty
+    //val regions = List("row", "col", "block")
+    val exludingSet = List.empty
+
     //1) I check for every row, col and block
     for (i <- 0 until dimSudoku) {
       for (j <- 0 until dimSudoku) {
 
 
-        val unit = matList(i)(j)
+        val remainingDigits = matList(i)(j).toList
+
+        //put empty cells coordinates in freeCells
+     //todo
+       // if (puzzle(i)(j)==0) emptyCells.
+        //number of free cells in puzzle
+        val freeSize = puzzle.flatten.filter(_ == 0).toList.size
+        for(a<-0 until freeSize){
+          for(b<-a+1 until freeSize){
+            //checking two cells at a time
+            for(n<-0 until freeSize){
+              if(n!=a && n!=b){
+          //      freeCells.find(n)
+              }
+            }
+          }
+        }
+
 
 
 
@@ -31,11 +50,9 @@ object HiddenPair {
 
     }
 
-    //I'll need to count the emtpy cells of the puzzle
 
-    val emptyCells = puzzle.flatten.filter(_ == 0).toList.size
 
-    println(emptyCells)
+
 
 
   }
