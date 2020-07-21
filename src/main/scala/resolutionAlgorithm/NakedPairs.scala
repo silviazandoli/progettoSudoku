@@ -21,12 +21,12 @@ object NakedPairs {
           }
         }
       }
-      //for del blocco 3x3
+      /*//for del blocco 3x3
       for (k <- 0 until dimSudoku) {
         for (z <- 0 until dimSudoku) {
           print("blocco")
         }
-      }
+      }*/
     }
   }
 }
