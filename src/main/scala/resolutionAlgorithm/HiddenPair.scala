@@ -7,10 +7,7 @@ object HiddenPair {
   //Runna da TestHiddenPair
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
   def possible(row:Int,col:Int, puzzle: Array[Array[Int]]):List[Int] = {
-    //val possible = (1 to dimSudoku).toList
 
-  /*  for (i <- 0 until dimSudoku) {
-      for (j <- 0 until dimSudoku) {*/
         //escludo per riga
         val rowExcl = puzzle(row).toList.filter(_ != 0).toSet
 
