@@ -31,14 +31,20 @@ object SudokuMatrix {
     val cj = col / 3
 
     val block = puzzle.grouped(3).toList(ci).flatMap { x => x.grouped(3).toList(cj) }.filter(_ != 0).toList.toSet
-    println(" riga" + row + " colonna" + col + " numeri riga: " + rowExcl + " numeri colonna: " + colExcl + " blocco:" + block)
+    //println(" riga" + row + " colonna" + col + " numeri riga: " + rowExcl + " numeri colonna: " + colExcl + " blocco:" + block)
+
+    println("riga = " + " " + rowExcl)
+    println("colonna = " + " " + colExcl)
+    println("blocco = " + " " + block)
 
     //faccio l'unione per riga, per blocco e colonna
     val unity = rowExcl.union(colExcl).union(block)
 
+    println("unity = " + " " + unity)
+
     //faccio un set differenza, in possible ci metti tutti i numeri che non sono nell'unione
     val possible = (1 to dimSudoku).toSet.diff(unity).toList
-    println(possible)
+    println("possible " + possible)
 
     //println(" matList nella posizione " + row + "," + col+ " è " + possible)
     possible
@@ -50,7 +56,9 @@ object SudokuMatrix {
       val rowExcl = puzzle(i).toList.filter(_ != 0).toSet
 
       for(j<-0 until dimSudoku) {
+        if (puzzle(i)(j) == 0)
         matList(i)(j)=possible(rowExcl, i,j)
+        else matList(i)(j) = List()
         println(" matList nella posizione " + i + "," + j+ " è " + matList(i)(j))
       }
     }

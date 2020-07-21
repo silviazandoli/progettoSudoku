@@ -19,7 +19,7 @@ class TestHiddenPair extends FunSuite {
     val ml=HiddenPair.createMatlist(puzzle)
 
 
-    //println(ml)
+    println(ml)
     //verify
   }
 
