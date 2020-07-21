@@ -7,7 +7,19 @@ object SudokuMatrix {
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
 
   def initList(): Unit = {
-    createMatlist()
+    for {
+      i<-0 until dimSudoku
+    } {
+      val rowExcl = puzzle(i).toList.filter(_ != 0).toSet
+      for {
+        j<-0 until dimSudoku
+      } {
+        puzzle(i)(j) match {
+          case 0 => matList(i)(j) = possible(rowExcl, i,j)
+          case _ => matList(i)(j) = List()
+        }
+      }
+    }
   }
 
   def possible(rowExcl: Set[Int], row:Int,col:Int):List[Int] = {
@@ -25,38 +37,6 @@ object SudokuMatrix {
 
     //faccio un set differenza, in possible ci metti tutti i numeri che non sono nell'unione
     (1 to dimSudoku).toSet.diff(unity).toList
-  }
-
-  def createMatlist() = {
-    ///*
-    for(i<-0 until dimSudoku) {
-      //escludo per riga
-      val rowExcl = puzzle(i).toList.filter(_ != 0).toSet
-
-      for(j<-0 until dimSudoku) {
-        if (puzzle(i)(j) == 0)
-        matList(i)(j)=possible(rowExcl, i,j)
-        else matList(i)(j) = List()
-        println(" matList nella posizione " + i + "," + j+ " è " + matList(i)(j))
-      }
-    }
-    //*/
-
-    /*
-    for {
-      i <- 0 until dimSudoku
-    } yield {
-      val rowExcl = puzzle(i).toList.filter(_ != 0).toSet
-      for {
-        j<-0 until dimSudoku
-      } yield {
-        puzzle(i)(j) match {
-          case 0 => matList(i)(j) = List()
-          case _ => matList(i)(j)=possible(rowExcl, i,j)
-        }
-      }
-    }
-     */
   }
 
   def printMatrix(): Unit = {
@@ -95,22 +75,19 @@ object SudokuMatrix {
     ijMin
   }
 
-  def setUnitList(rowCol: (Int, Int)): Int = {
-    if (matList(rowCol._1)(rowCol._2).length == 1) {
+  def setUnitList(rowCol: (Int, Int)): Int = matList(rowCol._1)(rowCol._2).length match {
+    case 1 =>
       val elem = matList(rowCol._1)(rowCol._2).head
 
       puzzle(rowCol._1)(rowCol._2) = elem
       matList(rowCol._1)(rowCol._2) = Nil
-
       elemEmpty = elemEmpty - 1
 
-      return elem
-    }
-    0
+      elem
+    case _ => 0
   }
 
   def updateList(rowCol: (Int, Int), elem: Int): Unit = {
-
     val row = rowCol._1
     val col = rowCol._2
 
