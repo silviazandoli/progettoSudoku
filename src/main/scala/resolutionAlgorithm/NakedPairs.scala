@@ -52,7 +52,7 @@ object NakedPairs {
           }
         }
         //eliminare elementi dalla lista
-        list = list.dropWhile(list.size == 0)
+        //list = list.dropWhile(list.size == 0)
       }
     }
   }
