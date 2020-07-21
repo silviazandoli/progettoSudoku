@@ -16,6 +16,7 @@ class TestHiddenPair extends FunSuite {
 
     display()
     //setup
+
     val possible=HiddenPair.possible(0,2,puzzle)
     val ml=HiddenPair.createMatlist(puzzle)
 

@@ -5,16 +5,20 @@ import SudokuLoad.dimSudoku
 
 object NakedPairs {
 
-  def solve(row: Int, col: Int): Unit = {
+  val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
+  val list: Array[List[Int]] = Array.ofDim[List[Int]](2)
+
+  // TODO: SOLUZIONE 1 QUELLA INIZIALE
+  /*def solve(row: Int, col: Int): Unit = {
     for (i <- 0 until dimSudoku) { //per ogni riga
       for (j <- 0 until dimSudoku) { // per ogni colonna
-        //controllo che sia di lunghezza
+        //controllo che sia di lunghezza 2
         if (i != row && j != col && matList(i)(j).size == 2 && matList(i)(j) == matList(row)(col)) {
           /*rimuovo da tutte le altre quei due elementi*/
           for(k <- 0 until dimSudoku){
             for(number <- matList(i)(k)){
-              if (number == matList(i)(j)(0) || number == matList(i)(j)(1)){
-                /* rimuovere elemento dalla lista*/
+              if (number == matList(i)(j).head || number == matList(i)(j)(1)){
+                /* rimuovere elemento dalla lista*/ /* TODO: FARE UNA FUNZIONE APPOSITA*/
                 matList(i)(k) = Nil
               }
             }
@@ -28,5 +32,38 @@ object NakedPairs {
         }
       }*/
     }
+  }*/
+
+  // TODO : VARIANTE SUCCESSIVA
+  def solve(row: Int, col: Int): Unit = {
+    cycle()
+    //controllo che sia di lunghezza 2
+    if (matList(row)(col).size == 2) {
+      list.appended(row,col)
+      /*rimuovo da tutte le altre quei due elementi*/
+      if(list.size == 2) {
+        for (k <- 0 until dimSudoku) {
+          for (number <- matList(row)(k)) {
+            if (number == matList(row)(col)(0) || number == matList(row)(col)(1)) {
+              /* rimuovere elemento dalla lista*/
+              /* TODO: FARE UNA FUNZIONE APPOSITA PER ELIMINAZIONE*/
+              matList(row)(k) = Nil
+            }
+          }
+        }
+        //eliminare elementi dalla lista
+        //list = list.dropWhile(list.size == 0)
+      }
+    }
+  }
+
+  def cycle() = {
+    for(i<-0 until dimSudoku) {
+      for(j<-0 until dimSudoku) {
+        solve(i,j)
+        println(" matList nella posizione " + i + "," + j+ " è " + matList(i)(j))
+      }
+    }
+
   }
 }
