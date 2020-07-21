@@ -10,7 +10,14 @@ object SudokuLoad {
   var puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
 
   def getPuzzle: Array[Array[Int]] = {
-    puzzle
+    val puzzleTemp: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
+    for {
+      i <- 0 until dimSudoku
+      j <- 0 until dimSudoku
+    } {
+      puzzleTemp(i)(j) = puzzle(i)(j)
+    }
+    puzzleTemp
   }
 
   def readFile(fileName: String): Array[String] = {
@@ -41,11 +48,11 @@ object SudokuLoad {
     }
   }
 
-  def display(): Unit = {
-    display("")
+  def display(puzzleGame: Array[Array[Int]]): Unit = {
+    display("", puzzleGame)
   }
 
-  def display(title: String): Unit = {
+  def display(title: String, puzzleGame: Array[Array[Int]]): Unit = {
     def closureSudokuLine(l:Array[Int]): String = {
       l.map {
         case 0 => "_"
@@ -57,7 +64,7 @@ object SudokuLoad {
     for {
       i <- 0 until dimSudoku
     } yield {
-      computeOnList(print, closureSudokuLine(puzzle(i)).toList)
+      computeOnList(print, closureSudokuLine(puzzleGame(i)).toList)
       println()
     }
     println()

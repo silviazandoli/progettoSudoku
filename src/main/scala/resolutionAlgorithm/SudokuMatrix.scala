@@ -109,8 +109,9 @@ object SudokuMatrix {
     for {
       i <- r until r + 3
       j <- c until c + 3
+      if i != row && j != col
     } yield {
-      if (i != row && j != col) matList(i)(j) = matList(i)(j).filter(e => e != elem)
+      matList(i)(j) = matList(i)(j).filter(e => e != elem)
     }
   }
 }
