@@ -1,15 +1,70 @@
 package resolutionAlgorithm
 
-import utility.{dimSudoku, puzzle, matList}
+import utility.matList
+
+case class PossiblePair(cell1: Int, cell2: Int, intersection: Set[Set[Int]])
 
 object HiddenPair {
   //A hidden pair occurs when a pair of numbers appears in exactly two squares in a row, column, or block,
   // but those two numbers aren't the only ones in their squares.you can get rid of the other candidates in those squares
   //per
- // val emptyCells: List[(Int,Int)]
-  def solveHiddenPair(row: Int, col: Int): Unit = {
-    //val regions = List("row", "col", "block")
-    val exludingSet = List.empty
+  // val emptyCells: List[(Int,Int)]
+
+  // updateList(rowCol: (Int, Int), elem: Int): aggiorna già la matList e elimina gli elementi è in sudoku matrix
+  //la matlist deve essere condivisa, ci deve essere un'istanza della matList, non più
+  //assegnare qui un'altra variabile a matList
+  //gli algoritmi NON risolvono il sudoku, presi singolarmente non risolvono il sudoku, concentrarsi per casi noti.
+  //bisogna concentrasi per casi noti, come per esempio, si prende il sudoku per quella pagina lì. applicando l'algoritmo per
+  //questa cella si prende il numero fissato
+  //alla fine noi abbiamo il solve di forza bruta  per risolverlo
+
+  def solveHiddenPair(): Unit = {
+    val row = 0
+    // prende le celle della matList con più di un elemento
+    val ml = matList(row).toList.zipWithIndex.filter(_._1.size > 1)
+
+    //possiblePairs contains all the possibles pairs with their coordinates
+    val possiblePairs = ml.map(couples).toSet.subsets(2).toList.map(e => {
+      val val1 = e.head
+      val val2 = e.tail.head
+      val intersection = val1._1.toSet.intersect(val2._1.toSet)
+      PossiblePair(val1._2, val2._2, intersection)
+
+    }).filter(_.intersection.nonEmpty)
+
+    println(possiblePairs)
+
+    possiblePairs.filter(p => {
+      val cell1 = p.cell1
+      val cell2 = p.cell2
+      val exclusion = ml.filter(_._2 != cell1).filter(_._2 != cell2).map(e => e._1.toSet).flatten.toSet
+
+      val c1=exclusion.contains(p.cell1)
+      val c2=exclusion.contains(p.cell2)
+      // e1.union(e2)}
+      !c1 && !c2
+      //con questo filter trovo le hidden pair possibili
+      //todo
+      //fare questo lavoro per ogni riga, colonna e blocco
+      //fare la cosa dell'eliminazione
+    })
+println(possiblePairs)
+    //per trovare le coppie
+    // List(1,2,3).toSet[Int].subsets.map(_.toList).toList
+
+  }
+
+
+  def couples(l: (List[Int], Int)): (List[Set[Int]], Int) = {
+    val l1 = l._1.toSet.subsets(2).toList
+
+    //memorizzo gli indici che mi sono arrivati su l
+    val l2 = l._2
+    (l1, l2)
+  }
+
+  //val regions = List("row", "col", "block")
+  /*  val exludingSet = List.empty
 
     //1) I check for every row, col and block
     for (i <- 0 until dimSudoku) {
@@ -34,27 +89,8 @@ object HiddenPair {
           }
         }
 
+*/
 
-
-
-
-
-
-
-
-
-
-      }
-
-
-    }
-
-
-
-
-
-
-  }
 
   /* def possible(row:Int,col:Int, puzzle: Array[Array[Int]]):List[Int] = {
 
