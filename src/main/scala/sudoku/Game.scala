@@ -9,7 +9,7 @@ import MatListOperation.{initList, strategyList1}
 import utility.{puzzle, display, displayList}
 
 object Game extends App {
-  val nameFile = "input/sudoku01.txt"
+  val nameFile = "input/sudoku05.txt"
 
   print("Puzzle: " + nameFile)
   loadPuzzle(nameFile)

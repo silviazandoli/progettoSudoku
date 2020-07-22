@@ -6,7 +6,7 @@ import sudoku.MatListOperation.initList
 import utility.getPuzzle
 
 import resolutionAlgorithm.FullExploration.solve
-import resolutionAlgorithm.HiddenSingles.hiddenSingles
+import resolutionAlgorithm.HiddenSingles.{hiddenSingles, totalHiddenSingles}
 
 class testHiddenSingles extends FunSuite {
 
@@ -37,5 +37,20 @@ class testHiddenSingles extends FunSuite {
     val sudokuSolved = getPuzzle
 
     assert(sudokuInput(7)(0) == sudokuSolved(7)(0))
+  }
+
+  test("Sudoku05") {
+    val nameFile = "input/sudoku05.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    totalHiddenSingles()
+    val sudokuInput = getPuzzle
+
+    solve(0,0)
+    val sudokuSolved = getPuzzle
+
+    assert(sudokuInput(2)(2) == sudokuSolved(2)(2))
+    assert(sudokuInput(5)(2) == sudokuSolved(5)(2))
   }
 }
