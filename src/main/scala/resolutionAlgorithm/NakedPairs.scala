@@ -1,10 +1,13 @@
 package resolutionAlgorithm
-import utility.dimSudoku
+import utility.{dimSudoku, matList, puzzle}
+
+import scala.Boolean
+import scala.collection.mutable.ListBuffer
 
 object NakedPairs {
 
-  val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
-  val list: Array[List[Int]] = Array.ofDim[List[Int]](2)
+  //val list: Array[List[Int]] = Array.ofDim[List[Int]](2)
+  var list = new ListBuffer[Int]()
 
   // TODO: SOLUZIONE 1 QUELLA INIZIALE
   /*def solve(row: Int, col: Int): Unit = {
@@ -34,24 +37,24 @@ object NakedPairs {
 
   // TODO : VARIANTE SUCCESSIVA
   def solve(row: Int, col: Int): Unit = {
-    cycle()
     //controllo che sia di lunghezza 2
     if (matList(row)(col).size == 2) {
-      list.appended(row,col)
+      val number1: Int = matList(row)(col)(0)
+      val number2: Int = matList(row)(col)(1)
+      list += number1
+      list += number2
       /*rimuovo da tutte le altre quei due elementi*/
-      if(list.size == 2) {
+      if (list.size == 4 && checkList(list)) {
         for (k <- 0 until dimSudoku) {
-          for (number <- matList(row)(k)) {
-            if (number == matList(row)(col)(0) || number == matList(row)(col)(1)) {
-              /* rimuovere elemento dalla lista*/
-              /* TODO: FARE UNA FUNZIONE APPOSITA PER ELIMINAZIONE*/
-              matList(row)(k) = Nil
-            }
-          }
+          if ((number1 == matList(row)(k)(0) || number2 == matList(row)(k)(1) ||
+            number1 == matList(row)(k)(1) || number2 == matList(row)(k)(0)) && (k != col))
+          /* rimuovere elemento dalla lista*/
+          /* TODO: FARE UNA FUNZIONE APPOSITA PER ELIMINAZIONE*/
+          matList(row)(k) = Nil
         }
-        //eliminare elementi dalla lista
-        //list = list.dropWhile(list.size == 0)
       }
+      //eliminare elementi dalla lista
+      list = list.filter(_ > 0)
     }
   }
 
@@ -63,5 +66,12 @@ object NakedPairs {
       }
     }
 
+  }
+  def checkList(list: ListBuffer[Int]): Boolean ={
+    if((list.head==list(2)|| list(0)==list(3))&&(list(1) == list(2) || list(1)==list(3))) {
+      true
+    } else {
+      false
+    }
   }
 }
