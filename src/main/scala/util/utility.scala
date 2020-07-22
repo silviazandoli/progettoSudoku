@@ -29,4 +29,31 @@ package object utility {
       j <- 1 until dimSudoku
     } yield computeOnList(print, matList(i)(j))
   }
+
+  def display(puzzleGame: Array[Array[Int]]): Unit = {
+    display("", puzzleGame)
+  }
+
+  def display(title: String, puzzleGame: Array[Array[Int]]): Unit = {
+    def closureSudokuLine(l:Array[Int]): String = {
+      l.map {
+        case 0 => "_"
+        case y => `y`.toString
+      }.mkString(" ")
+    }
+
+    println(title)
+    for {
+      i <- 0 until dimSudoku
+    } yield {
+      computeOnList(print, closureSudokuLine(puzzleGame(i)).toList)
+      println()
+    }
+    println()
+  }
+
+  def displayList(row: Int, col: Int): Unit = {
+    print("[" + row + " " + col + "]  ")
+    computeOnList(print, matList(row)(col))
+  }
 }

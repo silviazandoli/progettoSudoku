@@ -1,7 +1,7 @@
 package resolutionAlgorithm
 
-import sudoku.SudokuLoad.{puzzle, dimSudoku, display}
-import sudoku.MatListOperation.{matList, updateList}
+import utility.{puzzle, dimSudoku, matList, display}
+import sudoku.MatListOperation.updateList
 
 object HiddenSingles {
 

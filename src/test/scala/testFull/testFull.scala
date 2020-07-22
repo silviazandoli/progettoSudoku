@@ -2,7 +2,8 @@ package testFull
 
 import org.scalatest.FunSuite
 import resolutionAlgorithm.FullExploration.solve
-import sudoku.SudokuLoad.{getPuzzle, loadPuzzle, dimSudoku}
+import sudoku.SudokuLoad.{loadPuzzle}
+import utility.{dimSudoku, getPuzzle}
 
 class testFull extends FunSuite {
 

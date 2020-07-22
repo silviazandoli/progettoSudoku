@@ -1,7 +1,5 @@
 package resolutionAlgorithm
-
-import sudoku.MatListOperation.matList
-import sudoku.SudokuLoad.dimSudoku
+import utility.dimSudoku
 
 object NakedPairs {
 
