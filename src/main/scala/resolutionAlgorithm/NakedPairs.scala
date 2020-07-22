@@ -1,12 +1,11 @@
 package resolutionAlgorithm
 import utility.{dimSudoku, matList, puzzle}
+import sudoku.MatListOperation.updateList
 
-import scala.Boolean
 import scala.collection.mutable.ListBuffer
 
 object NakedPairs {
 
-  //val list: Array[List[Int]] = Array.ofDim[List[Int]](2)
   var list = new ListBuffer[Int]()
 
   // TODO: SOLUZIONE 1 QUELLA INIZIALE
@@ -46,11 +45,11 @@ object NakedPairs {
       /*rimuovo da tutte le altre quei due elementi*/
       if (list.size == 4 && checkList(list)) {
         for (k <- 0 until dimSudoku) {
-          if ((number1 == matList(row)(k)(0) || number2 == matList(row)(k)(1) ||
-            number1 == matList(row)(k)(1) || number2 == matList(row)(k)(0)) && (k != col))
-          /* rimuovere elemento dalla lista*/
-          /* TODO: FARE UNA FUNZIONE APPOSITA PER ELIMINAZIONE*/
-          matList(row)(k) = Nil
+          if (k != col)
+            if (number1 == matList(row)(k)(0) || number1 == matList(row)(k)(1))
+              updateList((row, col), number1)
+            else if (number2 == matList(row)(k)(0) || number2 == matList(row)(k)(1))
+              updateList((row, col), number2)
         }
       }
       //eliminare elementi dalla lista
