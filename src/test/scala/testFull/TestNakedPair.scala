@@ -2,30 +2,28 @@ package testFull
 
 import org.scalatest.FunSuite
 import sudoku.SudokuLoad.loadPuzzle
-import resolutionAlgorithm.{HiddenPair, NakedPairs}
-import utility.{display, puzzle}
+import sudoku.MatListOperation.initList
+import utility.getPuzzle
+import resolutionAlgorithm.NakedPairs.cycle
+
+
 
 class TestNakedPair extends FunSuite {
 
-  val nameFile = "input/sudoku01.txt"
-  test("Naked Pair") {
-    //init
+  test("Sudoku01") {
+    val nameFile = "input/sudoku01.txt"
+    val nameSolved = "outputSolved/sudoku01.txt"
+
     loadPuzzle(nameFile)
-    println(puzzle.toString)
+    initList()
+    cycle()
+    val sudokuInput = getPuzzle
 
+    loadPuzzle(nameSolved)
+    print(sudokuInput)
+    val sudokuSolved = getPuzzle
 
-
-    display(puzzle)
-    //setup
-
-    //val ml=HiddenPair.createMatlist(puzzle) -> TODO: caricare matList di valori, problema: restituisce Unit
-    val resolve=NakedPairs.solve(0,2)
-    //val ml=NakedPairs.createMatlist(puzzle)
-
-
-    //println(ml)
-    //verify
+    assert(sudokuInput(1)(1) != sudokuSolved(1)(1))
   }
-
 
 }
