@@ -2,9 +2,22 @@ package testFull
 
 import org.scalatest.FunSuite
 import resolutionAlgorithm.FullExploration.solve
-import resolutionAlgorithm.SudokuLoad.{getPuzzle, loadPuzzle, display, puzzle}
+import resolutionAlgorithm.SudokuLoad.{getPuzzle, loadPuzzle, dimSudoku}
 
 class testFull extends FunSuite {
+
+  def confrontPuzzle(puzzle1: Array[Array[Int]], puzzle2: Array[Array[Int]]): Boolean = {
+    if (puzzle1.length != puzzle2.length) return false
+
+    for {
+      i <- 0 until dimSudoku
+      j <- 0 until dimSudoku
+    } {
+      if (puzzle1(i)(j) != puzzle2(i)(j)) return false
+    }
+    true
+  }
+
   test("TestSudoku11") {
     val nameFile = "input/sudoku11.txt"
     val nameSolved = "outputSolved/sudoku11.txt"
@@ -16,7 +29,7 @@ class testFull extends FunSuite {
     loadPuzzle(nameSolved)
     val solved = getPuzzle
 
-    assert(solvedFull sameElements solved)
+    assert(confrontPuzzle(solvedFull, solved))
   }
 
   test("TestSudoku11-02") {
@@ -27,13 +40,9 @@ class testFull extends FunSuite {
     solve(0, 0)
     val solvedFull = getPuzzle
 
-    display(solvedFull)
-
     loadPuzzle(nameSolved)
     val solved = getPuzzle
 
-    display(solved)
-
-    assert(!(solvedFull sameElements solved))
+    assert(!confrontPuzzle(solvedFull, solved))
   }
 }

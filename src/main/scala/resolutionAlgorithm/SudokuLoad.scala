@@ -14,7 +14,7 @@ object SudokuLoad {
     for {
       i <- 0 until dimSudoku
       j <- 0 until dimSudoku
-    } {
+    } yield {
       puzzleTemp(i)(j) = puzzle(i)(j)
     }
     puzzleTemp
