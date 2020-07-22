@@ -1,25 +1,11 @@
-package resolutionAlgorithm
-
-import resolutionAlgorithm.SudokuMatrix.matList
+package sudoku
 
 import scala.annotation.tailrec
 import scala.io.Source
 
+import utility.{dimSudoku, matList, puzzle, computeOnList}
+
 object SudokuLoad {
-  val dimSudoku = 9
-  var puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-
-  def getPuzzle: Array[Array[Int]] = {
-    val puzzleTemp: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-    for {
-      i <- 0 until dimSudoku
-      j <- 0 until dimSudoku
-    } yield {
-      puzzleTemp(i)(j) = puzzle(i)(j)
-    }
-    puzzleTemp
-  }
-
   def readFile(fileName: String): Array[String] = {
     val file = Source.fromFile(fileName)
     val it = file.getLines()
@@ -68,12 +54,6 @@ object SudokuLoad {
       println()
     }
     println()
-  }
-
-  @tailrec
-  final def computeOnList[T](f: T => Unit, list: List[T]): Unit = list match {
-    case h :: t => f(h); computeOnList(f, t)
-    case _ =>
   }
 
   def displayList(row: Int, col: Int): Unit = {

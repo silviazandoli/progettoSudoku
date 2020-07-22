@@ -1,7 +1,7 @@
 package resolutionAlgorithm
 
-import resolutionAlgorithm.SudokuLoad.{dimSudoku, puzzle}
-import resolutionAlgorithm.SudokuMatrix.matList
+import sudoku.SudokuLoad.{dimSudoku, puzzle}
+import sudoku.MatListOperation.matList
 
 object HiddenPair {
   //A hidden pair occurs when a pair of numbers appears in exactly two squares in a row, column, or block,

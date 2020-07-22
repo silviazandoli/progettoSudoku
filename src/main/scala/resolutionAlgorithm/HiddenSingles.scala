@@ -1,7 +1,7 @@
 package resolutionAlgorithm
 
-import resolutionAlgorithm.SudokuLoad.{puzzle, dimSudoku, display}
-import resolutionAlgorithm.SudokuMatrix.{matList, updateList}
+import sudoku.SudokuLoad.{puzzle, dimSudoku, display}
+import sudoku.MatListOperation.{matList, updateList}
 
 object HiddenSingles {
 
@@ -28,7 +28,7 @@ object HiddenSingles {
   def numFound(rowCol: Int, num: Int, flag: Boolean): Int = {
     var valFound = 0
 
-    def closureFound(index: Int) = flag match {
+    def closureFound(index: Int): Unit = flag match {
       case true =>
         if (matList(rowCol)(index) != null && matList(rowCol)(rowCol).contains(num)) {
           valFound = valFound + 1
@@ -53,11 +53,11 @@ object HiddenSingles {
   a destra la colonna in cui è stato trovato
    */
   def searchInRow(num: Int, row: Int): Boolean = {
-    caseFound(numFound(row, num, true))
+    caseFound(numFound(row, num, flag = true))
   }
 
   def searchInColumn(num: Int, col: Int): Boolean = {
-    caseFound(numFound(col, num, false))
+    caseFound(numFound(col, num, flag = false))
   }
 
   def searchInSquare(row: Int, col: Int, num: Int): Boolean = {

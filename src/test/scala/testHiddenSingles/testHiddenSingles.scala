@@ -1,8 +1,8 @@
 package testHiddenSingles
 
 import org.scalatest.FunSuite
-import resolutionAlgorithm.SudokuLoad.{loadPuzzle, display, getPuzzle}
-import resolutionAlgorithm.SudokuMatrix.initList
+import sudoku.SudokuLoad.{loadPuzzle, display, getPuzzle}
+import sudoku.MatListOperation.initList
 
 import resolutionAlgorithm.HiddenSingles.hiddenSingles
 

@@ -1,10 +1,8 @@
-package resolutionAlgorithm
+package sudoku
 
-object SudokuMatrix {
+import utility.{dimSudoku, matList, puzzle}
 
-  import SudokuLoad.{computeOnList, dimSudoku, puzzle}
-
-  val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
+object MatListOperation {
 
   def initList(): Unit = {
     for {
@@ -37,13 +35,6 @@ object SudokuMatrix {
 
     //faccio un set differenza, in possible ci metti tutti i numeri che non sono nell'unione
     (1 to dimSudoku).toSet.diff(unity).toList
-  }
-
-  def printMatrix(): Unit = {
-    for {
-      i <- 1 until dimSudoku
-      j <- 1 until dimSudoku
-    } yield computeOnList(print, matList(i)(j))
   }
 
   /*

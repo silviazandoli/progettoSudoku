@@ -1,7 +1,7 @@
 package testFull
 
 import org.scalatest.FunSuite
-import resolutionAlgorithm.SudokuLoad.{display, loadPuzzle, puzzle}
+import sudoku.SudokuLoad.{display, loadPuzzle, puzzle}
 
 class TestHiddenPair extends FunSuite {
 
