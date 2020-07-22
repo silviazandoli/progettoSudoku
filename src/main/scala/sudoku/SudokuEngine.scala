@@ -1,12 +1,15 @@
 package sudoku
 
-import sudoku.MatListOperation.{minList, setUnitList, updateList}
+import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
 import resolutionAlgorithm.FullExploration.solve
 import resolutionAlgorithm.HiddenSingles.totalHiddenSingles
+import sudoku.SudokuLoad.loadPuzzle
 import util.TimeStampImpl
-import utility.puzzleSolved
+import utility.{display, puzzle, puzzleSolved}
 
 object SudokuEngine extends App {
+  val nameFile = "input/sudoku05.txt"
+
   /*
   strategia con assegnazione numero di liste unitarie
    */
@@ -28,5 +31,9 @@ object SudokuEngine extends App {
     timeStamp.calculateDiff(System.currentTimeMillis())
   }
 
+  loadPuzzle(nameFile)
+  display("Inizio", puzzle)
+  initList()
   strategyList()
+  display("Soluzione", puzzle)
 }
