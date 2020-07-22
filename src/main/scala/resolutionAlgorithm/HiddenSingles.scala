@@ -81,9 +81,6 @@ object HiddenSingles {
         i <- r until r + 3
         j <- c until c + 3
       } yield {
-        if (i == dimSudoku) println("searchInSquare OutOfBound" + i)
-        if (j == dimSudoku) println("searchInSquare OutOfBound" + j)
-
         if (matList(i)(j) != null && matList(i)(j).contains(num)) {
           numFound = numFound + 1
         }

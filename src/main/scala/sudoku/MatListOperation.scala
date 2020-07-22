@@ -37,19 +37,6 @@ object MatListOperation {
     (1 to dimSudoku).toSet.diff(unity).toList
   }
 
-  /*
-  strategia con assegnazione numero di liste unitarie
-   */
-  def strategyList1(): Any = {
-    var elem = 0
-    do {
-      val rowCol = minList()
-      elem = setUnitList(rowCol)
-
-      if (elem != 0) updateList(rowCol, elem) // assegna valore lista unitaria
-    } while (elem != 0)
-  }
-
   def minList(): (Int, Int) = {
     var ijMin = (0, 0)
     var minLength = dimSudoku + 1

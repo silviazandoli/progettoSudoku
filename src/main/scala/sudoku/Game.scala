@@ -4,7 +4,7 @@ import resolutionAlgorithm.FullExploration.solve
 import util.TimeStampImpl
 
 import SudokuLoad.{loadPuzzle}
-import MatListOperation.{initList, strategyList1}
+import MatListOperation.{initList}
 
 import utility.{puzzle, display, displayList}
 
@@ -18,9 +18,11 @@ object Game extends App {
   initList() // costruzione liste
   displayList(0, 0)
 
+  /*
   val timeStamp = TimeStampImpl(System.currentTimeMillis())
-  strategyList1()
+  SudokuEngine.strategyList()
   timeStamp.calculateDiff(System.currentTimeMillis())
+   */
 
   display("Soluzione strategy list", puzzle)
   solve(0, 0)

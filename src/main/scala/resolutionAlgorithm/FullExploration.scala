@@ -1,7 +1,8 @@
 package resolutionAlgorithm
 
+import utility.{dimSudoku, puzzle, puzzleSolved}
+
 object FullExploration {
-  import utility.{dimSudoku, puzzle}
 
  def validate(position:(Int,Int),value:Int): Boolean = {
    //for each row, column and block 3*3
@@ -12,8 +13,6 @@ object FullExploration {
 
    !puzzle(position._1).contains(value) && !v(position._2).contains(value) && !squareCells.contains(value)
  }
-
-  def puzzleSolved(): Boolean = puzzle.flatten.forall(_.!=(0))
 
   def next(row: Int, col: Int): Boolean = col match {
     case 8 => solve(row + 1, 0)
