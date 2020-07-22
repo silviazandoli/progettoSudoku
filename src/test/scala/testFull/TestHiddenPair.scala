@@ -7,8 +7,8 @@ class TestHiddenPair extends FunSuite {
 
   test("Hidden Pair") {
     //init
-    val nameFile = "input/sudoku01.txt"
-    val nameSolved = "outputSolved/sudoku01.txt"
+    val nameFile = "input/sudoku01.txt.txt"
+    val nameSolved = "outputSolved/sudoku01.txt.txt"
       loadPuzzle(nameFile)
 
     display(puzzle)

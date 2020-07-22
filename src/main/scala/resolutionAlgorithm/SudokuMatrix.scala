@@ -96,8 +96,8 @@ object SudokuMatrix {
     for {
       i <- 0 until dimSudoku
     } yield {
-      if (i != col) matList(row)(i) = matList(row)(i).filter(e => e != elem)
-      if (i != row) matList(i)(col) = matList(i)(col).filter(e => e != elem)
+      if (i != col && matList(row)(i) != null) matList(row)(i) = matList(row)(i).filter(e => e != elem)
+      if (i != row && matList(i)(col) != null) matList(i)(col) = matList(i)(col).filter(e => e != elem)
     }
 
     val r = (row / 3) * 3
@@ -110,6 +110,7 @@ object SudokuMatrix {
       i <- r until r + 3
       j <- c until c + 3
       if i != row && j != col
+      if matList(i)(j) != null
     } yield {
       matList(i)(j) = matList(i)(j).filter(e => e != elem)
     }
