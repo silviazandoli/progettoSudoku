@@ -1,5 +1,7 @@
 package sudoku
 
+import com.sun.org.apache.xml.internal.security.algorithms.JCEMapper.Algorithm
+import resolutionAlgorithm.FullExploration
 import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
 import resolutionAlgorithm.FullExploration.solve
 import resolutionAlgorithm.HiddenSingles.totalHiddenSingles
@@ -22,9 +24,9 @@ object SudokuEngine extends App {
       elem = setUnitList(rowCol)
 
       if (elem != 0) updateList(rowCol, elem) // assegna valore lista unitaria
-
-      if (!puzzleSolved()) totalHiddenSingles()
     }
+
+    if (!puzzleSolved()) totalHiddenSingles()
 
     solve(0, 0)
 

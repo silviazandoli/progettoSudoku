@@ -2,7 +2,7 @@ package resolutionAlgorithm
 
 import utility.{dimSudoku, puzzle, puzzleSolved}
 
-object FullExploration {
+object FullExploration extends Algorithm {
 
  def validate(position:(Int,Int),value:Int): Boolean = {
    //for each row, column and block 3*3
@@ -36,5 +36,9 @@ object FullExploration {
         false
       case _ => next(row, col)
     }
+  }
+
+  override def resolutionMethod(): Unit = {
+    solve(0, 0)
   }
 }

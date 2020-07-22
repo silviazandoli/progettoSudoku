@@ -3,9 +3,13 @@ package resolutionAlgorithm
 import utility.{puzzle, dimSudoku, matList}
 import sudoku.MatListOperation.updateList
 
-object HiddenSingles {
+object HiddenSingles extends Algorithm {
 
-  def totalHiddenSingles(): Unit = {
+  def resolutionMethod(): Unit = {
+    totalHiddenSingles()
+  }
+
+  def totalHiddenSingles() = {
     for {
       i <- 0 until dimSudoku
       j <- 0 until dimSudoku
