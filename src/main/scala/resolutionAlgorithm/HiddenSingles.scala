@@ -9,7 +9,7 @@ object HiddenSingles {
     for {
       i <- 0 until dimSudoku
       j <- 0 until dimSudoku
-      if matList(i)(j) != null
+      if matList(i)(j) != Nil
     } {
       hiddenSingles(i, j)
     }
@@ -21,7 +21,6 @@ object HiddenSingles {
     } yield {
       if (searchInRow(row, elem) || searchInColumn(col, elem) || searchInSquare(row, col, elem)) {
         updateList((row, col), elem)
-
         puzzle(row)(col) = elem
       }
     }
@@ -38,11 +37,11 @@ object HiddenSingles {
     var valFound = 0
 
     def closureFound(index: Int): Unit = if (flag) {
-      if (matList(rowCol)(index) != null && matList(rowCol)(rowCol).contains(num)) {
+      if (matList(rowCol)(index) != Nil && matList(rowCol)(rowCol).contains(num)) {
         valFound = valFound + 1
       }
     } else {
-      if (matList(index)(rowCol) != null && matList(index)(rowCol).contains(num)) {
+      if (matList(index)(rowCol) != Nil && matList(index)(rowCol).contains(num)) {
         valFound = valFound + 1
       }
     }
@@ -81,7 +80,7 @@ object HiddenSingles {
         i <- r until r + 3
         j <- c until c + 3
       } yield {
-        if (matList(i)(j) != null && matList(i)(j).contains(num)) {
+        if (matList(i)(j) != Nil && matList(i)(j).contains(num)) {
           numFound = numFound + 1
         }
       }

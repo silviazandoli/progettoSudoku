@@ -17,12 +17,6 @@ object Game extends App {
   initList() // costruzione liste
   displayList(0, 0)
 
-  /*
-  val timeStamp = TimeStampImpl(System.currentTimeMillis())
-  SudokuEngine.strategyList()
-  timeStamp.calculateDiff(System.currentTimeMillis())
-   */
-
   display("Soluzione strategy list", puzzle)
   solve(0, 0)
   display("Soluzione", puzzle)

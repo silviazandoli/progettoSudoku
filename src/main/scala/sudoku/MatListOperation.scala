@@ -14,7 +14,7 @@ object MatListOperation {
       } {
         puzzle(i)(j) match {
           case 0 => matList(i)(j) = possible(rowExcl, i, j)
-          case _ => matList(i)(j) = List()
+          case _ => matList(i)(j) = Nil
         }
       }
     }
@@ -44,7 +44,7 @@ object MatListOperation {
     for {
       i <- 0 until dimSudoku
       j <- 0 until dimSudoku
-      if matList(i)(j).nonEmpty && matList(i)(j).length < minLength
+      if matList(i)(j) != Nil && matList(i)(j).length < minLength
     } yield {
       minLength = matList(i)(j).length
       ijMin = (i, j)
@@ -56,11 +56,10 @@ object MatListOperation {
   def setUnitList(rowCol: (Int, Int)): Int = matList(rowCol._1)(rowCol._2).length match {
     case 1 =>
       val elem = matList(rowCol._1)(rowCol._2).head
-
       puzzle(rowCol._1)(rowCol._2) = elem
       matList(rowCol._1)(rowCol._2) = Nil
-
       elem
+
     case _ => 0
   }
 
@@ -88,7 +87,7 @@ object MatListOperation {
       i <- r until r + 3
       j <- c until c + 3
       if i != row && j != col
-      if matList(i)(j) != null
+      if matList(i)(j) != Nil
     } yield {
       matList(i)(j) = matList(i)(j).filter(e => e != elem)
     }
