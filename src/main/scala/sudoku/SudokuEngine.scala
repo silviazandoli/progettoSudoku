@@ -6,7 +6,7 @@ import resolutionAlgorithm.HiddenSingles.totalHiddenSingles
 import strategies.{Strategy, StrategyImpl}
 import sudoku.SudokuLoad.loadPuzzle
 import util.TimeStampImpl
-import utility.{display, puzzle, puzzleSolved, calculateEmpty}
+import utility.{display, puzzle, puzzleSolved}
 
 object SudokuEngine extends App {
   val nameFile = "input/sudoku05.txt"
@@ -17,43 +17,22 @@ object SudokuEngine extends App {
   def strategyList(): Unit = {
     val timeStamp = TimeStampImpl(System.currentTimeMillis())
 
-    val strat1 = new StrategyImpl() {
-      override def strategy(): Boolean = {
-        val elemEmptyInit = calculateEmpty()
-
-        var elem = 0
+    val strat1 = new StrategyImpl {
+      override def resolutionMethod(): Unit = {
+        var elem = -1
         while (elem != 0) {
           val rowCol = minList()
           elem = setUnitList(rowCol)
 
           if (elem != 0) updateList(rowCol, elem) // assegna valore lista unitaria
         }
-        val elemEmptyEnd = calculateEmpty()
-
-        (elemEmptyEnd - elemEmptyInit) > 0
       }
     }
 
-    val strat2 = new StrategyImpl() {
-      override def strategy(): Boolean = {
-        val elemEmptyInit = calculateEmpty()
-        totalHiddenSingles()
-        val elemEmptyEnd = calculateEmpty()
-        (elemEmptyEnd - elemEmptyInit) > 0
-      }
-    }
-
-    val strat3 = new StrategyImpl() {
-      override def strategy(): Boolean = {
-        val elemEmptyInit = calculateEmpty()
-        solve(0, 0)
-        val elemEmptyEnd = calculateEmpty()
-        (elemEmptyEnd - elemEmptyInit) > 0
-      }
-    }
+    val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
+    val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = solve(0, 0)}
 
     val strategies = List[Strategy](strat1, strat2, strat3)
-
     strategies.foreach(el => if (!puzzleSolved()) el.strategy())
 
     timeStamp.calculateDiff(System.currentTimeMillis())
