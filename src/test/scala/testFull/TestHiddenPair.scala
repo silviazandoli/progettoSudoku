@@ -1,6 +1,7 @@
 package testFull
 
 import org.scalatest.FunSuite
+import resolutionAlgorithm.HiddenPair
 import sudoku.MatListOperation
 import sudoku.SudokuLoad.loadPuzzle
 import utility.{display, puzzle}
@@ -15,7 +16,9 @@ class TestHiddenPair extends FunSuite {
 
     display(puzzle)
     MatListOperation.initList()
- // HiddenPair.solveHiddenPair()
+  HiddenPair.solveHiddenPair()
+
+    //verify bisogna vedere che funzioni e che si riesca a risolvere l'algoritmo
 
     //verify
   }
