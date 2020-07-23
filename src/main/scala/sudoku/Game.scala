@@ -2,8 +2,8 @@ package sudoku
 
 import resolutionAlgorithm.FullExploration.solve
 
-import SudokuLoad.{loadPuzzle}
-import MatListOperation.{initList}
+import SudokuLoad.loadPuzzle
+import MatListOperation.initList
 
 import utility.{puzzle, display, displayList}
 
