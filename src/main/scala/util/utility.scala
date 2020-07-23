@@ -5,8 +5,17 @@ package object utility {
   val dimSudoku = 9
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
   var puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
+  var elemEmpty: Int = dimSudoku * dimSudoku
 
   def puzzleSolved(): Boolean = puzzle.flatten.forall(_.!=(0))
+
+  def calculateEmpty(): Int = {
+    puzzle.flatten.foreach {
+      case 0 =>
+      case _ => elemEmpty = elemEmpty - 1
+    }
+    elemEmpty
+  }
 
   def getPuzzle: Array[Array[Int]] = {
     val puzzleTemp: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)

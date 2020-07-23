@@ -1,13 +1,12 @@
 package sudoku
 
-import com.sun.org.apache.xml.internal.security.algorithms.JCEMapper.Algorithm
-import resolutionAlgorithm.FullExploration
 import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
 import resolutionAlgorithm.FullExploration.solve
 import resolutionAlgorithm.HiddenSingles.totalHiddenSingles
+import strategies.{Strategy, StrategyImpl}
 import sudoku.SudokuLoad.loadPuzzle
 import util.TimeStampImpl
-import utility.{display, puzzle, puzzleSolved}
+import utility.{display, puzzle, puzzleSolved, calculateEmpty}
 
 object SudokuEngine extends App {
   val nameFile = "input/sudoku05.txt"
@@ -18,17 +17,44 @@ object SudokuEngine extends App {
   def strategyList(): Unit = {
     val timeStamp = TimeStampImpl(System.currentTimeMillis())
 
-    var elem = 0
-    while (elem != 0) {
-      val rowCol = minList()
-      elem = setUnitList(rowCol)
+    val strat1 = new StrategyImpl() {
+      override def strategy(): Boolean = {
+        val elemEmptyInit = calculateEmpty()
 
-      if (elem != 0) updateList(rowCol, elem) // assegna valore lista unitaria
+        var elem = 0
+        while (elem != 0) {
+          val rowCol = minList()
+          elem = setUnitList(rowCol)
+
+          if (elem != 0) updateList(rowCol, elem) // assegna valore lista unitaria
+        }
+        val elemEmptyEnd = calculateEmpty()
+
+        (elemEmptyEnd - elemEmptyInit) > 0
+      }
     }
 
-    if (!puzzleSolved()) totalHiddenSingles()
+    val strat2 = new StrategyImpl() {
+      override def strategy(): Boolean = {
+        val elemEmptyInit = calculateEmpty()
+        totalHiddenSingles()
+        val elemEmptyEnd = calculateEmpty()
+        (elemEmptyEnd - elemEmptyInit) > 0
+      }
+    }
 
-    solve(0, 0)
+    val strat3 = new StrategyImpl() {
+      override def strategy(): Boolean = {
+        val elemEmptyInit = calculateEmpty()
+        solve(0, 0)
+        val elemEmptyEnd = calculateEmpty()
+        (elemEmptyEnd - elemEmptyInit) > 0
+      }
+    }
+
+    val strategies = List[Strategy](strat1, strat2, strat3)
+
+    strategies.foreach(el => if (!puzzleSolved()) el.strategy())
 
     timeStamp.calculateDiff(System.currentTimeMillis())
   }

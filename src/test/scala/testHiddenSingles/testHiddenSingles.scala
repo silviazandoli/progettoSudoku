@@ -6,7 +6,7 @@ import sudoku.MatListOperation.initList
 import utility.getPuzzle
 
 import resolutionAlgorithm.FullExploration.solve
-import resolutionAlgorithm.HiddenSingles.{hiddenSingles, resolutionMethod}
+import resolutionAlgorithm.HiddenSingles.{hiddenSingles, totalHiddenSingles}
 
 class testHiddenSingles extends FunSuite {
 
@@ -44,7 +44,7 @@ class testHiddenSingles extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
-    resolutionMethod()
+    totalHiddenSingles()
     val sudokuInput = getPuzzle
 
     solve(0,0)
