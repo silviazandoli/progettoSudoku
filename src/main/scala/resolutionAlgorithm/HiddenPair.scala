@@ -1,10 +1,13 @@
 package resolutionAlgorithm
-
 import utility.{dimSudoku, matList}
+/*A hidden pair occurs when a pair of numbers appears in exactly
+ two squares in a row, column, or block, but those two numbers aren't the only ones in their squares.
+ */
 //todo
 //manca il blocco
 //fare la cosa dell'eliminazione (con l'updateList che c'è nel  progetto)
 object HiddenPair {
+
   def solveHiddenPair(): Unit = {
     val rows = (0 until dimSudoku).toList.map(checkRow)
     println(rows)
@@ -28,6 +31,8 @@ object HiddenPair {
     }).filter(_.intersection.nonEmpty)
 
     // println(possiblePairs)
+    //ci sono alcuni casi come List(1,7,Set(Set(4,3),Set(5,6)). da riga 34 a 38 faccio in modo di separare
+    //le diverse coppie in modo che venga List(1,7,Set(Set(4,3))) e List(1,7,Set(Set(5,6)))
     val flattenPairs = possiblePairs.map(p => {
       p.intersection.map(pair => {
         PossiblePair(p.cell1, p.cell2, Set(pair))
@@ -38,19 +43,14 @@ object HiddenPair {
       val cell1 = p.cell1
       val cell2 = p.cell2
       val exclusion = ml.filter(_._2 != cell1).filter(_._2 != cell2).map(e => e._1.toSet).flatten.toSet
-      // println(exclusion)
-      // ! exclusion.toList.contains(p.cell1) && ! exclusion.toList.contains(p.cell2)
+      //we have to compare inside intersection elem per elem. We get the first
       val c1 = exclusion.contains(p.intersection.head.head)
-      //  println(c1)
+      //we have to compare inside intersection elem per elem. We get the second. tail contains more element so we get the head
       val c2 = exclusion.contains(p.intersection.head.tail.head)
 
       !c1 && !c2
 
-      //todo
-      //con questo filter trovo le hidden pair possibili
 
-      //fare questo lavoro per ogni riga, colonna e blocco
-      //fare la cosa dell'eliminazione (con l'updateList che c'è nel  progetto)
     })
     hiddenPairs
 
@@ -130,9 +130,6 @@ object HiddenPair {
   // updateList(rowCol: (Int, Int), elem: Int): aggiorna giÃ  la matList e elimina gli elementi Ã¨ in sudoku matrix
 
 
-  def solveHiddenPairforSquare: Unit = {
-
-  }
 
   // updateList(rowCol: (Int, Int), elem: Int): aggiorna già  la matList e elimina gli elementi ¨ in sudoku matrix
   //csearch for row, for column and for block
