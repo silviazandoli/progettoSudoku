@@ -18,7 +18,7 @@ object HiddenSingles {
   def hiddenSingles(row: Int, col: Int): Unit = {
     for {
       elem <- matList(row)(col)
-    } yield {
+    } {
       if (searchInRow(row, elem) || searchInColumn(col, elem) || searchInSquare(row, col, elem)) {
         updateList((row, col), elem)
         puzzle(row)(col) = elem
@@ -46,11 +46,15 @@ object HiddenSingles {
       }
     }
 
+    /*
     for {
       j <-0 until dimSudoku
-    } yield {
+    } {
       closureFound(j)
     }
+     */
+
+    (0 until dimSudoku).foreach(j => closureFound(j))
 
     valFound
   }
@@ -79,7 +83,7 @@ object HiddenSingles {
       for {
         i <- r until r + 3
         j <- c until c + 3
-      } yield {
+      } {
         if (matList(i)(j) != Nil && matList(i)(j).contains(num)) {
           numFound = numFound + 1
         }

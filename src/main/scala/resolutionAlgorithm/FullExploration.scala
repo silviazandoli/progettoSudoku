@@ -26,7 +26,7 @@ object FullExploration {
         for {
           i <- 1 to dimSudoku
           if validate((row, col), i)
-        } yield {
+        } {
           puzzle(row)(col) = i
           if (next(row, col)) {
             return true
