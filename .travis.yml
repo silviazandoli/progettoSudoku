@@ -1,6 +1,13 @@
-language:
-  - scala
-scala:
-  - 2.13.3
-script:
-  - sbt ++$TRAVIS_SCALA_VERSION test
+{
+  "language": "scala",
+  "os": [
+    "linux"
+  ],
+  "dist": "xenial",
+  "scala": [
+    "2.13.3"
+  ],
+  "script": [
+    "sbt ++$TRAVIS_SCALA_VERSION test"
+  ]
+}
