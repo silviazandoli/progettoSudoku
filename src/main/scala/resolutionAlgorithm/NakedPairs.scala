@@ -6,71 +6,69 @@ import scala.collection.mutable.ListBuffer
 
 object NakedPairs {
 
-  var list = new ListBuffer[Int]()
+  var list: Array[List[Int]] = Array.ofDim[List[Int]](dimSudoku)
+  var index: Int = 0
+  var number1: Int = 0
+  var number2: Int = 0
 
-  // TODO: SOLUZIONE 1 QUELLA INIZIALE
-  /*def solve(row: Int, col: Int): Unit = {
-    for (i <- 0 until dimSudoku) { //per ogni riga
-      for (j <- 0 until dimSudoku) { // per ogni colonna
-        //controllo che sia di lunghezza 2
-        if (i != row && j != col && matList(i)(j).size == 2 && matList(i)(j) == matList(row)(col)) {
-          /*rimuovo da tutte le altre quei due elementi*/
-          for(k <- 0 until dimSudoku){
-            for(number <- matList(i)(k)){
-              if (number == matList(i)(j).head || number == matList(i)(j)(1)){
-                /* rimuovere elemento dalla lista*/ /* TODO: FARE UNA FUNZIONE APPOSITA*/
-                matList(i)(k) = Nil
-              }
-            }
-          }
-        }
-      }
-      /*//for del blocco 3x3
-      for (k <- 0 until dimSudoku) {
-        for (z <- 0 until dimSudoku) {
-          print("blocco")
-        }
-      }*/
-    }
-  }*/
+  //var list = new ListBuffer[Int]()
 
   // TODO : VARIANTE SUCCESSIVA
+
   def solve(row: Int, col: Int): Unit = {
     //controllo che sia di lunghezza 2
     if (matList(row)(col).size == 2) {
-      val number1: Int = matList(row)(col)(0)
-      val number2: Int = matList(row)(col)(1)
-      list += number1
-      list += number2
+      list(index).head += (row)
+      list(index)(1) += (col)
+      index += 1;
+      println("lista:::::::::::::::" + list)
+      println("-------------------------------------row: " + row + " col: "+ col)
       /*rimuovo da tutte le altre quei due elementi*/
-      if (list.size == 4 && checkList(list)) {
+      if (checkList(list)) {
+        println("-------------dentro")
         for (k <- 0 until dimSudoku) {
           if (k != col)
-            if (number1 == matList(row)(k)(0) || number1 == matList(row)(k)(1))
+            if (number1 == matList(row)(k).head || number1 == matList(row)(k)(1))
               updateList((row, col), number1)
-            else if (number2 == matList(row)(k)(0) || number2 == matList(row)(k)(1))
+            if (number2 == matList(row)(k).head || number2 == matList(row)(k)(1))
               updateList((row, col), number2)
         }
       }
-      //eliminare elementi dalla lista
-      list = list.filter(_ > 0)
+
     }
+    index = 0
   }
 
   def cycle() = {
-    for(i<-0 until dimSudoku) {
-      for(j<-0 until dimSudoku) {
+    for(i<-0 until dimSudoku-1) {
+      for(j<-i+1 until dimSudoku) {
         solve(i,j)
         println(" matList nella posizione " + i + "," + j+ " è " + matList(i)(j))
       }
     }
 
   }
-  def checkList(list: ListBuffer[Int]): Boolean ={
-    if((list.head==list(2)|| list(0)==list(3))&&(list(1) == list(2) || list(1)==list(3))) {
-      true
-    } else {
-      false
-    }
+  def checkList(list: Array[List[Int]]): Boolean ={
+    var flag = false
+    for (m <- list.indices)
+      for(n <- m+1 until(list.size-1)){
+        var n1,n2,n3,n4 : Int = 0
+        n1 = list(m).head
+        n2 = list(m)(1)
+        n3 = list(n).head
+        n4 = list(n)(1)
+        if (matList(n1)(n2) == matList(n3)(n4)) {
+          flag = true
+          //eliminare elementi dalla lista
+          //list = removeList(list)
+          number1 = matList(n1)(n2).head
+          number2 = matList(n3)(n4)(1)
+        }
+      }
+    flag
+  }
+  def removeList(list: Array[List[Int]]) {
+    for (i <- list.indices)
+      list(i).filter(_ > 0)
   }
 }
