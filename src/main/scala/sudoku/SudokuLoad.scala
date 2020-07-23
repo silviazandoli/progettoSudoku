@@ -3,7 +3,7 @@ package sudoku
 import scala.annotation.tailrec
 import scala.io.Source
 
-import utility.{dimSudoku, matList, puzzle, computeOnList}
+import utility.{puzzle, computeOnList}
 
 object SudokuLoad {
   def readFile(fileName: String): Array[String] = {

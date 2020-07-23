@@ -1,15 +1,14 @@
 package sudoku
 
 import resolutionAlgorithm.FullExploration.solve
-import util.TimeStampImpl
 
 import SudokuLoad.{loadPuzzle}
-import MatListOperation.{initList, strategyList1}
+import MatListOperation.{initList}
 
 import utility.{puzzle, display, displayList}
 
 object Game extends App {
-  val nameFile = "input/sudoku01.txt"
+  val nameFile = "input/sudoku05.txt"
 
   print("Puzzle: " + nameFile)
   loadPuzzle(nameFile)
@@ -18,9 +17,11 @@ object Game extends App {
   initList() // costruzione liste
   displayList(0, 0)
 
+  /*
   val timeStamp = TimeStampImpl(System.currentTimeMillis())
-  strategyList1()
+  SudokuEngine.strategyList()
   timeStamp.calculateDiff(System.currentTimeMillis())
+   */
 
   display("Soluzione strategy list", puzzle)
   solve(0, 0)
