@@ -10,10 +10,7 @@ class testFull extends FunSuite {
   def confrontPuzzle(puzzle1: Array[Array[Int]], puzzle2: Array[Array[Int]]): Boolean = {
     if (puzzle1.length != puzzle2.length) return false
 
-    for {
-      i <- 0 until dimSudoku
-      j <- 0 until dimSudoku
-    } {
+    for (i <- 0 until dimSudoku; j <- 0 until dimSudoku) {
       if (puzzle1(i)(j) != puzzle2(i)(j)) return false
     }
     true

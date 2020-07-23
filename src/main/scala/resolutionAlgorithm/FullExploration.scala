@@ -23,10 +23,7 @@ object FullExploration {
     if (puzzleSolved()) return true
     puzzle(row)(col) match {
       case 0 =>
-        for {
-          i <- 1 to dimSudoku
-          if validate((row, col), i)
-        } {
+        for (i <- 1 to dimSudoku; if validate((row, col), i)) {
           puzzle(row)(col) = i
           if (next(row, col)) {
             return true

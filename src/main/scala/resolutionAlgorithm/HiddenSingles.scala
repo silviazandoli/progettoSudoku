@@ -5,24 +5,14 @@ import sudoku.MatListOperation.updateList
 
 object HiddenSingles {
 
-  def totalHiddenSingles(): Unit = {
-    for {
-      i <- 0 until dimSudoku
-      j <- 0 until dimSudoku
-      if matList(i)(j) != Nil
-    } {
-      hiddenSingles(i, j)
-    }
-  }
+  def totalHiddenSingles(): Unit =
+    for (i <- 0 until dimSudoku; j <- 0 until dimSudoku; if matList(i)(j) != Nil) hiddenSingles(i, j)
 
   def hiddenSingles(row: Int, col: Int): Unit = {
-    for {
-      elem <- matList(row)(col)
-    } {
-      if (searchInRow(row, elem) || searchInColumn(col, elem) || searchInSquare(row, col, elem)) {
-        updateList((row, col), elem)
-        puzzle(row)(col) = elem
-      }
+    for (elem <- matList(row)(col)
+         if searchInRow(row, elem) || searchInColumn(col, elem) || searchInSquare(row, col, elem)) {
+      updateList((row, col), elem)
+      puzzle(row)(col) = elem
     }
   }
 
@@ -45,14 +35,6 @@ object HiddenSingles {
         valFound = valFound + 1
       }
     }
-
-    /*
-    for {
-      j <-0 until dimSudoku
-    } {
-      closureFound(j)
-    }
-     */
 
     (0 until dimSudoku).foreach(j => closureFound(j))
 
@@ -80,14 +62,7 @@ object HiddenSingles {
       /*
       aggiornamento sotto - quadrato
        */
-      for {
-        i <- r until r + 3
-        j <- c until c + 3
-      } {
-        if (matList(i)(j) != Nil && matList(i)(j).contains(num)) {
-          numFound = numFound + 1
-        }
-      }
+    for (i <- r until r + 3; j <- c until c + 3; if matList(i)(j) != Nil && matList(i)(j).contains(num)) numFound = numFound + 1
 
     caseFound(numFound)
   }
