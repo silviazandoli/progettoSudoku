@@ -12,18 +12,23 @@ class TestNakedPair extends FunSuite {
 
   test("Sudoku01") {
     val nameFile = "input/sudoku01.txt"
-    val nameSolved = "outputSolved/sudoku01.txt"
+    //val nameSolved = "outputSolved/sudoku01.txt"
 
     loadPuzzle(nameFile)
     initList()
+    val initMat = utility.matList(1)(7)
     cycle()
     val sudokuInput = getPuzzle
 
-    loadPuzzle(nameSolved)
+    //loadPuzzle(nameSolved)
     print(sudokuInput)
-    val sudokuSolved = getPuzzle
+    //val sudokuSolved = getPuzzle
+    val finishMat = utility.matList(1)(7)
 
-    assert(sudokuInput(1)(1) != sudokuSolved(1)(1))
+    //assert(sudokuInput(1)(1) != sudokuSolved(1)(1))
+    println("matList iniziale" + initMat)
+    println("matList finale "+ finishMat)
+    assert(initMat == finishMat)
   }
 
 }
