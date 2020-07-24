@@ -18,6 +18,14 @@ class TestHiddenPair extends FunSuite {
     MatListOperation.initList()
     HiddenPair.solveHiddenPair()
     HiddenPair.checkBlock(8)
+    /*Risolvere in maniera del genere*/
+   /* val sudokuInput = getPuzzle
+
+    solve(0,0)
+    val sudokuSolved = getPuzzle
+
+    assert(sudokuInput(7)(0) == sudokuSolved(7)(0))*/
+
   }
     //verify bisogna vedere che funzioni e che si riesca a risolvere l'algoritmo
     //test da fare
