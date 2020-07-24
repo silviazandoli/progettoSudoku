@@ -21,7 +21,7 @@ object MatListOperation {
   }
   /**
    *
-  Zandoli
+ by Zandoli
    */
   def possible(rowExcl: Set[Int], row:Int,col:Int):List[Int] = {
     //escludo per colonna
@@ -42,7 +42,7 @@ object MatListOperation {
 
   /**
    *
-  Pacini
+  by Pacini
    */
   def minList(): (Int, Int) = {
     var ijMin = (0, 0)

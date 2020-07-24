@@ -5,10 +5,11 @@ import utility.{dimSudoku, matList}
 /*A hidden pair occurs when a pair of numbers appears in exactly
  two squares in a row, column, or block, but those two numbers aren't the only ones in their squares.
  */
-//todo
-//manca il blocco
-//fare la cosa dell'eliminazione (con l'updateList che c'è nel  progetto)
+
 object HiddenPair {
+/*
+Done by Zandoli
+ */
   def solveHiddenPair(): Unit = {
     val rows = (0 until dimSudoku).toList.map(checkRow)
     rows.zipWithIndex.foreach(t => {
@@ -19,7 +20,7 @@ object HiddenPair {
         matList(row)(p.cell2) = newValues
       })
     })
-    // println(rows)
+    println("righe:" + rows)
 
     val cols = (0 until dimSudoku).toList.map(checkColumn)
     cols.zipWithIndex.foreach(t => {
@@ -31,8 +32,7 @@ object HiddenPair {
         matList(p.cell2)(col) = newValues
       })
     })
-    //  println(cols)
-    //  println(matList.toList)
+    println("colonne: " + cols)
 
 
     val blocks = (0 until dimSudoku).toList.map(checkBlock)
@@ -64,10 +64,11 @@ object HiddenPair {
 
       })
     })
-    //println(blocks)
+    println("blocco:" + blocks)
 
   }
 
+// a function for converting to base 3
   def base3(num: Int): (Int, Int) = {
     val one = num / 3
     val first = num % 3
@@ -75,18 +76,8 @@ object HiddenPair {
     (second, first)
   }
 
-  def checkRow(row: Int) = {
-
-    //it gets the squares of the matList which have more than one element
-    val ml = matList(row).toList.zipWithIndex.filter(_._1.size > 1)
-    // val pippo:Nothing=ml
-    check(ml)
-
-  }
 
   def check(ml: List[(List[Int], Int)]): List[PossiblePair] = {
-
-    // val pippo:Nothing=ml
     //possiblePairs contains all the possibles pairs with their coordinates
     val possiblePairs = ml.map(couples).toSet.subsets(2).toList.map(e => {
       val val1 = e.head
@@ -122,6 +113,17 @@ object HiddenPair {
     hiddenPairs
   }
 
+
+  def checkRow(row: Int) = {
+
+    //it gets the squares of the matList which have more than one element
+    val ml = matList(row).toList.zipWithIndex.filter(_._1.size > 1)
+
+    check(ml)
+
+  }
+
+
   def checkColumn(col: Int) = {
 
     //it gets the squares of the matList which have more than one element
@@ -131,18 +133,7 @@ object HiddenPair {
 
   }
 
-  def couples(l: (List[Int], Int)): (List[Set[Int]], Int) = {
-    val l1 = l._1.toSet.subsets(2).toList
 
-    //memorizzo gli indici che mi sono arrivati su l
-    //I store the indexes that got to me on l
-    val l2 = l._2
-    (l1, l2)
-  }
-
-  //per trovare le coppie
-  // List(1,2,3).toSet[Int].subsets.map(_.toList).toList
-  //fare la cancellazione di una intera coppia possible Pair
 
   def checkBlock(blk: Int) = {
     /*blk=0 i=0..2 j=0..2 ; blk=1 i=0..2 j=3..5; blk=2 i=0..2 j=6..8 ; blk=3 i=3..5 j=0..2; blk=4 i=3..5 j=3..5; blk=5 i=3..5 j=6..8
@@ -178,7 +169,18 @@ object HiddenPair {
 
   }
 
+  def couples(l: (List[Int], Int)): (List[Set[Int]], Int) = {
+    val l1 = l._1.toSet.subsets(2).toList
 
+    //memorizzo gli indici che mi sono arrivati su l
+    //I store the indexes that got to me on l
+    val l2 = l._2
+    (l1, l2)
+  }
+
+  //per trovare le coppie
+  // List(1,2,3).toSet[Int].subsets.map(_.toList).toList
+  //fare la cancellazione di una intera coppia possible Pair
   // updateList(rowCol: (Int, Int), elem: Int): aggiorna giÃ  la matList e elimina gli elementi Ã¨ in sudoku matrix
 
 

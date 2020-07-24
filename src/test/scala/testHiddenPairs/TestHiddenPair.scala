@@ -1,10 +1,11 @@
 package testHiddenPairs
 
 import org.scalatest.FunSuite
-import resolutionAlgorithm.HiddenPair
-import sudoku.MatListOperation
+import resolutionAlgorithm.FullExploration.solve
+import resolutionAlgorithm.HiddenPair.solveHiddenPair
+import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
-import utility.{display, puzzle,matList}
+import utility._
 
 class TestHiddenPair extends FunSuite {
 
@@ -15,43 +16,43 @@ class TestHiddenPair extends FunSuite {
     loadPuzzle(nameFile)
 
     display(puzzle)
-    MatListOperation.initList()
-    HiddenPair.solveHiddenPair()
-    HiddenPair.checkBlock(3)
-    println(HiddenPair.base3(8))
-    /*Risolvere in maniera del genere*/
-   /* initList()
-    hiddenSingles(1, 1)
-    val sudokuInput = getPuzzle
+    initList()
+    for (i <- 0 to 8) {
+      for (j <- 0 to 8)
+        println("MatList riga " + i + " colonna" + j + " è " + matList(i)(j).toString)
+    }
+    printMatrix()
+    solveHiddenPair()
 
-    loadPuzzle(nameSolved)
-    val sudokuSolved = getPuzzle
-
-    assert(sudokuInput(1)(1) == sudokuSolved(1)(1))*/
-
+    //HiddenPair.checkBlock(3)
+    // println(HiddenPair.base3(8))
+    for (i <- 0 to 8) {
+      for (j <- 0 to 8)
+        println("MatList DOPO riga " + i + " colonna" + j + " è " + matList(i)(j).toString)
+    }
   }
-   //todo TEST SIMILE DA FARE
-  /*
-    test("Sudoku05") {
-    val nameFile = "input/sudoku05.txt"
+
+  //todo TEST SIMILE DA FARE..
+
+  test("Sudoku01") {
+    val nameFile = "input/sudoku01.txt"
 
     loadPuzzle(nameFile)
     initList()
-    totalHiddenSingles()
+    solveHiddenPair()
     val sudokuInput = getPuzzle
 
-    solve(0,0)
+    solve(0, 0)
     val sudokuSolved = getPuzzle
 
     assert(sudokuInput(2)(2) == sudokuSolved(2)(2))
     assert(sudokuInput(5)(2) == sudokuSolved(5)(2))
+
   }
-   */
-test("test block"){
-  println(matList.toList)
 
 }
 
 
 
-}
+
+
