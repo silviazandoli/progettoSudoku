@@ -15,8 +15,14 @@ object SudokuEngine extends App {
   strategia con assegnazione numero di liste unitarie
    */
   def strategyList(): Unit = {
+    /**
+     * case class timestamp fatta da Pacini
+     */
     val timeStamp = TimeStampImpl(System.currentTimeMillis())
 
+    /**
+     * strategia1 fatta da Antonelli
+     */
     val strat1 = new StrategyImpl {
       override def resolutionMethod(): Unit = {
         var elem = -1
@@ -29,9 +35,15 @@ object SudokuEngine extends App {
       }
     }
 
+    /**
+     * stretegie 2/3 fatte da pacini
+     */
     val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
     val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = solve(0, 0)}
 
+    /**
+     * motore pensato da entrambi
+     */
     val strategies = List[Strategy](strat1, strat2, strat3)
     strategies.foreach(el => if (!puzzleSolved()) el.strategy())
 

@@ -4,6 +4,10 @@ import utility.{dimSudoku, puzzle, puzzleSolved}
 
 object FullExploration {
 
+  /**
+   *
+  Zandoli
+   */
  def validate(position:(Int,Int),value:Int): Boolean = {
    //for each row, column and block 3*3
    val v=puzzle.transpose
@@ -14,6 +18,10 @@ object FullExploration {
    !puzzle(position._1).contains(value) && !v(position._2).contains(value) && !squareCells.contains(value)
  }
 
+  // ---- //
+  /**
+  Pacini
+   */
   def next(row: Int, col: Int): Boolean = col match {
     case 8 => solve(row + 1, 0)
     case _ => solve(row, col + 1)
