@@ -1,3 +1,5 @@
+import javax.swing.JTextField
+
 import scala.annotation.tailrec
 
 package object utility {
@@ -6,6 +8,8 @@ package object utility {
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)
   var puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
   var elemEmpty: Int = dimSudoku * dimSudoku
+
+  var tfCells: Array[Array[JTextField]] = Array.ofDim[JTextField](dimSudoku, dimSudoku)
 
   def puzzleSolved(): Boolean = puzzle.flatten.forall(_.!=(0))
 
