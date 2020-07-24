@@ -19,7 +19,10 @@ object MatListOperation {
       }
     }
   }
-
+  /**
+   *
+  Zandoli
+   */
   def possible(rowExcl: Set[Int], row:Int,col:Int):List[Int] = {
     //escludo per colonna
     val colExcl = puzzle.toList.map(_ (col)).filter(_ != 0).toSet
@@ -37,6 +40,10 @@ object MatListOperation {
     (1 to dimSudoku).toSet.diff(unity).toList
   }
 
+  /**
+   *
+  Pacini
+   */
   def minList(): (Int, Int) = {
     var ijMin = (0, 0)
     var minLength = dimSudoku + 1
