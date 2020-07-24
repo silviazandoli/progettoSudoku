@@ -1,4 +1,4 @@
-package testFull
+package testHiddenPairs
 
 import org.scalatest.FunSuite
 import resolutionAlgorithm.HiddenPair

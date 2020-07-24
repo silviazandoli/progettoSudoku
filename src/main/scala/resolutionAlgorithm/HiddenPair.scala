@@ -18,7 +18,7 @@ object HiddenPair {
 
   def checkRow(row: Int) = {
 
-    // prende le celle della matList con piÃ¹ di un elemento
+    //it gets the squares of the matList which have more than one element
     val ml = matList(row).toList.zipWithIndex.filter(_._1.size > 1)
 
     //possiblePairs contains all the possibles pairs with their coordinates
