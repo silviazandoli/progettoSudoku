@@ -11,7 +11,7 @@ object NakedPairs {
   var number1: Int = 0
   var number2: Int = 0
 
-  case class PossiblePair(cell1: Int, cell2: Int, intersection: Set[Set[Int]])
+  /*case class PossiblePair(cell1: Int, cell2: Int, intersection: Set[Set[Int]])
 
   //var list = new ListBuffer[Int]()
 
@@ -100,14 +100,14 @@ object NakedPairs {
     //  println(ml.toList)
     check(ml)
 
-  }
+  }*/
 
 
 
 
 
 
-  /*def solve(row: Int, col: Int): Unit = {
+  def solve(row: Int, col: Int): Unit = {
     //controllo che sia di lunghezza 2
     if (matList(row)(col).size == 2) {
 
@@ -164,5 +164,5 @@ object NakedPairs {
   def removeList(list: Array[List[Int]]) {
     for (i <- list.indices)
       list(i).filter(_ > 0)
-  }*/
+  }
 }
