@@ -15,18 +15,46 @@ object NakedPairs {
 
   // TODO : VARIANTE SUCCESSIVA
 
-  def solve(row: Int, col: Int): Unit = {
+  def nakedPair(row:Int, col: Int): Unit ={
+    val rows = (0 until dimSudoku).toList.map(checkRow)
+    print(rows)
+    val cols = (0 until dimSudoku).toList.map(checkColumn)
+    print(cols)
+  }
+
+  def checkRow(row: Int) = {
+
+    //it gets the squares of the matList which have more than one element
+    val ml = matList(row).toList.zipWithIndex.filter(_._1.size > 1)
+    // val pippo:Nothing=ml
+
+  }
+
+  def checkColumn(col: Int) = {
+
+    //it gets the squares of the matList which have more than one element
+    val ml = matList.map(_ (col)).zipWithIndex.filter(_._1.size > 1).toList
+    //  println(ml.toList)
+
+  }
+
+
+
+
+
+
+  /*def solve(row: Int, col: Int): Unit = {
     //controllo che sia di lunghezza 2
     if (matList(row)(col).size == 2) {
-      /*
-      list(index).head += (row)
-      list(index)(1) += (col)
-       */
+
+      //list(index).head +=(row)
+      //list(index)(1) += col
+
       index += 1;
       println("lista:::::::::::::::" + list)
       println("-------------------------------------row: " + row + " col: "+ col)
       /*rimuovo da tutte le altre quei due elementi*/
-      if (checkList(list)) {
+      if (list.size > 2 && checkList(list)) {
         println("-------------dentro")
         for (k <- 0 until dimSudoku) {
           if (k != col)
@@ -72,5 +100,5 @@ object NakedPairs {
   def removeList(list: Array[List[Int]]) {
     for (i <- list.indices)
       list(i).filter(_ > 0)
-  }
+  }*/
 }
