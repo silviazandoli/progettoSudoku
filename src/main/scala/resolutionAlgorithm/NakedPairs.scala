@@ -18,8 +18,10 @@ object NakedPairs {
   def solve(row: Int, col: Int): Unit = {
     //controllo che sia di lunghezza 2
     if (matList(row)(col).size == 2) {
+      /*
       list(index).head += (row)
       list(index)(1) += (col)
+       */
       index += 1;
       println("lista:::::::::::::::" + list)
       println("-------------------------------------row: " + row + " col: "+ col)
