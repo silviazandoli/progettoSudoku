@@ -42,6 +42,7 @@ object SudokuEngine extends App {
     val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
 
     val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = solve(0, 0)}
+
     /*strategy 4 done by Zandoli*/
     val strat4=new StrategyImpl {override def resolutionMethod():Unit= solveHiddenPair()}
     /**

@@ -20,6 +20,7 @@ class TestHiddenPair extends FunSuite {
     for (i <- 0 to 8) {
       for (j <- 0 to 8)
         println("MatList riga " + i + " colonna" + j + " è " + matList(i)(j).toString)
+
     }
     //printMatrix()
     solveHiddenPair()
@@ -166,9 +167,9 @@ class TestHiddenPair extends FunSuite {
     assert(sudokuSolvedWith(5)(3) == sudokuSolvedWith(5)(3))
   }
 
-  test("My creation of MatList"){
+  /*test("My creation of MatList") {
 
-  }
+  }*/
 
 }
 
