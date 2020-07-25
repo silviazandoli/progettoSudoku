@@ -1,11 +1,9 @@
 package testFull
 
 import org.scalatest.FunSuite
-import sudoku.SudokuLoad.loadPuzzle
 import sudoku.MatListOperation.initList
-import utility.getPuzzle
-import resolutionAlgorithm.NakedPairs
-import utility.{display, puzzle,matList}
+import sudoku.SudokuLoad.loadPuzzle
+import utility.{display, getPuzzle, puzzle}
 
 
 
@@ -39,7 +37,7 @@ class TestNakedPair extends FunSuite {
     initList()
     val sudokuInput = getPuzzle
     print(sudokuInput)
-    NakedPairs.nakedPair(0,0)
+    //NakedPairs.nakedPair(0,0)
   }
 
 }

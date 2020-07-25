@@ -11,8 +11,8 @@ class TestHiddenPair extends FunSuite {
 
   test("Hidden Pair") {
     //init
-    val nameFile = "input/sudoku01.txt"
-    val nameSolved = "outputSolved/sudoku01.txt"
+    val nameFile = "input/sudoku02.txt"
+    val nameSolved = "outputSolved/sudoku02.txt"
     loadPuzzle(nameFile)
 
     display(puzzle)
@@ -21,7 +21,7 @@ class TestHiddenPair extends FunSuite {
       for (j <- 0 to 8)
         println("MatList riga " + i + " colonna" + j + " è " + matList(i)(j).toString)
     }
-    printMatrix()
+    //printMatrix()
     solveHiddenPair()
 
     //HiddenPair.checkBlock(3)
@@ -31,8 +31,6 @@ class TestHiddenPair extends FunSuite {
         println("MatList DOPO riga " + i + " colonna" + j + " è " + matList(i)(j).toString)
     }
   }
-
-  //todo TEST SIMILE DA FARE..
 
   test("Sudoku01") {
     val nameFile = "input/sudoku01.txt"
@@ -49,7 +47,124 @@ class TestHiddenPair extends FunSuite {
     assert(sudokuInput(5)(2) == sudokuSolved(5)(2))
 
   }
+  test("Sudoku05") {
+    val nameFile = "input/sudoku05.txt"
 
+    loadPuzzle(nameFile)
+    initList()
+    solve(0, 0)
+    val sudokuSolvedwithout = getPuzzle
+
+    loadPuzzle(nameFile)
+    initList()
+    solveHiddenPair()
+    solve(0, 0)
+    val sudokuSolvedWith = getPuzzle
+    assert(sudokuSolvedwithout(2)(2) == sudokuSolvedWith(2)(2))
+    assert(sudokuSolvedWith(5)(2) == sudokuSolvedWith(5)(2))
+  }
+
+  test("Sudoku06") {
+    val nameFile = "input/sudoku06.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    solve(0, 0)
+    val sudokuSolvedwithout = getPuzzle
+
+    loadPuzzle(nameFile)
+    initList()
+    solveHiddenPair()
+    solve(0, 0)
+    val sudokuSolvedWith = getPuzzle
+    assert(sudokuSolvedwithout(2)(2) == sudokuSolvedWith(2)(2))
+    assert(sudokuSolvedWith(5)(2) == sudokuSolvedWith(5)(2))
+  }
+
+  test("Sudoku11") {
+    val nameFile = "input/sudoku11.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    solve(0, 0)
+    val sudokuSolvedwithout = getPuzzle
+
+    loadPuzzle(nameFile)
+    initList()
+    solveHiddenPair()
+    solve(0, 0)
+    val sudokuSolvedWith = getPuzzle
+    assert(sudokuSolvedwithout(2)(2) == sudokuSolvedWith(2)(2))
+    assert(sudokuSolvedWith(5)(2) == sudokuSolvedWith(5)(2))
+  }
+
+  test("Sudoku22") {
+    val nameFile = "input/sudoku22.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    solve(0, 0)
+    val sudokuSolvedwithout = getPuzzle
+
+    loadPuzzle(nameFile)
+    initList()
+    solveHiddenPair()
+    solve(0, 0)
+    val sudokuSolvedWith = getPuzzle
+    assert(sudokuSolvedwithout(2)(2) == sudokuSolvedWith(2)(2))
+    assert(sudokuSolvedWith(5)(2) == sudokuSolvedWith(5)(2))
+  }
+
+  test("Sudoku04") {
+    val nameFile = "input/sudoku04.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    solve(0, 0)
+    val sudokuSolvedwithout = getPuzzle
+
+    loadPuzzle(nameFile)
+    initList()
+    solveHiddenPair()
+    solve(0, 0)
+    val sudokuSolvedWith = getPuzzle
+    assert(sudokuSolvedwithout(1)(2) == sudokuSolvedWith(1)(2))
+    assert(sudokuSolvedWith(5)(3) == sudokuSolvedWith(5)(3))
+  }
+
+  test("Sudoku03") {
+    val nameFile = "input/sudoku03.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    solve(0, 0)
+    val sudokuSolvedwithout = getPuzzle
+
+    loadPuzzle(nameFile)
+    initList()
+    solveHiddenPair()
+    solve(0, 0)
+    val sudokuSolvedWith = getPuzzle
+    assert(sudokuSolvedwithout(1)(2) == sudokuSolvedWith(1)(2))
+    assert(sudokuSolvedWith(5)(3) == sudokuSolvedWith(5)(3))
+  }
+
+  test("Sudoku23") {
+    val nameFile = "input/sudoku23.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    solve(0, 0)
+    val sudokuSolvedwithout = getPuzzle
+
+    loadPuzzle(nameFile)
+    initList()
+    solveHiddenPair()
+    solve(0, 0)
+    val sudokuSolvedWith = getPuzzle
+    assert(sudokuSolvedwithout(1)(2) == sudokuSolvedWith(1)(2))
+    assert(sudokuSolvedWith(5)(3) == sudokuSolvedWith(5)(3))
+  }
 }
 
 

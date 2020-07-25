@@ -1,9 +1,10 @@
 package sudoku
 
-import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
 import resolutionAlgorithm.FullExploration.solve
 import resolutionAlgorithm.HiddenSingles.totalHiddenSingles
+import resolutionAlgorithm.HiddenPair.solveHiddenPair
 import strategies.{Strategy, StrategyImpl}
+import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
 import sudoku.SudokuLoad.loadPuzzle
 import util.TimeStampImpl
 import utility.{display, puzzle, puzzleSolved}
@@ -36,15 +37,17 @@ object SudokuEngine extends App {
     }
 
     /**
-     * stretegie 2/3 fatte da pacini
+     * strategy 2/3 done by Pacini
      */
     val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
-    val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = solve(0, 0)}
 
+    val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = solve(0, 0)}
+    /*strategy 4 done by Zandoli*/
+    val strat4=new StrategyImpl {override def resolutionMethod():Unit= solveHiddenPair()}
     /**
-     * motore pensato da entrambi
+     * motore pensato da Pacini e Antonelli
      */
-    val strategies = List[Strategy](strat1, strat2, strat3)
+    val strategies = List[Strategy](strat1, strat2, strat3,strat4)
     strategies.foreach(el => if (!puzzleSolved()) el.strategy())
 
     timeStamp.calculateDiff(System.currentTimeMillis())

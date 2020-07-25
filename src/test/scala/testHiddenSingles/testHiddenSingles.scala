@@ -1,12 +1,11 @@
 package testHiddenSingles
 
 import org.scalatest.FunSuite
-import sudoku.SudokuLoad.loadPuzzle
-import sudoku.MatListOperation.initList
-import utility.getPuzzle
-
 import resolutionAlgorithm.FullExploration.solve
 import resolutionAlgorithm.HiddenSingles.{hiddenSingles, totalHiddenSingles}
+import sudoku.MatListOperation.initList
+import sudoku.SudokuLoad.loadPuzzle
+import utility.getPuzzle
 
 class testHiddenSingles extends FunSuite {
 
@@ -16,6 +15,7 @@ class testHiddenSingles extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
+
     hiddenSingles(1, 1)
     val sudokuInput = getPuzzle
 

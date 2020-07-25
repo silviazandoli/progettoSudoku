@@ -12,6 +12,7 @@ Done by Zandoli
  */
   def solveHiddenPair(): Unit = {
     val rows = (0 until dimSudoku).toList.map(checkRow)
+    //we go to get the indexes
     rows.zipWithIndex.foreach(t => {
       val row = t._2
       t._1.foreach(p => {
@@ -20,7 +21,7 @@ Done by Zandoli
         matList(row)(p.cell2) = newValues
       })
     })
-    println("righe:" + rows)
+    println("Hidden Pairs in rows:" + rows)
 
     val cols = (0 until dimSudoku).toList.map(checkColumn)
     cols.zipWithIndex.foreach(t => {
@@ -32,7 +33,7 @@ Done by Zandoli
         matList(p.cell2)(col) = newValues
       })
     })
-    println("colonne: " + cols)
+    println("Hidden Pairs in columns: " + cols)
 
 
     val blocks = (0 until dimSudoku).toList.map(checkBlock)
@@ -64,7 +65,7 @@ Done by Zandoli
 
       })
     })
-    println("blocco:" + blocks)
+    println("Hidden Pairs in blocks:" + blocks)
 
   }
 
@@ -181,10 +182,7 @@ Done by Zandoli
   //per trovare le coppie
   // List(1,2,3).toSet[Int].subsets.map(_.toList).toList
   //fare la cancellazione di una intera coppia possible Pair
-  // updateList(rowCol: (Int, Int), elem: Int): aggiorna giÃ  la matList e elimina gli elementi Ã¨ in sudoku matrix
 
-
-  // updateList(rowCol: (Int, Int), elem: Int): aggiorna già  la matList e elimina gli elementi ¨ in sudoku matrix
   //csearch for row, for column and for block
 
 
