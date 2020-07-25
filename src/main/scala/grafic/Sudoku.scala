@@ -1,9 +1,10 @@
 package grafic
 
+import java.awt.event.ActionEvent
 import java.awt.{Color, Dimension, Font, GridLayout}
 
-import javax.swing.{JFrame, JTextField}
-import utility.{dimSudoku, puzzle, tfCells}
+import javax.swing.{AbstractAction, JFrame, JOptionPane, JTextField}
+import utility.{dimSudoku, matList, puzzle, tfCells}
 
 class Sudoku extends JFrame {
   val SUBGRID_SIZE = 3 // Size of the sub-grid
@@ -21,28 +22,66 @@ class Sudoku extends JFrame {
   val CLOSED_CELL_TEXT: Color = Color.BLACK
   val FONT_NUMBERS = new Font("Monospaced", Font.BOLD, 20)
 
-  private val masks = Array(Array(false, false, true, false, false, true, false, false, true), Array(false, true, false, false, false, false, false, false, true), Array(false, false, false, false, true, false, false, false, false), Array(false, false, false, false, false, true, false, false, true), Array(false, true, false, true, false, false, false, false, false), Array(false, false, false, false, false, false, false, false, true), Array(false, false, true, false, false, true, false, false, false), Array(false, true, false, false, false, false, true, false, false), Array(false, false, false, false, false, false, false, false, true))
+  //private val masks = Array(Array(false, false, true, false, false, true, false, false, true), Array(false, true, false, false, false, false, false, false, true), Array(false, false, false, false, true, false, false, false, false), Array(false, false, false, false, false, true, false, false, true), Array(false, true, false, true, false, false, false, false, false), Array(false, false, false, false, false, false, false, false, true), Array(false, false, true, false, false, true, false, false, false), Array(false, true, false, false, false, false, true, false, false), Array(false, false, false, false, false, false, false, false, true))
 
   def create(): Unit = {
     val cp = this.getContentPane
     cp.setLayout(new GridLayout(dimSudoku, dimSudoku)) // 9x9 GridLayout
 
-    val listener = new InputListener
+
     // Construct 9x9 JTextFields and add to the content-pane
     for (row <- 0 until dimSudoku) {
       for (col <- 0 until dimSudoku) {
 
         tfCells(row)(col) = new JTextField() // Allocate element of array
+        tfCells(row)(col).addActionListener(new AbstractAction {
 
+          override def actionPerformed(e: ActionEvent): Unit = {
+            val t: JTextField = e.getSource.asInstanceOf[JTextField]
+            try {
+              println(t.getText.toInt)
+              val number = t.getText.toInt
+              t.setBackground(Color.yellow)
+              val possibleValues = matList(row)(col).toSet
+
+              if (possibleValues.contains(number)) {
+                t.setForeground(Color.green);
+                JOptionPane.showMessageDialog(cp, "Good! The number is in MatList", "Messaggio", JOptionPane.DEFAULT_OPTION)
+              } else {
+                t.setForeground(Color.red)
+
+              }
+
+              //it shows the list of possible values
+              //(ps: ho fatto che l'utente può vedere i numeri candidati per quella cella quando l'utente inserisce un numero errato in una
+              //determinata casella
+              if (!possibleValues.contains(number)) {
+                var message = "The number is not correct! Possible values: "
+                possibleValues.foreach(v => message = message + v + " ")
+                JOptionPane.showMessageDialog(cp, message, "Message", JOptionPane.WARNING_MESSAGE)
+
+              }
+            } catch {
+              case _ => t.setBackground(Color.red);
+                JOptionPane.showMessageDialog(cp, "It wasn't inserted a number!", "Messaggio", JOptionPane.WARNING_MESSAGE)
+            }
+
+          }
+        })
+        /*JOptionPane.showMessageDialog(yourFrame,
+    "WARNING.",
+    "Warning",
+    JOptionPane.WARNING_MESSAGE);*/
         cp.add(tfCells(row)(col)) // ContentPane adds JTextField
+        val puzzleVal = puzzle(row)(col)
 
-        if (masks(row)(col)) {
+        if (puzzleVal == 0) {
           tfCells(row)(col).setText("") // set to empty string
 
           tfCells(row)(col).setEditable(true)
           tfCells(row)(col).setBackground(OPEN_CELL_BGCOLOR)
 
-          tfCells(row)(col).addActionListener(listener)
+          //  tfCells(row)(col).addActionListener(listener)
         }
         else {
           tfCells(row)(col).setText(puzzle(row)(col) + "")
