@@ -46,7 +46,7 @@ class Sudoku extends JFrame {
 
               if (possibleValues.contains(number)) {
                 t.setForeground(Color.green);
-                JOptionPane.showMessageDialog(cp, "Good! The number is in MatList", "Messaggio", JOptionPane.DEFAULT_OPTION)
+                JOptionPane.showMessageDialog(cp, "Good! The number is in MatList", "Message", JOptionPane.DEFAULT_OPTION)
               } else {
                 t.setForeground(Color.red)
 
