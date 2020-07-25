@@ -165,6 +165,11 @@ class TestHiddenPair extends FunSuite {
     assert(sudokuSolvedwithout(1)(2) == sudokuSolvedWith(1)(2))
     assert(sudokuSolvedWith(5)(3) == sudokuSolvedWith(5)(3))
   }
+
+  test("My creation of MatList"){
+
+  }
+
 }
 
 
