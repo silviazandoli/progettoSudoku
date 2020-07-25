@@ -17,6 +17,8 @@ object HiddenPair {
       val row = t._2
       t._1.foreach(p => {
         val newValues = p.intersection.head.toList
+        //in the two squares it return the newValues that are the values of the Hidden Pair with all other candidates removed
+        //we overwrite the squares
         matList(row)(p.cell1) = newValues
         matList(row)(p.cell2) = newValues
       })
@@ -53,6 +55,7 @@ object HiddenPair {
           shiftCol = (block - 6) * 3
       }
       t._1.foreach(p => {
+        //we need to localize the two squares in the block
         List(p.cell1, p.cell2).foreach(c => {
           val converted = base3(c)
           val ct = (converted._1 + shiftRow, converted._2 + shiftCol)
@@ -109,7 +112,7 @@ object HiddenPair {
       //we have to compare inside intersection elem per elem. We get the second. tail contains more element so we get the head
       //If exclusion contains the second pair
       val c2 = exclusion.contains(p.intersection.head.tail.head)
-      //if both the possible pairs aren't in exclusion they are HIDDEN PAIRS
+      //if both the possible pairs aren't in exclusion they are an HIDDEN PAIR
       !c1 && !c2
 
 
@@ -161,6 +164,7 @@ object HiddenPair {
     // println(square)
     val h = square.head
 
+    //calc indexes of the block
     def calcindex(p1: Int, p2: Int): Int = {
       val pp1 = p1 - h._1
       val pp2 = p2 - h._2
