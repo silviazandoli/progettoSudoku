@@ -42,18 +42,15 @@ Done by Zandoli
       var shiftRow = 0
       var shiftCol = 0
       block match {
-        case 0 | 1 | 2 => {
+        case 0 | 1 | 2 =>
           shiftRow = 0
           shiftCol = block * 3
-        }
-        case 3 | 4 | 5 => {
+        case 3 | 4 | 5 =>
           shiftRow = 3
           shiftCol = (block - 3) * 3
-        }
-        case 6 | 7 | 8 => {
+        case 6 | 7 | 8 =>
           shiftRow = 6
           shiftCol = (block - 6) * 3
-        }
       }
       t._1.foreach(p => {
         List(p.cell1, p.cell2).foreach(c => {
@@ -92,16 +89,16 @@ Done by Zandoli
     //there are some cases as List(1,7,Set(Set(4,3),Set(5,6)). From row 34 to 38
     //I make sure to separate the different pairs in order to get
     // List(1,7,Set(Set(4,3))) e List(1,7,Set(Set(5,6)))
-    val flattenPairs = possiblePairs.map(p => {
+    val flattenPairs = possiblePairs.flatMap(p => {
       p.intersection.map(pair => {
         PossiblePair(p.cell1, p.cell2, Set(pair))
       })
-    }).flatten
+    })
     //it finds the hidden pairs
     val hiddenPairs = flattenPairs.filter(p => {
       val cell1 = p.cell1
       val cell2 = p.cell2
-      val exclusion = ml.filter(_._2 != cell1).filter(_._2 != cell2).map(e => e._1.toSet).flatten.toSet
+      val exclusion = ml.filter(_._2 != cell1).filter(_._2 != cell2).flatMap(e => e._1.toSet).toSet
       //we have to compare inside intersection elem per elem. We get the first
       val c1 = exclusion.contains(p.intersection.head.head)
       //we have to compare inside intersection elem per elem. We get the second. tail contains more element so we get the head
@@ -115,7 +112,7 @@ Done by Zandoli
   }
 
 
-  def checkRow(row: Int) = {
+  def checkRow(row: Int): List[PossiblePair] = {
 
     //it gets the squares of the matList which have more than one element
     val ml = matList(row).toList.zipWithIndex.filter(_._1.size > 1)
@@ -125,7 +122,7 @@ Done by Zandoli
   }
 
 
-  def checkColumn(col: Int) = {
+  def checkColumn(col: Int): List[PossiblePair] = {
 
     //it gets the squares of the matList which have more than one element
     val ml = matList.map(_ (col)).zipWithIndex.filter(_._1.size > 1).toList
@@ -136,7 +133,7 @@ Done by Zandoli
 
 
 
-  def checkBlock(blk: Int) = {
+  def checkBlock(blk: Int): List[PossiblePair] = {
     /*blk=0 i=0..2 j=0..2 ; blk=1 i=0..2 j=3..5; blk=2 i=0..2 j=6..8 ; blk=3 i=3..5 j=0..2; blk=4 i=3..5 j=3..5; blk=5 i=3..5 j=6..8
       blk=6 i=6..8 j=0..2 ; blk=7 i=6..8 j=3..5; blk=8 i=6..8 j=6..8
      */
