@@ -62,7 +62,8 @@ class Sudoku extends JFrame {
 
               }
             } catch {
-              case _ => t.setBackground(Color.red);
+              case _ => t.setForeground(Color.red);
+
                 JOptionPane.showMessageDialog(cp, "It wasn't inserted a number!", "Messaggio", JOptionPane.WARNING_MESSAGE)
             }
 
