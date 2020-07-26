@@ -31,13 +31,16 @@ object FullExploration {
     if (puzzleSolved()) return true
     puzzle(row)(col) match {
       case 0 =>
-        for (i <- 1 to dimSudoku; if validate((row, col), i)) {
-          puzzle(row)(col) = i
-          if (next(row, col)) {
-            return true
-          }
-          puzzle(row)(col) = 0
-        }
+        (1 to dimSudoku).filter(i => validate((row, col), i))
+          .foreach(elem => {
+            puzzle(row)(col) = elem
+            if (next(row, col)) {
+              return true
+            } else {
+              puzzle(row)(col) = 0
+            }
+          })
+
         false
       case _ => next(row, col)
     }

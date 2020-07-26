@@ -6,17 +6,15 @@ import sudoku.MatListOperation.updateList
 object HiddenSingles {
 
   def totalHiddenSingles(): Unit = {
-    (0 until dimSudoku).foreach(i => (0 until dimSudoku).foreach(j => {
-      if (matList(i)(j) != Nil) hiddenSingles(i, j)
-    }))
+    (0 until dimSudoku).foreach(i => (0 until dimSudoku).foreach(j => {matList(i)(j) != Nil
+      hiddenSingles(i, j)}))
   }
 
   def hiddenSingles(row: Int, col: Int): Unit = {
-    matList(row)(col).filter(elem => searchInRow(row, elem) || searchInColumn(col, elem) || searchInSquare(row, col, elem))
-      .foreach(elem => {
-        updateList((row, col), elem)
-        puzzle(row)(col) = elem
-      })
+    matList(row)(col).filter(elem => searchInRow(row, elem) ||
+      searchInColumn(col, elem) || searchInSquare(row, col, elem))
+      .foreach(elem => {updateList((row, col), elem)
+        puzzle(row)(col) = elem})
   }
 
   def caseFound(numFound : Int): Boolean = {
@@ -29,17 +27,15 @@ object HiddenSingles {
   def numFound(rowCol: Int, num: Int, flag: Boolean): Int = {
     var valFound = 0
 
-    def closureFound(index: Int): Unit = if (flag) {
-      if (matList(rowCol)(index) != Nil && matList(rowCol)(index).contains(num)) {
+    val closure: Int => Unit = (index: Int) => if (flag) {
+      matList(rowCol)(index) != Nil && matList(rowCol)(index).contains(num)
         valFound = valFound + 1
-      }
     } else {
-      if (matList(index)(rowCol) != Nil && matList(index)(rowCol).contains(num)) {
-        valFound = valFound + 1
-      }
+      matList(index)(rowCol) != Nil && matList(index)(rowCol).contains(num)
+      valFound = valFound + 1
     }
 
-    (0 until dimSudoku).foreach(j => closureFound(j))
+    (0 until dimSudoku).foreach(j => closure(j))
 
     valFound
   }
