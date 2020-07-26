@@ -5,7 +5,7 @@ import java.awt.{Color,Graphics2D,BasicStroke}
 import java.awt.geom._
 
 // --------------------------------------------------------------------
-
+//esempio tris
 class Board {
   private var player = 1
   private val grid = Array(0, 0, 0,
