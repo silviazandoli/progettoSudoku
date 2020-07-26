@@ -11,7 +11,7 @@ object MainGraphic extends App {
   val jfc = new JFileChooser("input")
   val retValue = jfc.showOpenDialog(null)
   if (retValue == JFileChooser.APPROVE_OPTION) {
-    val file = jfc.getSelectedFile()
+    val file = jfc.getSelectedFile
     println(file.getAbsolutePath)
     loadPuzzle(file.getAbsolutePath)
     initList()
