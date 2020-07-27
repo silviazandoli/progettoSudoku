@@ -13,7 +13,7 @@ import utility._
 class TestNakedPair extends FunSuite {
   test("Sudoku01") {
 
-    val nameFile = "input/sudoku01.txt"
+    val nameFile = "input/sudokuText.txt"
     loadPuzzle(nameFile)
 
     display(puzzle)
@@ -35,7 +35,7 @@ class TestNakedPair extends FunSuite {
     assert(initMat != finishMat)
   }
 
-  /*test("Naked Pair Sudoku02") {
+  test("subSquare") {
     //init
     val nameFile = "input/sudoku04.txt"
     val nameSolved = "outputSolved/sudoku02.txt"
@@ -47,8 +47,7 @@ class TestNakedPair extends FunSuite {
       println("MatList riga " + i + " colonna" + 0 + " è " + matList(i)(2).toString)
     }
     val initMat = utility.matList(0)(8)
-    //printMatrix()
-    findCouple(1,false)
+    findCoupleSubSquare(6)
 
     for (i <- 0 to 8) {
       println("MatList DOPO riga " + i + " colonna" + 0 + " è " + matList(i)(2).toString)
@@ -58,7 +57,7 @@ class TestNakedPair extends FunSuite {
     println("matList iniziale " + initMat)
     println("matList finale "+ finishMat)
     assert(initMat != finishMat)
-  }*/
+  }
   test("Sudoku") {
     val nameFile = "input/sudoku01.txt"
 
