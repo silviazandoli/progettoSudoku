@@ -4,7 +4,7 @@ import utility.{dimSudoku, matList}
 
 object NakedPairsVariant {
 
-  var coupleFound = (-1, -1)
+  var coupleFound: (Int, Int) = (-1, -1)
 
   def findCouple(rowCol: Int, flag: Boolean): Unit = if (flag) {
     val posRows = findCoupleInRow(rowCol)
@@ -21,7 +21,7 @@ object NakedPairsVariant {
     if (first != -1) {updateColList(first, second, coupleFound)}
   }
 
-  def findCoupleSubSquare(row1: Int, row2: Int) = {
+  def findCoupleSubSquare(row1: Int, row2: Int): Unit = {
 
   }
 
@@ -75,11 +75,11 @@ object NakedPairsVariant {
     }
   }
 
-  def updateRowList(first: Int, second: Int, coupleFound: (Int, Int)) = {
+  def updateRowList(first: Int, second: Int, coupleFound: (Int, Int)): Unit = {
 
   }
 
-  def updateColList(first: Int, second: Int, coupleFound: (Int, Int)) = {
+  def updateColList(first: Int, second: Int, coupleFound: (Int, Int)): Unit = {
 
   }
 
