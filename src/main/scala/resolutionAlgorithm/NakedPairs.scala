@@ -1,267 +1,127 @@
 package resolutionAlgorithm
-import utility.{dimSudoku, matList, puzzle}
+
+import utility.{dimSudoku, matList}
 import sudoku.MatListOperation.updateList
 
-import scala.collection.mutable.ListBuffer
 
 object NakedPairs {
 
-  var list: Array[List[Int]] = Array.ofDim[List[Int]](dimSudoku)
-  var index: Int = 0
-  var number1: Int = 0
-  var number2: Int = 0
+  var coupleFound: (Int, Int) = (-1, -1)
 
+  def findCouple(rowCol: Int, flag: Boolean): Unit =  if (flag) {
+    val posRows = findCoupleInRow(rowCol) //ha una coppia di posizioni
+    val first = posRows._1 //primo elemento di posRows
+    val second = posRows._2 //secondo elemento di posRows
 
-  //var list = new ListBuffer[Int]()
+    if (first != -1) {updateRowList(rowCol, first, second, coupleFound)}
 
-  // TODO : VARIANTE SUCCESSIVA
+  } else {
+    val posCol = findCoupleInColum(rowCol)
+    val first = posCol._1
+    val second = posCol._2
 
-  def solveNakedPair(): Unit = {
-    val rows = (0 until dimSudoku).toList.map(checkRow)
-    //we go to get the indexes
-    rows.zipWithIndex.foreach(t => {
-      val row = t._2
-      t._1.foreach(p => {
-        val newValues = p.intersection.head.toList
-        //in the two squares it return the newValues that are the values of the Naked Pair with all other candidates removed
-        //we overwrite the squares
-        matList(row)(p.cell1) = newValues
-        matList(row)(p.cell2) = newValues
+    if (first != -1) {updateColList(rowCol,first, second, coupleFound)}
+  }
+
+  def findCoupleSubSquare(row1: Int, row2: Int) = {
+
+  }
+
+  def findCoupleInRow(row: Int): (Int, Int) = {
+    var found = 0
+    var fist = -1
+    var second = -1
+    (1 to 8).foreach(i => {
+      (2 to 9).foreach(j => {
+        for {
+          k <- 0 until dimSudoku
+          if matList(row)(k) != Nil && matList(row)(k).size == 2 && i!=j && matList(row)(k).contains(i) && matList(row)(k).contains(j)
+        } {
+          found = found + 1
+
+          if (found == 1) {
+            fist = k             // prima volta entra se trova una coppia e assegna quella k a first
+            coupleFound = (i, j) //contiene i due numeri che sono uguali
+          }
+          if (found == 2) second = k // seconda coppia, assegna second
+        }
       })
     })
-    println("Naked Pairs in rows:" + rows)
+    found match {
+      case 2 => (fist, second) //restituisce le posizioni
+      case _ => (-1, -1)
+    }
+  }
 
-    val cols = (0 until dimSudoku).toList.map(checkColumn)
-    cols.zipWithIndex.foreach(t => {
-      val col = t._2
-      t._1.foreach(p => {
-        val newValues = p.intersection.head.toList
-        matList(p.cell1)(col) = newValues
+  def findCoupleInColum(col: Int): (Int, Int) = {
+    var found = 0
+    var fist = -1
+    var second = -1
 
-        matList(p.cell2)(col) = newValues
+    (1 to 8).foreach(i => {
+      (2 to 9).foreach(j => {
+        for {
+          k <- 0 until dimSudoku
+          if matList(k)(col) != Nil && matList(k)(col).size == 2 && i!=j && matList(k)(col).contains(i) && matList(k)(col).contains(j)
+        } {
+          found = found + 1
+
+          if (found == 1) {
+            fist = k
+            coupleFound = (i, j)
+          }
+          if (found == 2) second = k
+        }
       })
     })
-    println("Naked Pairs in columns: " + cols)
+    found match {
+      case 2 => (fist, second)
+      case _ => (-1, -1)
+    }
+  }
 
-
-    val blocks = (0 until dimSudoku).toList.map(checkBlock)
-    blocks.zipWithIndex.foreach(t => {
-      val block = t._2
-      var shiftRow = 0
-      var shiftCol = 0
-      block match {
-        case 0 | 1 | 2 =>
-          shiftRow = 0
-          shiftCol = block * 3
-        case 3 | 4 | 5 =>
-          shiftRow = 3
-          shiftCol = (block - 3) * 3
-        case 6 | 7 | 8 =>
-          shiftRow = 6
-          shiftCol = (block - 6) * 3
+  def updateRowList(row: Int ,first: Int, second: Int, coupleFound: (Int, Int)) = {
+    //first è la prima posizione di quel numero
+    //second è la seconda k
+    //coupleFound ??
+    val n1 = coupleFound._1
+    val n2 = coupleFound._2
+    for {k <- 0 until (dimSudoku)} {
+      if (k != first && k != second) {
+        removeElementRow((row,first,second),n1)
+        removeElementRow((row,first,second), n2)
       }
-      t._1.foreach(p => {
-        //we need to localize the two squares in the block
-        List(p.cell1, p.cell2).foreach(c => {
-          val converted = base3(c)
-          val ct = (converted._1 + shiftRow, converted._2 + shiftCol)
-          matList(ct._1)(ct._2) = p.intersection.head.toList
-        })
-
-
-      })
-    })
-    println("Naked Pairs in blocks:" + blocks)
-
-  }
-
-  // a function for converting to base 3
-  def base3(num: Int): (Int, Int) = {
-    val one = num / 3
-    val first = num % 3
-    val second = one % 3
-    (second, first)
-  }
-
-
-  def check(ml: List[(List[Int], Int)]): List[PossiblePair] = {
-    //possiblePairs contains all the possibles pairs with their coordinates
-    val possiblePairs = ml.map(couples).toSet.subsets(2).toList.map(e => {
-      //the first
-      val val1 = e.head //(List[Set[Int]],Int)
-      //the second
-      val val2 = e.tail.head
-      //intersection are the pairs which are present in both
-      val intersection = val1._1.toSet.intersect(val2._1.toSet)
-      PossiblePair(val1._2, val2._2, intersection)
-
-    }).filter(_.intersection.nonEmpty) //those which have intersection nonEmpty could be the possible NakedPairs
-
-    // println(possiblePairs)
-    //there are some cases as List(1,7,Set(Set(4,3),Set(5,6)). From row 34 to 38
-    //I make sure to separate the different pairs in order to get
-    // List(1,7,Set(Set(4,3))) e List(1,7,Set(Set(5,6)))
-    val flattenPairs = possiblePairs.flatMap(p => {
-      p.intersection.map(pair => {
-        PossiblePair(p.cell1, p.cell2, Set(pair))
-      })
-    })
-    //it finds the naked pairs
-    val nakedPairs = flattenPairs.filter(p => {
-      val cell1 = p.cell1
-      val cell2 = p.cell2
-      //on matList I remove elems of cell1 and cell2 and I leave other elements
-      val exclusion = ml.filter(_._2 != cell1).filter(_._2 != cell2).flatMap(e => e._1.toSet).toSet
-      //we have to compare inside intersection elem per elem. We get the first
-      //If exclusion contains the first pair
-      val c1 = exclusion.contains(p.intersection.head.head)
-      //we have to compare inside intersection elem per elem. We get the second. tail contains more element so we get the head
-      //If exclusion contains the second pair
-      val c2 = exclusion.contains(p.intersection.head.tail.head)
-      //if both the possible pairs aren't in exclusion they are an NAKED PAIR
-      !c1 && !c2
-
-
-    })
-    nakedPairs
-  }
-
-
-  def checkRow(row: Int): List[PossiblePair] = {
-
-    //it gets the squares of the matList which have more than one element
-    //in the result with zipWithIndex we store also the indexes of the elements that we don't discard
-    //in _1 there is the list
-
-    val ml = matList(row).toList.zipWithIndex.filter(_._1.size == 2)
-
-    check(ml)
-
-  }
-
-
-  def checkColumn(col: Int): List[PossiblePair] = {
-
-    //it gets the squares of the matList which have more than one element
-    val ml = matList.map(_ (col)).zipWithIndex.filter(_._1.size == 2).toList
-    //  println(ml.toList)
-    check(ml)
-
-  }
-
-
-  def checkBlock(blk: Int): List[PossiblePair] = {
-    /*blk=0 i=0..2 j=0..2 ; blk=1 i=0..2 j=3..5; blk=2 i=0..2 j=6..8 ; blk=3 i=3..5 j=0..2; blk=4 i=3..5 j=3..5; blk=5 i=3..5 j=6..8
-      blk=6 i=6..8 j=0..2 ; blk=7 i=6..8 j=3..5; blk=8 i=6..8 j=6..8
-     */
-    val starti = blk match {
-      case 0 | 1 | 2 => 0
-      case 3 | 4 | 5 => 3
-      case 6 | 7 | 8 => 6
     }
-    val startj = (blk * 3) % 9
+  }
 
-    val square = for {
-      i <- starti to (starti + 2)
-      j <- startj to (startj + 2)
-
-
-    } yield (i, j)
-    // println(square)
-    val h = square.head
-
-    //calc indexes of the block
-    def calcindex(p1: Int, p2: Int): Int = {
-      val pp1 = p1 - h._1
-      val pp2 = p2 - h._2
-      //pp1*3^1+ pp2*3^0
-      pp1 * 3 + pp2
+  def updateColList(col: Int, first: Int, second: Int, coupleFound: (Int, Int)) = {
+    val n1 = coupleFound._1
+    val n2 = coupleFound._2
+    for {k <- 0 until (dimSudoku)} {
+      if (k != first && k != second) {
+        removeElementCol((first,second, col), n1)
+        removeElementCol((first,second, col), n2)
+      }
     }
-
-    val ml = square.map(p => (matList(p._1)(p._2), calcindex(p._1, p._2))).toList
-    // println(ml)
-    check(ml)
-
-
   }
-
-  def couples(l: (List[Int], Int)): (List[Set[Int]], Int) = {
-    //"subsets" create all possible combinations from the elements of a list
-    //we have to sort the couples and to consider for example the case (4,5)=(5,4)
-    // from the list we only take the the subsets who have size two
-    //it obtains a list of elems taken 2 per 2
-    val l1 = l._1.toSet.subsets(2).toList
-
-    //memorizzo gli indici che mi sono arrivati su l
-    //I store the indexes that got to me on l and put them on l2
-    val l2 = l._2
-    (l1, l2)
+  def removeElementRow(rowCol: (Int, Int,Int), elem: Int): Unit = {
+    val row = rowCol._1
+    val col1 = rowCol._2
+    val col2 = rowCol._3
+    for {
+      i <- 0 until dimSudoku
+    } yield {
+      if (i != col1 && i!= col2 && matList(row)(i) != null) matList(row)(i) = matList(row)(i).filter(e => e != elem)
+    }
   }
-
-
-  case class PossiblePair(cell1: Int, cell2: Int, intersection: Set[Set[Int]])
-
+  def removeElementCol(rowCol: (Int, Int,Int), elem: Int): Unit = {
+    val row1 = rowCol._1
+    val row2 = rowCol._2
+    val col = rowCol._3
+    for {
+      i <- 0 until dimSudoku
+    } yield {
+      if (i != row1 && i!= row2 && matList(i)(col) != null) matList(i)(col) = matList(i)(col).filter(e => e != elem)
+    }
+  }
 }
-
-
-
-
-  /*def solve(row: Int, col: Int): Unit = {
-    //controllo che sia di lunghezza 2
-    if (matList(row)(col).size == 2) {
-
-      //list(index).head +=(row)
-      //list(index)(1) += col
-
-      index += 1;
-      println("lista:::::::::::::::" + list)
-      println("-------------------------------------row: " + row + " col: "+ col)
-      /*rimuovo da tutte le altre quei due elementi*/
-      if (list.size > 2 && checkList(list)) {
-        println("-------------dentro")
-        for (k <- 0 until dimSudoku) {
-          if (k != col)
-            if (number1 == matList(row)(k).head || number1 == matList(row)(k)(1))
-              updateList((row, col), number1)
-            if (number2 == matList(row)(k).head || number2 == matList(row)(k)(1))
-              updateList((row, col), number2)
-        }
-      }
-
-    }
-    index = 0
-  }
-
-  def cycle() = {
-    for(i<-0 until dimSudoku-1) {
-      for(j<-i+1 until dimSudoku) {
-        solve(i,j)
-        println(" matList nella posizione " + i + "," + j+ " è " + matList(i)(j))
-      }
-    }
-
-  }
-  def checkList(list: Array[List[Int]]): Boolean ={
-    var flag = false
-    for (m <- list.indices)
-      for(n <- m+1 until(list.size-1)){
-        var n1,n2,n3,n4 : Int = 0
-        n1 = list(m).head
-        n2 = list(m)(1)
-        n3 = list(n).head
-        n4 = list(n)(1)
-        if (matList(n1)(n2) == matList(n3)(n4)) {
-          flag = true
-          //eliminare elementi dalla lista
-          //list = removeList(list)
-          number1 = matList(n1)(n2).head
-          number2 = matList(n3)(n4)(1)
-        }
-      }
-    flag
-  }
-  def removeList(list: Array[List[Int]]) {
-    for (i <- list.indices)
-      list(i).filter(_ > 0)
-  }*/
-

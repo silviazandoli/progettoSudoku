@@ -5,7 +5,7 @@ import resolutionAlgorithm.FullExploration.solve
 import sudoku.SudokuLoad.loadPuzzle
 import sudoku.MatListOperation.initList
 import utility.getPuzzle
-import resolutionAlgorithm.NakedPairsVariant._
+import resolutionAlgorithm.NakedPairs._
 import utility._
 
 
