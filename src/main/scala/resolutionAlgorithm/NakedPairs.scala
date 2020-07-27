@@ -1,7 +1,6 @@
 package resolutionAlgorithm
 
 import utility.{dimSudoku, matList}
-import sudoku.MatListOperation.updateList
 
 
 object NakedPairs {
@@ -24,7 +23,31 @@ object NakedPairs {
   }
 
   def findCoupleSubSquare(row1: Int, row2: Int) = {
+    var found = 0
+    var fist = -1
+    var second = -1
+    var row = row1
+    (1 to 8).foreach(i => {
+      (2 to 9).foreach(j => {
+        for {
+          k <- 0 until dimSudoku/3
+          if matList(row)(k) != Nil && matList(row)(k).size == 2 && i != j && matList(row)(k).contains(i) && matList(row)(k).contains(j)
+        } {
+          found = found + 1
 
+          if (found == 1) {
+            row = row2
+            fist = k // prima volta entra se trova una coppia e assegna quella k a first
+            coupleFound = (i, j) //contiene i due numeri che sono uguali
+          }
+          if (found == 2) second = k // seconda coppia, assegna second
+        }
+      })
+    })
+    found match {
+      case 2 => (fist, second) //restituisce le posizioni
+      case _ => (-1, -1)
+    }
   }
 
   def findCoupleInRow(row: Int): (Int, Int) = {
