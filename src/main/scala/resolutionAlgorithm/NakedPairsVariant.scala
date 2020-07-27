@@ -47,8 +47,6 @@ object NakedPairsVariant {
         }
       })
     })
-    println("first: "+ fist + " second: "+second)
-    println("coupleFound" + coupleFound)
     found match {
       case 2 => (fist, second) //restituisce le posizioni
       case _ => (-1, -1)
@@ -87,29 +85,43 @@ object NakedPairsVariant {
     //second è la seconda k
     //coupleFound ??
     val n1 = coupleFound._1
-    println("elemento 1: "+n1)
     val n2 = coupleFound._2
-    println("elemento 2: "+n2)
     for {k <- 0 until (dimSudoku)} {
       if (k != first && k != second) {
-        println("elimino elemento 1: "+n1 + "dalla riga: " +row + " colonna: "+ k)
-        updateList((row, k), n1)
-        updateList((row, k), n2)
+        removeElementRow((row,first,second),n1)
+        removeElementRow((row,first,second), n2)
       }
     }
   }
 
   def updateColList(col: Int, first: Int, second: Int, coupleFound: (Int, Int)) = {
     val n1 = coupleFound._1
-    println("elemento 1: "+n1)
     val n2 = coupleFound._2
-    println("elemento 2: "+n2)
     for {k <- 0 until (dimSudoku)} {
       if (k != first && k != second) {
-        println("elimino elemento 1: "+n1 + "da " +k + " - "+ col)
-        updateList((k, col), n1)
-        updateList((k, col), n2)
+        removeElementCol((first,second, col), n1)
+        removeElementCol((first,second, col), n2)
       }
+    }
+  }
+  def removeElementRow(rowCol: (Int, Int,Int), elem: Int): Unit = {
+    val row = rowCol._1
+    val col1 = rowCol._2
+    val col2 = rowCol._3
+    for {
+      i <- 0 until dimSudoku
+    } yield {
+      if (i != col1 && i!= col2 && matList(row)(i) != null) matList(row)(i) = matList(row)(i).filter(e => e != elem)
+    }
+  }
+  def removeElementCol(rowCol: (Int, Int,Int), elem: Int): Unit = {
+    val row1 = rowCol._1
+    val row2 = rowCol._2
+    val col = rowCol._3
+    for {
+      i <- 0 until dimSudoku
+    } yield {
+      if (i != row1 && i!= row2 && matList(i)(col) != null) matList(i)(col) = matList(i)(col).filter(e => e != elem)
     }
   }
 }
