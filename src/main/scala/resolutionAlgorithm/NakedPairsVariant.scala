@@ -6,7 +6,7 @@ import sudoku.MatListOperation.updateList
 
 object NakedPairsVariant {
 
-  var coupleFound = (-1, -1)
+  var coupleFound: (Int, Int) = (-1, -1)
 
   def findCouple(rowCol: Int, flag: Boolean): Unit =  if (flag) {
     val posRows = findCoupleInRow(rowCol) //ha una coppia di posizioni
