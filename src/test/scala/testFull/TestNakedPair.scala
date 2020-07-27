@@ -21,23 +21,23 @@ class TestNakedPair extends FunSuite {
     initList()
     //for (i <- 0 to 8) {
       for (j <- 0 to 8) {
-        println("MatList riga " + 1 + " colonna" + j + " è " + matList(1)(j).toString)
+        println("MatList riga " + 0 + " colonna" + j + " è " + matList(0)(j).toString)
       }
     //}
 
-    val initMat = utility.matList(1)(8)
+    val initMat = utility.matList(0)(4)
     //printMatrix()
-    findCouple(1,true)
+    findCouple(0,true)
     //findCouple(1,false)
     //HiddenPair.checkBlock(3)
     // println(HiddenPair.base3(8))
     //for (i <- 0 to 8) {
       for (j <- 0 to 8){
-        println("MatList DOPO riga " + 1 + " colonna" + j + " è " + matList(1)(j).toString)
+        println("MatList DOPO riga " + 0 + " colonna" + j + " è " + matList(0)(j).toString)
      }
     //}
 
-    val finishMat = utility.matList(1)(8)
+    val finishMat = utility.matList(0)(4)
 
     //assert(sudokuInput(1)(1) != sudokuSolved(1)(1))
     println("matList iniziale " + initMat)

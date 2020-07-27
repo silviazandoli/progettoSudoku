@@ -8,7 +8,7 @@ object NakedPairsVariant {
 
   var coupleFound = (-1, -1)
 
-  def findCouple(rowCol: Int, flag: Boolean): Unit = if (flag) {
+  def findCouple(rowCol: Int, flag: Boolean): Unit =  if (flag) {
     val posRows = findCoupleInRow(rowCol) //ha una coppia di posizioni
     val first = posRows._1 //primo elemento di posRows
     val second = posRows._2 //secondo elemento di posRows
@@ -35,7 +35,7 @@ object NakedPairsVariant {
       (2 to 9).foreach(j => {
         for {
           k <- 0 until dimSudoku
-          if matList(row)(k) != Nil && i!=j && matList(row)(k).contains(i) && matList(row)(k).contains(j)
+          if matList(row)(k) != Nil && matList(row)(k).size == 2 && i!=j && matList(row)(k).contains(i) && matList(row)(k).contains(j)
         } {
           found = found + 1
 
@@ -64,7 +64,7 @@ object NakedPairsVariant {
       (2 to 9).foreach(j => {
         for {
           k <- 0 until dimSudoku
-          if matList(k)(col) != Nil && matList(k)(col).contains(i) && matList(k)(col).contains(j)
+          if matList(k)(col) != Nil && matList(k)(col).size == 2 && i!=j && matList(k)(col).contains(i) && matList(k)(col).contains(j)
         } {
           found = found + 1
 
@@ -92,7 +92,7 @@ object NakedPairsVariant {
     println("elemento 2: "+n2)
     for {k <- 0 until (dimSudoku)} {
       if (k != first && k != second) {
-        println("elimino elemento 1: "+n1 + "da " +row + " - "+ k)
+        println("elimino elemento 1: "+n1 + "dalla riga: " +row + " colonna: "+ k)
         updateList((row, k), n1)
         updateList((row, k), n2)
       }
