@@ -41,7 +41,8 @@ class Sudoku extends JFrame {
 
         tfCells(row)(col) = new JTextField() // Allocate element of array
 
-        //aggiunta controlli che sia inserito un numero corretto, che non sia fuori dalla matList etc
+        //aggiunta controlli-> che sia inserito un carattere che sia un numero, che il numero inserito non sia corretto
+        //(nel caso non appartenga alla matList), etc
         tfCells(row)(col).addActionListener((e: ActionEvent) => {
           val t: JTextField = e.getSource.asInstanceOf[JTextField]
           try {
