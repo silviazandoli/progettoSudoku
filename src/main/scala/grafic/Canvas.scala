@@ -63,7 +63,7 @@ class Canvas(val board: Board) extends Component {
   override def paintComponent(g : Graphics2D) {
     g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,
       java.awt.RenderingHints.VALUE_ANTIALIAS_ON)
-    g.setColor(Color.WHITE);
+    g.setColor(Color.WHITE)
     val d = size
     g.fillRect(0,0, d.width, d.height)
     val (squareSide, x0, y0, wid) = squareGeometry
@@ -105,11 +105,11 @@ class UI(val board: Board) extends MainFrame {
   title = "Tic Tac Toe #3"
 
   val canvas = new Canvas(board)
-  val newGameButton = Button("New Game") { newGame() }
+  val newGameButton: Button = Button("New Game") { newGame() }
   val turnLabel = new Label("Player 1's turn")
   turnLabel.foreground = Color.BLUE
-  val quitButton = Button("Quit") { sys.exit(0) }
-  val buttonLine = new BoxPanel(Orientation.Horizontal) {
+  val quitButton: Button = Button("Quit") { sys.exit(0) }
+  val buttonLine: BoxPanel = new BoxPanel(Orientation.Horizontal) {
     contents += newGameButton
     contents += Swing.HGlue
     contents += turnLabel
