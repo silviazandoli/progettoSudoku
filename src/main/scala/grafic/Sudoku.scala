@@ -6,6 +6,12 @@ import java.awt.{Color, Dimension, Font, GridLayout}
 import javax.swing.{JFrame, JOptionPane, JTextField}
 import utility.{dimSudoku, matList, puzzle, tfCells}
 
+import scala.swing.event.Event
+
+//evento che ti può dare la possibilità di cliccare sulla casella
+case class SudokuEvent(x: Int, y: Int) extends Event
+
+
 class Sudoku extends JFrame {
   val SUBGRID_SIZE = 3 // Size of the sub-grid
 
@@ -74,7 +80,8 @@ class Sudoku extends JFrame {
         val puzzleVal = puzzle(row)(col)
 
         if (puzzleVal == 0) {
-          tfCells(row)(col).setText("") // set to empty string
+          tfCells(row)(col).setText("")
+         // tfCells(row)(col).setText(matList(row)(col).toString()) // set to empty string
 
           tfCells(row)(col).setEditable(true)
           tfCells(row)(col).setBackground(OPEN_CELL_BGCOLOR)
@@ -99,5 +106,7 @@ class Sudoku extends JFrame {
 
     setTitle("Sudoku")
     setVisible(true)
+
+
   }
 }
