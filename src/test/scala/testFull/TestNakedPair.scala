@@ -13,7 +13,7 @@ import utility._
 class TestNakedPair extends FunSuite {
   test("Sudoku test with change MatList in row") {
 
-    val nameFile = "input/sudoku01.txt"
+    val nameFile = "input/sudokuText.txt"
     loadPuzzle(nameFile)
 
     display(puzzle)
