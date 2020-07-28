@@ -84,7 +84,7 @@ object NakedPairs {
     })
     println(found)
     found match {
-      case 2 || 4 => (first, second) //restituisce le posizioni
+      case 2 | 4 => (first, second) //restituisce le posizioni
       case _ => (-1, -1)
     }
   }
@@ -111,7 +111,7 @@ object NakedPairs {
       })
     })
     found match {
-      case 2 || 4 => (first, second)
+      case 2 | 4 => (first, second)
       case _ => (-1, -1)
     }
   }
@@ -175,6 +175,7 @@ object NakedPairs {
     for {i <- r1 until r1 + 3
          j <- c1 until c1 + 3} {
       if (j != c1 && j != c2 && i != r1 && i != r2) {
+        println("first "+ first + " second " + second)
         removeElementBlock(first, second, n1)
         removeElementBlock(first, second, n2)
       }
@@ -182,10 +183,14 @@ object NakedPairs {
   }
 
   def removeElementBlock(rowCol1: (Int, Int), rowCol2: (Int, Int), elem: Int): Unit = {
-    val row1 = rowCol1._1
-    val row2 = rowCol2._1
-    val col1 = rowCol1._2
-    val col2 = rowCol2._2
+    var row1 = rowCol1._1
+    var row2 = rowCol2._1
+    var col1 = rowCol1._2
+    var col2 = rowCol2._2
+    row1 = (row1 / 3) * 3
+    row2 = (row2 / 3) * 3
+    col1 = (col1 / 3) * 3
+    col2 = (col2 / 3) * 3
     for {
       i <- row1 until row1 + 3
       j <- col1 until col1 + 3
