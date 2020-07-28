@@ -1,8 +1,11 @@
 package grafic
 
+import grafic.Sudoku.Sudoku
 import javax.swing.JFileChooser
+import resolutionAlgorithm.FullExploration
 import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
+import utility.getPuzzle
 
 object MainGraphic extends App {
   /**uploading multiple Sudoku by Zandoli
@@ -15,7 +18,11 @@ object MainGraphic extends App {
     println(file.getAbsolutePath)
     loadPuzzle(file.getAbsolutePath)
     initList()
-    val sudoku = new Sudoku()
+
+    val sudokuSolver = FullExploration(getPuzzle)
+    sudokuSolver.solve(0,0)
+
+    val sudoku = Sudoku(sudokuSolver.returnPuzzle())
     sudoku.create()
   }
   /*JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
