@@ -1,6 +1,6 @@
 package grafic
 
-import java.awt.{BorderLayout, Dimension, FlowLayout}
+import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
 
 import javax.swing.{JButton, JPanel}
 
@@ -38,7 +38,8 @@ trait SPanel extends JPanel//construct the sudoku display panel
   private val DisplayWidth = 557 //sudoku display its 557 pixels wide
   //SS.setText()
   //SS.addActionListener(this);
-
+ SS.setForeground(Color.BLUE)
+  SS.setBackground(Color.CYAN)
   SS.addActionListener(l => {
     println("Hello!!")
   })
@@ -53,7 +54,9 @@ trait SPanel extends JPanel//construct the sudoku display panel
 
   //  MS.addActionListener(this);
   pb.add(MS)
+
   private val MB = new Color(0x00, 0x00, 0xcd) //Medium blue
+
   // HS.addActionListener(this);
   pb.add(HS)
   private val P = new Color(0x80, 0, 0x80) //purple blank number

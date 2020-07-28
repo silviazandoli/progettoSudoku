@@ -16,8 +16,8 @@ object Sudoku {
   trait SudokuTrait extends JFrame {
     val SUBGRID_SIZE = 3 // Size of the sub-grid
 
-    val MATRIX_CELL_SIZE = 40 // Cell width/height in pixels
-    val CELL_SIZE = 60 // Cell width/height in pixels
+    val MATRIX_CELL_SIZE = 30 // Cell width/height in pixels
+    val CELL_SIZE = 70 // Cell width/height in pixels
 
     val MATRIX_WIDTH: Int = MATRIX_CELL_SIZE * dimSudoku // 60 x 9 = 540
     val MATRIX_HEIGHT: Int = MATRIX_CELL_SIZE * dimSudoku
@@ -107,7 +107,7 @@ object Sudoku {
 
       // CANVAS_WIDTH/3 = 180
 
-      val spanelImplements = SPanelImplements(new Dimension(MATRIX_WIDTH/4, MATRIX_HEIGHT/4))
+      val spanelImplements = SPanelImplements(new Dimension(MATRIX_WIDTH/2, MATRIX_HEIGHT/2))
 
       cp.add(spanelImplements, BorderLayout.WEST)
 
