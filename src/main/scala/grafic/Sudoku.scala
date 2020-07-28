@@ -3,7 +3,7 @@ package grafic
 import java.awt.event.ActionListener
 import java.awt.{Dimension, _}
 
-import javax.swing.{JFrame, JTextField}
+import javax.swing.{JFrame, JPanel, JTextField}
 import utility.{dimSudoku, puzzle, tfCells}
 
 import scala.swing.event.Event
@@ -16,9 +16,13 @@ object Sudoku {
   trait SudokuTrait extends JFrame {
     val SUBGRID_SIZE = 3 // Size of the sub-grid
 
+    val MATRIX_CELL_SIZE = 40 // Cell width/height in pixels
     val CELL_SIZE = 60 // Cell width/height in pixels
 
-    val CANVAS_WIDTH: Int = CELL_SIZE * dimSudoku
+    val MATRIX_WIDTH: Int = MATRIX_CELL_SIZE * dimSudoku // 60 x 9 = 540
+    val MATRIX_HEIGHT: Int = MATRIX_CELL_SIZE * dimSudoku
+
+    val CANVAS_WIDTH: Int = CELL_SIZE * dimSudoku // 70 x 9 = 630
     val CANVAS_HEIGHT: Int = CELL_SIZE * dimSudoku
 
     val OPEN_CELL_BGCOLOR: Color = Color.YELLOW
@@ -50,12 +54,16 @@ object Sudoku {
       f.setLocation(0, 0) //start top left
 
       f.setLayout(new BorderLayout) //north south east west and centre*/
-val cp=this.getContentPane
 
-      cp.setLayout(new GridLayout(dimSudoku, dimSudoku)) // 9x9 GridLayout
-    //  f.add(cp)
+      this.setLocation(300, 50) //center
 
+      val cp = this.getContentPane
+      val matrixGame = new JPanel()
 
+      matrixGame.setPreferredSize(new Dimension(MATRIX_WIDTH, MATRIX_HEIGHT))
+      matrixGame.setLayout(new GridLayout(dimSudoku, dimSudoku))
+
+      cp.add(matrixGame)
 
       // Construct 9x9 JTextFields and add to the content-pane
       for (row <- 0 until dimSudoku) {
@@ -72,7 +80,10 @@ val cp=this.getContentPane
       "WARNING.",
       "Warning",
       JOptionPane.WARNING_MESSAGE);*/
-          cp.add(tfCells(row)(col)) // ContentPane adds JTextField
+
+          // prima era cp
+
+          matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextField
 
           puzzle(row)(col) match {
             case 0 =>
@@ -94,6 +105,12 @@ val cp=this.getContentPane
         }
       }
 
+      // CANVAS_WIDTH/3 = 180
+
+      val spanelImplements = SPanelImplements(new Dimension(MATRIX_WIDTH/4, MATRIX_HEIGHT/4))
+
+      cp.add(spanelImplements, BorderLayout.WEST)
+
       cp.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT))
       pack()
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) // Handle window closing // Handle window closing
@@ -102,15 +119,14 @@ val cp=this.getContentPane
 
       //import grafic.SPanel
 
-     // cp.add(new SPanel(new Dimension(0, CANVAS_HEIGHT)), BorderLayout.WEST) //set the borders
-
+     //cp.add(new SPanel(new Dimension(0, CANVAS_HEIGHT)), BorderLayout.WEST) //set the borders
 
       setTitle("Sudoku")
       setVisible(true)
 
 
       //set the borders
-    val dp=new SPanel()
+
     /*  //val dp: Nothing = new Nothing
        //set the background of the sudoku display black
       cp.add(dp.CS)
