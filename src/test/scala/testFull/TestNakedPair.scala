@@ -1,7 +1,6 @@
 package testFull
 
 import org.scalatest.FunSuite
-import resolutionAlgorithm.FullExploration.solve
 import sudoku.SudokuLoad.loadPuzzle
 import sudoku.MatListOperation.initList
 import utility.getPuzzle

@@ -1,11 +1,9 @@
 package sudoku
 
-import resolutionAlgorithm.FullExploration.solve
-
 import SudokuLoad.loadPuzzle
 import MatListOperation.initList
-
-import utility.{puzzle, display, displayList}
+import resolutionAlgorithm.FullExploration
+import utility.{display, displayList, getPuzzle, puzzle}
 
 object Game extends App {
   val nameFile = "input/sudoku05.txt"
@@ -18,6 +16,7 @@ object Game extends App {
   displayList(0, 0)
 
   display("Soluzione strategy list", puzzle)
-  solve(0, 0)
-  display("Soluzione", puzzle)
+  val solver = FullExploration(getPuzzle)
+  solver.solve(0, 0)
+  display("Soluzione", solver.returnPuzzle())
 }

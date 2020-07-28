@@ -1,7 +1,7 @@
 package testFull
 
 import org.scalatest.FunSuite
-import resolutionAlgorithm.FullExploration.solve
+import resolutionAlgorithm.FullExploration
 import sudoku.SudokuLoad.loadPuzzle
 import utility.{dimSudoku, getPuzzle}
 
@@ -21,13 +21,12 @@ class testFull extends FunSuite {
     val nameSolved = "outputSolved/sudoku11.txt"
 
     loadPuzzle(nameFile)
-    solve(0, 0)
-    val solvedFull = getPuzzle
+    val solver = FullExploration(getPuzzle)
+    solver.solve(0, 0)
 
     loadPuzzle(nameSolved)
-    val solved = getPuzzle
 
-    assert(confrontPuzzle(solvedFull, solved))
+    assert(confrontPuzzle(solver.returnPuzzle(), getPuzzle))
   }
 
   test("TestSudoku11-02") {
@@ -35,12 +34,11 @@ class testFull extends FunSuite {
     val nameSolved = "outputSolved/sudoku11.txt"
 
     loadPuzzle(nameFile)
-    solve(0, 0)
-    val solvedFull = getPuzzle
+    val solver = FullExploration(getPuzzle)
+    solver.solve(0, 0)
 
     loadPuzzle(nameSolved)
-    val solved = getPuzzle
 
-    assert(!confrontPuzzle(solvedFull, solved))
+    assert(!confrontPuzzle(solver.returnPuzzle(), getPuzzle))
   }
 }
