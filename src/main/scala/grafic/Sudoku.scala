@@ -1,11 +1,10 @@
 package grafic
 
-import java.awt.event.{ActionEvent, ActionListener}
+import java.awt.event.ActionListener
 import java.awt.{Color, Dimension, Font, GridLayout}
 
-import grafic.EventMouse.EventMouseTrait
-import javax.swing.{JFrame, JOptionPane, JTextField}
-import utility.{dimSudoku, matList, puzzle, tfCells}
+import javax.swing.{JFrame, JTextField}
+import utility.{dimSudoku, puzzle, tfCells}
 
 import scala.swing.event.Event
 
@@ -55,7 +54,6 @@ object Sudoku {
       "Warning",
       JOptionPane.WARNING_MESSAGE);*/
           cp.add(tfCells(row)(col)) // ContentPane adds JTextField
-          val puzzleVal = puzzle(row)(col)
 
           puzzle(row)(col) match {
             case 0 =>
