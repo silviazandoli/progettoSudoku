@@ -13,7 +13,6 @@ object NakedPairs {
       val posRows = findCoupleInRow(rowCol) //ha una coppia di posizioni
       val first = posRows._1 //primo elemento di posRows
       val second = posRows._2 //secondo elemento di posRows
-
       if (first != -1) {
         updateRowList(rowCol, first, second, coupleFound)
       }
@@ -35,8 +34,6 @@ object NakedPairs {
     var second = (-1, -1)
     val r2 = (row / 3) * 3
     val c2 = (col / 3) * 3
-    println("la riga è: "+ r2+" colonna "+ c2)
-    //var row = row1
     (1 to 8).foreach(i => {
       (2 to 9).foreach(j => {
         for {
@@ -55,10 +52,6 @@ object NakedPairs {
         }
       })
     })
-    /*found match {
-      case 2 => (fist, second) //restituisce le posizioni
-      case _ => (-1, -1)
-    }*/
     //first e second hanno le posizioni, couplefound ha i numeri
     if (first != -1) {
       updateBlockList(first, second, coupleFound)
@@ -76,19 +69,22 @@ object NakedPairs {
           k <- 0 until dimSudoku
           if matList(row)(k) != Nil && matList(row)(k).size == 2 && i != j && matList(row)(k).contains(i) && matList(row)(k).contains(j)
         } {
+          println(matList(row)(k) + "found +1 "+ row + k)
           found = found + 1
 
           if (found == 1) {
             first = k // prima volta entra se trova una coppia e assegna quella k a first
             coupleFound = (i, j) //contiene i due numeri che sono uguali
           }
-          if (found == 2) second = k // seconda coppia, assegna second
-          println(coupleFound)
+          if (found == 2) {
+            second = k // seconda coppia, assegna second
+          }
         }
       })
     })
+    println(found)
     found match {
-      case 2 => (first, second) //restituisce le posizioni
+      case 2 || 4 => (first, second) //restituisce le posizioni
       case _ => (-1, -1)
     }
   }
@@ -115,7 +111,7 @@ object NakedPairs {
       })
     })
     found match {
-      case 2 => (first, second)
+      case 2 || 4 => (first, second)
       case _ => (-1, -1)
     }
   }
