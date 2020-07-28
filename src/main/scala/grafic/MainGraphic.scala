@@ -24,6 +24,7 @@ object MainGraphic extends App {
 
     val sudoku = Sudoku(sudokuSolver.returnPuzzle())
     sudoku.create()
+
   }
   /*JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 
