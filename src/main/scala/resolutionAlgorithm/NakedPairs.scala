@@ -7,24 +7,27 @@ object NakedPairs {
 
   var coupleFound: (Int, Int) = (-1, -1)
 
-  def findCouple(rowCol: Int, flag: Boolean): Unit =  if (flag) {
-    val posRows = findCoupleInRow(rowCol) //ha una coppia di posizioni
-    val first = posRows._1 //primo elemento di posRows
-    val second = posRows._2 //secondo elemento di posRows
 
-    if (first != -1) {updateRowList(rowCol, first, second, coupleFound)}
 
-  } else {
-    val posCol = findCoupleInColum(rowCol)
-    val first = posCol._1
-    val second = posCol._2
+  def findCouple(rowCol: Int, flag: Boolean): Unit = {
+    if (flag) {
+      val posRows = findCoupleInRow(rowCol) //ha una coppia di posizioni
+      val first = posRows._1 //primo elemento di posRows
+      val second = posRows._2 //secondo elemento di posRows
 
-    if (first != -1) {updateColList(rowCol,first, second, coupleFound)}
+      if (first != -1) {updateRowList(rowCol, first, second, coupleFound)}
+
+    } else {
+      val posCol = findCoupleInColum(rowCol)
+      val first = posCol._1
+      val second = posCol._2
+
+      if (first != -1) {updateColList(rowCol,first, second, coupleFound)}
   }
 
-  def findCoupleSubSquare(row1: Int, row2: Int) = {
+  def findCoupleSubSquare(row1: Int, row2: Int):Unit = {
     var found = 0
-    var fist = -1
+    var first = -1
     var second = -1
     var row = row1
     (1 to 8).foreach(i => {
@@ -37,22 +40,24 @@ object NakedPairs {
 
           if (found == 1) {
             row = row2
-            fist = k // prima volta entra se trova una coppia e assegna quella k a first
+            first = k // prima volta entra se trova una coppia e assegna quella k a first
             coupleFound = (i, j) //contiene i due numeri che sono uguali
           }
           if (found == 2) second = k // seconda coppia, assegna second
         }
       })
     })
-    found match {
+    /*found match {
       case 2 => (fist, second) //restituisce le posizioni
       case _ => (-1, -1)
-    }
+    }*/
+    if (first != -1){updateBlockList(row1,row2, first, second, coupleFound)}
+
   }
 
-  def findCoupleInRow(row: Int): (Int, Int) = {
+  def findCoupleInRow(row: Int): (Int,Int)= {
     var found = 0
-    var fist = -1
+    var first = -1
     var second = -1
     (1 to 8).foreach(i => {
       (2 to 9).foreach(j => {
@@ -63,22 +68,23 @@ object NakedPairs {
           found = found + 1
 
           if (found == 1) {
-            fist = k             // prima volta entra se trova una coppia e assegna quella k a first
+            first = k             // prima volta entra se trova una coppia e assegna quella k a first
             coupleFound = (i, j) //contiene i due numeri che sono uguali
           }
           if (found == 2) second = k // seconda coppia, assegna second
+          println(coupleFound)
         }
       })
     })
     found match {
-      case 2 => (fist, second) //restituisce le posizioni
+      case 2 => (first, second) //restituisce le posizioni
       case _ => (-1, -1)
     }
   }
 
   def findCoupleInColum(col: Int): (Int, Int) = {
     var found = 0
-    var fist = -1
+    var first = -1
     var second = -1
 
     (1 to 8).foreach(i => {
@@ -90,7 +96,7 @@ object NakedPairs {
           found = found + 1
 
           if (found == 1) {
-            fist = k
+            first = k
             coupleFound = (i, j)
           }
           if (found == 2) second = k
@@ -98,7 +104,7 @@ object NakedPairs {
       })
     })
     found match {
-      case 2 => (fist, second)
+      case 2 => (first, second)
       case _ => (-1, -1)
     }
   }
@@ -147,4 +153,22 @@ object NakedPairs {
       if (i != row1 && i!= row2 && matList(i)(col) != null) matList(i)(col) = matList(i)(col).filter(e => e != elem)
     }
   }
+    def updateBlockList(col: Int, first: Int, second: Int, coupleFound: (Int, Int)): Unit = {
+
+      val n1 = coupleFound._1
+      val n2 = coupleFound._2
+      val r = (row / 3) * 3
+      val c = (col / 3) * 3
+
+    /*
+    aggiornamento sotto - quadrato
+     */
+    for {
+      i <- r until r + 3
+      j <- c until c + 3
+      if i != row && j != col
+      if matList(i)(j) != Nil
+    } yield {
+      matList(i)(j) = matList(i)(j).filter(e => e != elem)
+    }
 }
