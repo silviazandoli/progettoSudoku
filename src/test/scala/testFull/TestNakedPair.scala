@@ -11,7 +11,7 @@ import utility._
 
 
 class TestNakedPair extends FunSuite {
-  test("Sudoku test per matlist") {
+  test("Sudoku test per matlist Row") {
 
     val nameFile = "input/sudokuText.txt"
     loadPuzzle(nameFile)
@@ -43,10 +43,10 @@ class TestNakedPair extends FunSuite {
 
     display(puzzle)
     initList()
-    /*for (i <- 0 to 8) {
+    for (i <- 0 to 8) {
       println("MatList riga " + i + " colonna" + 0 + " è " + matList(i)(2).toString)
     }
-    val initMat = utility.matList(0)(8)*/
+    val initMat = utility.matList(0)(2)
     val sudokuInput = getPuzzle
     findCoupleSubSquare(0,2)
     val sudokuSolved = getPuzzle
@@ -54,12 +54,12 @@ class TestNakedPair extends FunSuite {
     assert(sudokuInput(0)(4) == sudokuSolved(0)(4))
     assert(sudokuInput(5)(2) == sudokuSolved(5)(2))
 
-    /*for (i <- 0 to 8) {
+    for (i <- 0 to 8) {
       println("MatList DOPO riga " + i + " colonna" + 0 + " è " + matList(i)(2).toString)
     }
-    val finishMat = utility.matList(0)(8)*/
+    val finishMat = utility.matList(0)(2)
 
-    /*println("matList iniziale " + initMat)
+    println("matList iniziale " + initMat)
     println("matList finale "+ finishMat)
     assert(initMat != finishMat)*/
   }
