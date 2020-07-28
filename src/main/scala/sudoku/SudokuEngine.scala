@@ -2,6 +2,7 @@ package sudoku
 
 import resolutionAlgorithm.{FullExploration, HiddenSingles}
 import resolutionAlgorithm.HiddenPair.solveHiddenPair
+import resolutionAlgorithm.NakedPairs.solveNakedPair
 import strategies.{Strategy, StrategyImpl}
 import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
 import sudoku.SudokuLoad.loadPuzzle
@@ -46,10 +47,12 @@ object SudokuEngine extends App {
     /*strategy 4 done by Zandoli*/
     val strat4=new StrategyImpl {override def resolutionMethod():Unit= solveHiddenPair()}
 
+    val strat5 = new StrategyImpl {override def resolutionMethod():Unit= solveNakedPair()}
+
     /**
      * motore fatto da Lorenzo Pacini
      */
-    val strategies = List[Strategy](strat1, strat2, strat3,strat4)
+    val strategies = List[Strategy](strat1, strat2, strat3,strat4,strat5)
     strategies.foreach(el => if (!puzzleSolved()) el.strategy())
 
     timeStamp.calculateDiff(System.currentTimeMillis())
