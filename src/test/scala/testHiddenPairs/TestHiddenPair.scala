@@ -1,6 +1,7 @@
 package testHiddenPairs
 
 import org.scalatest.FunSuite
+import resolutionAlgorithm.FullExploration
 import resolutionAlgorithm.HiddenPair.solveHiddenPair
 import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
@@ -32,7 +33,6 @@ class TestHiddenPair extends FunSuite {
     }
   }
 
-  /* temp
 
   test("Sudoku01") {
     val nameFile = "input/sudoku01.txt"
@@ -42,11 +42,12 @@ class TestHiddenPair extends FunSuite {
     solveHiddenPair()
     val sudokuInput = getPuzzle
 
-    solve(0, 0)
-    val sudokuSolved = getPuzzle
+    val solver = FullExploration(getPuzzle)
+    solver.solve(0, 0)
 
-    assert(sudokuInput(2)(2) == sudokuSolved(2)(2))
-    assert(sudokuInput(5)(2) == sudokuSolved(5)(2))
+
+    assert(sudokuInput(2)(2) == solver.returnPuzzle()(2)(2))
+    assert(sudokuInput(5)(2) == solver.returnPuzzle()(5)(2))
 
   }
   test("Sudoku05") {
@@ -54,16 +55,16 @@ class TestHiddenPair extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
-    solve(0, 0)
-    val sudokuSolvedwithout = getPuzzle
+    val solverWithout = FullExploration(getPuzzle)
+    solverWithout.solve(0, 0)
 
     loadPuzzle(nameFile)
     initList()
     solveHiddenPair()
-    solve(0, 0)
-    val sudokuSolvedWith = getPuzzle
-    assert(sudokuSolvedwithout(2)(2) == sudokuSolvedWith(2)(2))
-    assert(sudokuSolvedWith(5)(2) == sudokuSolvedWith(5)(2))
+    val solverWith = FullExploration(getPuzzle)
+    solverWith.solve(0, 0)
+    assert(solverWithout.returnPuzzle()(2)(2) == solverWith.returnPuzzle()(2)(2))
+    assert(solverWithout.returnPuzzle()(5)(2) == solverWith.returnPuzzle()(5)(2))
   }
 
   test("Sudoku06") {
@@ -71,16 +72,16 @@ class TestHiddenPair extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
-    solve(0, 0)
-    val sudokuSolvedwithout = getPuzzle
+    val solverWithout = FullExploration(getPuzzle)
+    solverWithout.solve(0, 0)
 
     loadPuzzle(nameFile)
     initList()
     solveHiddenPair()
-    solve(0, 0)
-    val sudokuSolvedWith = getPuzzle
-    assert(sudokuSolvedwithout(2)(2) == sudokuSolvedWith(2)(2))
-    assert(sudokuSolvedWith(5)(2) == sudokuSolvedWith(5)(2))
+    val solverWith = FullExploration(getPuzzle)
+    solverWith.solve(0, 0)
+    assert(solverWithout.returnPuzzle()(2)(2) == solverWith.returnPuzzle()(2)(2))
+    assert(solverWithout.returnPuzzle()(5)(2) == solverWith.returnPuzzle()(5)(2))
   }
 
   test("Sudoku11") {
@@ -88,16 +89,16 @@ class TestHiddenPair extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
-    solve(0, 0)
-    val sudokuSolvedwithout = getPuzzle
+    val solverWithout = FullExploration(getPuzzle)
+    solverWithout.solve(0, 0)
 
     loadPuzzle(nameFile)
     initList()
     solveHiddenPair()
-    solve(0, 0)
-    val sudokuSolvedWith = getPuzzle
-    assert(sudokuSolvedwithout(2)(2) == sudokuSolvedWith(2)(2))
-    assert(sudokuSolvedWith(5)(2) == sudokuSolvedWith(5)(2))
+    val solverWith = FullExploration(getPuzzle)
+    solverWith.solve(0, 0)
+    assert(solverWithout.returnPuzzle()(2)(2) == solverWith.returnPuzzle()(2)(2))
+    assert(solverWithout.returnPuzzle()(5)(2) == solverWith.returnPuzzle()(5)(2))
   }
 
   test("Sudoku22") {
@@ -105,16 +106,16 @@ class TestHiddenPair extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
-    solve(0, 0)
-    val sudokuSolvedwithout = getPuzzle
+    val solverWithout = FullExploration(getPuzzle)
+    solverWithout.solve(0, 0)
 
     loadPuzzle(nameFile)
     initList()
     solveHiddenPair()
-    solve(0, 0)
-    val sudokuSolvedWith = getPuzzle
-    assert(sudokuSolvedwithout(2)(2) == sudokuSolvedWith(2)(2))
-    assert(sudokuSolvedWith(5)(2) == sudokuSolvedWith(5)(2))
+    val solverWith = FullExploration(getPuzzle)
+    solverWith.solve(0, 0)
+    assert(solverWithout.returnPuzzle()(2)(2) == solverWith.returnPuzzle()(2)(2))
+    assert(solverWithout.returnPuzzle()(5)(2) == solverWith.returnPuzzle()(5)(2))
   }
 
   test("Sudoku04") {
@@ -122,33 +123,32 @@ class TestHiddenPair extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
-    solve(0, 0)
-    val sudokuSolvedwithout = getPuzzle
+    val solverWithout = FullExploration(getPuzzle)
+    solverWithout.solve(0, 0)
 
     loadPuzzle(nameFile)
     initList()
     solveHiddenPair()
-    solve(0, 0)
-    val sudokuSolvedWith = getPuzzle
-    assert(sudokuSolvedwithout(1)(2) == sudokuSolvedWith(1)(2))
-    assert(sudokuSolvedWith(5)(3) == sudokuSolvedWith(5)(3))
+    val solverWith = FullExploration(getPuzzle)
+    solverWith.solve(0, 0)
+    assert(solverWithout.returnPuzzle()(2)(2) == solverWith.returnPuzzle()(2)(2))
+    assert(solverWithout.returnPuzzle()(5)(2) == solverWith.returnPuzzle()(5)(2))
   }
 
   test("Sudoku03") {
     val nameFile = "input/sudoku03.txt"
-
     loadPuzzle(nameFile)
     initList()
-    solve(0, 0)
-    val sudokuSolvedwithout = getPuzzle
+    val solverWithout = FullExploration(getPuzzle)
+    solverWithout.solve(0, 0)
 
     loadPuzzle(nameFile)
     initList()
     solveHiddenPair()
-    solve(0, 0)
-    val sudokuSolvedWith = getPuzzle
-    assert(sudokuSolvedwithout(1)(2) == sudokuSolvedWith(1)(2))
-    assert(sudokuSolvedWith(5)(3) == sudokuSolvedWith(5)(3))
+    val solverWith = FullExploration(getPuzzle)
+    solverWith.solve(0, 0)
+    assert(solverWithout.returnPuzzle()(2)(2) == solverWith.returnPuzzle()(2)(2))
+    assert(solverWithout.returnPuzzle()(5)(2) == solverWith.returnPuzzle()(5)(2))
   }
 
   test("Sudoku23") {
@@ -156,22 +156,21 @@ class TestHiddenPair extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
-    solve(0, 0)
-    val sudokuSolvedwithout = getPuzzle
+    val solverWithout = FullExploration(getPuzzle)
+    solverWithout.solve(0, 0)
 
     loadPuzzle(nameFile)
     initList()
     solveHiddenPair()
-    solve(0, 0)
-    val sudokuSolvedWith = getPuzzle
-    assert(sudokuSolvedwithout(1)(2) == sudokuSolvedWith(1)(2))
-    assert(sudokuSolvedWith(5)(3) == sudokuSolvedWith(5)(3))
+    val solverWith = FullExploration(getPuzzle)
+    solverWith.solve(0, 0)
+    assert(solverWithout.returnPuzzle()(2)(2) == solverWith.returnPuzzle()(2)(2))
+    assert(solverWithout.returnPuzzle()(5)(2) == solverWith.returnPuzzle()(5)(2))
   }
-   */
+
+
 
 }
-
-
 
 
 
