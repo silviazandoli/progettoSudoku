@@ -13,8 +13,11 @@ trait SPanel extends JPanel//construct the sudoku display panel
 {
   val pb = new JPanel(); //create the button panel
   val FL = new FlowLayout()
-  val SS = new JButton("show list")
-  val GBS = new JButton(" Undo ")
+  //it shows the lists for every square
+  val SS = new JButton("show lists")
+  //you have the possibility to write the number in the square
+  val CS = new JButton(" Undo")
+  val GBS = new JButton(" Only numbers ")
 
   val ES = new JButton(" Easy ")
   val MS = new JButton(" Medium ")
@@ -31,7 +34,7 @@ trait SPanel extends JPanel//construct the sudoku display panel
 
   pb.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight)); // dim
   pb.setBackground(WS)
-  val CS = new JButton(" Custom Sudoku")
+
   FL.setVgap(55)
   FL.setHgap(100); //set the flow layout to give  symmetric display
   pb.setLayout(FL)
@@ -41,7 +44,8 @@ trait SPanel extends JPanel//construct the sudoku display panel
  SS.setForeground(Color.BLUE)
   SS.setBackground(Color.CYAN)
   SS.addActionListener(l => {
-    println("Hello!!")
+   // println("Hello!!")
+  // val combo=new J
   })
 
   pb.add(SS)

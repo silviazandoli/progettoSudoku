@@ -1,10 +1,10 @@
 package grafic
 
-import java.awt.event.ActionListener
+import java.awt.event.{ActionListener, MouseAdapter, MouseEvent}
 import java.awt.{Dimension, _}
 
 import javax.swing.{JFrame, JPanel, JTextField}
-import utility.{dimSudoku, puzzle, tfCells}
+import utility.{dimSudoku, matList, puzzle, tfCells}
 
 import scala.swing.event.Event
 
@@ -44,16 +44,16 @@ object Sudoku {
 
     def create(): Unit = {
 
-     /* val f = new JFrame("Sudoku v3.0")
+      /* val f = new JFrame("Sudoku v3.0")
 
-      f.setResizable(false) //not to be resized
+       f.setResizable(false) //not to be resized
 
 
-      f.setSize(WindowWidth, WindowHeight) //size fixed by size of display and borders
+       f.setSize(WindowWidth, WindowHeight) //size fixed by size of display and borders
 
-      f.setLocation(0, 0) //start top left
+       f.setLocation(0, 0) //start top left
 
-      f.setLayout(new BorderLayout) //north south east west and centre*/
+       f.setLayout(new BorderLayout) //north south east west and centre*/
 
       this.setLocation(300, 50) //center
 
@@ -76,12 +76,23 @@ object Sudoku {
 
           val event: ActionListener = EventMouse(row, col, cp, puzzleResolt)
           tfCells(row)(col).addActionListener(event)
-          /*JOptionPane.showMessageDialog(yourFrame,
-      "WARNING.",
-      "Warning",
-      JOptionPane.WARNING_MESSAGE);*/
 
+          //possibilità di cliccare su ogni casella
+          tfCells(row)(col).addMouseListener(new MouseAdapter() //we listen for mouse clicks on this panel
+          {
+            //aggiunto evento per cliccare su ogni casella
+            override def mousePressed(e: MouseEvent) = {
+              selectNumber(e.getX(), e.getY()); //the called method on mouse click
+
+              println("MatList riga " + row + " colonna " + col + " è " + matList(row)(col))
+
+            } //end of mouse select
+          }); //end of mouse listener
           // prima era cp
+          def selectNumber(row: Int, col: Int): Unit = {
+
+
+          }
 
           matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextField
 
@@ -107,7 +118,7 @@ object Sudoku {
 
       // CANVAS_WIDTH/3 = 180
 
-      val spanelImplements = SPanelImplements(new Dimension(MATRIX_WIDTH/2, MATRIX_HEIGHT/2))
+      val spanelImplements = SPanelImplements(new Dimension(MATRIX_WIDTH / 2, MATRIX_HEIGHT / 2))
 
       cp.add(spanelImplements, BorderLayout.WEST)
 
@@ -119,7 +130,7 @@ object Sudoku {
 
       //import grafic.SPanel
 
-     //cp.add(new SPanel(new Dimension(0, CANVAS_HEIGHT)), BorderLayout.WEST) //set the borders
+      //cp.add(new SPanel(new Dimension(0, CANVAS_HEIGHT)), BorderLayout.WEST) //set the borders
 
       setTitle("Sudoku")
       setVisible(true)
@@ -127,11 +138,11 @@ object Sudoku {
 
       //set the borders
 
-    /*  //val dp: Nothing = new Nothing
-       //set the background of the sudoku display black
-      cp.add(dp.CS)
+      /*  //val dp: Nothing = new Nothing
+         //set the background of the sudoku display black
+        cp.add(dp.CS)
 
-      f.add(dp.CS, BorderLayout.WEST) //add the sudoku display panel*/
+        f.add(dp.CS, BorderLayout.WEST) //add the sudoku display panel*/
 
 
     }

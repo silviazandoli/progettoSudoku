@@ -9,7 +9,7 @@ import utility.{matList, tfCells}
 object EventMouse {
   def apply(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]): EventMouseImplement = EventMouseImplement(row, col, cp, puzzleResolt)
 
-  trait EventMouseTrait extends ActionListener{
+  trait EventMouseTrait extends ActionListener {
     val row: Int
     val col: Int
     val container: Container
@@ -53,9 +53,12 @@ object EventMouse {
           JOptionPane.showMessageDialog(container, "It wasn't inserted a number!", "Messaggio", JOptionPane.WARNING_MESSAGE)
       }
     }
+
+
   }
 
   case class EventMouseImplement(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]) extends EventMouseTrait {
     override val container: Container = cp
   }
+
 }
