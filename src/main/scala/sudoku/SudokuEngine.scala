@@ -1,6 +1,6 @@
 package sudoku
 
-import resolutionAlgorithm.FullExploration.solve
+import resolutionAlgorithm.FullExploration
 import resolutionAlgorithm.HiddenSingles.totalHiddenSingles
 import resolutionAlgorithm.HiddenPair.solveHiddenPair
 import strategies.{Strategy, StrategyImpl}
@@ -41,7 +41,9 @@ object SudokuEngine extends App {
      */
     val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
 
-    val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = solve(0, 0)}
+    val solver = FullExploration(puzzle)
+
+    val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = solver.solve(0, 0)}
 
     /*strategy 4 done by Zandoli*/
     val strat4=new StrategyImpl {override def resolutionMethod():Unit= solveHiddenPair()}

@@ -1,7 +1,6 @@
 package testHiddenPairs
 
 import org.scalatest.FunSuite
-import resolutionAlgorithm.FullExploration.solve
 import resolutionAlgorithm.HiddenPair.solveHiddenPair
 import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
@@ -32,6 +31,8 @@ class TestHiddenPair extends FunSuite {
         println("MatList DOPO riga " + i + " colonna" + j + " è " + matList(i)(j).toString)
     }
   }
+
+  /* temp
 
   test("Sudoku01") {
     val nameFile = "input/sudoku01.txt"
@@ -166,10 +167,7 @@ class TestHiddenPair extends FunSuite {
     assert(sudokuSolvedwithout(1)(2) == sudokuSolvedWith(1)(2))
     assert(sudokuSolvedWith(5)(3) == sudokuSolvedWith(5)(3))
   }
-
-  /*test("My creation of MatList") {
-
-  }*/
+   */
 
 }
 
