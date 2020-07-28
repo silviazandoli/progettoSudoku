@@ -2,7 +2,7 @@ package testFull
 
 import org.scalatest.FunSuite
 import resolutionAlgorithm.FullExploration
-import resolutionAlgorithm.HiddenSingles.{hiddenSingles, totalHiddenSingles}
+import resolutionAlgorithm.HiddenSingles
 import sudoku.SudokuLoad.loadPuzzle
 import sudoku.MatListOperation.initList
 import utility.getPuzzle
@@ -104,7 +104,7 @@ class TestNakedPair extends FunSuite {
     findCouple(7,true)
     findCoupleSubSquare(0,0)
     findCouple(7,false)
-    hiddenSingles(7, 0)
+    HiddenSingles().hiddenSingles(7, 0)
     val sudokuInput = getPuzzle
 
     val solver = FullExploration(getPuzzle)
