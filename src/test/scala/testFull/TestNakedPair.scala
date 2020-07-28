@@ -110,8 +110,23 @@ class TestNakedPair extends FunSuite {
     val solver = FullExploration(getPuzzle)
     solver.solve(0, 0)
 
+    assert(sudokuInput()(0) == solver.returnPuzzle()(7)(0))
+  }
+  test("Sudoku06") {
+    val nameFile = "input/sudoku06.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    solveNakedPair()
+    totalHiddenSingles()
+    val sudokuInput = getPuzzle
+
+    val solver = FullExploration(getPuzzle)
+    solver.solve(0, 0)
+
     assert(sudokuInput(7)(0) == solver.returnPuzzle()(7)(0))
   }
+
   test("Sudoku05") {
     val nameFile = "input/sudoku01.txt"
 

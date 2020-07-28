@@ -7,6 +7,21 @@ object NakedPairs {
 
   var coupleFound: (Int, Int) = (-1, -1)
 
+  def solveNakedPair():Unit = {
+    for{
+      i<-0 until dimSudoku
+    } {
+      findCouple(i, true)
+      findCouple(i, false)
+    }
+    for {
+      i <- 0 until dimSudoku
+      j <-0 until dimSudoku
+    }{
+      findCoupleSubSquare(i, j)
+    }
+
+  }
 
   def findCouple(rowCol: Int, flag: Boolean): Unit = {
     if (flag) {
