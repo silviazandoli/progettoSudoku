@@ -3,19 +3,12 @@ package testFull
 import org.scalatest.FunSuite
 import resolutionAlgorithm.FullExploration
 import sudoku.SudokuLoad.loadPuzzle
-import utility.{dimSudoku, getPuzzle}
+import utility.{getPuzzle, confrontPuzzle}
 
+/**
+ * Fatto da Pacini
+ */
 class testFull extends FunSuite {
-
-  def confrontPuzzle(puzzle1: Array[Array[Int]], puzzle2: Array[Array[Int]]): Boolean = {
-    if (puzzle1.length != puzzle2.length) return false
-
-    for (i <- 0 until dimSudoku; j <- 0 until dimSudoku) {
-      if (puzzle1(i)(j) != puzzle2(i)(j)) return false
-    }
-    true
-  }
-
   test("TestSudoku11") {
     val nameFile = "input/sudoku11.txt"
     val nameSolved = "outputSolved/sudoku11.txt"

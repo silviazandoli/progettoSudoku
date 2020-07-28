@@ -1,7 +1,6 @@
 package sudoku
 
-import resolutionAlgorithm.FullExploration
-import resolutionAlgorithm.HiddenSingles.totalHiddenSingles
+import resolutionAlgorithm.{FullExploration, HiddenSingles}
 import resolutionAlgorithm.HiddenPair.solveHiddenPair
 import strategies.{Strategy, StrategyImpl}
 import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
@@ -17,12 +16,12 @@ object SudokuEngine extends App {
    */
   def strategyList(): Unit = {
     /**
-     * case class timestamp fatta da Pacini
+     * case class timestamp fatta da Lorenzo Pacini
      */
     val timeStamp = TimeStampImpl(System.currentTimeMillis())
 
     /**
-     * strategia1 fatta da Antonelli
+     * strategia1 fatta da Lorenzo Pacini
      */
     val strat1 = new StrategyImpl {
       override def resolutionMethod(): Unit = {
@@ -37,18 +36,18 @@ object SudokuEngine extends App {
     }
 
     /**
-     * strategy 2/3 done by Pacini
+     * strategie 2/3 fatte da Lorenzo Pacini
      */
-    val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
 
-    val solver = FullExploration(puzzle)
+    val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = HiddenSingles().totalHiddenSingles()}
 
-    val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = solver.solve(0, 0)}
+    val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = FullExploration(puzzle).solve(0, 0)}
 
     /*strategy 4 done by Zandoli*/
     val strat4=new StrategyImpl {override def resolutionMethod():Unit= solveHiddenPair()}
+
     /**
-     * motore pensato da Pacini e Antonelli
+     * motore fatto da Lorenzo Pacini
      */
     val strategies = List[Strategy](strat1, strat2, strat3,strat4)
     strategies.foreach(el => if (!puzzleSolved()) el.strategy())

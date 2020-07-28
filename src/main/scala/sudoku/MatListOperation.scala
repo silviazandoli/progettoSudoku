@@ -4,6 +4,9 @@ import utility.{dimSudoku, matList, puzzle}
 
 object MatListOperation {
 
+  /**
+   * fatto da Lorenzo Pacini
+   */
   def initList(): Unit = {
     for {
       i<-0 until dimSudoku
@@ -19,6 +22,9 @@ object MatListOperation {
       }
     }
   }
+
+  // ==================== //
+
   /**
    *
  by Zandoli
@@ -40,18 +46,17 @@ object MatListOperation {
     (1 to dimSudoku).toSet.diff(unity).toList
   }
 
+  // ==================== //
+
   /**
-   *
-  by Pacini
+   * fatto da Lorenzo Pacini
    */
   def minList(): (Int, Int) = {
     var ijMin = (0, 0)
     var minLength = dimSudoku + 1
 
-    for {
-      i <- 0 until dimSudoku
-      j <- 0 until dimSudoku
-      if matList(i)(j) != Nil && matList(i)(j).length < minLength
+    for {i <- 0 until dimSudoku; j <- 0 until dimSudoku
+         if matList(i)(j) != Nil && matList(i)(j).length < minLength
     } yield {
       minLength = matList(i)(j).length
       ijMin = (i, j)
@@ -77,9 +82,7 @@ object MatListOperation {
     /*
     aggiornamento per riga e per colonna
      */
-    for {
-      i <- 0 until dimSudoku
-    } yield {
+    for { i <- 0 until dimSudoku } yield {
       if (i != col && matList(row)(i) != null) matList(row)(i) = matList(row)(i).filter(e => e != elem)
       if (i != row && matList(i)(col) != null) matList(i)(col) = matList(i)(col).filter(e => e != elem)
     }
@@ -87,16 +90,7 @@ object MatListOperation {
     val r = (row / 3) * 3
     val c = (col / 3) * 3
 
-    /*
-    aggiornamento sotto - quadrato
-     */
-    for {
-      i <- r until r + 3
-      j <- c until c + 3
-      if i != row && j != col
-      if matList(i)(j) != Nil
-    } yield {
-      matList(i)(j) = matList(i)(j).filter(e => e != elem)
-    }
+    for {i <- r until r + 3; j <- c until c + 3; if i != row && j != col && matList(i)(j) != Nil}
+      yield {matList(i)(j) = matList(i)(j).filter(e => e != elem)}
   }
 }

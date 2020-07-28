@@ -2,6 +2,9 @@ import javax.swing.JTextField
 
 import scala.annotation.tailrec
 
+/**
+ * Fatto da Lorenzo Pacini
+ **/
 package object utility {
 
   val dimSudoku = 9
@@ -21,12 +24,24 @@ package object utility {
     elemEmpty
   }
 
+  def contains[A](list: List[A], item: A): Boolean =
+    list.foldLeft(false)(_ || _==item)
+
+  def confrontPuzzle[T](puzzle1: Array[Array[T]], puzzle2: Array[Array[T]]): Boolean = {
+      if (puzzle1.length == puzzle2.length) {
+        for (i <- 0 until dimSudoku; j <- 0 until dimSudoku)
+          if (puzzle1(i)(j) != puzzle2(i)(j)) return false
+        return true
+      }
+    false
+  }
+
+  /*
+  si restituisce un nuovo oggetto, mai il riferimento
+   */
   def getPuzzle: Array[Array[Int]] = {
     val puzzleTemp: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-    for {
-      i <- 0 until dimSudoku
-      j <- 0 until dimSudoku
-    } yield {
+    for {i <- 0 until dimSudoku; j <- 0 until dimSudoku} yield {
       puzzleTemp(i)(j) = puzzle(i)(j)
     }
     puzzleTemp
@@ -39,10 +54,7 @@ package object utility {
   }
 
   def printMatrix(): Unit = {
-    for {
-      i <- 1 until dimSudoku
-      j <- 1 until dimSudoku
-    } yield computeOnList(print, matList(i)(j))
+    for (i <- 1 until dimSudoku; j <- 1 until dimSudoku) yield computeOnList(print, matList(i)(j))
   }
 
   def display(puzzleGame: Array[Array[Int]]): Unit = {
@@ -58,12 +70,10 @@ package object utility {
     }
 
     println(title)
-    for {
-      i <- 0 until dimSudoku
-    } yield {
+    (0 until dimSudoku).foreach(i => {
       computeOnList(print, closureSudokuLine(puzzleGame(i)).toList)
       println()
-    }
+    })
     println()
   }
 

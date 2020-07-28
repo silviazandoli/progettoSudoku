@@ -27,27 +27,26 @@ object FullExploration {
     /**
      * Pacini
      */
-    def next(row: Int, col: Int): Boolean = col match {
-      case 8 => solve(row + 1, 0)
-      case _ => solve(row, col + 1)
-    }
-
     def solve(row: Int, col: Int): Boolean = {
+      val next: (Int, Int) => Boolean = (row: Int, col: Int) => col match {
+        case 8 => solve(row + 1, 0)
+        case _ => solve(row, col + 1)
+      }
+
       if (puzzleGame.flatten.forall(_.!=(0))) return true
       puzzleGame(row)(col) match {
         case 0 =>
           (1 to dimSudoku).filter(i => validate((row, col), i))
             .foreach(elem => {
               puzzleGame(row)(col) = elem
-              if (next(row, col)) {
+              if (next(row,col)) {
                 return true
               } else {
                 puzzleGame(row)(col) = 0
               }
             })
-
           false
-        case _ => next(row, col)
+        case _ => next(row,col)
       }
     }
 
