@@ -1,8 +1,9 @@
 package grafic
 
-import java.awt.event.ActionEvent
+import java.awt.event.{ActionEvent, ActionListener}
 import java.awt.{Color, Dimension, Font, GridLayout}
 
+import grafic.EventMouse.EventMouseTrait
 import javax.swing.{JFrame, JOptionPane, JTextField}
 import utility.{dimSudoku, matList, puzzle, tfCells}
 
@@ -43,38 +44,9 @@ class Sudoku extends JFrame {
 
         //aggiunta controlli-> che sia inserito un carattere che sia un numero, che il numero inserito non sia corretto
         //(nel caso non appartenga alla matList), etc
-        tfCells(row)(col).addActionListener((e: ActionEvent) => {
-          val t: JTextField = e.getSource.asInstanceOf[JTextField]
-          try {
-            println(t.getText.toInt)
-            val number = t.getText.toInt
-            t.setBackground(Color.yellow)
-            val possibleValues = matList(row)(col).toSet
 
-            if (possibleValues.contains(number)) {
-              t.setForeground(Color.green)
-              JOptionPane.showMessageDialog(cp, "Good! The number is in MatList", "Message", JOptionPane.DEFAULT_OPTION)
-            } else {
-              t.setForeground(Color.red)
-
-            }
-
-            //it shows the list of possible values
-            //(ps: ho fatto che l'utente può vedere i numeri candidati per quella cella quando l'utente inserisce un numero errato in una
-            //determinata casella
-            if (!possibleValues.contains(number)) {
-              var message = "The number is not correct! Possible values: "
-              possibleValues.foreach(v => message = message + v + " ")
-              JOptionPane.showMessageDialog(cp, message, "Message", JOptionPane.WARNING_MESSAGE)
-
-            }
-          } catch {
-            case _: Throwable => t.setForeground(Color.red)
-
-              JOptionPane.showMessageDialog(cp, "It wasn't inserted a number!", "Messaggio", JOptionPane.WARNING_MESSAGE)
-          }
-
-        })
+        val event: ActionListener = EventMouse(row, col, cp)
+        tfCells(row)(col).addActionListener(event)
         /*JOptionPane.showMessageDialog(yourFrame,
     "WARNING.",
     "Warning",
