@@ -35,6 +35,7 @@ object NakedPairs {
     var second = (-1, -1)
     val r2 = (row / 3) * 3
     val c2 = (col / 3) * 3
+    println("la riga è: "+ r2+" colonna "+ c2)
     //var row = row1
     (1 to 8).foreach(i => {
       (2 to 9).foreach(j => {
@@ -119,13 +120,13 @@ object NakedPairs {
     }
   }
 
-  def updateRowList(row: Int, first: Int, second: Int, coupleFound: (Int, Int)) = {
+  def updateRowList(row: Int, first: Int, second: Int, coupleFound: (Int, Int)):Unit = {
     //first è la prima posizione di quel numero
     //second è la seconda k
     //coupleFound ??
     val n1 = coupleFound._1
     val n2 = coupleFound._2
-    for {k <- 0 until (dimSudoku)} {
+    for {k <- 0 until dimSudoku} {
       if (k != first && k != second) {
         removeElementRow((row, first, second), n1)
         removeElementRow((row, first, second), n2)
@@ -133,10 +134,10 @@ object NakedPairs {
     }
   }
 
-  def updateColList(col: Int, first: Int, second: Int, coupleFound: (Int, Int)) = {
+  def updateColList(col: Int, first: Int, second: Int, coupleFound: (Int, Int)):Unit = {
     val n1 = coupleFound._1
     val n2 = coupleFound._2
-    for {k <- 0 until (dimSudoku)} {
+    for {k <- 0 until dimSudoku} {
       if (k != first && k != second) {
         removeElementCol((first, second, col), n1)
         removeElementCol((first, second, col), n2)

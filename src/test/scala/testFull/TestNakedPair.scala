@@ -43,25 +43,27 @@ class TestNakedPair extends FunSuite {
 
     display(puzzle)
     initList()
-    for (i <- 0 to 8) {
-      println("MatList riga " + i + " colonna" + 0 + " è " + matList(i)(2).toString)
+    for (i <- 3 to 6) {
+      for(j <- 0 to 6)
+        println("MatList riga " + i + " colonna" + j + " è " + matList(i)(j).toString)
     }
-    val initMat = utility.matList(0)(2)
+    val initMat = utility.matList(4)(5)
     val sudokuInput = getPuzzle
-    findCoupleSubSquare(0,2)
+    findCoupleSubSquare(4,5)
     val sudokuSolved = getPuzzle
 
-    assert(sudokuInput(0)(4) == sudokuSolved(0)(4))
-    assert(sudokuInput(5)(2) == sudokuSolved(5)(2))
+    //assert(sudokuInput(0)(4) == sudokuSolved(0)(4))
+    //assert(sudokuInput(5)(2) == sudokuSolved(5)(2))
 
-    for (i <- 0 to 8) {
-      println("MatList DOPO riga " + i + " colonna" + 0 + " è " + matList(i)(2).toString)
+    for (i <- 3 to 6) {
+      for(j <- 3 to 6)
+        println("MatList DOPO riga " + i + " colonna" + j + " è " + matList(i)(j).toString)
     }
-    val finishMat = utility.matList(0)(2)
+    val finishMat = utility.matList(4)(5)
 
     println("matList iniziale " + initMat)
     println("matList finale "+ finishMat)
-    assert(initMat != finishMat)*/
+    assert(initMat != finishMat)
   }
   test("Sudoku") {
     val nameFile = "input/sudoku01.txt"
