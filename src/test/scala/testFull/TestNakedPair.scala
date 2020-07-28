@@ -1,6 +1,8 @@
 package testFull
 
 import org.scalatest.FunSuite
+import resolutionAlgorithm.FullExploration
+import resolutionAlgorithm.HiddenSingles.{hiddenSingles, totalHiddenSingles}
 import sudoku.SudokuLoad.loadPuzzle
 import sudoku.MatListOperation.initList
 import utility.getPuzzle
@@ -10,7 +12,7 @@ import utility._
 
 
 class TestNakedPair extends FunSuite {
-  test("Sudoku test per matlist Row") {
+  test("Sudoku test with change MatList in row") {
 
     val nameFile = "input/sudokuText.txt"
     loadPuzzle(nameFile)
@@ -34,10 +36,9 @@ class TestNakedPair extends FunSuite {
     assert(initMat != finishMat)
   }
 
-  test("subSquare") {
+  test("Sudoku test change Matlist in subSquare") {
     //init
     val nameFile = "input/sudokuTest2.txt"
-    val nameSolved = "outputSolved/sudoku02.txt"
     loadPuzzle(nameFile)
 
     display(puzzle)
@@ -47,12 +48,7 @@ class TestNakedPair extends FunSuite {
         println("MatList riga " + i + " colonna" + j + " è " + matList(i)(j).toString)
     }
     val initMat = utility.matList(7)(2)
-    val sudokuInput = getPuzzle
     findCoupleSubSquare(6,0)
-    val sudokuSolved = getPuzzle
-
-    //assert(sudokuInput(0)(4) == sudokuSolved(0)(4))
-    //assert(sudokuInput(5)(2) == sudokuSolved(5)(2))
 
     for (i <- 6 to 8) {
       for(j <- 0 to 3)
@@ -64,7 +60,7 @@ class TestNakedPair extends FunSuite {
     println("matList finale "+ finishMat)
     assert(initMat != finishMat)
   }
-  test("Sudoku") {
+  test("Sudoku 01") {
     val nameFile = "input/sudoku01.txt"
 
     loadPuzzle(nameFile)
@@ -73,8 +69,8 @@ class TestNakedPair extends FunSuite {
     findCouple(0,true)
     val sudokuSolved = getPuzzle
 
-    assert(sudokuInput(0)(4) == sudokuSolved(0)(4))
-    assert(sudokuInput(5)(2) == sudokuSolved(5)(2))
+    assert(sudokuInput(0)(2) == sudokuSolved(0)(2))
+    assert(sudokuInput(0)(6) == sudokuSolved(0)(6))
 
   }
 
@@ -100,15 +96,37 @@ class TestNakedPair extends FunSuite {
     println("matList finale "+ finishMat)
     assert(initMat != finishMat)
   }
-/*
-  test("Sudoku01") {
-    val nameFile = "input/sudoku01.txt"
+  test("Sudoku06 - check if not destroy matList") {
+    val nameFile = "input/sudoku06.txt"
+
     loadPuzzle(nameFile)
-    display(puzzle)
     initList()
+    findCouple(7,true)
+    findCoupleSubSquare(0,0)
+    findCouple(7,false)
+    hiddenSingles(7, 0)
     val sudokuInput = getPuzzle
-    print(sudokuInput)
-    //NakedPairs.nakedPair(0,0)
-  }*/
+
+    val solver = FullExploration(getPuzzle)
+    solver.solve(0, 0)
+
+    assert(sudokuInput(7)(0) == solver.returnPuzzle()(7)(0))
+  }
+  test("Sudoku05") {
+    val nameFile = "input/sudoku01.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    findCouple(0,false)
+    val sudokuInput = getPuzzle
+
+    val solver = FullExploration(getPuzzle)
+    solver.solve(0, 0)
+
+
+    assert(sudokuInput(2)(2) == solver.returnPuzzle()(2)(2))
+    assert(sudokuInput(5)(2) == solver.returnPuzzle()(5)(2))
+
+  }
 
 }
