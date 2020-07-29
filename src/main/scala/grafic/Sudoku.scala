@@ -69,7 +69,7 @@ object Sudoku {
               tfCells(row)(col).setEditable(true)
               tfCells(row)(col).setBackground(OPEN_CELL_BGCOLOR)
 
-              masks(row)(col) = true
+              masks(row)(col) = false
 
             case _ =>
               tfCells(row)(col).setText(puzzle(row)(col) + "")
@@ -77,7 +77,7 @@ object Sudoku {
               tfCells(row)(col).setBackground(CLOSED_CELL_BGCOLOR)
               tfCells(row)(col).setForeground(CLOSED_CELL_TEXT)
 
-              masks(row)(col) = false
+              masks(row)(col) = true
           }
 
           // Beautify all the cells
