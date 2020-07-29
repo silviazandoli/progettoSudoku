@@ -39,6 +39,10 @@ sealed trait WriteOnCell extends ActionListener {
             if (utentSolved()) {
               JOptionPane.showMessageDialog(container, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
               //todo silvia... apri finestra se vuoi riniziare il gioco o no. se non rinisci esci, altrimenti viene caricato un altro sudoku
+
+              val options = Array("OK", "CANCEL")
+
+              JOptionPane.showConfirmDialog(null,"New Game?","Message", JOptionPane.YES_NO_CANCEL_OPTION)
             }
           case _ => JOptionPane.showMessageDialog(container, "Good! The number is in MatList", "Message", JOptionPane.DEFAULT_OPTION)
         }
@@ -47,6 +51,7 @@ sealed trait WriteOnCell extends ActionListener {
         var message = "The number is not correct! Possible values: "
         possibleValues.foreach(v => message = message + v + " ")
         JOptionPane.showMessageDialog(container, message, "Message", JOptionPane.WARNING_MESSAGE)
+        //JOptionPane.showConfirmDialog(null,"New Game?","Message", JOptionPane.YES_NO_CANCEL_OPTION)
       }
 
       //it shows the list of possible values
