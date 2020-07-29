@@ -1,8 +1,10 @@
-package grafic
+package grafic.eliminabili
+
+import java.awt.geom._
+import java.awt.{BasicStroke, Color, Graphics2D}
+
 import scala.swing._
 import scala.swing.event._
-import java.awt.{Color,Graphics2D,BasicStroke}
-import java.awt.geom._
 
 // --------------------------------------------------------------------
 //esempio tris
