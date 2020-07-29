@@ -1,12 +1,13 @@
 package sudoku
 
-import resolutionAlgorithm.{FullExploration, HiddenSingles}
+import resolutionAlgorithm.FullExploration
+import resolutionAlgorithm.HiddenSingles.{totalHiddenSingles, hiddenSingles}
 import resolutionAlgorithm.HiddenPair.solveHiddenPair
 import resolutionAlgorithm.NakedPairs.solveNakedPair
 import strategies.{Strategy, StrategyImpl}
 import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
 import sudoku.SudokuLoad.loadPuzzle
-import util.TimeStampImpl
+import util.TimeStamp
 import utility.{display, puzzle, puzzleSolved}
 
 object SudokuEngine extends App {
@@ -19,7 +20,7 @@ object SudokuEngine extends App {
     /**
      * case class timestamp fatta da Lorenzo Pacini
      */
-    val timeStamp = TimeStampImpl(System.currentTimeMillis())
+    val timeStamp = TimeStamp(System.currentTimeMillis())
 
     /**
      * strategia1 fatta da Lorenzo Pacini
@@ -40,7 +41,7 @@ object SudokuEngine extends App {
      * strategie 2/3 fatte da Lorenzo Pacini
      */
 
-    val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = HiddenSingles().totalHiddenSingles()}
+    val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
 
     val strat3 = new StrategyImpl {override def resolutionMethod(): Unit = FullExploration(puzzle).solve(0, 0)}
 

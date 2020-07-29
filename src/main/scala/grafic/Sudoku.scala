@@ -2,8 +2,7 @@ package grafic
 
 import java.awt.{Dimension, _}
 
-import grafic.event.MouseListener.MouseListener
-import grafic.event.WriteOnCell
+import grafic.event.{MouseListener, WriteOnCell}
 import javax.swing.{JFrame, JPanel, JTextField}
 import utility.{dimSudoku, puzzle, tfCells}
 

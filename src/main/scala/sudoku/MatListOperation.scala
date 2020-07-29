@@ -8,19 +8,14 @@ object MatListOperation {
    * fatto da Lorenzo Pacini
    */
   def initList(): Unit = {
-    for {
-      i<-0 until dimSudoku
-    } yield {
+    (0 until dimSudoku).foreach(i => {
       val rowExcl = puzzle(i).toList.filter(_ != 0).toSet
-      for {
-        j<-0 until dimSudoku
-      } {
+      for (j<-0 until dimSudoku)
         puzzle(i)(j) match {
           case 0 => matList(i)(j) = possible(rowExcl, i, j)
           case _ => matList(i)(j) = Nil
         }
-      }
-    }
+    })
   }
 
   // ==================== //
@@ -82,7 +77,7 @@ object MatListOperation {
     /*
     aggiornamento per riga e per colonna
      */
-    for { i <- 0 until dimSudoku } yield {
+    for (i <- 0 until dimSudoku) yield {
       if (i != col && matList(row)(i) != null) matList(row)(i) = matList(row)(i).filter(e => e != elem)
       if (i != row && matList(i)(col) != null) matList(i)(col) = matList(i)(col).filter(e => e != elem)
     }

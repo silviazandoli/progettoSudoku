@@ -1,7 +1,8 @@
 package testHiddenSingles
 
 import org.scalatest.FunSuite
-import resolutionAlgorithm.{FullExploration, HiddenSingles}
+import resolutionAlgorithm.FullExploration
+import resolutionAlgorithm.HiddenSingles.{hiddenSingles, totalHiddenSingles}
 import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
@@ -15,7 +16,7 @@ class testHiddenSingles extends FunSuite {
     loadPuzzle(nameFile)
     initList()
 
-    HiddenSingles().hiddenSingles(1, 1)
+    hiddenSingles(1, 1)
     val sudokuInput = getPuzzle
 
     loadPuzzle(nameSolved)
@@ -29,7 +30,7 @@ class testHiddenSingles extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
-    HiddenSingles().hiddenSingles(7, 0)
+    hiddenSingles(7, 0)
     val sudokuInput = getPuzzle
 
     val solver = FullExploration(getPuzzle)
@@ -43,7 +44,7 @@ class testHiddenSingles extends FunSuite {
 
     loadPuzzle(nameFile)
     initList()
-    HiddenSingles().totalHiddenSingles()
+    totalHiddenSingles()
     val sudokuInput = getPuzzle
 
     val solver = FullExploration(getPuzzle)

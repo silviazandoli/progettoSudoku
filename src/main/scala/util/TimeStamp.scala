@@ -8,4 +8,8 @@ sealed trait TimeStamp {
   }
 }
 
-case class TimeStampImpl(timeStart: Long) extends TimeStamp
+object TimeStamp {
+  def apply(timeStart: Long): TimeStamp = TimeStampImpl(timeStart)
+
+ private case class TimeStampImpl(timeStart: Long) extends TimeStamp
+}
