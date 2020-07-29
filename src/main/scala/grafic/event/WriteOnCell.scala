@@ -1,22 +1,20 @@
-package grafic
+package grafic.event
 
-import java.awt.event.{ActionEvent, ActionListener}
-import java.awt.{Color, Container}
+object WriteOnCell {
+  import java.awt.event.{ActionEvent, ActionListener}
+  import java.awt.{Color, Container}
 
-import javax.swing.{JOptionPane, JTextField}
-import utility.{matList, tfCells}
+  import javax.swing.{JOptionPane, JTextField}
+  import utility.{matList, tfCells}
 
-object EventMouse {
-  def apply(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]): EventMouseImplement = EventMouseImplement(row, col, cp, puzzleResolt)
+  val CLOSED_CELL_BGCOLOR: Color = Color.GRAY
+  val CLOSED_CELL_TEXT: Color = Color.BLACK
 
-  trait EventMouseTrait extends ActionListener {
+  trait WriteOnCellTrait extends ActionListener {
     val row: Int
     val col: Int
     val container: Container
     val puzzleResolt: Array[Array[Int]]
-
-    val CLOSED_CELL_BGCOLOR = new Color(240, 240, 240)
-    val CLOSED_CELL_TEXT: Color = Color.BLACK
 
     def actionPerformed(e: ActionEvent): Unit = {
       val t: JTextField = e.getSource.asInstanceOf[JTextField]
@@ -53,12 +51,11 @@ object EventMouse {
           JOptionPane.showMessageDialog(container, "It wasn't inserted a number!", "Messaggio", JOptionPane.WARNING_MESSAGE)
       }
     }
-
-
   }
 
-  case class EventMouseImplement(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]) extends EventMouseTrait {
+  def apply(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]): WriteOnCell = WriteOnCell(row, col, cp, puzzleResolt)
+
+  case class WriteOnCell(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]) extends WriteOnCellTrait {
     override val container: Container = cp
   }
-
 }

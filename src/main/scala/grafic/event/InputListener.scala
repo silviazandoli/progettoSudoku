@@ -1,9 +1,8 @@
-package grafic
+package grafic.event
 
 import java.awt.event.{ActionEvent, ActionListener}
 
 import javax.swing.JTextField
-
 import utility.{dimSudoku, tfCells}
 
 // The game board composes of 9x9 JTextFields,
