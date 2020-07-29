@@ -13,7 +13,7 @@ import utility._
 class TestNakedPair extends FunSuite {
   test("Sudoku test with change MatList in row") {
 
-    val nameFile = "input/sudokuText.txt"
+    val nameFile = "input/sudoku31.txt"
     loadPuzzle(nameFile)
 
     display(puzzle)
@@ -37,7 +37,7 @@ class TestNakedPair extends FunSuite {
 
   test("Sudoku test change Matlist in subSquare") {
     //init
-    val nameFile = "input/sudokuTest2.txt"
+    val nameFile = "input/sudoku30.txt"
     loadPuzzle(nameFile)
 
     display(puzzle)
@@ -74,7 +74,7 @@ class TestNakedPair extends FunSuite {
   }
 
   test("Sudoku Test Row") {
-    val nameFile = "input/sudokuText.txt"
+    val nameFile = "input/sudoku31.txt"
     loadPuzzle(nameFile)
 
     display(puzzle)
@@ -95,39 +95,25 @@ class TestNakedPair extends FunSuite {
     println("matList finale "+ finishMat)
     assert(initMat != finishMat)
   }
-  /*test("Sudoku06 - check if not destroy matList") {
-    val nameFile = "input/sudoku06.txt"
+  test("Sudoku23 - check if not destroy matList") {
+    val nameFile = "input/sudoku23.txt"
 
+    loadPuzzle(nameFile)
+    initList()
     val solverWithout = FullExploration(getPuzzle)
     solverWithout.solve(0, 0)
 
     loadPuzzle(nameFile)
     initList()
-
     findCouple(7,true)
     findCoupleSubSquare(0,0)
     findCouple(7,false)
     val solverWith = FullExploration(getPuzzle)
     solverWith.solve(0, 0)
-
     assert(solverWithout.returnPuzzle()(2)(2) == solverWith.returnPuzzle()(2)(2))
     assert(solverWithout.returnPuzzle()(5)(2) == solverWith.returnPuzzle()(5)(2))
 
-  }*/
-  /*test("Sudoku06") {
-    val nameFile = "input/sudoku06.txt"
-
-    loadPuzzle(nameFile)
-    initList()
-    solveNakedPair()
-    HiddenSingles().totalHiddenSingles()
-    val sudokuInput = getPuzzle
-
-    val solver = FullExploration(getPuzzle)
-    solver.solve(0, 0)
-
-    assert(sudokuInput(7)(0) == solver.returnPuzzle()(7)(0))
-  }*/
+  }
 
   test("Sudoku05") {
     val nameFile = "input/sudoku01.txt"
