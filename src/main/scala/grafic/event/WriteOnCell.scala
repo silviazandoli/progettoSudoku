@@ -1,5 +1,7 @@
 package grafic.event
 
+import grafic.masks
+
 object WriteOnCell {
   import java.awt.event.{ActionEvent, ActionListener}
   import java.awt.{Color, Container}
@@ -35,6 +37,8 @@ object WriteOnCell {
               tfCells(row)(col).setEditable(false)
               tfCells(row)(col).setBackground(CLOSED_CELL_BGCOLOR)
               tfCells(row)(col).setForeground(CLOSED_CELL_TEXT)
+
+              masks(row)(col) = true
 
               if (utentSolved()) {
                 JOptionPane.showMessageDialog(container, "Game end puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
