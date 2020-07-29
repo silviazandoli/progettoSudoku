@@ -1,7 +1,21 @@
+import utility.dimSudoku
+
 package object grafic {
 
   import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
   import javax.swing.{JButton, JPanel}
+
+  val masks: Array[Array[Boolean]] = Array.ofDim[Boolean](dimSudoku, dimSudoku)
+
+  def utentSolved(): Boolean = masks.flatten.forall(_ == true)
+
+  def printMask() = {
+    println("printMask")
+    (0 until dimSudoku).foreach(i => { (0 until dimSudoku).foreach(j => {
+      print(masks(i)(j) + " ")
+    })
+    println()
+  })}
 
   object SPanel {
     def apply(dimension: Dimension): SPanel = SPanel(dimension)

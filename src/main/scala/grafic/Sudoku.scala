@@ -35,13 +35,6 @@ object Sudoku {
     val FONT_NUMBERS = new Font("Monospaced", Font.BOLD, 20)
     val puzzleResolt: Array[Array[Int]]
     private val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
-    private val DisplayHeight = 580 //sudoku display its 580 pixels high
-    private val ButtonsWidth = 200 //button panel its 200 pixels wide
-    private val WindowWidth = 777 //its 777 pixels wide
-
-
-    //private val masks = Array(Array(false, false, true, false, false, true, false, false, true), Array(false, true, false, false, false, false, false, false, true), Array(false, false, false, false, true, false, false, false, false), Array(false, false, false, false, false, true, false, false, true), Array(false, true, false, true, false, false, false, false, false), Array(false, false, false, false, false, false, false, false, true), Array(false, false, true, false, false, true, false, false, false), Array(false, true, false, false, false, false, true, false, false), Array(false, false, false, false, false, false, false, false, true))
-    private val WindowHeight = 636 //its 636 pixels high
 
     def create(): Unit = {
       /* f.setLayout(new BorderLayout) //north south east west and centre*/
@@ -75,12 +68,16 @@ object Sudoku {
               // tfCells(row)(col).setText(matList(row)(col).toString()) // set to empty string
               tfCells(row)(col).setEditable(true)
               tfCells(row)(col).setBackground(OPEN_CELL_BGCOLOR)
-            //  tfCells(row)(col).addActionListener(listener)
+
+              masks(row)(col) = true
+
             case _ =>
               tfCells(row)(col).setText(puzzle(row)(col) + "")
               tfCells(row)(col).setEditable(false)
               tfCells(row)(col).setBackground(CLOSED_CELL_BGCOLOR)
               tfCells(row)(col).setForeground(CLOSED_CELL_TEXT)
+
+              masks(row)(col) = false
           }
 
           // Beautify all the cells
