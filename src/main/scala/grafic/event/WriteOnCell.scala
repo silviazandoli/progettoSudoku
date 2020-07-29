@@ -37,7 +37,8 @@ sealed trait WriteOnCell extends ActionListener {
             masks(row)(col) = true
 
             if (utentSolved()) {
-              JOptionPane.showMessageDialog(container, "Game end puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
+              JOptionPane.showMessageDialog(container, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
+              //todo silvia... apri finestra se vuoi riniziare il gioco o no. se non rinisci esci, altrimenti viene caricato un altro sudoku
             }
           case _ => JOptionPane.showMessageDialog(container, "Good! The number is in MatList", "Message", JOptionPane.DEFAULT_OPTION)
         }
