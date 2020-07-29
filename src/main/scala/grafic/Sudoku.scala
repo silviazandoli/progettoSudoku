@@ -81,8 +81,8 @@ object Sudoku {
           tfCells(row)(col).addMouseListener(new MouseAdapter() //we listen for mouse clicks on this panel
           {
             //aggiunto evento per cliccare su ogni casella
-            override def mousePressed(e: MouseEvent) = {
-              selectNumber(e.getX(), e.getY()); //the called method on mouse click
+            override def mousePressed(e: MouseEvent): Unit = {
+              selectNumber(e.getX, e.getY); //the called method on mouse click
 
               println("MatList riga " + row + " colonna " + col + " è " + matList(row)(col))
 

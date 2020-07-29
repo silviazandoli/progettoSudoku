@@ -11,7 +11,7 @@ import scala.swing.Color
  */
 trait SPanel extends JPanel//construct the sudoku display panel
 {
-  val pb = new JPanel(); //create the button panel
+  val pb = new JPanel() //create the button panel
   val FL = new FlowLayout()
   //it shows the lists for every square
   val SS = new JButton("show lists")
@@ -30,7 +30,7 @@ trait SPanel extends JPanel//construct the sudoku display panel
   private val ButtonsHeight = 80 //sudoku display its 580 pixels high
   private val ButtonsWidth = 80 //button panel its 200 pixels wide
 
-  this.setLayout(new BorderLayout());
+  this.setLayout(new BorderLayout())
 
   pb.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight)); // dim
   pb.setBackground(WS)
