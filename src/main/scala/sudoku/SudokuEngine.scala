@@ -59,8 +59,8 @@ object SudokuEngine extends App {
   }
 
   loadPuzzle(nameFile)
-  display("Inizio", puzzle)
+  display(puzzle)("Inizio")
   initList()
   strategyList()
-  display("Soluzione", puzzle)
+  display(puzzle)("Soluzione")
 }

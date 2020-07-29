@@ -10,13 +10,13 @@ object Game extends App {
 
   print("Puzzle: " + nameFile)
   loadPuzzle(nameFile)
-  display("Schema iniziale", puzzle)
+  display(puzzle)("Schema iniziale")
 
   initList() // costruzione liste
   displayList(0, 0)
 
-  display("Soluzione strategy list", puzzle)
+  display(puzzle)("Soluzione strategy list")
   val solver = FullExploration(getPuzzle)
   solver.solve(0, 0)
-  display("Soluzione", solver.returnPuzzle())
+  display(solver.returnPuzzle())("Soluzione")
 }

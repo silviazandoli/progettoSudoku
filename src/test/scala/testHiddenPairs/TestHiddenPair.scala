@@ -15,7 +15,7 @@ class TestHiddenPair extends FunSuite {
     val nameSolved = "outputSolved/sudoku02.txt"
     loadPuzzle(nameFile)
 
-    display(puzzle)
+    displayNoTitle(puzzle)
     initList()
     for (i <- 0 to 8) {
       for (j <- 0 to 8)

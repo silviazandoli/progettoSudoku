@@ -9,7 +9,7 @@ object WriteOnCell {
   import javax.swing.{JOptionPane, JTextField}
   import utility.{matList, tfCells}
 
-  import grafic.{utentSolved, printMask}
+  import grafic.utentSolved
 
   val CLOSED_CELL_BGCOLOR: Color = Color.GRAY
   val CLOSED_CELL_TEXT: Color = Color.BLACK
@@ -42,10 +42,7 @@ object WriteOnCell {
 
               if (utentSolved()) {
                 JOptionPane.showMessageDialog(container, "Game end puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
-              } else {
-                printMask()
               }
-
             case _ => JOptionPane.showMessageDialog(container, "Good! The number is in MatList", "Message", JOptionPane.DEFAULT_OPTION)
           }
         } else {

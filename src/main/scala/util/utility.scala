@@ -1,5 +1,4 @@
 import javax.swing.JTextField
-
 import scala.annotation.tailrec
 
 /**
@@ -53,17 +52,23 @@ package object utility {
     case _ =>
   }
 
-  def printMatrix(): Unit = {
-    for (i <- 1 until dimSudoku; j <- 1 until dimSudoku) yield computeOnList(print, matList(i)(j))
+  /*
+  stampa tutta la matrice di liste
+   */
+  def printMatrixList[T](matPrint: Array[Array[List[T]]]): Unit = {
+    println("Matrice delle liste ")
+    for (i <- 1 until dimSudoku; j <- 1 until dimSudoku; if matPrint(i)(j) != Nil) yield {
+      computeOnList(print, matPrint(i)(j))
+      println()
+    }
   }
 
-  def display(puzzleGame: Array[Array[Int]]): Unit = {
-    display("", puzzleGame)
-  }
-
-  def display(title: String, puzzleGame: Array[Array[Int]]): Unit = {
-    def closureSudokuLine(l:Array[Int]): String = {
-      l.map {
+  /*
+  stampa una matrice di gioco del sudoku
+   */
+  def display[T](puzzleGame: Array[Array[T]]) (title: String): Unit = {
+    val closureSudokuLine: Array[T] => String = {
+      _.map {
         case 0 => "_"
         case y => `y`.toString
       }.mkString(" ")
@@ -74,9 +79,17 @@ package object utility {
       computeOnList(print, closureSudokuLine(puzzleGame(i)).toList)
       println()
     })
+
     println()
   }
 
+  def displayNoTitle[T](puzzleGame: Array[Array[T]]): Unit = {
+    display(puzzleGame)("")
+  }
+
+  /*
+  stampa una lista di interi riferita a una cella
+   */
   def displayList(row: Int, col: Int): Unit = {
     print("[" + row + " " + col + "]  ")
     computeOnList(print, matList(row)(col))

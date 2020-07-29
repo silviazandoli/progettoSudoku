@@ -16,7 +16,7 @@ class TestNakedPair extends FunSuite {
     val nameFile = "input/sudoku31.txt"
     loadPuzzle(nameFile)
 
-    display(puzzle)
+    displayNoTitle(puzzle)
     initList()
     for (i <- 0 to 8) {
       println("MatList riga " + 0 + " colonna" + i + " è " + matList(0)(i).toString)
@@ -40,7 +40,7 @@ class TestNakedPair extends FunSuite {
     val nameFile = "input/sudoku30.txt"
     loadPuzzle(nameFile)
 
-    display(puzzle)
+    displayNoTitle(puzzle)
     initList()
     for (i <- 6 to 8) {
       for(j <- 0 to 3)
@@ -77,7 +77,7 @@ class TestNakedPair extends FunSuite {
     val nameFile = "input/sudoku31.txt"
     loadPuzzle(nameFile)
 
-    display(puzzle)
+    displayNoTitle(puzzle)
     initList()
     for (i <- 0 to 8) {
       println("MatList riga " + 2 + " colonna" + i + " è " + matList(2)(i).toString)

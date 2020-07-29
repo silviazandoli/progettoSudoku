@@ -9,14 +9,6 @@ package object grafic {
 
   def utentSolved(): Boolean = masks.flatten.forall(_ == true)
 
-  def printMask(): Unit = {
-    println("==== printMask ==== ")
-    (0 until dimSudoku).foreach(i => { (0 until dimSudoku).foreach(j => {
-      print(masks(i)(j) + " ")
-    })
-    println(" ==== ")
-  })}
-
   object SPanel {
     def apply(dimension: Dimension): SPanel = SPanel(dimension)
 

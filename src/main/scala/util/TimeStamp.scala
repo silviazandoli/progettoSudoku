@@ -1,6 +1,6 @@
 package util
 
-trait TimeStamp {
+sealed trait TimeStamp {
   def timeStart: Long
 
   def calculateDiff(timeEnd: Long): Unit = {
