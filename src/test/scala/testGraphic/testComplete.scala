@@ -13,61 +13,43 @@ class testComplete extends FlatSpec with BeforeAndAfter {
   val input = "input/"
   val outputSolved = "outputSolved/"
 
-  "A solved game" should "have all true in mask" in {
-    val fileSolved = outputSolved+"sudoku01.txt"
-    loadPuzzle(fileSolved)
-    initList()
+  object InitTest {
+    def initTest(file: String) {
+      loadPuzzle(file)
+      initList()
 
-    val sudokuSolver = FullExploration(getPuzzle)
-    sudokuSolver.solve(0,0)
+      val sudokuSolver = FullExploration(getPuzzle)
+      sudokuSolver.solve(0, 0)
 
-    val sudoku = Sudoku(sudokuSolver.returnPuzzle())
-    sudoku.create()
-    assert(utentSolved())
+      val sudoku = Sudoku(sudokuSolver.returnPuzzle())
+      sudoku.create()
+    }
+  }
 
+  after {
     /*
     la schermata si fà vedere all'utente per un secondo e mezzo
      */
-    Thread.sleep(1500)
+    Thread.sleep(500)
+  }
+
+  "A solved game" should "have all true in mask" in {
+    InitTest.initTest(outputSolved+"sudoku01.txt")
+    assert(utentSolved())
   }
 
   "A not solved game" should "have not all true in mask" in {
-    val fileLoad = input+"sudoku01.txt"
-    loadPuzzle(fileLoad)
-    initList()
-
-    val sudokuSolver = FullExploration(getPuzzle)
-    sudokuSolver.solve(0,0)
-
-    val sudoku = Sudoku(sudokuSolver.returnPuzzle())
-    sudoku.create()
+    InitTest.initTest(input+"sudoku01.txt")
     assert(!utentSolved())
-
-    /*
-    la schermata si fà vedere all'utente per un secondo e mezzo
-     */
-    Thread.sleep(1500)
   }
 
   "A game" should "have not all true in mask" in {
-    val fileLoad = input+"sudoku01.txt"
-    loadPuzzle(fileLoad)
-    initList()
+    InitTest.initTest(input+"sudoku01.txt")
 
-    val sudokuSolver = FullExploration(getPuzzle)
-    sudokuSolver.solve(0,0)
-
-    val sudoku = Sudoku(sudokuSolver.returnPuzzle())
-    sudoku.create()
-
-    /*
-    si dà tempo all'utente di 7 secondi
-     */
-    Thread.sleep(7000)
+    Thread.sleep(6500)
 
     val rowPressed = getPressed._1
     val colPressed = getPressed._2
-    
     if (rowPressed >= 0 && colPressed >= 0) {
       assert(masks(rowPressed)(colPressed))
     }
