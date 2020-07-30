@@ -60,7 +60,7 @@ class TestNakedPair extends FunSuite {
     assert(initMat != finishMat)
   }
   test("Sudoku 01") {
-    val nameFile = "input/sudoku01.txt"
+    val nameFile = "input/sudoku01_temp.txt"
 
     loadPuzzle(nameFile)
     initList()
@@ -116,7 +116,7 @@ class TestNakedPair extends FunSuite {
   }
 
   test("Sudoku05") {
-    val nameFile = "input/sudoku01.txt"
+    val nameFile = "input/sudoku01_temp.txt"
 
     loadPuzzle(nameFile)
     initList()

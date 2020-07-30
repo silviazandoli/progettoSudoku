@@ -9,6 +9,16 @@ package object grafic {
 
   def utentSolved(): Boolean = masks.flatten.forall(_ == true)
 
+  private var rowPressed = -1
+  private var colPressed = -1
+
+  def setPressed(row: Int, col: Int): Unit = {
+    rowPressed = row
+    colPressed = col
+  }
+
+  def getPressed: (Int, Int) = (rowPressed, colPressed)
+
   object SPanel {
     def apply(dimension: Dimension): SPanel = SPanel(dimension)
 

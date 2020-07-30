@@ -11,6 +11,7 @@ object MainGraphic extends App {
   /**uploading multiple Sudoku by Zandoli
    *
    */
+
   val jfc = new JFileChooser("input")
   val retValue = jfc.showOpenDialog(null)
   if (retValue == JFileChooser.APPROVE_OPTION) {
@@ -24,5 +25,5 @@ object MainGraphic extends App {
 
     val sudoku = Sudoku(sudokuSolver.returnPuzzle())
     sudoku.create()
-  }
+    }
 }

@@ -3,7 +3,7 @@ package grafic.event
 import java.awt.{Color, Container}
 import java.awt.event.{ActionEvent, ActionListener}
 
-import grafic.{masks, utentSolved}
+import grafic.{masks, utentSolved, setPressed}
 import javax.swing.{JOptionPane, JTextField}
 import utility.{matList, tfCells}
 
@@ -36,6 +36,11 @@ sealed trait WriteOnCell extends ActionListener {
 
             masks(row)(col) = true
 
+            /*
+            messa a comodo
+             */
+            setPressed(row, col)
+
             if (utentSolved()) {
               JOptionPane.showMessageDialog(container, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
               //todo silvia... apri finestra se vuoi riniziare il gioco o no. se non rinisci esci, altrimenti viene caricato un altro sudoku
@@ -44,9 +49,14 @@ sealed trait WriteOnCell extends ActionListener {
 
               JOptionPane.showConfirmDialog(null,"New Game?","Message", JOptionPane.YES_NO_CANCEL_OPTION)
             }
-          case _ => JOptionPane.showMessageDialog(container, "Good! The number is in MatList", "Message", JOptionPane.DEFAULT_OPTION)
+          case _ => {
+            setPressed(-1, -1)
+            JOptionPane.showMessageDialog(container, "Good! The number is in MatList", "Message", JOptionPane.DEFAULT_OPTION)
+          }
         }
       } else {
+        setPressed(-1, -1)
+
         t.setForeground(Color.red)
         var message = "The number is not correct! Possible values: "
         possibleValues.foreach(v => message = message + v + " ")

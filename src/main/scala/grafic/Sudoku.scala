@@ -94,7 +94,6 @@ object Sudoku {
       setTitle("Sudoku")
       setVisible(true)
 
-
       //set the borders
 
       /*  //val dp: Nothing = new Nothing

@@ -10,8 +10,8 @@ import utility.getPuzzle
 class testHiddenSingles extends FunSuite {
 
   test("Sudoku01") {
-    val nameFile = "input/sudoku01.txt"
-    val nameSolved = "outputSolved/sudoku01.txt"
+    val nameFile = "input/sudoku01_temp.txt"
+    val nameSolved = "outputSolved/sudoku01_temp.txt"
 
     loadPuzzle(nameFile)
     initList()
