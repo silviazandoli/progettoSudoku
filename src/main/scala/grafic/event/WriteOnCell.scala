@@ -1,9 +1,10 @@
 package grafic.event
 
-import java.awt.{Color, Container}
 import java.awt.event.{ActionEvent, ActionListener}
+import java.awt.{Color, Container}
 
-import grafic.{masks, utentSolved, setPressed}
+import grafic.{masks, setPressed, utentSolved}
+import grafic.MainGraphic.initAndUpload
 import javax.swing.{JOptionPane, JTextField}
 import utility.{matList, tfCells}
 
@@ -43,11 +44,12 @@ sealed trait WriteOnCell extends ActionListener {
 
             if (utentSolved()) {
               JOptionPane.showMessageDialog(container, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
-              //todo silvia... apri finestra se vuoi riniziare il gioco o no. se non rinisci esci, altrimenti viene caricato un altro sudoku
-
-              val options = Array("OK", "CANCEL")
-
-              JOptionPane.showConfirmDialog(null,"New Game?","Message", JOptionPane.YES_NO_CANCEL_OPTION)
+              val option = JOptionPane.showConfirmDialog(null, "New Game?", "Message", JOptionPane.YES_NO_CANCEL_OPTION)
+              option match {
+                case 0 => initAndUpload()
+                case 1 => System.exit(0)
+                case _ => System.out.println("cancel")
+              }
             }
           case _ => {
             setPressed(-1, -1)
@@ -61,7 +63,12 @@ sealed trait WriteOnCell extends ActionListener {
         var message = "The number is not correct! Possible values: "
         possibleValues.foreach(v => message = message + v + " ")
         JOptionPane.showMessageDialog(container, message, "Message", JOptionPane.WARNING_MESSAGE)
-        //JOptionPane.showConfirmDialog(null,"New Game?","Message", JOptionPane.YES_NO_CANCEL_OPTION)
+        /*val option = JOptionPane.showConfirmDialog(null, "New Game?", "Message", JOptionPane.YES_NO_CANCEL_OPTION)
+        option match {
+          case 0 => initAndUpload()
+          case 1 => System.exit(0)
+          case _ => System.out.println("cancel")
+        }*/
       }
 
       //it shows the list of possible values
@@ -75,6 +82,7 @@ sealed trait WriteOnCell extends ActionListener {
 }
 
 object WriteOnCell {
+
   import java.awt.Container
 
   def apply(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]): WriteOnCell = WriteOnCellImpl(row, col, cp, puzzleResolt)
@@ -82,4 +90,5 @@ object WriteOnCell {
   private case class WriteOnCellImpl(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]) extends WriteOnCell {
     val container: Container = cp
   }
+
 }

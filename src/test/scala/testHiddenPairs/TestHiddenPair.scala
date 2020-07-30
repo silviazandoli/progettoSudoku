@@ -35,7 +35,7 @@ class TestHiddenPair extends FunSuite {
 
 
   test("Sudoku01") {
-    val nameFile = "input/sudoku01_temp.txt"
+    val nameFile = "input/sudoku01.txt"
 
     loadPuzzle(nameFile)
     initList()
