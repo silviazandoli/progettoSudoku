@@ -51,10 +51,9 @@ sealed trait WriteOnCell extends ActionListener {
                 case _ => System.out.println("cancel")
               }
             }
-          case _ => {
+          case _ =>
             setPressed(-1, -1)
             JOptionPane.showMessageDialog(container, "Good! The number is in MatList", "Message", JOptionPane.DEFAULT_OPTION)
-          }
         }
       } else {
         setPressed(-1, -1)

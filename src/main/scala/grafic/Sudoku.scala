@@ -29,11 +29,10 @@ object Sudoku {
     val OPEN_CELL_TEXT_YES = new Color(0, 255, 0) // RGB
 
     val OPEN_CELL_TEXT_NO: Color = Color.RED
-    val CLOSED_CELL_BGCOLOR = new Color(240, 240, 240)
+    val CLOSED_CELL_BGCOLOR = Color.LIGHT_GRAY
     val CLOSED_CELL_TEXT: Color = Color.BLACK
     val FONT_NUMBERS = new Font("Monospaced", Font.BOLD, 20)
     val puzzleResolt: Array[Array[Int]]
-    private val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
 
     def create(): Unit = {
       /* f.setLayout(new BorderLayout) //north south east west and centre*/
