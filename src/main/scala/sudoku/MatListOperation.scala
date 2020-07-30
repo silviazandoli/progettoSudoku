@@ -22,7 +22,7 @@ object MatListOperation {
 
   /**
    *
- done by Zandoli
+   done by Silvia Zandoli
    */
   def possible(rowExcl: Set[Int], row:Int,col:Int):List[Int] = {
     //escludo per colonna

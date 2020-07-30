@@ -18,7 +18,7 @@ sealed trait MouseListener extends MouseAdapter {
     println("MatList riga " + row + " colonna " + col + " è " + matList(row)(col))
     println("Puzzle riga " + row + " colonna " + col + " è " + puzzle(row)(col))
 
-   val options = Array[AnyRef]("Insert numbers", "Insert list of numbers", "see matlist").toArray
+   val options = Array[AnyRef]("Insert numbers", "Insert list of numbers", "see matlist")
     val n = JOptionPane.showOptionDialog(null, "How to proceed?", "User mode", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options(2))
   }
 }
