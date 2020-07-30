@@ -3,8 +3,8 @@ package grafic.event
 import java.awt.event.{ActionEvent, ActionListener}
 import java.awt.{Color, Container}
 
-import grafic.{masks, setPressed, utentSolved}
 import grafic.MainGraphic.initAndUpload
+import grafic.{masks, setPressed, utentSolved}
 import javax.swing.{JOptionPane, JTextField}
 import utility.{matList, tfCells}
 
@@ -46,7 +46,7 @@ sealed trait WriteOnCell extends ActionListener {
               JOptionPane.showMessageDialog(container, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
               val option = JOptionPane.showConfirmDialog(null, "New Game?", "Message", JOptionPane.YES_NO_CANCEL_OPTION)
               option match {
-                case 0 => initAndUpload()
+                case 0 =>  initAndUpload()
                 case 1 => System.exit(0)
                 case _ => System.out.println("cancel")
               }
