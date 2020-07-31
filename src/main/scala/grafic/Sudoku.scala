@@ -65,7 +65,7 @@ object Sudoku {
               //aggiunta controlli-> che sia inserito un carattere che sia un numero, che il numero inserito non sia corretto
               //(nel caso non appartenga alla matList), etc
               //tfCells(row)(col).addActionListener(WriteOnCell(row, col, cp, puzzleResolt))
-              tfCells(row)(col).addMouseListener(MouseListener(row, col))//,cp, puzzleResolt))
+              tfCells(row)(col).addMouseListener(MouseListener(row, col))
 
             case _ =>
               tfCells(row)(col).setText(puzzle(row)(col) + "")
