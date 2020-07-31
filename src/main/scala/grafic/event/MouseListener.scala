@@ -4,7 +4,7 @@ import java.awt.event.{MouseAdapter, MouseEvent}
 
 import grafic.{setWrite, getWrite, cp, NUMBER_LIST, SEE_MATLIST, NUMBER, getPuzzleResolt}
 import javax.swing.JOptionPane
-import utility.tfCells
+import grafic.tfCells
 
 sealed trait MouseListener extends MouseAdapter {
   val row: Int
@@ -19,7 +19,7 @@ sealed trait MouseListener extends MouseAdapter {
    val options = Array[AnyRef]("Insert numbers", "Insert list of numbers", "See matlist")
     val n = JOptionPane.showOptionDialog(null, "How to proceed?", "User mode", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options(2))
 
-    tfCells(row)(col).addActionListener(WriteOnCell(row, col, cp, getPuzzleResolt()))
+    tfCells(row)(col).addActionListener(WriteOnCell(row, col, cp, getPuzzleResolt))
 
     n match {
       case 1 => setWrite(NUMBER_LIST)

@@ -11,8 +11,6 @@ package object utility {
   var puzzle: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
   var elemEmpty: Int = dimSudoku * dimSudoku
 
-  var tfCells: Array[Array[JTextField]] = Array.ofDim[JTextField](dimSudoku, dimSudoku)
-
   def puzzleSolved(): Boolean = puzzle.flatten.forall(_.!=(0))
 
   def calculateEmpty(): Int = {

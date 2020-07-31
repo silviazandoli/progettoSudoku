@@ -5,7 +5,9 @@ import java.awt.{Dimension, _}
 import grafic.event.MouseListener
 import grafic.panels.SPanel
 import javax.swing.{JFrame, JPanel, JTextField}
-import utility.{dimSudoku, puzzle, tfCells}
+import utility.{dimSudoku, puzzle}
+
+import grafic.tfCells
 
 import scala.swing.event.Event
 
@@ -13,27 +15,9 @@ import scala.swing.event.Event
 case class SudokuEvent(x: Int, y: Int) extends Event
 
 object Sudoku {
+  import util._
 
   trait SudokuTrait extends JFrame {
-    val SUBGRID_SIZE = 3 // Size of the sub-grid
-
-    val MATRIX_CELL_SIZE = 30 // Cell width/height in pixels
-    val CELL_SIZE = 70 // Cell width/height in pixels
-
-    val MATRIX_WIDTH: Int = MATRIX_CELL_SIZE * dimSudoku // 60 x 9 = 540
-    val MATRIX_HEIGHT: Int = MATRIX_CELL_SIZE * dimSudoku
-
-    val CANVAS_WIDTH: Int = CELL_SIZE * dimSudoku // 70 x 9 = 630
-    val CANVAS_HEIGHT: Int = CELL_SIZE * dimSudoku
-
-    val OPEN_CELL_BGCOLOR: Color = Color.YELLOW
-    val OPEN_CELL_TEXT_YES = new Color(0, 255, 0) // RGB
-
-    val OPEN_CELL_TEXT_NO: Color = Color.RED
-    val CLOSED_CELL_BGCOLOR: Color = Color.LIGHT_GRAY
-    val CLOSED_CELL_TEXT: Color = Color.BLACK
-    val FONT_NUMBERS = new Font("Monospaced", Font.BOLD, 20)
-
     def create(): Unit = {
       /* f.setLayout(new BorderLayout) //north south east west and centre*/
 

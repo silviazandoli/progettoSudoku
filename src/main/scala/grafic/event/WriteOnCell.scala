@@ -7,7 +7,9 @@ import grafic.MainGraphic.initAndUpload
 import grafic.{masks, setPressed, utentSolved, getWrite,
   NUMBER_LIST, SEE_MATLIST, NUMBER, showNumberList}
 import javax.swing.{JOptionPane, JTextField}
-import utility.{matList, tfCells}
+import utility.matList
+
+import grafic.tfCells
 
 sealed trait WriteOnCell extends ActionListener {
   val row: Int
