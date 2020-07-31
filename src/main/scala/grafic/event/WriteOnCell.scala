@@ -43,9 +43,9 @@ sealed trait WriteOnCell extends ActionListener {
 object WriteOnCell {
   import java.awt.Container
 
-  def apply(row: Int, col: Int, cp: Container): WriteOnCell = WriteOnCellImpl(row, col, cp)
+  def apply(row: Int, col: Int): WriteOnCell = WriteOnCellImpl(row, col)
 
-  private case class WriteOnCellImpl(row: Int, col: Int, cp: Container) extends WriteOnCell {
+  private case class WriteOnCellImpl(row: Int, col: Int) extends WriteOnCell {
     val container: Container = cp
   }
 }
