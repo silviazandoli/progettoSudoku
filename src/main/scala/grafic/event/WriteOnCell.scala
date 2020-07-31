@@ -13,12 +13,13 @@ sealed trait WriteOnCell extends ActionListener {
   val col: Int
   val container: Container
   val puzzleResolt: Array[Array[Int]]
+  var n: String
 
   val CLOSED_CELL_BGCOLOR: Color = Color.GRAY
   val CLOSED_CELL_TEXT: Color = Color.BLACK
 
   def actionPerformed(e: ActionEvent): Unit = {
-    val t: JTextField = e.getSource.asInstanceOf[JTextField]
+    val t: JTextField = new JTextField(n)
     try {
       println(t.getText.toInt)
       val number = t.getText.toInt
@@ -84,10 +85,11 @@ object WriteOnCell {
 
   import java.awt.Container
 
-  def apply(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]): WriteOnCell = WriteOnCellImpl(row, col, cp, puzzleResolt)
+  def apply(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]/*, n: String*/): WriteOnCell = WriteOnCellImpl(row, col, cp, puzzleResolt/*,n*/)
 
-  private case class WriteOnCellImpl(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]) extends WriteOnCell {
+  private case class WriteOnCellImpl(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]/*,n: String*/) extends WriteOnCell {
     val container: Container = cp
+    override var n: String = _
   }
 
 }
