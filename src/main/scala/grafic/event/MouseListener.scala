@@ -2,8 +2,8 @@ package grafic.event
 
 import java.awt.event.{MouseAdapter, MouseEvent}
 
+import grafic.{setWrite, getWrite, NUMBER_LIST, SEE_MATLIST, NUMBER}
 import javax.swing.JOptionPane
-import utility.{matList, puzzle}
 
 sealed trait MouseListener extends MouseAdapter {
   val row: Int
@@ -15,11 +15,14 @@ sealed trait MouseListener extends MouseAdapter {
   }
 
   def selectNumber(): Unit = {
-    println("MatList riga " + row + " colonna " + col + " è " + matList(row)(col))
-    println("Puzzle riga " + row + " colonna " + col + " è " + puzzle(row)(col))
-
-   val options = Array[AnyRef]("Insert numbers", "Insert list of numbers", "see matlist")
+   val options = Array[AnyRef]("Insert numbers", "Insert list of numbers", "See matlist")
     val n = JOptionPane.showOptionDialog(null, "How to proceed?", "User mode", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options(2))
+
+    n match {
+      case 1 => setWrite(NUMBER_LIST)
+      case 2 => setWrite(SEE_MATLIST)
+      case _ => setWrite(NUMBER)
+    }
   }
 }
 

@@ -12,7 +12,8 @@ object MainGraphic extends App {
    *
    */
   def initAndUpload(): Unit = {
-    val jfc = new JFileChooser("input")
+    //val jfc = new JFileChooser("input")
+    val jfc = new JFileChooser("tempInput")
     val retValue = jfc.showOpenDialog(null)
     if (retValue == JFileChooser.APPROVE_OPTION) {
       val file = jfc.getSelectedFile
