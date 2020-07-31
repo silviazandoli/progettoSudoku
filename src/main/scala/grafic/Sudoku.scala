@@ -20,7 +20,7 @@ object Sudoku {
     def create(): Unit = {
       this.setLocation(300, 50) //center
 
-      val cp = this.getContentPane
+      cp = this.getContentPane
       val matrixGame = new JPanel()
 
       matrixGame.setPreferredSize(new Dimension(MATRIX_WIDTH, MATRIX_HEIGHT))
@@ -33,7 +33,6 @@ object Sudoku {
         for (col <- 0 until dimSudoku) {
 
           tfCells(row)(col) = new JTextField() // Allocate element of array
-
           matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextField
 
           puzzle(row)(col) match {
@@ -45,7 +44,6 @@ object Sudoku {
 
               //aggiunta controlli-> che sia inserito un carattere che sia un numero, che il numero inserito non sia corretto
               //(nel caso non appartenga alla matList), etc
-
               tfCells(row)(col).addActionListener(WriteOnCell(row, col, cp))
               tfCells(row)(col).addMouseListener(MouseListener(row, col))
 

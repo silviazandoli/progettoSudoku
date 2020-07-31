@@ -36,31 +36,22 @@ object SPanel {
     FL.setVgap(55)
     FL.setHgap(100); //set the flow layout to give  symmetric display
     pb.setLayout(FL)
-    private val DisplayWidth = 557 //sudoku display its 557 pixels wide
-    //SS.setText()
-    //SS.addActionListener(this);
+
     showNumberList.setForeground(Color.BLUE)
     showNumberList.setBackground(Color.CYAN)
     showNumberList.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight))
 
     pb.add(showNumberList)
 
-    // ES.addActionListener(this);
     pb.add(ES)
 
-    //  MS.addActionListener(this);
     pb.add(MS)
 
-    private val MB = new Color(0x00, 0x00, 0xcd) //Medium blue
-
-    // HS.addActionListener(this);
     pb.add(HS)
-    private val P = new Color(0x80, 0, 0x80) //purple blank number
+
     //CS.addActionListener(this);
     pb.add(CS)
-    // FL.add(pb, BorderLayout.WEST);
 
-    //add the push button panel to the display panel
     this.add(pb)
     this.setPreferredSize(dim)
   }

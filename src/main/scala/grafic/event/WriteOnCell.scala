@@ -1,18 +1,17 @@
 package grafic.event
 
+import java.awt.Color
 import java.awt.event.{ActionEvent, ActionListener}
-import java.awt.{Color, Container}
-import javax.swing.{JOptionPane, JTextField}
 
 import grafic.MainGraphic.initAndUpload
-import grafic.{masks, tfCells, showNumberList, setPressed, utentSolved, getWrite, getPuzzleResolt}
-import utility.matList
 import grafic.util._
+import grafic._
+import javax.swing.{JOptionPane, JTextField}
+import utility.matList
 
 sealed trait WriteOnCell extends ActionListener {
   val row: Int
   val col: Int
-  val container: Container
 
   def actionPerformed(e: ActionEvent): Unit = {
     val t: JTextField = e.getSource.asInstanceOf[JTextField]
@@ -28,7 +27,7 @@ sealed trait WriteOnCell extends ActionListener {
           if (possibleValues.contains(number)) {
             t.setForeground(Color.green)
             val messageOk = "The number belongs to list "
-            JOptionPane.showMessageDialog(container, messageOk,
+            JOptionPane.showMessageDialog(cp, messageOk,
               "Message", JOptionPane.WARNING_MESSAGE)
           } else {
             setPressed(-1, -1)
@@ -36,7 +35,7 @@ sealed trait WriteOnCell extends ActionListener {
             t.setForeground(Color.red)
             var message = "The number is not correct! Possible values: "
             possibleValues.foreach(v => message = message + v + " ")
-            JOptionPane.showMessageDialog(container, message, "Message", JOptionPane.WARNING_MESSAGE)
+            JOptionPane.showMessageDialog(cp, message, "Message", JOptionPane.WARNING_MESSAGE)
           }
         case SEE_MATLIST =>
           println(SEE_MATLIST)
@@ -54,7 +53,7 @@ sealed trait WriteOnCell extends ActionListener {
           getPuzzleResolt(row)(col) match {
             case `number` =>
               t.setForeground(Color.green)
-              JOptionPane.showMessageDialog(container, "Good! The number is in Puzzle", "Message", JOptionPane.DEFAULT_OPTION)
+              JOptionPane.showMessageDialog(cp, "Good! The number is in Puzzle", "Message", JOptionPane.DEFAULT_OPTION)
 
               tfCells(row)(col).setEditable(false)
               tfCells(row)(col).setBackground(CLOSED_CELL_BGCOLOR)
@@ -62,17 +61,15 @@ sealed trait WriteOnCell extends ActionListener {
 
               masks(row)(col) = true
 
-              /*
-              messa a comodo
-               */
+              //messa a comodo
               setPressed(row, col)
 
               if (utentSolved()) {
-                JOptionPane.showMessageDialog(container, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
+                JOptionPane.showMessageDialog(cp, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
                 val option = JOptionPane.showConfirmDialog(null, "New Game?", "Message", JOptionPane.YES_NO_CANCEL_OPTION)
                 option match {
                   case 0 =>
-                    container.setVisible(false)
+                    cp.setVisible(false)
                     initAndUpload()
                   case 1 => System.exit(0)
                   case _ => System.out.println("cancel")
@@ -82,7 +79,7 @@ sealed trait WriteOnCell extends ActionListener {
               t.setForeground(Color.red)
               setPressed(-1, -1)
               tfCells(row)(col).setEditable(true)
-              JOptionPane.showMessageDialog(container, "Bad! The number Not in puzzle!", "Message", JOptionPane.DEFAULT_OPTION)
+              JOptionPane.showMessageDialog(cp, "Bad! The number Not in puzzle!", "Message", JOptionPane.DEFAULT_OPTION)
           }
       }
 
@@ -92,7 +89,7 @@ sealed trait WriteOnCell extends ActionListener {
 
     } catch {
       case _: Throwable => t.setForeground(Color.red)
-        JOptionPane.showMessageDialog(container, "It wasn't inserted a number!", "Messaggio", JOptionPane.WARNING_MESSAGE)
+        JOptionPane.showMessageDialog(cp, "It wasn't inserted a number!", "Messaggio", JOptionPane.WARNING_MESSAGE)
     }
   }
 }
