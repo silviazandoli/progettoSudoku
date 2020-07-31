@@ -1,4 +1,4 @@
-package testFull
+package testNakedPairs
 
 import org.scalatest.FunSuite
 import resolutionAlgorithm.{FullExploration}
@@ -13,7 +13,7 @@ import utility._
 class TestNakedPair extends FunSuite {
   test("Sudoku test with change MatList in row") {
 
-    val nameFile = "input/sudoku01.txt"
+    val nameFile = "input/sudoku31.txt"
     loadPuzzle(nameFile)
 
     displayNoTitle(puzzle)
@@ -37,7 +37,7 @@ class TestNakedPair extends FunSuite {
 
   test("Sudoku test change Matlist in subSquare") {
     //init
-    val nameFile = "input/sudoku02.txt"
+    val nameFile = "input/sudoku30.txt"
     loadPuzzle(nameFile)
 
     displayNoTitle(puzzle)
@@ -60,7 +60,7 @@ class TestNakedPair extends FunSuite {
     assert(initMat != finishMat)
   }
   test("Sudoku 01") {
-    val nameFile = "input/sudoku01_temp.txt"
+    val nameFile = "input/sudoku01.txt"
 
     loadPuzzle(nameFile)
     initList()
@@ -115,8 +115,8 @@ class TestNakedPair extends FunSuite {
 
   }
 
-  test("Sudoku05") {
-    val nameFile = "input/sudoku01_temp.txt"
+  /*test("Sudoku05") {
+    val nameFile = "input/sudoku06.txt"
 
     loadPuzzle(nameFile)
     initList()
@@ -130,6 +130,6 @@ class TestNakedPair extends FunSuite {
     assert(sudokuInput(2)(2) == solver.returnPuzzle()(2)(2))
     assert(sudokuInput(5)(2) == solver.returnPuzzle()(5)(2))
 
-  }
+  }*/
 
 }

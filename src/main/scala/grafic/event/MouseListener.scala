@@ -27,13 +27,14 @@ sealed trait MouseListener extends MouseAdapter {
     n match {
       case 0 => {
         val number = JOptionPane.showInputDialog("Inserisci il numero per la riga: " + row + " e la colonna: " + col)
-        //tfCells(row)(col).addActionListener(WriteOnCell(row, col, container, puzzleResolt, number))
+        tfCells(row)(col).addActionListener(WriteOnCell(row, col, container, puzzleResolt, number))
       }
       case 1 => {
         val mylist = JOptionPane.showInputDialog("inserisci la lista di numeri: ")
         println(mylist)
         var myList:Array[String] = new Array[String](9)
-        myList = mylist.split(",")
+        myList= mylist.split(",")
+        //myList(row)(col) = mylist.split(",")
       }
       case _ => JOptionPane.showMessageDialog(null,"MatList per la riga: " + row + " e la colonna: " + col + " è " + matList(row)(col))
     }
