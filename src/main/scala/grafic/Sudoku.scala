@@ -29,7 +29,7 @@ object Sudoku {
     val OPEN_CELL_TEXT_YES = new Color(0, 255, 0) // RGB
 
     val OPEN_CELL_TEXT_NO: Color = Color.RED
-    val CLOSED_CELL_BGCOLOR = Color.LIGHT_GRAY
+    val CLOSED_CELL_BGCOLOR: Color = Color.LIGHT_GRAY
     val CLOSED_CELL_TEXT: Color = Color.BLACK
     val FONT_NUMBERS = new Font("Monospaced", Font.BOLD, 20)
     val puzzleResolt: Array[Array[Int]]
@@ -58,8 +58,6 @@ object Sudoku {
           puzzle(row)(col) match {
             case 0 =>
               tfCells(row)(col).setText("")
-              // tfCells(row)(col).setText(matList(row)(col).toString()) // set to empty string
-              tfCells(row)(col).setEditable(true)
               tfCells(row)(col).setBackground(OPEN_CELL_BGCOLOR)
 
               masks(row)(col) = false
@@ -89,6 +87,9 @@ object Sudoku {
       cp.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT))
       pack()
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) // Handle window closing // Handle window closing
+
+      showNumberList.setEditable(false)
+      showNumberList.setEnabled(false)
 
       setTitle("Sudoku")
       setVisible(true)

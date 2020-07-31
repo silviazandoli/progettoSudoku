@@ -1,9 +1,7 @@
-import utility.dimSudoku
-
 package object grafic {
-
   import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
-  import javax.swing.{JButton, JPanel}
+  import javax.swing.{JButton, JPanel, JTextArea}
+  import utility.dimSudoku
 
   val masks: Array[Array[Boolean]] = Array.ofDim[Boolean](dimSudoku, dimSudoku)
 
@@ -11,6 +9,17 @@ package object grafic {
 
   private var rowPressed = -1
   private var colPressed = -1
+
+  private var write = ""
+
+  val NUMBER = "Insert numbers"
+  val NUMBER_LIST = "Insert list of numbers"
+  val SEE_MATLIST = "See matlist"
+
+  val showNumberList = new JTextArea("") // bruttino
+
+  def setWrite(writeString: String): Unit = {write = writeString}
+  def getWrite: String = write
 
   def setPressed(row: Int, col: Int): Unit = {
     rowPressed = row
@@ -27,10 +36,9 @@ package object grafic {
       val pb = new JPanel() //create the button panel
       val FL = new FlowLayout()
       //it shows the lists for every square
-      val SS = new JButton("show lists")
+
       //you have the possibility to write the number in the square
       val CS = new JButton(" Undo")
-      val GBS = new JButton(" Only numbers ")
 
       val ES = new JButton(" Easy ")
       val MS = new JButton(" Medium ")
@@ -54,17 +62,11 @@ package object grafic {
       private val DisplayWidth = 557 //sudoku display its 557 pixels wide
       //SS.setText()
       //SS.addActionListener(this);
-      SS.setForeground(Color.BLUE)
-      SS.setBackground(Color.CYAN)
-      SS.addActionListener(l => {
-        // println("Hello!!")
-        // val combo=new J
-      })
+      showNumberList.setForeground(Color.BLUE)
+      showNumberList.setBackground(Color.CYAN)
+      showNumberList.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight))
 
-      pb.add(SS)
-
-      //GBS.addActionListener(this);
-      pb.add(GBS)
+      pb.add(showNumberList)
 
       // ES.addActionListener(this);
       pb.add(ES)
