@@ -2,23 +2,17 @@ package grafic.event
 
 import java.awt.event.{ActionEvent, ActionListener}
 import java.awt.{Color, Container}
+import javax.swing.{JOptionPane, JTextField}
 
 import grafic.MainGraphic.initAndUpload
-import grafic.{masks, setPressed, utentSolved, getWrite,
-  NUMBER_LIST, SEE_MATLIST, NUMBER, showNumberList}
-import javax.swing.{JOptionPane, JTextField}
+import grafic.{masks, tfCells, showNumberList, setPressed, utentSolved, getWrite, getPuzzleResolt}
 import utility.matList
-
-import grafic.tfCells
+import grafic.util._
 
 sealed trait WriteOnCell extends ActionListener {
   val row: Int
   val col: Int
   val container: Container
-  val puzzleResolt: Array[Array[Int]]
-
-  val CLOSED_CELL_BGCOLOR: Color = Color.GRAY
-  val CLOSED_CELL_TEXT: Color = Color.BLACK
 
   def actionPerformed(e: ActionEvent): Unit = {
     val t: JTextField = e.getSource.asInstanceOf[JTextField]
@@ -58,7 +52,7 @@ sealed trait WriteOnCell extends ActionListener {
           showNumberList.setEditable(false)
           showNumberList.setEnabled(false)
         case NUMBER =>
-          puzzleResolt(row)(col) match {
+          getPuzzleResolt(row)(col) match {
             case `number` =>
               t.setForeground(Color.green)
               JOptionPane.showMessageDialog(container, "Good! The number is in Puzzle", "Message", JOptionPane.DEFAULT_OPTION)
@@ -105,9 +99,9 @@ sealed trait WriteOnCell extends ActionListener {
 object WriteOnCell {
   import java.awt.Container
 
-  def apply(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]): WriteOnCell = WriteOnCellImpl(row, col, cp, puzzleResolt)
+  def apply(row: Int, col: Int, cp: Container): WriteOnCell = WriteOnCellImpl(row, col, cp)
 
-  private case class WriteOnCellImpl(row: Int, col: Int, cp: Container, puzzleResolt: Array[Array[Int]]) extends WriteOnCell {
+  private case class WriteOnCellImpl(row: Int, col: Int, cp: Container) extends WriteOnCell {
     val container: Container = cp
   }
 }

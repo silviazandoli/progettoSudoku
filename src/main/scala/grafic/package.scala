@@ -17,10 +17,6 @@ package object grafic {
 
   private var write = ""
 
-  val NUMBER = "Insert numbers"
-  val NUMBER_LIST = "Insert list of numbers"
-  val SEE_MATLIST = "See matlist"
-
   var cp: Container = _
   val showNumberList = new JTextArea("") // bruttino
 

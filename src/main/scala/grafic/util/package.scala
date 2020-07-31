@@ -22,4 +22,8 @@ package object util {
   val CLOSED_CELL_BGCOLOR: Color = Color.LIGHT_GRAY
   val CLOSED_CELL_TEXT: Color = Color.BLACK
   val FONT_NUMBERS = new Font("Monospaced", Font.BOLD, 20)
+
+  val NUMBER = "Insert numbers"
+  val NUMBER_LIST = "Insert list of numbers"
+  val SEE_MATLIST = "See matlist"
 }

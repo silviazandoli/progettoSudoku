@@ -1,26 +1,21 @@
 package grafic
 
-import java.awt.{Dimension, _}
-
-import grafic.event.MouseListener
-import grafic.panels.SPanel
-import javax.swing.{JFrame, JPanel, JTextField}
-import utility.{dimSudoku, puzzle}
-
-import grafic.tfCells
-
 import scala.swing.event.Event
 
 //evento che ti può dare la possibilità di cliccare sulla casella
 case class SudokuEvent(x: Int, y: Int) extends Event
 
 object Sudoku {
-  import util._
+  import grafic.util._
+  import java.awt.{Dimension, _}
 
-  trait SudokuTrait extends JFrame {
+  import grafic.event.MouseListener
+  import grafic.panels.SPanel
+  import javax.swing.{JFrame, JPanel, JTextField}
+  import utility.{dimSudoku, puzzle}
+
+  sealed trait SudokuTrait extends JFrame {
     def create(): Unit = {
-      /* f.setLayout(new BorderLayout) //north south east west and centre*/
-
       this.setLocation(300, 50) //center
 
       val cp = this.getContentPane
