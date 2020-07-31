@@ -6,6 +6,7 @@ import java.awt.event.{ActionEvent, ActionListener}
 import grafic.MainGraphic.initAndUpload
 import grafic.util._
 import grafic._
+import grafic.event.moduleListener.{MatListVision, NumberListVision}
 import javax.swing.{JOptionPane, JTextField}
 import utility.matList
 
@@ -24,31 +25,11 @@ sealed trait WriteOnCell extends ActionListener {
 
       getWrite match {
         case NUMBER_LIST =>
-          if (possibleValues.contains(number)) {
-            t.setForeground(Color.green)
-            val messageOk = "The number belongs to list "
-            JOptionPane.showMessageDialog(cp, messageOk,
-              "Message", JOptionPane.WARNING_MESSAGE)
-          } else {
-            setPressed(-1, -1)
+          NumberListVision.seeVision(possibleValues, number, t)
 
-            t.setForeground(Color.red)
-            var message = "The number is not correct! Possible values: "
-            possibleValues.foreach(v => message = message + v + " ")
-            JOptionPane.showMessageDialog(cp, message, "Message", JOptionPane.WARNING_MESSAGE)
-          }
         case SEE_MATLIST =>
-          println(SEE_MATLIST)
-          showNumberList.setEditable(true)
-          showNumberList.setEnabled(true)
+          MatListVision.seeVision(possibleValues)
 
-          possibleValues.foreach(el => {
-            val textIns = el + ","
-            showNumberList.append(textIns)
-          })
-
-          showNumberList.setEditable(false)
-          showNumberList.setEnabled(false)
         case NUMBER =>
           getPuzzleResolt(row)(col) match {
             case `number` =>
@@ -78,7 +59,7 @@ sealed trait WriteOnCell extends ActionListener {
             case _ =>
               t.setForeground(Color.red)
               setPressed(-1, -1)
-              tfCells(row)(col).setEditable(true)
+              tfCells(row)(col).setEditable(true) // si dò 2° chanche
               JOptionPane.showMessageDialog(cp, "Bad! The number Not in puzzle!", "Message", JOptionPane.DEFAULT_OPTION)
           }
       }
