@@ -24,7 +24,9 @@ object MainGraphic extends App {
       val sudokuSolver = FullExploration(getPuzzle)
       sudokuSolver.solve(0, 0)
 
-      val sudoku = Sudoku(sudokuSolver.returnPuzzle())
+      setPuzzleResolt(sudokuSolver.returnPuzzle())
+
+      val sudoku = Sudoku()
       sudoku.create()
     }
   }

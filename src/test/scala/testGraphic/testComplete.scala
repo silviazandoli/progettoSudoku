@@ -5,7 +5,7 @@ import org.scalatest.{BeforeAndAfter, FlatSpec}
 import sudoku.MatListOperation.initList
 import utility.getPuzzle
 import sudoku.SudokuLoad.loadPuzzle
-import grafic.{getPressed, masks, utentSolved}
+import grafic.{getPressed, masks, setPuzzleResolt, utentSolved}
 import resolutionAlgorithm.FullExploration
 
 class testComplete extends FlatSpec with BeforeAndAfter {
@@ -21,7 +21,9 @@ class testComplete extends FlatSpec with BeforeAndAfter {
       val sudokuSolver = FullExploration(getPuzzle)
       sudokuSolver.solve(0, 0)
 
-      val sudoku = Sudoku(sudokuSolver.returnPuzzle())
+      setPuzzleResolt(sudokuSolver.returnPuzzle())
+
+      val sudoku = Sudoku()
       sudoku.create()
     }
   }

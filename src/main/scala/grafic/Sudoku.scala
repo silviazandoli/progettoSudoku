@@ -2,7 +2,8 @@ package grafic
 
 import java.awt.{Dimension, _}
 
-import grafic.event.{MouseListener, WriteOnCell}
+import grafic.event.MouseListener
+import grafic.panels.SPanel
 import javax.swing.{JFrame, JPanel, JTextField}
 import utility.{dimSudoku, puzzle, tfCells}
 
@@ -32,7 +33,6 @@ object Sudoku {
     val CLOSED_CELL_BGCOLOR: Color = Color.LIGHT_GRAY
     val CLOSED_CELL_TEXT: Color = Color.BLACK
     val FONT_NUMBERS = new Font("Monospaced", Font.BOLD, 20)
-    val puzzleResolt: Array[Array[Int]]
 
     def create(): Unit = {
       /* f.setLayout(new BorderLayout) //north south east west and centre*/
@@ -93,18 +93,8 @@ object Sudoku {
 
       setTitle("Sudoku")
       setVisible(true)
-
-      //set the borders
-
-      /*  //val dp: Nothing = new Nothing
-         //set the background of the sudoku display black
-        cp.add(dp.CS)
-
-        f.add(dp.CS, BorderLayout.WEST) //add the sudoku display panel*/
-
-
     }
   }
 
-  case class Sudoku(puzzleResolt: Array[Array[Int]]) extends SudokuTrait
+  case class Sudoku() extends SudokuTrait
 }
