@@ -5,8 +5,8 @@ import java.awt.Color
 import grafic.{cp, setPressed}
 import javax.swing.{JOptionPane, JTextField}
 
-object NumberListVision {
-  def seeVision(possibleValues: Set[Int], number: Int, t: JTextField) = {
+protected[event] object NumberListVision {
+  def seeVision(possibleValues: Set[Int], number: Int, t: JTextField): Unit = {
     if (possibleValues.contains(number)) {
       t.setForeground(Color.green)
       val messageOk = "The number belongs to list "

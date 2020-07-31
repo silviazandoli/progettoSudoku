@@ -3,7 +3,7 @@ package grafic.event.moduleListener
 import grafic.showNumberList
 import grafic.util.SEE_MATLIST
 
-object MatListVision {
+protected[event] object MatListVision {
 
   /**
    * TODO: fare modulo che ha una funzione che scrive i numeri della matlist
