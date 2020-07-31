@@ -21,7 +21,6 @@ sealed trait WriteOnCell extends ActionListener {
       t.setBackground(Color.yellow)
 
       tfCells(row)(col).setEditable(true)
-
       val possibleValues = matList(row)(col).toSet
 
       getWrite match {
@@ -56,6 +55,7 @@ sealed trait WriteOnCell extends ActionListener {
             case `number` =>
               t.setForeground(Color.green)
               JOptionPane.showMessageDialog(container, "Good! The number is in Puzzle", "Message", JOptionPane.DEFAULT_OPTION)
+
               tfCells(row)(col).setEditable(false)
               tfCells(row)(col).setBackground(CLOSED_CELL_BGCOLOR)
               tfCells(row)(col).setForeground(CLOSED_CELL_TEXT)
@@ -71,7 +71,9 @@ sealed trait WriteOnCell extends ActionListener {
                 JOptionPane.showMessageDialog(container, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
                 val option = JOptionPane.showConfirmDialog(null, "New Game?", "Message", JOptionPane.YES_NO_CANCEL_OPTION)
                 option match {
-                  case 0 =>  initAndUpload()
+                  case 0 =>
+                    container.setVisible(false)
+                    initAndUpload()
                   case 1 => System.exit(0)
                   case _ => System.out.println("cancel")
                 }
@@ -79,6 +81,7 @@ sealed trait WriteOnCell extends ActionListener {
             case _ =>
               t.setForeground(Color.red)
               setPressed(-1, -1)
+              tfCells(row)(col).setEditable(true)
               JOptionPane.showMessageDialog(container, "Bad! The number Not in puzzle!", "Message", JOptionPane.DEFAULT_OPTION)
           }
       }
@@ -86,8 +89,6 @@ sealed trait WriteOnCell extends ActionListener {
       //it shows the list of possible values
       //(ps: ho fatto che l'utente può vedere i numeri candidati per quella cella quando l'utente inserisce un numero errato in una
       //determinata casella
-
-      tfCells(row)(col).setEditable(false)
 
     } catch {
       case _: Throwable => t.setForeground(Color.red)

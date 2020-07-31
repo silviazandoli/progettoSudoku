@@ -2,9 +2,8 @@ package grafic.event
 
 import java.awt.event.{MouseAdapter, MouseEvent}
 
-import grafic.{setWrite, cp}
+import grafic.setWrite
 import javax.swing.JOptionPane
-import grafic.tfCells
 import grafic.util.{NUMBER_LIST, SEE_MATLIST, NUMBER}
 
 sealed trait MouseListener extends MouseAdapter {
@@ -19,8 +18,6 @@ sealed trait MouseListener extends MouseAdapter {
   def selectNumber(): Unit = {
    val options = Array[AnyRef]("Insert numbers", "Insert list of numbers", "See matlist")
     val n = JOptionPane.showOptionDialog(null, "How to proceed?", "User mode", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options(2))
-
-    tfCells(row)(col).addActionListener(WriteOnCell(row, col, cp))
 
     n match {
       case 1 => setWrite(NUMBER_LIST)
