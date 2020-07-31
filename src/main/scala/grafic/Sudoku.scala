@@ -29,37 +29,34 @@ object Sudoku {
       cp.add(matrixGame)
 
       // Construct 9x9 JTextFields and add to the content-pane
-      for (row <- 0 until dimSudoku) {
-        for (col <- 0 until dimSudoku) {
+      for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
+        tfCells(row)(col) = new JTextField() // Allocate element of array
+        matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextField
 
-          tfCells(row)(col) = new JTextField() // Allocate element of array
-          matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextField
+        puzzle(row)(col) match {
+          case 0 =>
+            tfCells(row)(col).setText("")
+            tfCells(row)(col).setBackground(OPEN_CELL_BGCOLOR)
 
-          puzzle(row)(col) match {
-            case 0 =>
-              tfCells(row)(col).setText("")
-              tfCells(row)(col).setBackground(OPEN_CELL_BGCOLOR)
+            masks(row)(col) = false
 
-              masks(row)(col) = false
+            //aggiunta controlli-> che sia inserito un carattere che sia un numero, che il numero inserito non sia corretto
+            //(nel caso non appartenga alla matList), etc
+            tfCells(row)(col).addActionListener(WriteOnCell(row, col, cp))
+            tfCells(row)(col).addMouseListener(MouseListener(row, col))
 
-              //aggiunta controlli-> che sia inserito un carattere che sia un numero, che il numero inserito non sia corretto
-              //(nel caso non appartenga alla matList), etc
-              tfCells(row)(col).addActionListener(WriteOnCell(row, col, cp))
-              tfCells(row)(col).addMouseListener(MouseListener(row, col))
+          case _ =>
+            tfCells(row)(col).setText(puzzle(row)(col) + "")
+            tfCells(row)(col).setEditable(false)
+            tfCells(row)(col).setBackground(CLOSED_CELL_BGCOLOR)
+            tfCells(row)(col).setForeground(CLOSED_CELL_TEXT)
 
-            case _ =>
-              tfCells(row)(col).setText(puzzle(row)(col) + "")
-              tfCells(row)(col).setEditable(false)
-              tfCells(row)(col).setBackground(CLOSED_CELL_BGCOLOR)
-              tfCells(row)(col).setForeground(CLOSED_CELL_TEXT)
-
-              masks(row)(col) = true
-          }
-
-          // Beautify all the cells
-          tfCells(row)(col).setHorizontalAlignment(10)
-          tfCells(row)(col).setFont(FONT_NUMBERS)
+            masks(row)(col) = true
         }
+
+        // Beautify all the cells
+        tfCells(row)(col).setHorizontalAlignment(10)
+        tfCells(row)(col).setFont(FONT_NUMBERS)
       }
 
       cp.add(SPanel(new Dimension(MATRIX_WIDTH / 2, MATRIX_HEIGHT / 2)), BorderLayout.WEST)
@@ -73,8 +70,8 @@ object Sudoku {
 
       setTitle("Sudoku")
       setVisible(true)
+      }
     }
-  }
 
   case class Sudoku() extends SudokuTrait
 }
