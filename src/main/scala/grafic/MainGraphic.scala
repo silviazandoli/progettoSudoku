@@ -16,7 +16,7 @@ import utility.getPuzzle
 
 import scala.io.Source
 
-
+//interface of uploading sudokus by Zandoli
 object MainGraphic extends JFXApp {
 
   stage=new application.JFXApp.PrimaryStage {
