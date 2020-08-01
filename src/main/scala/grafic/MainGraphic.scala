@@ -47,51 +47,19 @@ object MainGraphic extends JFXApp {
       menuBar.menus  = List(fileMenu)
       menuBar.prefWidth = 800
 
-      /*val checkMenu = new Menu("Check")
-      val check1 = new CheckMenuItem("Check1")
-      val check2 = new CheckMenuItem("check2")
-      checkMenu.items   = List(check1, check2)
 
-      val radioMenu = new Menu("Radio")
-      val radio1 = new RadioMenuItem("Radio1")
-      val radio2 = new RadioMenuItem("Radio2")
-      val group = new ToggleGroup
-      group.toggles = List(radio1, radio2)
-      radioMenu.items = List(radio1,radio2)
-
-
-      val typeMenu = new Menu("Types")
-      typeMenu.items = List(checkMenu, radioMenu)
-
-      menuBar.menus  = List(fileMenu, typeMenu)
-      menuBar.prefWidth = 600
-*/
-      /* val menuButton = new MenuButton("Menu Button")
-       menuButton.items = List(new MenuItem("Start Game"), new MenuItem("Open File"), new MenuItem("Exit"))
-
-       menuButton.layoutX = 20
-       menuButton.layoutY = 50*/
-
-      /* val splitMenuButton = new SplitMenuButton(new MenuItem("Split 1"), new MenuItem("Split 2"))
-       splitMenuButton.text = "Split Menu Button"
-       splitMenuButton.layoutX = 20
-       splitMenuButton.layoutY = 100*/
 
       val label = new Label("File Opened:")
       label.layoutX = 20
       label.layoutY = 150
 
-      // val initGame=new Button("Start Game")
-
-      /* val contextMenu = new ContextMenu(new MenuItem("Context1"), new MenuItem("Context 2"))
-       label.contextMenu = contextMenu*/
-
 
       content=List(menuBar,label)
-      //content=new Button("ciaoWs")
+
       //defining handles
       exitItem.onAction=(event:ActionEvent) => sys.exit(0)
 
+      //apre il file txt e lo carica nella matrice del sudoku, inizia il gioco
       startItem.onAction= (event:ActionEvent)=>{
 
         val fileChooser=new FileChooser{
@@ -129,6 +97,7 @@ object MainGraphic extends JFXApp {
         //areaText.
       }
 
+      //apre il file txt e lo stampa su label
       openItem.onAction= (event:ActionEvent)=>{
         val fileChooser=new FileChooser{
           title = "Open Resource File"
@@ -161,16 +130,7 @@ object MainGraphic extends JFXApp {
 
 
 
-    /*exitItem.onAction = (e:ActionEvent)=>System.exit(0)
-    openItem.onAction = (e:ActionEvent)=>{
-      val fileChooser=new FileChooser
-      val selectedFile=fileChooser.showOpenDialog(stage)
-      label.text= "Open"+selectedFile
 
-
-    }
-*/
-    //save item
 
 
 

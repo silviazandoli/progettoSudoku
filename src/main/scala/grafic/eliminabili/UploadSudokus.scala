@@ -3,6 +3,7 @@ package grafic.eliminabili
 import grafic.Sudoku.Sudoku
 import grafic.setPuzzleResolt
 import resolutionAlgorithm.FullExploration
+import scalafx.Includes._
 import scalafx.application
 import scalafx.application.JFXApp
 import scalafx.event.ActionEvent
