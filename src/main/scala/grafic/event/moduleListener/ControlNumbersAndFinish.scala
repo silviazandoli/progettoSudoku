@@ -1,10 +1,14 @@
 package grafic.event.moduleListener
 
+
+
 import java.awt.Color
-import grafic.{cp, setPressed}
+
+import grafic.MainGraphic.initAndUpload
+import grafic.{cp, setPressed, utentSolved}
 import javax.swing.{JOptionPane, JTextField}
 
-object ControlNumbers {
+protected[event] object ControlNumbersAndFinish {
 
 
   def seeVision(possibleValues: Set[Int], number: Int, t: JTextField): Unit = {
@@ -25,4 +29,19 @@ object ControlNumbers {
 
   }
 
+  def actionUtent(): Unit = {
+    if (utentSolved()) {
+      JOptionPane.showMessageDialog(cp, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
+      val option = JOptionPane.showConfirmDialog(null, "New Game?", "Message", JOptionPane.YES_NO_CANCEL_OPTION)
+      option match {
+        case 0 =>
+          cp.setVisible(false)
+          initAndUpload()
+        case 1 => System.exit(0)
+        case _ => System.out.println("cancel")
+      }
+    }
+  }
+
 }
+

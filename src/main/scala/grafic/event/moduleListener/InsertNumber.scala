@@ -2,10 +2,11 @@ package grafic.event.moduleListener
 
 protected[event] object InsertNumber {
   import java.awt.Color
-  import javax.swing.{JOptionPane, JTextField}
-  import grafic.MainGraphic.initAndUpload
-  import grafic.{tfCells, masks, cp, setPressed, getPuzzleResolt, utentSolved}
+
+  import grafic.event.moduleListener.ControlNumbersAndFinish.{actionUtent}
   import grafic.util.{CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT}
+  import grafic._
+  import javax.swing.{JOptionPane, JTextField}
 
   private def operationOnGUI(row: Int, col: Int, t: JTextField): Unit = {
     t.setForeground(Color.green)
@@ -18,19 +19,7 @@ protected[event] object InsertNumber {
     masks(row)(col) = true
   }
 
-  private def actionUtent(): Unit = {
-    if (utentSolved()) {
-      JOptionPane.showMessageDialog(cp, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
-      val option = JOptionPane.showConfirmDialog(null, "New Game?", "Message", JOptionPane.YES_NO_CANCEL_OPTION)
-      option match {
-        case 0 =>
-          cp.setVisible(false)
-          initAndUpload()
-        case 1 => System.exit(0)
-        case _ => System.out.println("cancel")
-      }
-    }
-  }
+
 
   def writeNumber(row: Int, col: Int, number: Int, t: JTextField): Unit = {
     getPuzzleResolt(row)(col) match {
@@ -38,6 +27,7 @@ protected[event] object InsertNumber {
         operationOnGUI(row, col, t)
         //messa a comodo
         setPressed(row, col)
+        //in case of finish
         actionUtent()
       case _ =>
         t.setForeground(Color.red)

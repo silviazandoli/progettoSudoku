@@ -3,9 +3,9 @@ package grafic.event
 import java.awt.Color
 import java.awt.event.{ActionEvent, ActionListener}
 
-import grafic.util._
 import grafic._
-import grafic.event.moduleListener.{InsertNumber, MatListVision, NumberListVision}
+import grafic.event.moduleListener.{ControlNumbersAndFinish, InsertNumber, MatListVision}
+import grafic.util._
 import javax.swing.{JOptionPane, JTextField}
 import utility.matList
 
@@ -22,7 +22,7 @@ sealed trait WriteOnCell extends ActionListener {
 
       getWrite match {
         case NUMBER_LIST =>
-          NumberListVision.seeVision(possibleValues, number, t)
+          ControlNumbersAndFinish.seeVision(possibleValues, number, t)
 
         case SEE_MATLIST =>
           MatListVision.seeVision(possibleValues)
@@ -30,10 +30,9 @@ sealed trait WriteOnCell extends ActionListener {
         case NUMBER =>
           InsertNumber.writeNumber(row, col, number, t)
       }
-      //it shows the list of possible values
-      //(ps: ho fatto che l'utente può vedere i numeri candidati per quella cella quando l'utente inserisce un numero errato in una
-      //determinata casella
+
     } catch {
+          //it controls it was inserted a input which is not a number
       case _: Throwable => t.setForeground(Color.red)
         JOptionPane.showMessageDialog(cp, "It wasn't inserted a number!", "Messaggio", JOptionPane.WARNING_MESSAGE)
     }

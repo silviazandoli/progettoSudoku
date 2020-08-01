@@ -2,7 +2,6 @@ package grafic.event.moduleListener
 
 import grafic.showNumberList
 import grafic.util.SEE_MATLIST
-
 protected[event] object MatListVision {
 
   /**
