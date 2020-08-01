@@ -37,8 +37,8 @@ object SPanel {
     FL.setHgap(100); //set the flow layout to give  symmetric display
     pb.setLayout(FL)
 
-    showNumberList.setForeground(Color.BLUE)
-    showNumberList.setBackground(Color.CYAN)
+    showNumberList.setForeground(Color.BLACK)
+    showNumberList.setBackground(Color.WHITE)
     showNumberList.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight))
 
     pb.add(showNumberList)
