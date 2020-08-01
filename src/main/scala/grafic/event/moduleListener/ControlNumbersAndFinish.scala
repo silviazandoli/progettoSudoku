@@ -41,15 +41,15 @@ protected[event] object ControlNumbersAndFinish {
         case 0 =>
           cp.setVisible(false)
 
-          initAndUpload()
+          initAndReUpload()
         case 1 => System.exit(0)
         case _ => System.out.println("cancel")
       }
     }
   }
 
-  //re-upload after one having done one game
-  def initAndUpload(): Unit = {
+  //riapload di un altro sudoku quando si è già giocato (non si riapre più l'interfaccia dell'inizio)
+  def initAndReUpload(): Unit = {
     //val jfc = new JFileChooser("input")
     val jfc = new JFileChooser("input")
     val retValue = jfc.showOpenDialog(null)
