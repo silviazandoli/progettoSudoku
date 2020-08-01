@@ -1,7 +1,8 @@
-package grafic
+package grafic.eliminabili
+
 import grafic.Sudoku.Sudoku
+import grafic.setPuzzleResolt
 import resolutionAlgorithm.FullExploration
-import scalafx.Includes._
 import scalafx.application
 import scalafx.application.JFXApp
 import scalafx.event.ActionEvent
@@ -16,8 +17,8 @@ import utility.getPuzzle
 
 import scala.io.Source
 
-
-object MainGraphic extends JFXApp {
+//by Zandoli
+object UploadSudokus extends JFXApp {
 
   stage=new application.JFXApp.PrimaryStage {
     title="Menu"
@@ -66,25 +67,25 @@ object MainGraphic extends JFXApp {
       menuBar.menus  = List(fileMenu, typeMenu)
       menuBar.prefWidth = 600
 */
-      /* val menuButton = new MenuButton("Menu Button")
-       menuButton.items = List(new MenuItem("Start Game"), new MenuItem("Open File"), new MenuItem("Exit"))
+     /* val menuButton = new MenuButton("Menu Button")
+      menuButton.items = List(new MenuItem("Start Game"), new MenuItem("Open File"), new MenuItem("Exit"))
 
-       menuButton.layoutX = 20
-       menuButton.layoutY = 50*/
+      menuButton.layoutX = 20
+      menuButton.layoutY = 50*/
 
-      /* val splitMenuButton = new SplitMenuButton(new MenuItem("Split 1"), new MenuItem("Split 2"))
-       splitMenuButton.text = "Split Menu Button"
-       splitMenuButton.layoutX = 20
-       splitMenuButton.layoutY = 100*/
+     /* val splitMenuButton = new SplitMenuButton(new MenuItem("Split 1"), new MenuItem("Split 2"))
+      splitMenuButton.text = "Split Menu Button"
+      splitMenuButton.layoutX = 20
+      splitMenuButton.layoutY = 100*/
 
       val label = new Label("File Opened:")
       label.layoutX = 20
       label.layoutY = 150
 
-      // val initGame=new Button("Start Game")
+     // val initGame=new Button("Start Game")
 
-      /* val contextMenu = new ContextMenu(new MenuItem("Context1"), new MenuItem("Context 2"))
-       label.contextMenu = contextMenu*/
+     /* val contextMenu = new ContextMenu(new MenuItem("Context1"), new MenuItem("Context 2"))
+      label.contextMenu = contextMenu*/
 
 
       content=List(menuBar,label)
@@ -142,19 +143,19 @@ object MainGraphic extends JFXApp {
         }
         //you can open multiple sudoku
         val selectedFile= fileChooser.showOpenDialog(stage)
-        // val lines = Source.fromFile("selectedFile").getLines.toList
-        /* for (line <- Source.fromFile(selectedFile).getLines) {
-           println(line)
+       // val lines = Source.fromFile("selectedFile").getLines.toList
+       /* for (line <- Source.fromFile(selectedFile).getLines) {
+          println(line)
 
-         }*/
-        val fileContents = Source.fromFile(selectedFile).getLines.mkString
+        }*/
+       val fileContents = Source.fromFile(selectedFile).getLines.mkString
         label.text= fileContents
       }
 
       saveItem.onAction = (event:ActionEvent) => {
-        val fileChooser=new FileChooser
-        val selectedFile=fileChooser.showSaveDialog(stage)
-        label.text="Save "+selectedFile
+          val fileChooser=new FileChooser
+          val selectedFile=fileChooser.showSaveDialog(stage)
+          label.text="Save "+selectedFile
 
       }
     }
@@ -179,11 +180,6 @@ object MainGraphic extends JFXApp {
 
 
   }
-
-
-
-
-
 
 
 

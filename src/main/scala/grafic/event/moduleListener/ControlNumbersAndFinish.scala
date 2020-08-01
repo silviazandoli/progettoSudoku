@@ -4,9 +4,13 @@ package grafic.event.moduleListener
 
 import java.awt.Color
 
-import grafic.MainGraphic.initAndUpload
-import grafic.{cp, setPressed, utentSolved}
-import javax.swing.{JOptionPane, JTextField}
+import grafic.Sudoku.Sudoku
+import grafic.{cp, setPressed, setPuzzleResolt, utentSolved}
+import javax.swing.{JFileChooser, JOptionPane, JTextField}
+import resolutionAlgorithm.FullExploration
+import sudoku.MatListOperation.initList
+import sudoku.SudokuLoad.loadPuzzle
+import utility.getPuzzle
 
 protected[event] object ControlNumbersAndFinish {
 
@@ -36,10 +40,32 @@ protected[event] object ControlNumbersAndFinish {
       option match {
         case 0 =>
           cp.setVisible(false)
+
           initAndUpload()
         case 1 => System.exit(0)
         case _ => System.out.println("cancel")
       }
+    }
+  }
+
+  //re-upload after one having done one game
+  def initAndUpload(): Unit = {
+    //val jfc = new JFileChooser("input")
+    val jfc = new JFileChooser("input")
+    val retValue = jfc.showOpenDialog(null)
+    if (retValue == JFileChooser.APPROVE_OPTION) {
+      val file = jfc.getSelectedFile
+      println(file.getAbsolutePath)
+      loadPuzzle(file.getAbsolutePath)
+      initList()
+
+      val sudokuSolver = FullExploration(getPuzzle)
+      sudokuSolver.solve(0, 0)
+
+      setPuzzleResolt(sudokuSolver.returnPuzzle())
+
+      val sudoku = Sudoku()
+      sudoku.create()
     }
   }
 
