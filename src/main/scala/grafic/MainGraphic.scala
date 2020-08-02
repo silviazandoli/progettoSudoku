@@ -115,7 +115,8 @@ object MainGraphic extends JFXApp {
 
          }*/
         val fileContents = Source.fromFile(selectedFile).getLines.mkString
-        label.text = fileContents
+
+        label.text = "Open "+ selectedFile + " : \n" +fileContents
       }
 
       saveItem.onAction = (event: ActionEvent) => {
