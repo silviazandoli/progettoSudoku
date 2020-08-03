@@ -1,25 +1,7 @@
 package grafic.eliminabili
 
-import grafic.Sudoku.Sudoku
-import grafic.setPuzzleResolt
-import resolutionAlgorithm.FullExploration
-import scalafx.Includes._
-import scalafx.application
-import scalafx.application.JFXApp
-import scalafx.event.ActionEvent
-import scalafx.scene.Scene
-import scalafx.scene.control._
-import scalafx.scene.input.{KeyCode, KeyCodeCombination, KeyCombination}
-import scalafx.stage.FileChooser
-import scalafx.stage.FileChooser.ExtensionFilter
-import sudoku.MatListOperation.initList
-import sudoku.SudokuLoad.loadPuzzle
-import utility.getPuzzle
-
-import scala.io.Source
-
 //by Zandoli
-object UploadSudokus extends JFXApp {
+/*object UploadSudokus extends JFXApp {
 
   stage=new application.JFXApp.PrimaryStage {
     title="Menu"
@@ -180,7 +162,7 @@ object UploadSudokus extends JFXApp {
 
 
 
-  }
+  }*/
 
 
 
