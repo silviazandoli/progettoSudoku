@@ -1,8 +1,9 @@
 package grafic
 
 import grafic.Sudoku.Sudoku
+
 import resolutionAlgorithm.FullExploration
-import scalafx.Includes._
+import scalafx.Includes
 import scalafx.application
 import scalafx.application.JFXApp
 import scalafx.event.ActionEvent
@@ -105,8 +106,11 @@ object MainGraphic extends JFXApp {
             new ExtensionFilter("Text Files", "*.txt"),
 
           )
-
+          /*  initialDirectory = {
+              System.getProperty("input")
+            }*/
         }
+
         //you can open multiple sudoku
         val selectedFile = fileChooser.showOpenDialog(stage)
         // val lines = Source.fromFile("selectedFile").getLines.toList
@@ -132,3 +136,5 @@ object MainGraphic extends JFXApp {
 
 
 }
+
+
