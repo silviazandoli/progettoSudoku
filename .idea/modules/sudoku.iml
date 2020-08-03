@@ -18,5 +18,8 @@
     <orderEntry type="library" scope="TEST" name="sbt: org.scala-lang.modules:scala-xml_2.13:1.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-reflect:2.13.3:jar" level="project" />
     <orderEntry type="library" name="sbt: org.scalafx:scalafx_2.13:14-R19:jar" level="project" />
+    <orderEntry type="library" name="jfxrt" level="project" />
+    <orderEntry type="library" name="org.openjfx:javafx-archetype-fxml:0.0.1" level="project" />
+    <orderEntry type="library" name="javafx-sdk-11.0" level="project" />
   </component>
 </module>
