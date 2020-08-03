@@ -1,9 +1,11 @@
 package grafic.eliminabili
 
-//by Zandoli
-/*object UploadSudokus extends JFXApp {
+import scalafx.application.JFXApp
 
-  stage=new application.JFXApp.PrimaryStage {
+//by Zandoli
+object UploadSudokus extends JFXApp {
+
+ /* stage=new application.JFXApp.PrimaryStage {
     title="Menu"
     scene=new Scene(600,300) {
       val menuBar = new MenuBar
