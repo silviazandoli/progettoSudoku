@@ -1,11 +1,16 @@
 package grafic
 
+
 import grafic.Sudoku.Sudoku
+import javafx.event.EventHandler
+import javafx.event.ActionEvent
 import resolutionAlgorithm.FullExploration
-import scalafx.Includes._
+
+import scala.io.Source
+//import scalafx.Includes._
 import scalafx.application
 import scalafx.application.JFXApp
-import scalafx.event.ActionEvent
+//import scalafx.event.ActionEvent
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.input.{KeyCode, KeyCodeCombination, KeyCombination}
@@ -15,7 +20,11 @@ import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
 
-import scala.io.Source
+/*Initially I used this import for doing handles, but for a bug in scala it didn't work in computers of my colleagues
+So I had to modify handles and to import Some JavaFx
+I left commented the old code
+//import scalafx.Includes._
+ */
 
 //interface of uploading sudokus by Zandoli
 object MainGraphic extends JFXApp {
@@ -56,74 +65,143 @@ object MainGraphic extends JFXApp {
       content = List(menuBar, label)
 
       //defining handles
-      exitItem.onAction = (event: ActionEvent) => sys.exit(0)
+      /* exitItem.onAction = (event: ActionEvent) => sys.exit(0)*/
+      exitItem.onAction =
+        new EventHandler[ActionEvent] {
+          override def handle(event: ActionEvent) {
+            sys.exit(0)
+          }
+        }
 
       //apre il file txt e lo carica nella matrice del sudoku, inizia il gioco
-      startItem.onAction = (event: ActionEvent) => {
+      /*    startItem.onAction = (event: ActionEvent) => {
 
-        val fileChooser = new FileChooser {
-          title = "Open Resource File"
+            val fileChooser = new FileChooser {
+              title = "Open Resource File"
 
-          //you can open only file .txt
-          extensionFilters ++= Seq(
-            new ExtensionFilter("Text Files", "*.txt"),
+              //you can open only file .txt
+              extensionFilters ++= Seq(
+                new ExtensionFilter("Text Files", "*.txt"),
 
-          )
+              )
 
+            }
+            //you can open multiple sudoku (you can select more than one file)
+            val selectedFile = fileChooser.showOpenMultipleDialog(stage)
+
+
+            selectedFile.foreach(i => {
+              //i.toString
+
+              label.text = "Open " + selectedFile
+              loadPuzzle(i.toString)
+              initList()
+              val sudokuSolver = FullExploration(getPuzzle)
+              sudokuSolver.solve(0, 0)
+
+              setPuzzleResolt(sudokuSolver.returnPuzzle())
+
+              val sudoku = Sudoku()
+              sudoku.create()
+            })
+            // loadPuzzle(selectedFile.toString)
+
+          }*/
+      startItem.onAction =
+        new EventHandler[ActionEvent] {
+          override def handle(event: ActionEvent) = {
+            val fileChooser = new FileChooser {
+              title = "Open Resource File"
+
+              //you can open only file .txt
+              extensionFilters.addAll(
+                new ExtensionFilter("Text Files", "*.txt"),
+
+              )
+
+            }
+            //you can open multiple sudoku (you can select more than one file)
+            val selectedFile = fileChooser.showOpenMultipleDialog(stage)
+
+
+            selectedFile.foreach(i => {
+              //i.toString
+
+              label.text = "Open " + selectedFile
+              loadPuzzle(i.toString)
+              initList()
+              val sudokuSolver = FullExploration(getPuzzle)
+              sudokuSolver.solve(0, 0)
+
+              setPuzzleResolt(sudokuSolver.returnPuzzle())
+
+              val sudoku = Sudoku()
+              sudoku.create()
+            })
+          }
         }
-        //you can open multiple sudoku (you can select more than one file)
-        val selectedFile = fileChooser.showOpenMultipleDialog(stage)
-
-
-        selectedFile.foreach(i => {
-          //i.toString
-
-          label.text = "Open " + selectedFile
-          loadPuzzle(i.toString)
-          initList()
-          val sudokuSolver = FullExploration(getPuzzle)
-          sudokuSolver.solve(0, 0)
-
-          setPuzzleResolt(sudokuSolver.returnPuzzle())
-
-          val sudoku = Sudoku()
-          sudoku.create()
-        })
-        // loadPuzzle(selectedFile.toString)
-
-
-        //areaText.
-      }
 
       //apre il file txt e lo stampa su label
-      openItem.onAction = (event: ActionEvent) => {
-        val fileChooser = new FileChooser {
-          title = "Open Resource File"
+      /* openItem.onAction = (event: ActionEvent) => {
+         val fileChooser = new FileChooser {
+           title = "Open Resource File"
 
-          //you can open only file txt
-          extensionFilters ++= Seq(
-            new ExtensionFilter("Text Files", "*.txt"),
+           //you can open only file txt
+           extensionFilters ++= Seq(
+             new ExtensionFilter("Text Files", "*.txt"),
 
-          )
+           )
 
+         }
+         //you can open multiple sudoku
+         val selectedFile = fileChooser.showOpenDialog(stage)
+         // val lines = Source.fromFile("selectedFile").getLines.toList
+         /* for (line <- Source.fromFile(selectedFile).getLines) {
+            println(line)
+
+          }*/
+         val fileContents = Source.fromFile(selectedFile).getLines.mkString
+
+         label.text = "Open "+ selectedFile + " : \n" +fileContents
+       }*/
+      openItem.onAction =
+        new EventHandler[ActionEvent] {
+          override def handle(event: ActionEvent) = {
+            val fileChooser = new FileChooser {
+              title = "Open Resource File"
+
+              //you can open only file txt
+              extensionFilters.addAll(
+                new ExtensionFilter("Text Files", "*.txt"),
+
+              )
+
+            }
+            //you can open multiple sudoku
+            val selectedFile = fileChooser.showOpenDialog(stage)
+            // val lines = Source.fromFile("selectedFile").getLines.toList
+            /* for (line <- Source.fromFile(selectedFile).getLines) {
+               println(line)
+
+             }*/
+            val fileContents = Source.fromFile(selectedFile).getLines.mkString
+
+            label.text = "Open " + selectedFile + " : \n" + fileContents
+          }
         }
-        //you can open multiple sudoku
-        val selectedFile = fileChooser.showOpenDialog(stage)
-        // val lines = Source.fromFile("selectedFile").getLines.toList
-        /* for (line <- Source.fromFile(selectedFile).getLines) {
-           println(line)
+      /* saveItem.onAction = (event: ActionEvent) => {
+         val fileChooser = new FileChooser
+         val selectedFile = fileChooser.showSaveDialog(stage)
+         label.text = "Save " + selectedFile
 
-         }*/
-        val fileContents = Source.fromFile(selectedFile).getLines.mkString
+       }*/
 
-        label.text = "Open "+ selectedFile + " : \n" +fileContents
-      }
-
-      saveItem.onAction = (event: ActionEvent) => {
-        val fileChooser = new FileChooser
-        val selectedFile = fileChooser.showSaveDialog(stage)
-        label.text = "Save " + selectedFile
-
+      saveItem.onAction = new EventHandler[ActionEvent] {
+        override def handle(event: ActionEvent): Unit = {
+          val fileChooser = new FileChooser
+          val selectedFile = fileChooser.showSaveDialog(stage)
+          label.text = "Save " + selectedFile
+        }
       }
     }
 
