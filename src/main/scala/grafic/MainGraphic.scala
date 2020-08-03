@@ -105,8 +105,11 @@ object MainGraphic extends JFXApp {
             new ExtensionFilter("Text Files", "*.txt"),
 
           )
-
+        /*  initialDirectory = {
+            System.getProperty("input")
+          }*/
         }
+
         //you can open multiple sudoku
         val selectedFile = fileChooser.showOpenDialog(stage)
         // val lines = Source.fromFile("selectedFile").getLines.toList
