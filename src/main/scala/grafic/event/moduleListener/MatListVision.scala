@@ -13,7 +13,7 @@ protected[event] object MatListVision {
   def seeVision(possibleValues: Set[Int]) = {
     var textIns : String = ""
     //showNumberList.setVisible(true)
-
+    showNumberList.setText("")
     println(SEE_MATLIST)
     //showNumberList.setEditable(true)
     //showNumberList.setEnabled(true)
