@@ -65,21 +65,21 @@ object MainGraphic extends JFXApp {
 
       //defining handles
       /* exitItem.onAction = (event: ActionEvent) => sys.exit(0)*/
-      /*  exitItem.onAction =
+        exitItem.onAction =
         new EventHandler[ActionEvent] {
           override def handle(event: ActionEvent) {
             sys.exit(0)
           }
-        }*/
+        }
 
-      def actionPerformed(evt: ActionEvent)
+     /* def actionPerformed(evt: ActionEvent)
       {
 
         val com = evt.getSource
 
         if (com.equals(exitItem)){
         sys.exit(0)}
-      }
+      }*/
 
 
 
