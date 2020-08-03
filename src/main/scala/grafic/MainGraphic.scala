@@ -20,10 +20,11 @@ import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
 
-/*Initially I used this import for doing handles, but for a bug in scala it didn't work in computers of my colleagues
+/*Initially I used this import "import scalafx.Includes._" for doing handles, but for a bug in scala it didn't work
+ in computers of my colleagues.
 So I had to modify handles and to import Some JavaFx
 I left commented the old code
-//import scalafx.Includes._
+//
  */
 
 //interface of uploading sudokus by Zandoli
@@ -107,6 +108,7 @@ object MainGraphic extends JFXApp {
             // loadPuzzle(selectedFile.toString)
 
           }*/
+      //it opens only file txt, also multiples, and start the game
       startItem.onAction =
         new EventHandler[ActionEvent] {
           override def handle(event: ActionEvent) = {
@@ -164,6 +166,7 @@ object MainGraphic extends JFXApp {
 
          label.text = "Open "+ selectedFile + " : \n" +fileContents
        }*/
+      //open file .txt
       openItem.onAction =
         new EventHandler[ActionEvent] {
           override def handle(event: ActionEvent) = {
@@ -195,7 +198,7 @@ object MainGraphic extends JFXApp {
          label.text = "Save " + selectedFile
 
        }*/
-
+      //save file txt
       saveItem.onAction = new EventHandler[ActionEvent] {
         override def handle(event: ActionEvent): Unit = {
           val fileChooser = new FileChooser
