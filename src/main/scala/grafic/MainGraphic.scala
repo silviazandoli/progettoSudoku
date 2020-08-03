@@ -2,8 +2,7 @@ package grafic
 
 
 import grafic.Sudoku.Sudoku
-import javafx.event.EventHandler
-import javafx.event.ActionEvent
+import javafx.event.{ActionEvent, EventHandler}
 import resolutionAlgorithm.FullExploration
 
 import scala.io.Source
@@ -13,7 +12,6 @@ import scalafx.application.JFXApp
 //import scalafx.event.ActionEvent
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.scene.input.{KeyCode, KeyCodeCombination, KeyCombination}
 import scalafx.stage.FileChooser
 import scalafx.stage.FileChooser.ExtensionFilter
 import sudoku.MatListOperation.initList
@@ -37,17 +35,17 @@ object MainGraphic extends JFXApp {
       val fileMenu = new Menu("Open Sudoku")
 
       val startItem = new MenuItem("Start Game")
-      startItem.accelerator = new KeyCodeCombination(KeyCode.Y, KeyCombination.ControlDown)
+      //startItem.accelerator = new KeyCodeCombination(KeyCode.Y, KeyCombination.ControlDown)
 
       val openItem = new MenuItem("Open File")
-      openItem.accelerator = new KeyCodeCombination(KeyCode.Digit0, KeyCombination.ControlDown)
+      //openItem.accelerator = new KeyCodeCombination(KeyCode.Digit0, KeyCombination.ControlDown)
 
       val saveItem = new MenuItem("Save File")
-      saveItem.accelerator = new KeyCodeCombination(KeyCode.Digit5, KeyCombination.ControlDown)
+      //saveItem.accelerator = new KeyCodeCombination(KeyCode.Digit5, KeyCombination.ControlDown)
 
 
       val exitItem = new MenuItem("Exit")
-      exitItem.accelerator = new KeyCodeCombination(KeyCode.X, KeyCombination.ControlDown)
+     // exitItem.accelerator = new KeyCodeCombination(KeyCode.X, KeyCombination.ControlDown)
 
 
       fileMenu.items = List(startItem, openItem, saveItem, new SeparatorMenuItem, exitItem)
