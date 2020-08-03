@@ -203,7 +203,7 @@ object MainGraphic extends JFXApp {
         override def handle(event: ActionEvent): Unit = {
           val fileChooser = new FileChooser
           val selectedFile = fileChooser.showSaveDialog(stage)
-          label.text = "Save " + selectedFile
+          label.text = "Save " + selectedFile  //f
         }
       }
     }
