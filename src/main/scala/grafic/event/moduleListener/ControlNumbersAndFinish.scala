@@ -37,7 +37,7 @@ protected[event] object ControlNumbersAndFinish {
           cp.setVisible(false)
 
          // reupload of the sudoku
-          MainGraphic.stage
+          MainGraphic.stage.centerOnScreen()
 
           //initAndReupload()
         case 1 => System.exit(0)
