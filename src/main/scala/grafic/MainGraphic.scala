@@ -45,7 +45,7 @@ object MainGraphic extends JFXApp {
 
 
       val exitItem = new MenuItem("Exit")
-     // exitItem.accelerator = new KeyCodeCombination(KeyCode.X, KeyCombination.ControlDown)
+      // exitItem.accelerator = new KeyCodeCombination(KeyCode.X, KeyCombination.ControlDown)
 
 
       fileMenu.items = List(startItem, openItem, saveItem, new SeparatorMenuItem, exitItem)
@@ -65,12 +65,26 @@ object MainGraphic extends JFXApp {
 
       //defining handles
       /* exitItem.onAction = (event: ActionEvent) => sys.exit(0)*/
-      exitItem.onAction =
+      /*  exitItem.onAction =
         new EventHandler[ActionEvent] {
           override def handle(event: ActionEvent) {
             sys.exit(0)
           }
-        }
+        }*/
+
+      def actionPerformed(evt: ActionEvent)
+      {
+
+        val com = evt.getSource
+
+        if (com.equals(exitItem)){
+        sys.exit(0)}
+      }
+
+
+
+
+
 
       //apre il file txt e lo carica nella matrice del sudoku, inizia il gioco
       /*    startItem.onAction = (event: ActionEvent) => {
