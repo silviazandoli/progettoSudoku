@@ -4,13 +4,8 @@ package grafic.event.moduleListener
 
 import java.awt.Color
 
-import grafic.Sudoku.Sudoku
-import grafic.{cp, setPressed, setPuzzleResolt, utentSolved}
-import javax.swing.{JFileChooser, JOptionPane, JTextField}
-import resolutionAlgorithm.FullExploration
-import sudoku.MatListOperation.initList
-import sudoku.SudokuLoad.loadPuzzle
-import utility.getPuzzle
+import grafic.{MainGraphic, cp, setPressed, utentSolved}
+import javax.swing.{JOptionPane, JTextField}
 
 protected[event] object ControlNumbersAndFinish {
 
@@ -41,7 +36,10 @@ protected[event] object ControlNumbersAndFinish {
         case 0 =>
           cp.setVisible(false)
 
-          initAndReUpload()
+         // reupload of the sudoku
+          MainGraphic.stage
+
+          //initAndReupload()
         case 1 => System.exit(0)
         case _ => System.out.println("cancel")
       }
@@ -49,7 +47,7 @@ protected[event] object ControlNumbersAndFinish {
   }
 
   //riapload di un altro sudoku quando si è già giocato (non si riapre più l'interfaccia dell'inizio)
-  def initAndReUpload(): Unit = {
+ /* def initAndReUpload(): Unit = {
     //val jfc = new JFileChooser("input")
     val jfc = new JFileChooser("input")
     val retValue = jfc.showOpenDialog(null)
@@ -67,7 +65,7 @@ protected[event] object ControlNumbersAndFinish {
       val sudoku = Sudoku()
       sudoku.create()
     }
-  }
+  }*/
 
 }
 
