@@ -27,7 +27,8 @@ object FileChooserMain {
   }
 }
 
-final class FileChooserMain extends Application {
+class FileChooserMain extends Application {
+
   final private val desktop = Desktop.getDesktop
 
   override def start(stage: Stage): Unit = {
