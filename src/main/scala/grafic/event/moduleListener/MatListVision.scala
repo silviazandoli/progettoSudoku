@@ -11,7 +11,7 @@ protected[event] object MatListVision {
   def seeVision(possibleValues: Set[Int]) = {
     var textIns : String = ""
     showNumberList.setText("")
-    println(SEE_MATLIST)
+    //println(SEE_MATLIST)
 
     possibleValues.foreach(el => {
       textIns = el + "  "

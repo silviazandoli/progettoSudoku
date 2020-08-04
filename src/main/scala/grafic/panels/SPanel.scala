@@ -3,6 +3,7 @@ package grafic.panels
 import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
 
 import grafic.showNumberList
+import grafic.util.FONT_MATLIST
 import javax.swing.{JButton, JPanel}
 
 object SPanel {
@@ -25,7 +26,7 @@ object SPanel {
 
     val dim: Dimension //
 
-    private val ButtonsHeight = 40 //sudoku display its 580 pixels high
+    private val ButtonsHeight = 20 //sudoku display its 580 pixels high
     private val ButtonsWidth = 100 //button panel its 200 pixels wide
 
     this.setLayout(new BorderLayout())
@@ -37,8 +38,9 @@ object SPanel {
     FL.setHgap(100); //set the flow layout to give  symmetric display
     pb.setLayout(FL)
 
-    showNumberList.setForeground(Color.BLACK)
-    showNumberList.setBackground(Color.WHITE)
+    showNumberList.setForeground(Color.WHITE)
+    showNumberList.setBackground(Color.BLUE)
+    showNumberList.setFont(FONT_MATLIST)
     showNumberList.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight))
 
     pb.add(showNumberList)
