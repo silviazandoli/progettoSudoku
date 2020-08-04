@@ -26,7 +26,6 @@ sealed trait WriteOnCell extends ActionListener {
 
         case SEE_MATLIST =>
           MatListVision.seeVision(possibleValues)
-          setPressed(-1,-1) /** evitare che clicca la casella la seconda volta */
 
         case NUMBER =>
           InsertNumber.writeNumber(row, col, number, t)
