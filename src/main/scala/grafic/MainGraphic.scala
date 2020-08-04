@@ -12,6 +12,7 @@ import scalafx.application.JFXApp
 //import scalafx.event.ActionEvent
 import scalafx.scene.Scene
 import scalafx.scene.control._
+import scalafx.scene.input.{KeyCode, KeyCodeCombination, KeyCombination}
 import scalafx.stage.FileChooser
 import scalafx.stage.FileChooser.ExtensionFilter
 import sudoku.MatListOperation.initList
@@ -35,17 +36,17 @@ object MainGraphic extends JFXApp {
       val fileMenu = new Menu("Open Sudoku")
 
       val startItem = new MenuItem("Start Game")
-      //startItem.accelerator = new KeyCodeCombination(KeyCode.Y, KeyCombination.ControlDown)
+      startItem.accelerator = new KeyCodeCombination(KeyCode.Y, KeyCombination.ControlDown)
 
       val openItem = new MenuItem("Open File")
-      //openItem.accelerator = new KeyCodeCombination(KeyCode.Digit0, KeyCombination.ControlDown)
+      openItem.accelerator = new KeyCodeCombination(KeyCode.Digit0, KeyCombination.ControlDown)
 
       val saveItem = new MenuItem("Save File")
-      //saveItem.accelerator = new KeyCodeCombination(KeyCode.Digit5, KeyCombination.ControlDown)
+      saveItem.accelerator = new KeyCodeCombination(KeyCode.Digit5, KeyCombination.ControlDown)
 
 
       val exitItem = new MenuItem("Exit")
-      // exitItem.accelerator = new KeyCodeCombination(KeyCode.X, KeyCombination.ControlDown)
+      exitItem.accelerator = new KeyCodeCombination(KeyCode.X, KeyCombination.ControlDown)
 
 
       fileMenu.items = List(startItem, openItem, saveItem, new SeparatorMenuItem, exitItem)
@@ -65,7 +66,7 @@ object MainGraphic extends JFXApp {
 
       //defining handles
       /* exitItem.onAction = (event: ActionEvent) => sys.exit(0)*/
-        exitItem.onAction =
+      exitItem.onAction =
         new EventHandler[ActionEvent] {
           override def handle(event: ActionEvent) {
             sys.exit(0)

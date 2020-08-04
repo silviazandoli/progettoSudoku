@@ -25,8 +25,8 @@ object SPanel {
 
     val dim: Dimension //
 
-    private val ButtonsHeight = 80 //sudoku display its 580 pixels high
-    private val ButtonsWidth = 80 //button panel its 200 pixels wide
+    private val ButtonsHeight = 40 //sudoku display its 580 pixels high
+    private val ButtonsWidth = 100 //button panel its 200 pixels wide
 
     this.setLayout(new BorderLayout())
 

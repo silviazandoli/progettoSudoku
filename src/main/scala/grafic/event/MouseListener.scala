@@ -2,18 +2,23 @@ package grafic.event
 
 import java.awt.event.{MouseAdapter, MouseEvent}
 
+import grafic.event.moduleListener.MatListVision
 import grafic.setWrite
 import javax.swing.JOptionPane
-import grafic.util.{NUMBER_LIST, SEE_MATLIST, NUMBER}
+import grafic.util.{NUMBER, NUMBER_LIST, SEE_MATLIST}
+import utility.matList
 
 sealed trait MouseListener extends MouseAdapter {
   val row: Int
   val col: Int
+  val possibleValues = matList(row)(col).toSet
 
   //aggiunto evento per cliccare su ogni casella
   override def mousePressed(e: MouseEvent): Unit = {
     selectNumber() //the called method on mouse click
   }
+
+
 
   def selectNumber(): Unit = {
    val options = Array[AnyRef]("Insert numbers", "Insert list of numbers", "See matlist")
@@ -21,7 +26,7 @@ sealed trait MouseListener extends MouseAdapter {
 
     n match {
       case 1 => setWrite(NUMBER_LIST)
-      case 2 => setWrite(SEE_MATLIST)
+      case 2 => MatListVision.seeVision(possibleValues)
       case _ => setWrite(NUMBER)
     }
   }
