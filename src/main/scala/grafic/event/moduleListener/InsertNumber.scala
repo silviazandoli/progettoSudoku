@@ -2,11 +2,10 @@ package grafic.event.moduleListener
 
 protected[event] object InsertNumber {
   import java.awt.Color
-
-  import grafic.event.moduleListener.ControlNumbersAndFinish.{actionUtent}
+  import javax.swing.{JOptionPane, JTextField}
+  import grafic.event.moduleListener.ControlNumbersAndFinish.actionUtent
   import grafic.util.{CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT}
   import grafic._
-  import javax.swing.{JOptionPane, JTextField}
 
   private def operationOnGUI(row: Int, col: Int, t: JTextField): Unit = {
     t.setForeground(Color.green)
@@ -18,8 +17,6 @@ protected[event] object InsertNumber {
 
     masks(row)(col) = true
   }
-
-
 
   def writeNumber(row: Int, col: Int, number: Int, t: JTextField): Unit = {
     getPuzzleResolt(row)(col) match {
