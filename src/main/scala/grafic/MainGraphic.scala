@@ -72,14 +72,7 @@ object MainGraphic extends JFXApp {
           }
         }
 
-     /* def actionPerformed(evt: ActionEvent)
-      {
 
-        val com = evt.getSource
-
-        if (com.equals(exitItem)){
-        sys.exit(0)}
-      }*/
 
 
 
@@ -124,9 +117,13 @@ object MainGraphic extends JFXApp {
       startItem.onAction =
         new EventHandler[ActionEvent] {
           override def handle(event: ActionEvent) = {
+
             val fileChooser = new FileChooser {
               title = "Open Resource File"
-
+           //  this.initialDirectory =
+              // initialDirectory=ObjectProperty[new File("input")]
+         //     initialDirectory(new File("input"))
+             // override def initialDirectory: ObjectProperty[File] = ObjectProperty[]
               //you can open only file .txt
               extensionFilters.addAll(
                 new ExtensionFilter("Text Files", "*.txt"),
