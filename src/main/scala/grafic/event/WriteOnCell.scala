@@ -4,7 +4,7 @@ import java.awt.Color
 import java.awt.event.{ActionEvent, ActionListener}
 
 import grafic._
-import grafic.event.moduleListener.{ControlNumbersAndFinish, InsertNumber, NumberListVision}
+import grafic.event.moduleListener.{ControlNumbersAndFinish, InsertNumber, WriteListUser}
 import grafic.util._
 import javax.swing.{JOptionPane, JTextField}
 import utility.matList
@@ -22,7 +22,7 @@ sealed trait WriteOnCell extends ActionListener {
 
       getWrite match {
         case NUMBER_LIST =>
-          NumberListVision.writePossibileElements(possibleValues, number, t)
+          WriteListUser.writePossibileElements(possibleValues, number, t)
 
         case NUMBER =>
           InsertNumber.writeNumber(row, col, number, t)

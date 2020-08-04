@@ -39,7 +39,7 @@ class FileChooserMain extends Application {
     val startGame=new Button("Start Game")
     val saveFile=new Button("Save File")
     openButton.setOnAction((e: ActionEvent) => {
-      def foo(e: ActionEvent) = {
+      def foo(e: ActionEvent): Unit = {
         FileChooserMain.configureFileChooser(fileChooser)
         val file = fileChooser.showOpenDialog(stage)
         if (file != null) openFile(file)
@@ -48,11 +48,11 @@ class FileChooserMain extends Application {
       foo(e)
     })
     openMultipleButton.setOnAction((e: ActionEvent) => {
-      def foo(e: ActionEvent) = {
+      def foo(e: ActionEvent): Unit = {
         FileChooserMain.configureFileChooser(fileChooser)
         val list = fileChooser.showOpenMultipleDialog(stage)
         if (list != null) list.stream.forEach((file: File) => {
-          def foo(file: File) = {
+          def foo(file: File): Unit = {
             openFile(file)
           }
 
@@ -64,11 +64,11 @@ class FileChooserMain extends Application {
     })
 
     startGame.setOnAction((e:ActionEvent)=>{
-      def foo(e: ActionEvent) = {
+      def foo(e: ActionEvent): Unit = {
         FileChooserMain.configureFileChooser(fileChooser)
         val list = fileChooser.showOpenMultipleDialog(stage)
         if (list != null) list.stream.forEach((file: File) => {
-          def foo(file: File) = {
+          def foo(file: File): Unit = {
 
             loadPuzzle(file.toString)
             initList()
@@ -121,7 +121,7 @@ class FileChooserMain extends Application {
 
   private def openFile(file: File): Unit = {
     EventQueue.invokeLater(() => {
-      def foo() = {
+      def foo(): Unit = {
         try desktop.open(file)
         catch {
           case ex: IOException =>
