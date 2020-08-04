@@ -4,7 +4,8 @@ package grafic.event.moduleListener
 
 import java.awt.Color
 
-import grafic.{MainGraphic, cp, setPressed, utentSolved}
+import grafic.eliminabili.MainGraphic
+import grafic.{cp, setPressed, utentSolved}
 import javax.swing.{JOptionPane, JTextField}
 
 protected[event] object ControlNumbersAndFinish {

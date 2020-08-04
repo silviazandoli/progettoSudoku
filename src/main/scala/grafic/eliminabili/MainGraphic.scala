@@ -1,15 +1,11 @@
-package grafic
-
+package grafic.eliminabili
 
 import grafic.Sudoku.Sudoku
+import grafic.setPuzzleResolt
 import javafx.event.{ActionEvent, EventHandler}
 import resolutionAlgorithm.FullExploration
-
-import scala.io.Source
-//import scalafx.Includes._
 import scalafx.application
 import scalafx.application.JFXApp
-//import scalafx.event.ActionEvent
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.input.{KeyCode, KeyCodeCombination, KeyCombination}
@@ -19,12 +15,7 @@ import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
 
-/*Initially I used this import "import scalafx.Includes._" for doing handles, but for a bug in scala it didn't work
- in computers of my colleagues.
-So I had to modify handles and to import Some JavaFx
-I left commented the old code
-//
- */
+import scala.io.Source
 
 //interface of uploading sudokus by Zandoli
 object MainGraphic extends JFXApp {

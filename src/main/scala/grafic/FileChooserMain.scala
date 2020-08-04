@@ -1,13 +1,10 @@
-package grafic.eliminabili
-
-
+package grafic
 
 import java.awt.{Desktop, EventQueue}
 import java.io.{File, IOException}
 import java.util.logging.{Level, Logger}
 
 import grafic.Sudoku.Sudoku
-import grafic.setPuzzleResolt
 import javafx.application.Application
 import javafx.event.ActionEvent
 import javafx.geometry.Insets
@@ -20,17 +17,17 @@ import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
 
-object FileChooserSample {
+object FileChooserMain {
 
 
   private def configureFileChooser(fileChooser: FileChooser): Unit = {
-    fileChooser.setTitle("View Sudokus")
+    fileChooser.setTitle("View Sudoku")
     fileChooser.setInitialDirectory(new File("input"))
     fileChooser.getExtensionFilters.addAll(new FileChooser.ExtensionFilter("All Files .txt", "*.txt*"), new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"))
   }
 }
 
-final class FileChooserSample extends Application {
+final class FileChooserMain extends Application {
   final private val desktop = Desktop.getDesktop
 
   override def start(stage: Stage): Unit = {
@@ -42,7 +39,7 @@ final class FileChooserSample extends Application {
     val saveFile=new Button("Save File")
     openButton.setOnAction((e: ActionEvent) => {
       def foo(e: ActionEvent) = {
-        FileChooserSample.configureFileChooser(fileChooser)
+        FileChooserMain.configureFileChooser(fileChooser)
         val file = fileChooser.showOpenDialog(stage)
         if (file != null) openFile(file)
       }
@@ -51,7 +48,7 @@ final class FileChooserSample extends Application {
     })
     openMultipleButton.setOnAction((e: ActionEvent) => {
       def foo(e: ActionEvent) = {
-        FileChooserSample.configureFileChooser(fileChooser)
+        FileChooserMain.configureFileChooser(fileChooser)
         val list = fileChooser.showOpenMultipleDialog(stage)
         if (list != null) list.stream.forEach((file: File) => {
           def foo(file: File) = {
@@ -67,7 +64,7 @@ final class FileChooserSample extends Application {
 
     startGame.setOnAction((e:ActionEvent)=>{
       def foo(e: ActionEvent) = {
-        FileChooserSample.configureFileChooser(fileChooser)
+        FileChooserMain.configureFileChooser(fileChooser)
         val list = fileChooser.showOpenMultipleDialog(stage)
         if (list != null) list.stream.forEach((file: File) => {
           def foo(file: File) = {
@@ -127,7 +124,7 @@ final class FileChooserSample extends Application {
         try desktop.open(file)
         catch {
           case ex: IOException =>
-            Logger.getLogger(classOf[FileChooserSample].getName).log(Level.SEVERE, null, ex)
+            Logger.getLogger(classOf[FileChooserMain].getName).log(Level.SEVERE, null, ex)
         }
       }
 
