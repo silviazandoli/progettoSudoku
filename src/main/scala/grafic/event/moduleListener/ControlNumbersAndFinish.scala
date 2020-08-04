@@ -4,7 +4,7 @@ package grafic.event.moduleListener
 
 import java.awt.Color
 
-import grafic.{MainGraphic, cp, setPressed, utentSolved}
+import grafic.{cp, setPressed, utentSolved}
 import javax.swing.{JOptionPane, JTextField}
 
 protected[event] object ControlNumbersAndFinish {
@@ -37,7 +37,7 @@ protected[event] object ControlNumbersAndFinish {
           cp.setVisible(false)
 
          // reupload of the sudoku
-          MainGraphic.stage.centerOnScreen()
+
 
           //initAndReupload()
         case 1 => System.exit(0)
