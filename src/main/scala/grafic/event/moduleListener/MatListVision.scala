@@ -12,22 +12,16 @@ protected[event] object MatListVision {
    */
   def seeVision(possibleValues: Set[Int]) = {
     var textIns : String = ""
-    //showNumberList.setVisible(true)
     showNumberList.setText("")
     println(SEE_MATLIST)
-    //showNumberList.setEditable(true)
-    //showNumberList.setEnabled(true)
 
-    println("Possible values: "+ possibleValues)
 
     possibleValues.foreach(el => {
-      println("el: " +el)
       textIns = el + "  "
       showNumberList.append(textIns)
     })
 
     showNumberList.setEditable(false)
     showNumberList.setEnabled(false)
-    //showNumberList.setVisible(true)
   }
 }

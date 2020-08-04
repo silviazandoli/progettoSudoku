@@ -11,11 +11,11 @@ import utility.matList
 sealed trait MouseListener extends MouseAdapter {
   val row: Int
   val col: Int
+  val possibleValues = matList(row)(col).toSet
 
   //aggiunto evento per cliccare su ogni casella
   override def mousePressed(e: MouseEvent): Unit = {
     selectNumber() //the called method on mouse click
-    println("click di seeMatlist")
   }
 
 
@@ -26,12 +26,7 @@ sealed trait MouseListener extends MouseAdapter {
 
     n match {
       case 1 => setWrite(NUMBER_LIST)
-      case 2 => {
-        setWrite(SEE_MATLIST)
-        //println("assegno see_matList")
-        val possibleValues = matList(row)(col).toSet
-        MatListVision.seeVision(possibleValues)
-      }
+      case 2 => MatListVision.seeVision(possibleValues)
       case _ => setWrite(NUMBER)
     }
   }
