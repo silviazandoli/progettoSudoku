@@ -24,9 +24,9 @@ sealed trait MouseListener extends MouseAdapter {
     val n = JOptionPane.showOptionDialog(null, "How to proceed?", "User mode", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options(3))
 
     n match {
-      case 1 => {t.setText(""); t.setFont(FONT_MINILIST); setWrite(NUMBER_LIST)}
+      case 1 => t.setText(""); t.setFont(FONT_MINILIST); setWrite(NUMBER_LIST)
       case 2 => MatListVision.seeVision(matList(row)(col).toSet)
-      case _ => {t.setText(""); t.setFont(FONT_MATLIST); setWrite(NUMBER)}
+      case _ => t.setText(""); t.setFont(FONT_MATLIST); setWrite(NUMBER)
     }
   }
 }

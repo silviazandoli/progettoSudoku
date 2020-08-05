@@ -29,14 +29,13 @@ object Sudoku {
 
       cp.add(matrixGame)
 
-      //val tfCells = Array.ofDim[JTextField](dimSudoku, dimSudoku)
       val tfCells = Array.ofDim[JTextArea](dimSudoku, dimSudoku)
 
       // Construct 9x9 JTextFields and add to the content-pane
       for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
         tfCells(row)(col) = TextOpNumber()
 
-        matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextField
+        matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextArea
 
         puzzle(row)(col) match {
           case 0 =>
