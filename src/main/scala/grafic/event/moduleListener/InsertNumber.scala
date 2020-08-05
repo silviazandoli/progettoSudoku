@@ -1,5 +1,7 @@
 package grafic.event.moduleListener
 
+import sudoku.MatListOperation
+
 protected[event] object InsertNumber {
   import java.awt.Color
   import javax.swing.{JOptionPane, JTextField}
@@ -26,6 +28,8 @@ protected[event] object InsertNumber {
         setPressed(row, col)
         //in case of finish
         actionUtent()
+        /* TODO BISOGNA FARE UPDATElIST PER AGGIORNARE LA LISTA degli elementi?? @Antonelli*/
+        //MatListOperation.updateList((row,col),number)
       case _ =>
         t.setForeground(Color.red)
         setPressed(-1, -1)
