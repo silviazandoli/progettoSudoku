@@ -1,12 +1,13 @@
 package grafic.event.moduleListener
 
 import java.awt.Color
+
 import grafic.{cp, setPressed, utentSolved}
-import javax.swing.{JOptionPane, JTextField}
+import javax.swing.{JOptionPane, JTextArea}
 
 protected[event] object ControlNumbersAndFinish {
 
-  def seeVision(possibleValues: Set[Int], number: Int, t: JTextField): Unit = {
+  def seeVision(possibleValues: Set[Int], number: Int, t: JTextArea): Unit = {
     if (possibleValues.contains(number)) {
       t.setForeground(Color.green)
       val messageOk = "The number belongs to list "

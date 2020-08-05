@@ -1,5 +1,7 @@
 package grafic
 
+import javax.swing.JTextArea
+
 import scala.swing.event.Event
 
 //evento che ti può dare la possibilità di cliccare sulla casella
@@ -8,11 +10,11 @@ case class SudokuEvent(x: Int, y: Int) extends Event
 object Sudoku {
   import java.awt.{Dimension, _}
 
-  import grafic.event.{WriteOnCell, MouseListener}
+  import grafic.event.{MouseListener, WriteOnCell}
   import grafic.panels.SPanel
   import grafic.panels.TextOpNumber.TextOpNumber
   import grafic.util._
-  import javax.swing.{JFrame, JPanel, JTextField}
+  import javax.swing.{JFrame, JPanel}
   import utility.{dimSudoku, puzzle}
 
   sealed trait SudokuTrait extends JFrame {
@@ -27,13 +29,13 @@ object Sudoku {
 
       cp.add(matrixGame)
 
-      val tfCells = Array.ofDim[JTextField](dimSudoku, dimSudoku)
+      val tfCells = Array.ofDim[JTextArea](dimSudoku, dimSudoku)
 
       // Construct 9x9 JTextFields and add to the content-pane
       for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
         tfCells(row)(col) = TextOpNumber()
 
-        matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextField
+        matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextArea
 
         puzzle(row)(col) match {
           case 0 =>
@@ -44,7 +46,7 @@ object Sudoku {
 
             //aggiunta controlli-> che sia inserito un carattere che sia un numero, che il numero inserito non sia corretto
             //(nel caso non appartenga alla matList), etc
-            tfCells(row)(col).addActionListener(WriteOnCell(row, col))
+            tfCells(row)(col).addKeyListener(WriteOnCell(row, col))
             tfCells(row)(col).addMouseListener(MouseListener(row, col))
 
           case _ =>
@@ -57,7 +59,7 @@ object Sudoku {
         }
 
         // Beautify all the cells
-        tfCells(row)(col).setHorizontalAlignment(10)
+        tfCells(row)(col).setAlignmentX(10)
         tfCells(row)(col).setFont(FONT_NUMBERS)
       }
 

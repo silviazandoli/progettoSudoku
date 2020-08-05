@@ -24,6 +24,8 @@ package object util {
   val FONT_NUMBERS = new Font("Monospaced", Font.BOLD, 20)
   val FONT_MATLIST = new Font("Monospaced", Font.ITALIC, 10)
 
+  val FONT_MINILIST = new Font("Monospaced", Font.ITALIC, 9)
+
   val NUMBER = "Insert numbers"
   val NUMBER_LIST = "Insert list of numbers"
   //val SEE_MATLIST = "See matlist"
