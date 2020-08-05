@@ -1,6 +1,7 @@
 package grafic
 
 import grafic.event.WriteOnCell
+import grafic.panels.TextOpNumber.TextOpNumber
 
 import scala.swing.event.Event
 
@@ -8,12 +9,12 @@ import scala.swing.event.Event
 case class SudokuEvent(x: Int, y: Int) extends Event
 
 object Sudoku {
-  import grafic.util._
   import java.awt.{Dimension, _}
 
   import grafic.event.MouseListener
   import grafic.panels.SPanel
-  import javax.swing.{JFrame, JPanel, JTextField}
+  import grafic.util._
+  import javax.swing.{JFrame, JPanel}
   import utility.{dimSudoku, puzzle}
 
   sealed trait SudokuTrait extends JFrame {
@@ -30,7 +31,9 @@ object Sudoku {
 
       // Construct 9x9 JTextFields and add to the content-pane
       for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
-        tfCells(row)(col) = new JTextField() // Allocate element of array
+        //tfCells(row)(col) = new JTextField() // Allocate element of array
+        tfCells(row)(col) = TextOpNumber()
+
         matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextField
 
         puzzle(row)(col) match {
