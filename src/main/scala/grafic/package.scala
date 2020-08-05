@@ -1,12 +1,10 @@
-import java.awt.Container
-
 package object grafic {
-  import javax.swing.{JTextField, JTextArea}
+  import java.awt.Container
+  import javax.swing.JTextArea
   import utility.dimSudoku
 
   val masks: Array[Array[Boolean]] = Array.ofDim[Boolean](dimSudoku, dimSudoku)
   private var puzzleResolt: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
-  var tfCells: Array[Array[JTextField]] = Array.ofDim[JTextField](dimSudoku, dimSudoku)
 
   private var rowPressed = -1
   private var colPressed = -1

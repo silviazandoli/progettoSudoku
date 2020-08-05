@@ -1,14 +1,10 @@
 package grafic.event.moduleListener
 
-
-
 import java.awt.Color
-
 import grafic.{cp, setPressed, utentSolved}
 import javax.swing.{JOptionPane, JTextField}
 
 protected[event] object ControlNumbersAndFinish {
-
 
   def seeVision(possibleValues: Set[Int], number: Int, t: JTextField): Unit = {
     if (possibleValues.contains(number)) {
@@ -24,8 +20,6 @@ protected[event] object ControlNumbersAndFinish {
       possibleValues.foreach(v => message = message + v + " ")
       JOptionPane.showMessageDialog(cp, message, "Message", JOptionPane.WARNING_MESSAGE)
     }
-
-
   }
 
   def actionUtent(): Unit = {

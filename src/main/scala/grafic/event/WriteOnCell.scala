@@ -15,11 +15,9 @@ sealed trait WriteOnCell extends ActionListener {
   val col: Int
 
   def actionPerformed(e: ActionEvent): Unit = {
-    //val t: JTextField = e.getSource.asInstanceOf[JTextField]
     val t: TextOpNumber = e.getSource.asInstanceOf[TextOpNumber]
     try {
       val number = t.getText.toInt
-      //tfCells(row)(col).setEditable(true)
       t.setEditable(true)
       val possibleValues = matList(row)(col).toSet
 

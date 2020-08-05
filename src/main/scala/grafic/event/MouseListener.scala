@@ -3,11 +3,10 @@ package grafic.event
 import java.awt.event.{MouseAdapter, MouseEvent}
 
 import grafic.panels.TextOpNumber.TextOpNumber
-
-import grafic.event.moduleListener.{MatListVision}
+import grafic.event.moduleListener.MatListVision
 import grafic.setWrite
 import grafic.util.{NUMBER, NUMBER_LIST}
-import javax.swing.{JOptionPane, JTextField}
+import javax.swing.JOptionPane
 import utility.matList
 
 sealed trait MouseListener extends MouseAdapter {

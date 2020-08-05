@@ -1,12 +1,11 @@
 package grafic.panels
 
-import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
-
-import grafic.showNumberList
-import grafic.util.FONT_MATLIST
-import javax.swing.{JButton, JPanel}
-
 object SPanel {
+  import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
+  import grafic.showNumberList
+  import grafic.util.FONT_MATLIST
+  import javax.swing.{JButton, JPanel}
+
   def apply(dimension: Dimension): SPanel = SPanel(dimension)
 
   trait SPanelTrait extends JPanel //construct the sudoku display panel

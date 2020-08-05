@@ -7,8 +7,6 @@ import grafic.panels.TextOpNumber.TextOpNumber
 *  l'utente a scrivere i numeri ==> @Pacini
 */
 protected[event] object WriteListUser {
-  //val listNumber: List[Int]
-
   def writePossibileElements(possibleValues: Set[Int], number: Int, t: TextOpNumber): Unit = {
     if (possibleValues.contains(number)) {
         t.addNumber(number)
