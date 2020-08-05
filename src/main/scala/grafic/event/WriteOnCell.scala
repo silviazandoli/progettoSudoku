@@ -5,10 +5,7 @@ import java.awt.event.{ActionEvent, ActionListener}
 
 import grafic._
 import grafic.event.moduleListener.{InsertNumber, WriteListUser}
-<<<<<<< HEAD
 import grafic.panels.TextOpNumber.TextOpNumber
-=======
->>>>>>> 4f2a35d9e1c728b8e295e4c5be069e6ac2cc7c1e
 import grafic.util._
 import javax.swing.JOptionPane
 import utility.matList

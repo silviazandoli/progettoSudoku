@@ -2,12 +2,9 @@ package grafic.event
 
 import java.awt.event.{MouseAdapter, MouseEvent}
 
-<<<<<<< HEAD
-import grafic.event.moduleListener.MatListVision
 import grafic.panels.TextOpNumber.TextOpNumber
-=======
-import grafic.event.moduleListener.{MatListVision, SayHelp}
->>>>>>> 4f2a35d9e1c728b8e295e4c5be069e6ac2cc7c1e
+
+import grafic.event.moduleListener.{MatListVision}
 import grafic.setWrite
 import grafic.util.{NUMBER, NUMBER_LIST}
 import javax.swing.{JOptionPane, JTextField}
@@ -31,7 +28,6 @@ sealed trait MouseListener extends MouseAdapter {
     n match {
       case 1 => setWrite(NUMBER_LIST)
       case 2 => MatListVision.seeVision(possibleValues)
-      case 3 => SayHelp.sayHelp(row,col)
       case _ => setWrite(NUMBER)
     }
   }
