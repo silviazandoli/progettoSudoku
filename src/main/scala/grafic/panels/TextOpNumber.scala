@@ -4,12 +4,12 @@ import javax.swing.JTextField
 
 object TextOpNumber {
   sealed trait TextOpNumberTrait extends JTextField {
-    private var listNumber: List[Int] = List()
+    private var setNumber: Set[Int] = Set()
 
-    def addNumber(number: Int): Unit = {listNumber :+= number}
-    def getList: List[Int] = listNumber
+    def addNumber(number: Int): Unit = {setNumber += number}
+    def getList: Set[Int] = setNumber
     def displayList(): Unit = {
-      for (elem <- listNumber) {
+      for (elem <- setNumber) {
         setText(""+elem)
         setText(",")
     }}
