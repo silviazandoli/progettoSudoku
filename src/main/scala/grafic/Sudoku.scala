@@ -1,18 +1,17 @@
 package grafic
 
-import grafic.event.WriteOnCell
-
 import scala.swing.event.Event
 
 //evento che ti può dare la possibilità di cliccare sulla casella
 case class SudokuEvent(x: Int, y: Int) extends Event
 
 object Sudoku {
-  import grafic.util._
   import java.awt.{Dimension, _}
 
-  import grafic.event.MouseListener
+  import grafic.event.{WriteOnCell, MouseListener}
   import grafic.panels.SPanel
+  import grafic.panels.TextOpNumber.TextOpNumber
+  import grafic.util._
   import javax.swing.{JFrame, JPanel, JTextField}
   import utility.{dimSudoku, puzzle}
 
@@ -28,9 +27,12 @@ object Sudoku {
 
       cp.add(matrixGame)
 
+      val tfCells = Array.ofDim[JTextField](dimSudoku, dimSudoku)
+
       // Construct 9x9 JTextFields and add to the content-pane
       for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
-        tfCells(row)(col) = new JTextField() // Allocate element of array
+        tfCells(row)(col) = TextOpNumber()
+
         matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextField
 
         puzzle(row)(col) match {

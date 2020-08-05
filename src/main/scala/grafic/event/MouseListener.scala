@@ -2,20 +2,21 @@ package grafic.event
 
 import java.awt.event.{MouseAdapter, MouseEvent}
 
-import grafic.event.moduleListener.{MatListVision, SayHelp}
+import grafic.panels.TextOpNumber.TextOpNumber
+import grafic.event.moduleListener.MatListVision
 import grafic.setWrite
 import grafic.util.{NUMBER, NUMBER_LIST}
-import javax.swing.{JOptionPane, JTextField}
+import javax.swing.JOptionPane
 import utility.matList
 
 sealed trait MouseListener extends MouseAdapter {
   val row: Int
   val col: Int
-  val possibleValues: Set[Int] = matList(row)(col).toSet
 
   //aggiunto evento per cliccare su ogni casella
   override def mousePressed(e: MouseEvent): Unit = {
-    selectNumber() //the called method on mouse click
+    val t: TextOpNumber = e.getSource.asInstanceOf[TextOpNumber]
+    if (t.isEditable) {selectNumber()} //the called method on mouse click
   }
 
   def selectNumber(): Unit = {
@@ -24,8 +25,7 @@ sealed trait MouseListener extends MouseAdapter {
 
     n match {
       case 1 => setWrite(NUMBER_LIST)
-      case 2 => MatListVision.seeVision(possibleValues)
-      case 3 => SayHelp.sayHelp(row,col)
+      case 2 => MatListVision.seeVision(matList(row)(col).toSet)
       case _ => setWrite(NUMBER)
     }
   }

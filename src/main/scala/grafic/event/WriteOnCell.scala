@@ -5,8 +5,9 @@ import java.awt.event.{ActionEvent, ActionListener}
 
 import grafic._
 import grafic.event.moduleListener.{InsertNumber, WriteListUser}
+import grafic.panels.TextOpNumber.TextOpNumber
 import grafic.util._
-import javax.swing.{JOptionPane, JTextField}
+import javax.swing.JOptionPane
 import utility.matList
 
 sealed trait WriteOnCell extends ActionListener {
@@ -14,10 +15,10 @@ sealed trait WriteOnCell extends ActionListener {
   val col: Int
 
   def actionPerformed(e: ActionEvent): Unit = {
-    val t: JTextField = e.getSource.asInstanceOf[JTextField]
+    val t: TextOpNumber = e.getSource.asInstanceOf[TextOpNumber]
     try {
       val number = t.getText.toInt
-      tfCells(row)(col).setEditable(true)
+      t.setEditable(true)
       val possibleValues = matList(row)(col).toSet
 
       getWrite match {
