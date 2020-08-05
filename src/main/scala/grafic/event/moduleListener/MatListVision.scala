@@ -1,6 +1,6 @@
 package grafic.event.moduleListener
 
-import grafic.showNumberList
+import grafic.{setPressed, showNumberList}
 protected[event] object MatListVision {
 
   /**
@@ -19,5 +19,6 @@ protected[event] object MatListVision {
 
     showNumberList.setEditable(false)
     showNumberList.setEnabled(false)
+    setPressed(-1, -1)
   }
 }
