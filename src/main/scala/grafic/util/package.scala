@@ -1,6 +1,7 @@
 package grafic
 
 package object util {
+
   import java.awt.{Color, Font}
   import utility.dimSudoku
 
@@ -26,5 +27,6 @@ package object util {
 
   val NUMBER = "Insert numbers"
   val NUMBER_LIST = "Insert list of numbers"
-  val SEE_MATLIST = "See matlist"
+  //val SEE_MATLIST = "See matlist"
+
 }
