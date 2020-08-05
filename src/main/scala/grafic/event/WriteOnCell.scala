@@ -1,7 +1,7 @@
 package grafic.event
 
 import java.awt.Color
-import java.awt.event.{ActionEvent, ActionListener}
+import java.awt.event.{KeyEvent, KeyListener}
 
 import grafic._
 import grafic.event.moduleListener.{InsertNumber, WriteListUser}
@@ -10,20 +10,32 @@ import grafic.util._
 import javax.swing.JOptionPane
 import utility.matList
 
-sealed trait WriteOnCell extends ActionListener {
+//sealed trait WriteOnCell extends ActionListener {
+sealed trait WriteOnCell extends KeyListener {
   val row: Int
   val col: Int
 
-  def actionPerformed(e: ActionEvent): Unit = {
+  def keyReleased(e: KeyEvent): Unit = {
     val t: TextOpNumber = e.getSource.asInstanceOf[TextOpNumber]
     try {
-      val number = t.getText.toInt
+      var retText = t.getText
+
+      if (retText.length > 1) {
+        val posInit = retText.length - 1
+        val posLast = retText.length
+
+        retText = retText.substring(posInit, posLast)
+      }
+
+      val number = retText.toInt
       t.setEditable(true)
       val possibleValues = matList(row)(col).toSet
 
       getWrite match {
-        case NUMBER_LIST => WriteListUser.writePossibileElements(possibleValues, number, t)
-        case NUMBER => InsertNumber.writeNumber(row, col, number, t)
+        case NUMBER_LIST =>
+          WriteListUser.writePossibileElements(possibleValues, number, t)
+        case NUMBER =>
+          InsertNumber.writeNumber(row, col, number, t)
       }
 
     } catch {
@@ -41,5 +53,9 @@ object WriteOnCell {
 
   private case class WriteOnCellImpl(row: Int, col: Int) extends WriteOnCell {
     val container: Container = cp
+
+    override def keyTyped(e: KeyEvent): Unit = {}
+
+    override def keyPressed(e: KeyEvent): Unit = {}
   }
 }
