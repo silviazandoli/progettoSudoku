@@ -30,7 +30,7 @@ protected[event] object ControlNumbersAndFinish {
       val option = JOptionPane.showConfirmDialog(null, "New Game?", "Message", JOptionPane.YES_NO_CANCEL_OPTION)
       option match {
         case 0 =>
-          cp.setVisible(false)
+          //cp.setVisible(false)
 
          // reupload of the sudoku
 
