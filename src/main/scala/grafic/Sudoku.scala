@@ -67,7 +67,8 @@ object Sudoku {
 
       cp.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT))
       pack()
-      //handle window closing si fa per la finestra di File Chooser Main
+      //handle window closing si fa in FileChooserMain così se chiuso la matrice del Sudoku l'interfaccia
+      //dell'upload rimane
 
       showNumberList.setEditable(false)
       showNumberList.setEnabled(false)
