@@ -33,7 +33,7 @@ protected[event] object ControlNumbersAndFinish {
 
          // reupload of the sudoku f
           //the interface of Sudoku remains open, so you don't have to write anything here
-          //when you finish the game click the exit button in the matrix and open a new file from the interface
+          //when you finish the game click the exit button in the matrix and open a new file from the interface n
 
 
           //FileChooserMain.initAndReUpload(null)
