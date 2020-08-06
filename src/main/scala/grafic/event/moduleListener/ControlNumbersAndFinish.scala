@@ -4,7 +4,6 @@ import java.awt.Color
 
 import grafic.{cp, setPressed, utentSolved}
 import javax.swing.{JOptionPane, JTextArea}
-import grafic.FileChooserMain
 
 protected[event] object ControlNumbersAndFinish {
 
@@ -33,9 +32,11 @@ protected[event] object ControlNumbersAndFinish {
           //cp.setVisible(false)
 
          // reupload of the sudoku f
+          //the interface of Sudoku remains open, so you don't have to write anything here
+          //when you finish the game click the exit button in the matrix and open a new file from the interface
 
 
-          FileChooserMain.initAndReUpload(null)
+          //FileChooserMain.initAndReUpload(null)
         case 1 => System.exit(0)
         case _ => System.out.println("cancel")
       }
