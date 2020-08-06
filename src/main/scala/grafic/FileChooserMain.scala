@@ -132,7 +132,7 @@ class FileChooserMain extends Application {
       foo()
     })
   }*/
-  //todo a pattern
+  //todo a pattern v
  def initAndReUpload(): Unit = {
    //val jfc = new JFileChooser("input")
    val jfc = new JFileChooser("input")
