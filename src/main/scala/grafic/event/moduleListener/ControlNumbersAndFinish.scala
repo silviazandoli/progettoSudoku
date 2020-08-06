@@ -35,7 +35,7 @@ protected[event] object ControlNumbersAndFinish {
          // reupload of the sudoku f
 
 
-          FileChooserMain.initAndReUpload()
+          FileChooserMain.initAndReUpload(null)
         case 1 => System.exit(0)
         case _ => System.out.println("cancel")
       }

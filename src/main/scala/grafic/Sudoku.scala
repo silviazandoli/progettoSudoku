@@ -67,7 +67,7 @@ object Sudoku {
 
       cp.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT))
       pack()
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) // Handle window closing // Handle window closing
+      //handle window closing si fa per la finestra di File Chooser Main
 
       showNumberList.setEditable(false)
       showNumberList.setEnabled(false)
