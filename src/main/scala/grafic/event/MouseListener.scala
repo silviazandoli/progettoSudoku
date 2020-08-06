@@ -25,7 +25,7 @@ sealed trait MouseListener extends MouseAdapter {
 
     n match {
       case 1 => t.setText(""); t.setFont(FONT_MINILIST); setWrite(NUMBER_LIST)
-      case 2 => MatListVision.seeVision(matList(row)(col).toSet)
+      case 2 => MatListVision.seeVision(matList(row)(col).toSet, t)
       case 3 => SayHelp.sayHelp(row,col,t)
       case _ => t.setText(""); t.setFont(FONT_MATLIST); setWrite(NUMBER)
     }
