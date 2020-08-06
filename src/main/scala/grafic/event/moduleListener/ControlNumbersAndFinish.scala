@@ -32,7 +32,7 @@ protected[event] object ControlNumbersAndFinish {
         case 0 =>
           //cp.setVisible(false)
 
-         // reupload of the sudoku
+         // reupload of the sudoku f
 
 
           FileChooserMain.initAndReUpload()
