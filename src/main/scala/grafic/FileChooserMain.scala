@@ -1,27 +1,24 @@
 package grafic
 
-import java.awt.{Desktop, EventQueue}
-import java.io.{File, IOException}
-import java.util.logging.{Level, Logger}
-
 import grafic.Sudoku.Sudoku
-import javafx.application.Application
-import javafx.event.ActionEvent
-import javafx.geometry.Insets
-import javafx.scene.Scene
-import javafx.scene.control.Button
-import javafx.scene.layout.{GridPane, VBox}
-import javafx.stage.{FileChooser, Stage}
+import javax.swing.JFileChooser
 import resolutionAlgorithm.FullExploration
 import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
+import javax.swing.filechooser.FileNameExtensionFilter
+object FileChooserMain extends App {
+//TODO
+  /*
+  1) Quando runno il file deve per forza entrare nella cartella
 
-object FileChooserMain {
+  2) Fare in modo che quando chiudo il sudoku rimanga l'interfaccia
+  */
 
 
-  private def configureFileChooser(fileChooser: FileChooser): Unit = {
+ /* private def configureFileChooser(fileChooser: FileChooser): Unit = {
     fileChooser.setTitle("View Sudoku")
+    //TODO è obbligatorio accedere alla cartella di input
     fileChooser.setInitialDirectory(new File("input"))
     fileChooser.getExtensionFilters.addAll(new FileChooser.ExtensionFilter("All Files .txt", "*.txt*"), new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"))
   }
@@ -38,6 +35,9 @@ class FileChooserMain extends Application {
     val openMultipleButton = new Button("Open Multiple Files")
     val startGame=new Button("Start Game")
     val saveFile=new Button("Save File")
+
+
+
     openButton.setOnAction((e: ActionEvent) => {
       def foo(e: ActionEvent): Unit = {
         FileChooserMain.configureFileChooser(fileChooser)
@@ -131,5 +131,36 @@ class FileChooserMain extends Application {
 
       foo()
     })
-  }
+  }*/
+  //todo a pattern v
+ def initAndReUpload(): Unit = {
+   //val jfc = new JFileChooser("input")
+   val jfc = new JFileChooser("input")
+   jfc.setMultiSelectionEnabled(true)
+
+  jfc.setAcceptAllFileFilterUsed(false)
+   val filter = new FileNameExtensionFilter("Files txt", "txt")
+   jfc.addChoosableFileFilter(filter)
+   val retValue = jfc.showOpenDialog(null)
+   if (retValue == JFileChooser.APPROVE_OPTION) {
+     val file = jfc.getSelectedFiles()
+     //open one sudoku or multiple sudokus
+     file.foreach(i=>{
+       println(i)
+       loadPuzzle(i.toString)
+       initList()
+
+       val sudokuSolver = FullExploration(getPuzzle)
+       sudokuSolver.solve(0, 0)
+
+       setPuzzleResolt(sudokuSolver.returnPuzzle())
+
+       val sudoku = Sudoku()
+       sudoku.create()
+     })
+
+   }
+ }
+
+  initAndReUpload()
 }

@@ -4,6 +4,7 @@ import java.awt.Color
 
 import grafic.{cp, setPressed, utentSolved}
 import javax.swing.{JOptionPane, JTextArea}
+import grafic.FileChooserMain
 
 protected[event] object ControlNumbersAndFinish {
 
@@ -34,7 +35,7 @@ protected[event] object ControlNumbersAndFinish {
          // reupload of the sudoku
 
 
-          //initAndReupload()
+          FileChooserMain.initAndReUpload()
         case 1 => System.exit(0)
         case _ => System.out.println("cancel")
       }
