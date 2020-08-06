@@ -111,6 +111,7 @@ object MainGraphic extends JFXApp {
           override def handle(event: ActionEvent) = {
 
             val fileChooser = new FileChooser {
+           //  initialDirectory=new ObjectProperty(fileChooser("input"))
               title = "Open Resource File"
            //  this.initialDirectory =
               // initialDirectory=ObjectProperty[new File("input")]
@@ -125,6 +126,7 @@ object MainGraphic extends JFXApp {
             }
             //you can open multiple sudoku (you can select more than one file)
             val selectedFile = fileChooser.showOpenMultipleDialog(stage)
+
 
 
             selectedFile.foreach(i => {
