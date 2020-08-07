@@ -15,7 +15,7 @@ protected[event] object SayHelp {
     val finish = solver.returnPuzzle()
     val number = finish(row)(col)
     t.setEditable(true)
-    println(number)
+    //println(number)
     InsertNumber.writeNumber(row, col, number, t)
   }
 }

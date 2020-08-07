@@ -1,7 +1,8 @@
 package grafic.event.moduleListener
 
 import grafic.panels.TextOpNumber.TextOpNumber
-import grafic.{setPressed, showNumberList}
+import grafic.util.{FONT_MINILIST, NUMBER}
+import grafic.{setPressed, setWrite, showNumberList}
 protected[event] object MatListVision {
 
   /**
@@ -17,10 +18,13 @@ protected[event] object MatListVision {
       textIns = el + "  "
       showNumberList.append(textIns)
     })
-
+    setPressed(-1, -1)
+    t.setFont(FONT_MINILIST);
+    setWrite(NUMBER)
     t.setEditable(true)
+    //setPressed(-1, -1)
+
     showNumberList.setEditable(false)
     showNumberList.setEnabled(false)
-    //setPressed(-1, -1)
   }
 }
