@@ -31,7 +31,8 @@ protected[event] object InsertNumber {
         setPressed(row, col)
         //in case of finish
         actionUtent()
-        /* TODO BISOGNA FARE UPDATElIST PER AGGIORNARE LA LISTA degli elementi lato user */
+        /* TODO: Check */
+        MatListOperation.updateList((row,col),number)
 
       case _ =>
         t.setForeground(Color.red)

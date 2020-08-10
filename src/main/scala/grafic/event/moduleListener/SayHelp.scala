@@ -6,9 +6,7 @@ import utility.getPuzzle
 
 protected[event] object SayHelp {
 
-  /**
-   * TODO: HELP
-   */
+  /*Antonelli*/
   def sayHelp(row: Int,col: Int, t: TextOpNumber): Unit = {
     val solver = FullExploration(getPuzzle)
     solver.solve(0, 0)

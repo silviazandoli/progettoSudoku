@@ -5,10 +5,7 @@ import grafic.util.{FONT_MINILIST, NUMBER}
 import grafic.{setPressed, setWrite, showNumberList}
 protected[event] object MatListVision {
 
-  /**
-   * TODO: fare modulo che ha una funzione che scrive i numeri della matlist
-   *       nella jTextArea di showNumberList ==> @Antonelli
-   */
+ /*@Antonelli*/
   def seeVision(possibleValues: Set[Int], t: TextOpNumber) = {
     var textIns : String = ""
     showNumberList.setText("")
