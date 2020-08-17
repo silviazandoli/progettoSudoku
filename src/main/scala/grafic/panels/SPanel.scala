@@ -1,5 +1,9 @@
 package grafic.panels
 
+import java.awt.event.{ActionEvent, ActionListener}
+
+import grafic.AssociateListener
+
 object SPanel {
   import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
   import grafic.showNumberList
@@ -16,6 +20,8 @@ object SPanel {
 
     //you have the possibility to write the number in the square
     val CS = new JButton(" Undo")
+
+    val startStopButton = new JButton(" StartStop ")
 
     val ES = new JButton(" Easy ")
     val MS = new JButton(" Medium ")
@@ -43,6 +49,10 @@ object SPanel {
     showNumberList.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight))
 
     pb.add(showNumberList)
+
+    startStopButton.addActionListener((_: ActionEvent) => AssociateListener.createMatrix())
+
+    pb.add(startStopButton)
 
     pb.add(ES)
 

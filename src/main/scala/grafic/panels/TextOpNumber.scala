@@ -13,7 +13,11 @@ object TextOpNumber {
     def displayList(): Unit = {
       for (elem <- setNumber) {
         append(elem+",")
-    }}
+      }
+
+      val len = this.getText.length
+      this.replaceRange(" ", len-1, len)
+    }
   }
   case class TextOpNumber() extends TextOpNumberTrait
 }
