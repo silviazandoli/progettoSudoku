@@ -10,7 +10,6 @@ import grafic.util._
 import javax.swing.JOptionPane
 import utility.matList
 
-//sealed trait WriteOnCell extends ActionListener {
 sealed trait WriteOnCell extends KeyListener {
   val row: Int
   val col: Int
