@@ -33,11 +33,11 @@ object FileChooserMain extends App {
   openEasy.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_O, ActionEvent.ALT_MASK))
 
-  val openMedium=new JMenuItem("Open Medium", KeyEvent.VK_F)
+  val openMedium = new JMenuItem("Open Medium", KeyEvent.VK_F)
   openMedium.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_F, ActionEvent.ALT_MASK))
 
-  val openHard=new JMenuItem(" Open Hard", KeyEvent.VK_D)
+  val openHard = new JMenuItem(" Open Hard", KeyEvent.VK_D)
   openHard.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_D, ActionEvent.ALT_MASK))
 
@@ -47,7 +47,6 @@ object FileChooserMain extends App {
 
   val exitMenu = new JMenuItem("Exit", KeyEvent.VK_X)
   exitMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK))
-
 
 
   menu.add(openEasy)
@@ -61,15 +60,15 @@ object FileChooserMain extends App {
   mainFrame.setVisible(true)
 
   openEasy.addActionListener((e: ActionEvent) => {
-    initAndReUpload(mainFrame,"easy")
+    initAndReUpload(mainFrame, "easy")
   })
 
-  openMedium.addActionListener((e:ActionEvent)=>{
-    initAndReUpload(mainFrame,"medium")
+  openMedium.addActionListener((e: ActionEvent) => {
+    initAndReUpload(mainFrame, "medium")
   })
 
-  openHard.addActionListener((e:ActionEvent)=>{
-    initAndReUpload(mainFrame,"hard")
+  openHard.addActionListener((e: ActionEvent) => {
+    initAndReUpload(mainFrame, "hard")
   })
   exitMenu.addActionListener((e: ActionEvent) => {
     sys.exit(0)
@@ -88,8 +87,8 @@ object FileChooserMain extends App {
     //e metti showOpenDialog(null)
     //implicit
 
-   // val jfc = "input".filechooser()
-    val jfc=modality.filechooser()
+    // val jfc = "input".filechooser()
+    val jfc = modality.filechooser()
 
 
     //val retValue = jfc.showOpenDialog(null)
