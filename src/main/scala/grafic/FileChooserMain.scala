@@ -21,19 +21,25 @@ object FileChooserMain extends App {
   mainFrame.setPreferredSize(new Dimension(400, 300))
   val menuBar = new JMenuBar()
 
-
   val menu = new JMenu("File")
-
   menu.setMnemonic(KeyEvent.VK_F)
 
   // menu.getAccessibleContext.setAccessibleDescription("The only menu in this program that has menu items")
   menuBar.add(menu)
 
 
-  val openMenu = new JMenuItem("Open",
+  val openEasy = new JMenuItem("Open Easy",
     KeyEvent.VK_O)
-  openMenu.setAccelerator(KeyStroke.getKeyStroke(
+  openEasy.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_O, ActionEvent.ALT_MASK))
+
+  val openMedium=new JMenuItem("Open Medium", KeyEvent.VK_F)
+  openMedium.setAccelerator(KeyStroke.getKeyStroke(
+    KeyEvent.VK_F, ActionEvent.ALT_MASK))
+
+  val openHard=new JMenuItem(" Open Hard", KeyEvent.VK_D)
+  openHard.setAccelerator(KeyStroke.getKeyStroke(
+    KeyEvent.VK_D, ActionEvent.ALT_MASK))
 
   val aboutMenu = new JMenuItem("About", KeyEvent.VK_U)
   aboutMenu.setAccelerator(KeyStroke.getKeyStroke(
@@ -43,7 +49,10 @@ object FileChooserMain extends App {
   exitMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK))
 
 
-  menu.add(openMenu)
+
+  menu.add(openEasy)
+  menu.add(openMedium)
+  menu.add(openHard)
   menu.add(aboutMenu)
   menu.addSeparator()
   menu.add(exitMenu)
@@ -51,8 +60,16 @@ object FileChooserMain extends App {
   mainFrame.pack()
   mainFrame.setVisible(true)
 
-  openMenu.addActionListener((e: ActionEvent) => {
-    initAndReUpload(mainFrame)
+  openEasy.addActionListener((e: ActionEvent) => {
+    initAndReUpload(mainFrame,"easy")
+  })
+
+  openMedium.addActionListener((e:ActionEvent)=>{
+    initAndReUpload(mainFrame,"medium")
+  })
+
+  openHard.addActionListener((e:ActionEvent)=>{
+    initAndReUpload(mainFrame,"hard")
   })
   exitMenu.addActionListener((e: ActionEvent) => {
     sys.exit(0)
@@ -64,13 +81,15 @@ object FileChooserMain extends App {
   })
 
 
-  def initAndReUpload(frame: JFrame): Unit = {
+  def initAndReUpload(frame: JFrame, modality: String): Unit = {
     import grafic.Helpers._
     //val jfc = new JFileChooser("input")
     //se si vuole riportare senza interfaccia togli come argomento JFrame, anche da Open
     //e metti showOpenDialog(null)
     //implicit
-    val jfc = "input".filechooser()
+
+   // val jfc = "input".filechooser()
+    val jfc=modality.filechooser()
 
 
     //val retValue = jfc.showOpenDialog(null)
