@@ -33,7 +33,7 @@ object FileChooserMain extends App {
   openEasy.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_O, ActionEvent.ALT_MASK))
 
-  val openMedium = new JMenuItem("Open Medium", KeyEvent.VK_F)
+  val openMedium = new JMenuItem("Open Intermedium", KeyEvent.VK_F)
   openMedium.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_F, ActionEvent.ALT_MASK))
 
