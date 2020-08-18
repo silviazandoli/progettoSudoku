@@ -1,12 +1,9 @@
 package grafic.panels
 
-import java.awt.event.{ActionEvent, ActionListener}
-
-import grafic.AssociateListener
-
 object SPanel {
   import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
-  import grafic.showNumberList
+  import java.awt.event.ActionEvent
+  import grafic.{showNumberList, AssociateListener}
   import grafic.util.FONT_MATLIST
   import javax.swing.{JButton, JPanel}
 
