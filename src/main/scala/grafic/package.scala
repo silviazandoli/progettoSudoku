@@ -1,7 +1,9 @@
+
 package object grafic {
   import java.awt.Container
   import javax.swing.JTextArea
   import utility.dimSudoku
+  import grafic.panels.TextOpNumber.TextOpNumber
 
   val masks: Array[Array[Boolean]] = Array.ofDim[Boolean](dimSudoku, dimSudoku)
   private var puzzleResolt: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
@@ -13,7 +15,7 @@ package object grafic {
   var cp: Container = _
   val showNumberList = new JTextArea() // bruttino
 
-  val tfCells = Array.ofDim[JTextArea](dimSudoku, dimSudoku)
+  val tfCells = Array.ofDim[TextOpNumber](dimSudoku, dimSudoku)
 
   def utentSolved(): Boolean = masks.flatten.forall(_ == true)
 

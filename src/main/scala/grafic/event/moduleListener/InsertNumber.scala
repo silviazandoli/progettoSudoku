@@ -22,8 +22,6 @@ protected[event] object InsertNumber {
     t.setForeground(CLOSED_CELL_TEXT)
 
     masks(row)(col) = true
-
-    UpdateListUser.updateListUser((row,col),number)
   }
 
   def writeNumber(row: Int, col: Int, number: Int, t: TextOpNumber): Unit = {
@@ -36,7 +34,7 @@ protected[event] object InsertNumber {
         actionUtent()
         /* TODO: Check */
         MatListOperation.updateList((row,col),number)
-        //UpdateListUser.updateListUser((row,col),number)
+        UpdateListUser.updateListUser((row,col),number)
 
       case _ =>
         t.setForeground(Color.red)
