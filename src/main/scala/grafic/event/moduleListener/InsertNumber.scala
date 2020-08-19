@@ -39,7 +39,9 @@ protected[event] object InsertNumber {
       case _ =>
         t.setForeground(Color.red)
         setPressed(-1, -1)
+
         t.setEditable(true) // si dò 2° chanche
+
         JOptionPane.showMessageDialog(cp, "Bad! The number Not in puzzle!", "Message", JOptionPane.DEFAULT_OPTION)
     }
   }

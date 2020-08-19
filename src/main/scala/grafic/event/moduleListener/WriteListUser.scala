@@ -10,8 +10,8 @@ protected[event] object WriteListUser {
   def writePossibileElements(possibleValues: Set[Int], number: Int, t: TextOpNumber): Unit = {
     if (possibleValues.contains(number)) {
         t.addNumber(number)
-      }
-    t.setText("")
-    t.displayList()
+        t.displayList()
+    }
+    // t.displayList()
   }
 }

@@ -10,6 +10,7 @@ object TextOpNumber {
       setNumber += number
     }
     def removeNumber(number: Int): Unit = {
+      //setNumber = setNumber.filter(el => el != number)
       setNumber -= number
     }
     def getList: Set[Int] = setNumber

@@ -1,12 +1,13 @@
 package grafic.event.moduleListener.moduleUpdate
 
-object UpdateListUser {
+protected[event] object UpdateListUser {
   import grafic.panels.TextOpNumber.TextOpNumber
   import grafic.tfCells
   import utility.dimSudoku
 
   private def removeDisplay(cell: TextOpNumber, number: Int): Unit = {
-    if (cell.getList.contains(number)) {
+    val set = cell.getList
+    if (set.nonEmpty && set.contains(number)) {
       cell.removeNumber(number)
       cell.displayList()
     }
@@ -28,8 +29,6 @@ object UpdateListUser {
     val cj = col / 3
     val squareCells = tfCells.grouped(3).toList(ci).flatMap { x => x.grouped(3).toList(cj) }
 
-    squareCells.foreach(jTarea => {
-      removeDisplay(jTarea, number)
-    })
+    squareCells.foreach(jTarea => removeDisplay(jTarea, number))
   }
 }
