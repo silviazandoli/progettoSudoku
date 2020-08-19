@@ -9,6 +9,9 @@ object TextOpNumber {
     def addNumber(number: Int): Unit = {
       setNumber += number
     }
+    def removeNumber(number: Int): Unit = {
+      setNumber -= number
+    }
     def getList: Set[Int] = setNumber
     def displayList(): Unit = {
       for (elem <- setNumber) {

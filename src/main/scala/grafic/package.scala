@@ -13,6 +13,8 @@ package object grafic {
   var cp: Container = _
   val showNumberList = new JTextArea() // bruttino
 
+  val tfCells = Array.ofDim[JTextArea](dimSudoku, dimSudoku)
+
   def utentSolved(): Boolean = masks.flatten.forall(_ == true)
 
   def setWrite(writeString: String): Unit = {write = writeString}

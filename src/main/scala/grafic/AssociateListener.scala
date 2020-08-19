@@ -2,10 +2,11 @@ package grafic
 
 object AssociateListener {
   import java.awt.{Dimension, GridLayout}
-  import javax.swing.{JPanel, JTextArea}
+
   import grafic.event.{MouseListener, WriteOnCell}
   import grafic.panels.TextOpNumber.TextOpNumber
-  import grafic.util.{CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT, FONT_NUMBERS, MATRIX_HEIGHT, MATRIX_WIDTH, OPEN_CELL_BGCOLOR}
+  import grafic.util._
+  import javax.swing.JPanel
   import utility.{dimSudoku, puzzle}
 
   def createMatrix(): Unit = {
@@ -15,8 +16,6 @@ object AssociateListener {
     matrixGame.setLayout(new GridLayout(dimSudoku, dimSudoku))
 
     cp.add(matrixGame)
-
-    val tfCells = Array.ofDim[JTextArea](dimSudoku, dimSudoku)
 
     for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
       tfCells(row)(col) = TextOpNumber()
