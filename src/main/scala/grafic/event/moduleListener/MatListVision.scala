@@ -9,7 +9,6 @@ protected[event] object MatListVision {
   def seeVision(possibleValues: Set[Int], t: TextOpNumber) = {
     var textIns : String = ""
     showNumberList.setText("")
-    //println(SEE_MATLIST)
 
     possibleValues.foreach(el => {
       textIns = el + "  "
@@ -17,9 +16,7 @@ protected[event] object MatListVision {
     })
     setPressed(-1, -1)
     t.setFont(FONT_MINILIST);
-    setWrite(NUMBER)
     t.setEditable(true)
-    //setPressed(-1, -1)
 
     showNumberList.setEditable(false)
     showNumberList.setEnabled(false)
