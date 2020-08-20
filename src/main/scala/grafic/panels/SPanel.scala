@@ -1,5 +1,7 @@
 package grafic.panels
 
+import java.lang.InterruptedException
+
 object SPanel {
   import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
   import java.awt.event.ActionEvent
@@ -48,9 +50,33 @@ object SPanel {
 
     pb.add(showNumberList)
 
+    var thread: Thread = _
+    def startGame(): Unit = {
+      thread = new Thread {
+        override def run() {
+          while (true) textTime.setText("" + System.currentTimeMillis())
+        }
+      }
+      thread.start()
+    }
+
+    startStopButton.setBackground(Color.green)
     startStopButton.addActionListener((_: ActionEvent) => {
-      AssociateListener.createMatrix()
-      startGame()
+      if (startStopButton.getBackground == Color.green) {
+        AssociateListener.createMatrix()
+        startGame()
+        startStopButton.setBackground(Color.RED)
+      } else {
+        try {
+          if (thread != null) {
+            thread.interrupt()
+          }
+        } catch {
+          case eI : InterruptedException => println("Exception = " + eI.getMessage)
+        }
+        textTime.setText("")
+        startStopButton.setBackground(Color.green)
+      }
     })
 
     pb.add(startStopButton)
@@ -70,14 +96,6 @@ object SPanel {
     this.add(pb)
     this.setPreferredSize(dim)
 
-    def startGame(): Unit = {
-      val thread = new Thread {
-        override def run() {
-          while(true) textTime.setText("" + System.currentTimeMillis())
-        }
-      }
-      thread.start()
-    }
   }
 
   case class SPanel(dim: Dimension) extends SPanelTrait

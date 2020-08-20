@@ -55,8 +55,10 @@ object AssociateListener {
     }
 
     for {
-      i <- 2 until dimSudoku by 2
-      j <- 2 until dimSudoku by 2
-    } tfCells(i)(j).setBorder(BorderFactory.createLineBorder(Color.red))
+      i <- 0 until dimSudoku
+      j <- 2 until dimSudoku by 3
+    } {
+      tfCells(i)(j).setBorder(BorderFactory.createLineBorder(Color.red))
+    }
   }
 }
