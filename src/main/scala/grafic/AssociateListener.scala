@@ -1,5 +1,9 @@
 package grafic
 
+import java.awt.Color
+
+import javax.swing.BorderFactory
+
 object AssociateListener {
   import java.awt.{Dimension, GridLayout}
 
@@ -19,6 +23,8 @@ object AssociateListener {
 
     for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
       tfCells(row)(col) = TextOpNumber()
+
+      tfCells(row)(col).setBorder(BorderFactory.createLineBorder(Color.black))
 
       matrixGame.add(tfCells(row)(col)) // ContentPane adds JTextArea
 
