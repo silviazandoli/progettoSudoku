@@ -1,14 +1,12 @@
 package grafic.panels
 
-import javax.swing.JTextField
-import util.TimeStamp
-
 object SPanel {
   import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
   import java.awt.event.ActionEvent
+  import javax.swing.{JButton, JPanel, JTextField}
+
   import grafic.{showNumberList, AssociateListener}
   import grafic.util.FONT_MATLIST
-  import javax.swing.{JButton, JPanel}
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)
 
@@ -28,8 +26,6 @@ object SPanel {
     val HS = new JButton(" Hard ")
 
     val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
-
-    val textTime = new JTextField()
 
     val dim: Dimension //
 
@@ -52,7 +48,10 @@ object SPanel {
 
     pb.add(showNumberList)
 
-    startStopButton.addActionListener((_: ActionEvent) => AssociateListener.createMatrix())
+    startStopButton.addActionListener((_: ActionEvent) => {
+      AssociateListener.createMatrix()
+      startGame()
+    })
 
     pb.add(startStopButton)
 
@@ -62,15 +61,23 @@ object SPanel {
 
     pb.add(HS)
 
-    //CS.addActionListener(this);
     pb.add(CS)
 
+    val textTime = new JTextField()
+    textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight))
     pb.add(textTime)
-
-    textTime.setText("" + System.currentTimeMillis())
 
     this.add(pb)
     this.setPreferredSize(dim)
+
+    def startGame(): Unit = {
+      val thread = new Thread {
+        override def run() {
+          while(true) textTime.setText("" + System.currentTimeMillis())
+        }
+      }
+      thread.start()
+    }
   }
 
   case class SPanel(dim: Dimension) extends SPanelTrait

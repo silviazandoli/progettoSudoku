@@ -53,5 +53,10 @@ object AssociateListener {
       tfCells(row)(col).setAlignmentX(10)
       tfCells(row)(col).setFont(FONT_NUMBERS)
     }
+
+    for {
+      i <- 2 until dimSudoku by 2
+      j <- 2 until dimSudoku by 2
+    } tfCells(i)(j).setBorder(BorderFactory.createLineBorder(Color.red))
   }
 }
