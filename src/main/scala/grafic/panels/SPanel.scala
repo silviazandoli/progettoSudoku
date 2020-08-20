@@ -1,5 +1,8 @@
 package grafic.panels
 
+import javax.swing.JTextField
+import util.TimeStamp
+
 object SPanel {
   import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
   import java.awt.event.ActionEvent
@@ -25,6 +28,8 @@ object SPanel {
     val HS = new JButton(" Hard ")
 
     val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
+
+    val textTime = new JTextField()
 
     val dim: Dimension //
 
@@ -59,6 +64,10 @@ object SPanel {
 
     //CS.addActionListener(this);
     pb.add(CS)
+
+    pb.add(textTime)
+
+    textTime.setText("" + System.currentTimeMillis())
 
     this.add(pb)
     this.setPreferredSize(dim)
