@@ -41,13 +41,20 @@ protected[event] object UpdateListUser {
   def displayList(row: Int, col: Int): Unit = {
     for (k <- 0 until dimSudoku; if k != col) {
       tfCells(row)(k).displayList()
+    }
+
+    for (k <- 0 until dimSudoku; if k != row) {
       tfCells(k)(col).displayList()
     }
 
-    val ci = row / 3
-    val cj = col / 3
-    val squareCells = tfCells.grouped(3).toList(ci).flatMap { x => x.grouped(3).toList(cj) }
+    val ci: Int = row / 3
+    val cj: Int = col / 3
+    val squareCells: Array[TextOpNumber] = tfCells.grouped(3).toList(ci).flatMap { x => x.grouped(3).toList(cj) }
 
-    squareCells.foreach(jTarea => jTarea.displayList())
+    squareCells.foreach(jTarea => {
+      if (jTarea.getList.nonEmpty) {
+        jTarea.displayList()
+      }
+    })
   }
 }

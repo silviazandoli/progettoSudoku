@@ -63,11 +63,12 @@ object SPanel {
       if (startStopButton.getBackground == Color.green) {
         AssociateListener.createMatrix()
         startGame()
-        startStopButton.setBackground(Color.RED)
+        startStopButton.setBackground(Color.red)
       } else {
         try {
           if (thread != null) {
             thread.interrupt()
+            thread = null
           }
         } catch {
           case eI : InterruptedException => println("Exception = " + eI.getMessage)
