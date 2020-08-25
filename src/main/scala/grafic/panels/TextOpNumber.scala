@@ -10,7 +10,6 @@ object TextOpNumber {
       setNumber += number
     }
     def removeNumber(number: Int): Unit = {
-      //setNumber = setNumber.filter(el => el != number)
       setNumber -= number
     }
     def getList: Set[Int] = setNumber
@@ -20,8 +19,10 @@ object TextOpNumber {
         append(elem+",")
       }
 
+      /*
       val len = this.getText.length
       this.replaceRange(" ", len-1, len)
+       */
     }
   }
   case class TextOpNumber() extends TextOpNumberTrait

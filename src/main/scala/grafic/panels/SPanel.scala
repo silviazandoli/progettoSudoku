@@ -1,7 +1,5 @@
 package grafic.panels
 
-import java.lang.InterruptedException
-
 object SPanel {
   import java.awt.{BorderLayout, Color, Dimension, FlowLayout}
   import java.awt.event.ActionEvent
