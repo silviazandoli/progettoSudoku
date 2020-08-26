@@ -28,6 +28,7 @@ protected[event] object UpdateListUser {
     val squareCells = tfCells.grouped(3).toList(ci).flatMap { x => x.grouped(3).toList(cj) }
 
     squareCells.foreach(jTarea => remove(jTarea, number))
+    //squareCells.foreach(jTarea=>jTarea.removeFromList(number))
 
     try {
       SwingUtilities.invokeLater(() => {

@@ -26,6 +26,11 @@ object TextOpNumber {
         this.replaceRange(" ", len - 1, len)
       }
     }
+  /*  def removeFromList(num:Int):Unit={
+      val text=this.getText
+      text.replace(num+",","")
+
+    }*/
   }
   case class TextOpNumber() extends TextOpNumberTrait
 }
