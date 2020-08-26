@@ -1,10 +1,8 @@
-import javax.swing.JTextField
-import scala.annotation.tailrec
-
 /**
  * Fatto da Lorenzo Pacini
  **/
 package object utility {
+  import scala.annotation.tailrec
 
   val dimSudoku = 9
   val matList: Array[Array[List[Int]]] = Array.ofDim[List[Int]](dimSudoku, dimSudoku)

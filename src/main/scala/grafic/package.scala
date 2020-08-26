@@ -13,7 +13,7 @@ package object grafic {
   private var write = ""
 
   var cp: Container = _
-  val showNumberList = new JTextArea() // bruttino
+  val showNumberList = new JTextArea()
 
   val tfCells = Array.ofDim[TextOpNumber](dimSudoku, dimSudoku)
 

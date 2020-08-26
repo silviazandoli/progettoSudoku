@@ -5,8 +5,8 @@ object SPanel {
   import java.awt.event.ActionEvent
   import javax.swing.{JButton, JPanel, JTextField}
 
-  import grafic.{showNumberList, AssociateListener}
-  import grafic.util.FONT_MATLIST
+  import grafic.showNumberList
+  import grafic.util.{AssociateListener, FONT_MATLIST}
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)
 
@@ -61,7 +61,7 @@ object SPanel {
     startStopButton.setBackground(Color.green)
     startStopButton.addActionListener((_: ActionEvent) => {
       if (startStopButton.getBackground == Color.green) {
-        AssociateListener.createMatrix()
+        AssociateListener.associateListener()
         startGame()
         startStopButton.setBackground(Color.red)
       } else {

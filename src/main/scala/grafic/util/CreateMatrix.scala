@@ -1,17 +1,11 @@
-package grafic
+package grafic.util
 
-import java.awt.Color
-
-import javax.swing.BorderFactory
-
-object AssociateListener {
-  import java.awt.{Dimension, GridLayout}
-
-  import grafic.event.{MouseListener, WriteOnCell}
-  import grafic.panels.TextOpNumber.TextOpNumber
-  import grafic.util._
-  import javax.swing.JPanel
+object CreateMatrix {
+  import javax.swing.{JPanel,BorderFactory}
+  import java.awt.{Dimension, GridLayout, Color}
   import utility.{dimSudoku, puzzle}
+  import grafic.{cp, tfCells, masks}
+  import grafic.panels.TextOpNumber.TextOpNumber
 
   def createMatrix(): Unit = {
     val matrixGame = new JPanel()
@@ -32,11 +26,6 @@ object AssociateListener {
           tfCells(row)(col).setBackground(OPEN_CELL_BGCOLOR)
 
           masks(row)(col) = false
-
-          //aggiunta controlli-> che sia inserito un carattere che sia un numero, che il numero inserito non sia corretto
-          //(nel caso non appartenga alla matList), etc
-          tfCells(row)(col).addKeyListener(WriteOnCell(row, col))
-          tfCells(row)(col).addMouseListener(MouseListener(row, col))
 
         case _ =>
           tfCells(row)(col).setText(puzzle(row)(col) + "")

@@ -17,6 +17,8 @@ object Sudoku {
 
       cp = this.getContentPane
 
+      CreateMatrix.createMatrix()
+
       cp.add(SPanel(new Dimension(MATRIX_WIDTH / 2, MATRIX_HEIGHT / 2)), BorderLayout.WEST)
 
       cp.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT))
