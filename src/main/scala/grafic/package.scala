@@ -1,7 +1,3 @@
-import java.awt.Dimension
-
-import javax.swing.JTextField
-
 package object grafic {
   import java.awt.Container
   import javax.swing.JTextArea
