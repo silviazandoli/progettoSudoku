@@ -19,8 +19,12 @@ object TextOpNumber {
         append(elem+",")
       }
 
-      val len = this.getText.length
-      this.replaceRange(" ", len-1, len)
+      val text = this.getText
+
+      if (!text.isEmpty) {
+        val len = this.getText.length
+        this.replaceRange(" ", len - 1, len)
+      }
     }
   }
   case class TextOpNumber() extends TextOpNumberTrait

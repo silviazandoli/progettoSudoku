@@ -13,6 +13,7 @@ object AssociateListener {
         case 0 =>
           tfCells(row)(col).addKeyListener(WriteOnCell(row, col))
           tfCells(row)(col).addMouseListener(MouseListener(row, col))
+        case _ =>
       }
     }
   }
