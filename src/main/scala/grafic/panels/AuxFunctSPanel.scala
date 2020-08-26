@@ -17,13 +17,16 @@ object AuxFunctSPanel {
       override def interrupt(): Unit = {
         super.interrupt()
         val text = textTime.getText()
-        val time = text.substring(11, text.length).toInt
 
-        textTime.setText("")
-        textTime.append("Your score = " + score)
-        textTime.append("\n Your time = " + time)
+        if (!text.isEmpty) {
+          val time = text.substring(11, text.length).toInt
 
-        startStopButton.setBackground(Color.green)
+          textTime.setText("")
+          textTime.append("Your score = " + score)
+          textTime.append("\n Your time = " + time)
+
+          startStopButton.setBackground(Color.green)
+        }
       }
     }
     thread.start()
