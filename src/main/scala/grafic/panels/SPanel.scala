@@ -6,7 +6,7 @@ object SPanel {
   import javax.swing.{JButton, JPanel, JTextField}
 
   import grafic.showNumberList
-  import grafic.util.{AssociateListener, FONT_MATLIST}
+  import grafic.util.{AssociateListener, FONT_MATLIST, factSecond}
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)
 
@@ -50,9 +50,12 @@ object SPanel {
 
     var thread: Thread = _
     def startGame(): Unit = {
+      val timeInit = System.currentTimeMillis()/factSecond
       thread = new Thread {
         override def run() {
-          while (true) textTime.setText("" + System.currentTimeMillis())
+          while (true) {
+            textTime.setText("Your Time: " + ((System.currentTimeMillis()/factSecond)-timeInit))
+          }
         }
       }
       thread.start()
@@ -94,7 +97,6 @@ object SPanel {
 
     this.add(pb)
     this.setPreferredSize(dim)
-
   }
 
   case class SPanel(dim: Dimension) extends SPanelTrait
