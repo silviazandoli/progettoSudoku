@@ -18,7 +18,7 @@ protected[event] object UpdateListUser {
     val row = coord._1
     val col = coord._2
 
-    for (k <- 0 until dimSudoku; if k != col) {
+    for (k <- 0 until dimSudoku) {
       remove(tfCells(row)(k), number)
       remove(tfCells(k)(col), number)
     }
@@ -39,13 +39,8 @@ protected[event] object UpdateListUser {
   }
 
   def displayList(row: Int, col: Int): Unit = {
-    for (k <- 0 until dimSudoku; if k != col) {
-      tfCells(row)(k).displayList()
-    }
-
-    for (k <- 0 until dimSudoku; if k != row) {
-      tfCells(k)(col).displayList()
-    }
+    for (k <- 0 until dimSudoku; if k != col) tfCells(row)(k).displayList()
+    for (k <- 0 until dimSudoku; if k != row) tfCells(k)(col).displayList()
 
     val ci: Int = row / 3
     val cj: Int = col / 3
