@@ -1,3 +1,6 @@
+import java.awt.Dimension
+
+import javax.swing.JTextField
 
 package object grafic {
   import java.awt.Container
@@ -14,6 +17,7 @@ package object grafic {
 
   var cp: Container = _
   val showNumberList = new JTextArea()
+  val textTime = new JTextArea()
 
   val tfCells = Array.ofDim[TextOpNumber](dimSudoku, dimSudoku)
 

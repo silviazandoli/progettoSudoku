@@ -41,17 +41,11 @@ object CreateMatrix {
       tfCells(row)(col).setFont(FONT_NUMBERS)
     }
 
-    for {
-      i <- 0 until dimSudoku
-      j <- 2 until dimSudoku by 3
-    } {
+    for (i <- 0 until dimSudoku; j <- 2 until dimSudoku by 3) {
       tfCells(i)(j).setBorder(BorderFactory.createMatteBorder(1,1,1,3,Color.red))
     }
 
-    for {
-      i <- 2 until dimSudoku by 3
-      j <- 0 until dimSudoku
-    } {
+    for (i <- 2 until dimSudoku by 3; j <- 0 until dimSudoku) {
       tfCells(i)(j).setBorder(BorderFactory.createMatteBorder(1,1,3,1,Color.red))
     }
   }

@@ -7,9 +7,9 @@ protected[event] object InsertNumber {
   import java.awt.Color
   import javax.swing.JOptionPane
   import grafic.event.moduleListener.ControlNumbersAndFinish.actionUtent
-  import grafic.util.{CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT, FONT_NUMBERS}
-  import grafic._
+  import grafic.util.{CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT, FONT_NUMBERS, score}
   import grafic.panels.TextOpNumber.TextOpNumber
+  import grafic._
 
   private def operationOnGUI(row: Int, col: Int, number: Int, t: TextOpNumber): Unit = {
     t.setForeground(Color.green)
@@ -35,6 +35,8 @@ protected[event] object InsertNumber {
         /* TODO: Check */
         MatListOperation.updateList((row,col),number)
         UpdateListUser.updateListUser((row,col),number)
+
+        score = score + 1
 
       case _ =>
         t.setForeground(Color.red)

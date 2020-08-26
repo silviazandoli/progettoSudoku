@@ -14,7 +14,7 @@ object TextOpNumber {
     }
     def getList: Set[Int] = setNumber
     def displayList(): Unit = {
-      setText(" ")
+      setText("")
       for (elem <- setNumber) {
         append(elem+",")
       }

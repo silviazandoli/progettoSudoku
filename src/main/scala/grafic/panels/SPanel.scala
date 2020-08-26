@@ -5,8 +5,8 @@ object SPanel {
   import java.awt.event.ActionEvent
   import javax.swing.{JButton, JPanel, JTextField}
 
-  import grafic.showNumberList
-  import grafic.util.{AssociateListener, FONT_MATLIST, factSecond}
+  import grafic.{textTime, showNumberList}
+  import grafic.util.{AssociateListener, FONT_MATLIST, factSecond, score}
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)
 
@@ -57,6 +57,18 @@ object SPanel {
             textTime.setText("Your Time: " + ((System.currentTimeMillis()/factSecond)-timeInit))
           }
         }
+
+        override def interrupt(): Unit = {
+          super.interrupt()
+          val text = textTime.getText()
+          val time = text.substring(11, text.length).toInt
+
+          textTime.setText("")
+          textTime.append("Your score = " + score)
+          textTime.append("\n Your time = " + time)
+
+          startStopButton.setBackground(Color.green)
+        }
       }
       thread.start()
     }
@@ -76,23 +88,16 @@ object SPanel {
         } catch {
           case eI : InterruptedException => println("Exception = " + eI.getMessage)
         }
-        textTime.setText("")
-        startStopButton.setBackground(Color.green)
       }
     })
 
     pb.add(startStopButton)
-
     pb.add(ES)
-
     pb.add(MS)
-
     pb.add(HS)
-
     pb.add(CS)
 
-    val textTime = new JTextField()
-    textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight))
+    textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)); // dim
     pb.add(textTime)
 
     this.add(pb)
