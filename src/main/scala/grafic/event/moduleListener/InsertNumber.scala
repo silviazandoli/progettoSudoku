@@ -1,15 +1,15 @@
 package grafic.event.moduleListener
 
-import grafic.event.moduleListener.moduleUpdate.UpdateListUser
-import sudoku.MatListOperation
-
 protected[event] object InsertNumber {
   import java.awt.Color
   import javax.swing.JOptionPane
+
   import grafic.event.moduleListener.ControlNumbersAndFinish.actionUtent
+  import grafic.event.moduleListener.moduleUpdate.UpdateListUser
   import grafic.util.{CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT, FONT_NUMBERS, score}
   import grafic.panels.TextOpNumber.TextOpNumber
   import grafic._
+  import sudoku.MatListOperation
 
   private def operationOnGUI(row: Int, col: Int, number: Int, t: TextOpNumber): Unit = {
     t.setForeground(Color.green)

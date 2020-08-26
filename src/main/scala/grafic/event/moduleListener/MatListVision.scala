@@ -1,9 +1,9 @@
 package grafic.event.moduleListener
 
-import grafic.panels.TextOpNumber.TextOpNumber
-import grafic.util.{FONT_MINILIST, NUMBER}
-import grafic.{setPressed, setWrite, showNumberList}
 protected[event] object MatListVision {
+  import grafic.panels.TextOpNumber.TextOpNumber
+  import grafic.util.{FONT_MINILIST, NUMBER}
+  import grafic.{setPressed, setWrite, showNumberList}
 
  /*@Antonelli*/
   def seeVision(possibleValues: Set[Int], t: TextOpNumber) = {

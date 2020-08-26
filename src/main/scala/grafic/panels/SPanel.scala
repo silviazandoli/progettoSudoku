@@ -30,7 +30,7 @@ object SPanel {
     showNumberList.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight))
 
     pb.add(showNumberList)
-    
+
     startStopButton.setBackground(Color.green)
     startStopButton.addActionListener((_: ActionEvent) => {
       if (startStopButton.getBackground == Color.green) {

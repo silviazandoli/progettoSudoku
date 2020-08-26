@@ -1,11 +1,10 @@
 package grafic.event.moduleListener
 
-import java.awt.Color
-
-import grafic.{cp, setPressed, utentSolved}
-import javax.swing.{JOptionPane, JTextArea}
-
 protected[event] object ControlNumbersAndFinish {
+  import grafic.{cp, setPressed, utentSolved}
+
+  import java.awt.Color
+  import javax.swing.{JOptionPane, JTextArea}
 
   def seeVision(possibleValues: Set[Int], number: Int, t: JTextArea): Unit = {
     if (possibleValues.contains(number)) {

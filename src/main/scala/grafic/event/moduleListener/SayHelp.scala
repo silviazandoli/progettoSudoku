@@ -1,10 +1,9 @@
 package grafic.event.moduleListener
 
-import grafic.panels.TextOpNumber.TextOpNumber
-import resolutionAlgorithm.FullExploration
-import utility.getPuzzle
-
 protected[event] object SayHelp {
+  import grafic.panels.TextOpNumber.TextOpNumber
+  import resolutionAlgorithm.FullExploration
+  import utility.getPuzzle
 
   /*Antonelli*/
   def sayHelp(row: Int,col: Int, t: TextOpNumber): Unit = {

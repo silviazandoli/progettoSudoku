@@ -1,9 +1,7 @@
 package resolutionAlgorithm
 
-import utility.{dimSudoku, matList}
-
-
 object NakedPairs {
+  import utility.{dimSudoku, matList}
 
   var coupleFound: (Int, Int) = (-1, -1)
 

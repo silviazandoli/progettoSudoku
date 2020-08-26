@@ -1,8 +1,8 @@
 package grafic.event.moduleListener.moduleUpdate
 
-import javax.swing.SwingUtilities
-
 protected[event] object UpdateListUser {
+  import javax.swing.SwingUtilities
+
   import grafic.panels.TextOpNumber.TextOpNumber
   import grafic.tfCells
   import utility.dimSudoku

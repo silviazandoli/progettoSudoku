@@ -1,8 +1,7 @@
 package sudoku
 
-import utility.{dimSudoku, matList, puzzle}
-
 object MatListOperation {
+  import utility.{dimSudoku, matList, puzzle}
 
   /**
    * fatto da Lorenzo Pacini

@@ -1,8 +1,8 @@
 package grafic.panels
 
-import javax.swing.JTextArea
-
 object TextOpNumber {
+  import javax.swing.JTextArea
+
   sealed trait TextOpNumberTrait extends JTextArea {
     private var setNumber: Set[Int] = Set()
 

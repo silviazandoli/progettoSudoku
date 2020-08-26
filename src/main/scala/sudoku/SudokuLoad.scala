@@ -1,11 +1,11 @@
 package sudoku
 
-import scala.annotation.tailrec
-import scala.io.Source
-
-import utility.{puzzle, computeOnList}
-
 object SudokuLoad {
+  import scala.annotation.tailrec
+  import scala.io.Source
+
+  import utility.{puzzle, computeOnList}
+
   def readFile(fileName: String): Array[String] = {
     val file = Source.fromFile(fileName)
     val it = file.getLines()

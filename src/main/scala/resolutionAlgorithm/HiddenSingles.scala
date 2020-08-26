@@ -1,9 +1,9 @@
 package resolutionAlgorithm
 
-import utility.{puzzle, dimSudoku, matList, contains}
-import sudoku.MatListOperation.updateList
-
 object HiddenSingles {
+  import utility.{puzzle, dimSudoku, matList, contains}
+  import sudoku.MatListOperation.updateList
+
   def totalHiddenSingles(): Unit = {
     (0 until dimSudoku).foreach(i => (0 until dimSudoku).foreach(j => {matList(i)(j) != Nil
       hiddenSingles(i, j)}))
