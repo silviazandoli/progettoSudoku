@@ -6,7 +6,8 @@ object SPanel {
   import javax.swing.JPanel
 
   import grafic.util.{AssociateListener, FONT_MATLIST}
-  import grafic.{textTime, showNumberList}
+  import grafic.{textTime, showNumberList, tfCells}
+  import utility.dimSudoku
   import AuxFunctSPanel.startGame
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)
@@ -50,10 +51,16 @@ object SPanel {
     })
 
     pb.add(startStopButton)
-    pb.add(ES)
-    pb.add(MS)
-    pb.add(HS)
-    pb.add(CS)
+
+    refreshList.addActionListener((_: ActionEvent) => {
+      //SwingUtilities.invokeLater(() => {
+        for (i <- 0 until dimSudoku; j <- 0 until dimSudoku
+             if tfCells(i)(j).getList.nonEmpty)
+          tfCells(i)(j).displayList()
+      })
+    //})
+
+    pb.add(refreshList)
 
     textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)); // dim
     pb.add(textTime)

@@ -8,13 +8,8 @@ package object panels {
   val FL = new FlowLayout()
 
   //you have the possibility to write the number in the square
-  val CS = new JButton(" Undo")
-
-  val startStopButton = new JButton(" StartStop ")
-
-  val ES = new JButton(" Easy ")
-  val MS = new JButton(" Medium ")
-  val HS = new JButton(" Hard ")
+  val startStopButton = new JButton("StartStop")
+  val refreshList = new JButton("Refresh")
 
   val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
 

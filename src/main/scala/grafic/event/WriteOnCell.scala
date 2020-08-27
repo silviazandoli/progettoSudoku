@@ -36,7 +36,6 @@ sealed trait WriteOnCell extends KeyListener {
         case NUMBER =>
           InsertNumber.writeNumber(row, col, number, t)
       }
-
     } catch {
           //it controls it was inserted a input which is not a number
       case _: Throwable => t.setForeground(Color.red)

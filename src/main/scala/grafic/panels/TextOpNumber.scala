@@ -16,7 +16,7 @@ object TextOpNumber {
     def displayList(): Unit = {
       setText("")
       for (elem <- setNumber) {
-        append(elem+",")
+        append(elem + ",")
       }
 
       val text = this.getText
@@ -26,11 +26,14 @@ object TextOpNumber {
         this.replaceRange(" ", len - 1, len)
       }
     }
-  /*  def removeFromList(num:Int):Unit={
-      val text=this.getText
-      text.replace(num+",","")
 
-    }*/
+    /*
+    def removeFromList(num:Int):Unit={
+      removeNumber(num)
+      val text = this.getText
+      text.replace(num+",","")
+    }
+     */
   }
   case class TextOpNumber() extends TextOpNumberTrait
 }
