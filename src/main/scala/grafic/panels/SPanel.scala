@@ -1,5 +1,7 @@
 package grafic.panels
 
+import javax.swing.SwingUtilities
+
 object SPanel {
   import java.awt.{BorderLayout, Dimension, Color}
   import java.awt.event.ActionEvent
@@ -47,18 +49,18 @@ object SPanel {
         } catch {
           case eI : InterruptedException => println("Exception = " + eI.getMessage)
         }
+        startStopButton.setBackground(Color.green)
       }
     })
 
     pb.add(startStopButton)
 
-    refreshList.addActionListener((_: ActionEvent) => {
-      //SwingUtilities.invokeLater(() => {
+    refreshList.addActionListener((_: ActionEvent) =>
         for (i <- 0 until dimSudoku; j <- 0 until dimSudoku
-             if tfCells(i)(j).getList.nonEmpty)
-          tfCells(i)(j).displayList()
-      })
-    //})
+             if tfCells(i)(j).getList.nonEmpty) {
+          val t = new Thread(() => tfCells(i)(j).displayList())
+          SwingUtilities.invokeAndWait(() => t.start())
+        })
 
     pb.add(refreshList)
 

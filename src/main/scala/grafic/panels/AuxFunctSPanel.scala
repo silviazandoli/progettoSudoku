@@ -7,6 +7,7 @@ object AuxFunctSPanel {
 
   def startGame(): Unit = {
     val timeInit = System.currentTimeMillis()/factSecond
+
     thread = new Thread {
       override def run() {
         while (true) {
