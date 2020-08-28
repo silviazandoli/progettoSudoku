@@ -37,9 +37,9 @@ object AuxFunctSPanel {
   }
 
   def startGame(): Unit = {
-    timeInit = System.currentTimeMillis()/factSecond
     stopVar = false
     if (firstTime) {
+      timeInit = System.currentTimeMillis()/factSecond
       firstTime = false
       thread.start()
     }

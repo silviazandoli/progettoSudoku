@@ -19,8 +19,6 @@ object SaveLoad {
     val bw = new BufferedWriter(new FileWriter(file))
 
     //new File(path).check
-    // foundFile.remove
-
     for {
       i <- 0 until dimSudoku
       j <- 0 until dimSudoku

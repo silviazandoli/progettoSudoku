@@ -12,7 +12,7 @@ object AssociateListener {
   }
 
   def deleteFile(): Unit = {
-    new File("temp/tmp.txt").remove()
+    println("file deleted = " + new File("temp/tmp.txt").remove())
   }
 
   def associateListener(): Unit = {
