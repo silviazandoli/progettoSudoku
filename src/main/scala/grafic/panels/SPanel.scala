@@ -1,13 +1,9 @@
 package grafic.panels
 
-import java.awt.EventQueue
-
-import javax.swing.SwingUtilities
-
 object SPanel {
-  import java.awt.{BorderLayout, Dimension, Color}
+  import java.awt.{EventQueue, BorderLayout, Dimension, Color}
   import java.awt.event.ActionEvent
-  import javax.swing.JPanel
+  import javax.swing.{JPanel, SwingUtilities}
 
   import grafic.util.{AssociateListener, FONT_MATLIST}
   import grafic.{textTime, showNumberList, tfCells}
