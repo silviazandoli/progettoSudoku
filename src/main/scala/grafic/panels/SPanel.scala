@@ -8,7 +8,7 @@ object SPanel {
   import grafic.util.{AssociateListener, FONT_MATLIST}
   import grafic.{textTime, showNumberList, tfCells}
   import utility.dimSudoku
-  import AuxFunctSPanel.startGame
+  import grafic.panels.funAux.SaveLoad
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)
 
@@ -56,6 +56,7 @@ object SPanel {
     textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)); // dim
     pb.add(textTime)
 
+    saveLoad.addActionListener((_: ActionEvent) => SaveLoad.saveLoad())
     pb.add(saveLoad)
 
     this.add(pb)
