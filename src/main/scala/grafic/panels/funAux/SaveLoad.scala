@@ -15,6 +15,7 @@ object SaveLoad {
 
   def save(): Unit = {
     val file = new File("temp/tmp.txt")
+    file.createNewFile()
     val bw = new BufferedWriter(new FileWriter(file))
 
     //new File(path).check
