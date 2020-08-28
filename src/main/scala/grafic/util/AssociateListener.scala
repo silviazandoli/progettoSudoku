@@ -5,19 +5,7 @@ object AssociateListener {
   import utility.{dimSudoku, puzzle}
   import grafic._
 
-  import java.io.File
-
-  implicit class FileMonads(f: File) {
-    def remove(): Unit = if (f.exists()) f.delete()
-  }
-
-  def deleteFile(): Unit = {
-    println("file deleted = " + new File("temp/tmp.txt").remove())
-  }
-
   def associateListener(): Unit = {
-    deleteFile()
-
     for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
       puzzle(row)(col) match {
         case 0 =>

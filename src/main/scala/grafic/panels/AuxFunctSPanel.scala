@@ -1,10 +1,8 @@
 package grafic.panels
 
-import grafic.util.AssociateListener
-
 object AuxFunctSPanel {
   import java.awt.Color
-  import grafic.util.{score, factSecond}
+  import grafic.util.{score, factSecond, AssociateListener}
   import grafic.textTime
 
   var timeInit: Long = 0
