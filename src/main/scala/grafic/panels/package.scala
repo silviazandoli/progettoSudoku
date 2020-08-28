@@ -11,7 +11,7 @@ package object panels {
   val startStopButton = new JButton("StartStop")
   val refreshList = new JButton("Refresh")
 
-  val saveLoad = new JButton("SaveLoad")
+  val saveButton = new JButton("Save")
 
   val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
 

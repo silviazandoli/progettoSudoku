@@ -56,8 +56,8 @@ object SPanel {
     textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)); // dim
     pb.add(textTime)
 
-    saveLoad.addActionListener((_: ActionEvent) => SaveLoad.saveLoad())
-    pb.add(saveLoad)
+    saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
+    pb.add(saveButton)
 
     this.add(pb)
     this.setPreferredSize(dim)
