@@ -1,5 +1,7 @@
 package grafic.panels
 
+import java.awt.EventQueue
+
 import javax.swing.SwingUtilities
 
 object SPanel {
@@ -58,10 +60,16 @@ object SPanel {
     refreshList.addActionListener((_: ActionEvent) =>
         for (i <- 0 until dimSudoku; j <- 0 until dimSudoku
              if tfCells(i)(j).getList.nonEmpty) {
+          System.out.println("riga "+i + " colonna "+j+ " controllata")
           val t = new Thread(() => tfCells(i)(j).displayList())
-          SwingUtilities.invokeAndWait(() => t.start())
+          //SwingUtilities.invokeAndWait(() => t.run())
+          try if (EventQueue.isDispatchThread) t.run()
+          else EventQueue.invokeAndWait(t)
+          catch {
+            case e: Exception =>
+              System.out.println(e)
+          }
         })
-
     pb.add(refreshList)
 
     textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)); // dim
