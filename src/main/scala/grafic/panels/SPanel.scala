@@ -35,23 +35,7 @@ object SPanel {
     pb.add(showNumberList)
 
     startStopButton.setBackground(Color.green)
-    startStopButton.addActionListener((_: ActionEvent) => {
-      if (startStopButton.getBackground == Color.green) {
-        AssociateListener.associateListener()
-        startGame()
-        startStopButton.setBackground(Color.red)
-      } else {
-        try {
-          if (thread != null) {
-            thread.interrupt()
-            thread = null
-          }
-        } catch {
-          case eI : InterruptedException => println("Exception = " + eI.getMessage)
-        }
-        startStopButton.setBackground(Color.green)
-      }
-    })
+    startStopButton.addActionListener((_: ActionEvent) => AuxFunctSPanel.startStop())
 
     pb.add(startStopButton)
 
@@ -59,7 +43,7 @@ object SPanel {
         for (i <- 0 until dimSudoku; j <- 0 until dimSudoku
              if tfCells(i)(j).getList.nonEmpty) {
           val t = new Thread(() => tfCells(i)(j).displayList())
-          SwingUtilities.invokeAndWait(() => t.start())
+          SwingUtilities.invokeLater(() => t.start())
         })
 
     pb.add(refreshList)
