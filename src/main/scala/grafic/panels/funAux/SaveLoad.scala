@@ -1,21 +1,28 @@
 package grafic.panels.funAux
 
-import java.io.{BufferedWriter, File, FileWriter}
-
-import grafic.masks
-
 object SaveLoad {
-  import grafic.tfCells
+  import java.io.{BufferedWriter, File, FileWriter}
+
+  import grafic.{masks, tfCells}
   import utility.dimSudoku
+
+  /*
+  implicit class FileMonads(f: File) {
+    def check: Option[File] = if (f.exists) Some(f) else None //returns "Maybe" monad
+    def remove: Option[File] = if (f.delete()) Some(f) else None //returns "Maybe" monad
+  }
+   */
 
   def save(): Unit = {
     val file = new File("temp/tmp.txt")
     val bw = new BufferedWriter(new FileWriter(file))
 
+    //new File(path).check
+    // foundFile.remove
+
     for {
       i <- 0 until dimSudoku
       j <- 0 until dimSudoku
-      //if (tfCells(i)(j).getList.isEmpty)
     } {
       if (masks(i)(j)) {
         val text = tfCells(i)(j).getText
