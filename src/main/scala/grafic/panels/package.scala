@@ -15,6 +15,4 @@ package object panels {
 
   val ButtonsHeight = 20 //sudoku display its 580 pixels high
   val ButtonsWidth = 100 //button panel its 200 pixels wide
-
-  var thread: Thread = _
 }

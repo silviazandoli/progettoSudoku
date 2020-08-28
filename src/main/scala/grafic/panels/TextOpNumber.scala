@@ -13,6 +13,7 @@ object TextOpNumber {
       setNumber -= number
     }
     def getList: Set[Int] = setNumber
+
     def displayList(): Unit = {
       setText("")
       for (elem <- setNumber) {
@@ -25,6 +26,7 @@ object TextOpNumber {
         val len = this.getText.length
         this.replaceRange(" ", len - 1, len)
       }
+      setVisible(true)
     }
 
     /*
