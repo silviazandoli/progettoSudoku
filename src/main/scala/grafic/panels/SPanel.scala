@@ -1,14 +1,14 @@
 package grafic.panels
 
 object SPanel {
-  import java.awt.{EventQueue, BorderLayout, Dimension, Color}
   import java.awt.event.ActionEvent
-  import javax.swing.{JPanel, SwingUtilities}
+  import java.awt.{BorderLayout, Color, Dimension, EventQueue}
 
-  import grafic.util.{AssociateListener, FONT_MATLIST}
-  import grafic.{textTime, showNumberList, tfCells}
-  import utility.dimSudoku
   import grafic.panels.funAux.SaveLoad
+  import grafic.util.FONT_MATLIST
+  import grafic.{showNumberList, textTime, tfCells}
+  import javax.swing.JPanel
+  import utility.dimSudoku
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)
 
@@ -58,6 +58,8 @@ object SPanel {
 
     saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
     pb.add(saveButton)
+
+    pb.add(loadButton)
 
     this.add(pb)
     this.setPreferredSize(dim)
