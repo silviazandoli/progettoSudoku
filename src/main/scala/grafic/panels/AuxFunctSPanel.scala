@@ -26,7 +26,7 @@ object AuxFunctSPanel {
 
               textTime.setText("")
               textTime.append("Your score = " + score)
-              textTime.append("\n Your time = " + time)
+              textTime.append("\nYour time = " + time)
 
               startStopButton.setBackground(Color.green)
             } catch {
