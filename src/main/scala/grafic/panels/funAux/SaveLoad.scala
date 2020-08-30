@@ -35,7 +35,7 @@ object SaveLoad {
     bw.close()
 
     //you save the score and the time
-    FileWork.deleteFile()
+
     FileWork.createFile()
     val score = new BufferedWriter(new FileWriter(new File("score/timer.txt")))
     val text = textTime.getText()

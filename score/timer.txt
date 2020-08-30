@@ -1,2 +1,2 @@
-Your score = 2
- Your time = 7
+Your score = 1
+ Your time = 5
