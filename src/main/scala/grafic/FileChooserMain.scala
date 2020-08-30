@@ -41,6 +41,11 @@ object FileChooserMain extends App {
   openHard.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_D, ActionEvent.ALT_MASK))
 
+  val loadFile=new JMenuItem("Load Old", KeyEvent.VK_X)
+  loadFile.setAccelerator(KeyStroke.getKeyStroke(
+    KeyEvent.VK_X, ActionEvent.ALT_MASK))
+
+
   val aboutMenu = new JMenuItem("About", KeyEvent.VK_U)
   aboutMenu.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_U, ActionEvent.ALT_MASK))
@@ -52,8 +57,9 @@ object FileChooserMain extends App {
   menu.add(openEasy)
   menu.add(openMedium)
   menu.add(openHard)
-  menu.add(aboutMenu)
+  menu.add(loadFile)
   menu.addSeparator()
+  menu.add(aboutMenu)
   menu.add(exitMenu)
   mainFrame.setJMenuBar(menuBar)
   mainFrame.pack()
