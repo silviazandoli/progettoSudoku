@@ -3,9 +3,10 @@ package grafic.panels.funAux
 import grafic.util.FileWork
 
 object SaveLoad {
+
   import java.io.{BufferedWriter, File, FileWriter}
 
-  import grafic.{masks, tfCells}
+  import grafic.{masks, textTime, tfCells}
   import utility.dimSudoku
 
   def save(): Unit = {
@@ -13,6 +14,7 @@ object SaveLoad {
     FileWork.createFile()
     val bw = new BufferedWriter(new FileWriter(new File("temp/tmp.txt")))
 
+    //you save the file
     for {
       i <- 0 until dimSudoku
       j <- 0 until dimSudoku
@@ -29,6 +31,15 @@ object SaveLoad {
         bw.append('\n')
       }
     }
+
     bw.close()
+
+    //you save the score and the time
+    FileWork.deleteFile()
+    FileWork.createFile()
+    val score = new BufferedWriter(new FileWriter(new File("score/timer.txt")))
+    val text = textTime.getText()
+    score.write(text)
+    score.close()
   }
 }
