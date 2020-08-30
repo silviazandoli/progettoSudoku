@@ -1,8 +1,5 @@
 package grafic.panels
 
-import grafic.panels.funAux.SaveLoad
-import grafic.FileChooserMain.load
-
 object AuxFunctSPanel {
 
   import java.awt.Color
@@ -15,9 +12,9 @@ object AuxFunctSPanel {
   var firstTime = true
 
   //if you load a game that you stopped you have to set the old time and score too
-  if(load) {
+ /* if(load) {
     SaveLoad.read()
-  }
+  }*/
 
   var thread = new Thread {
     override def run() {

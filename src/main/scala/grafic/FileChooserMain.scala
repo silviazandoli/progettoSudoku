@@ -5,6 +5,7 @@ import java.awt.event.{ActionEvent, KeyEvent}
 import java.io.File
 
 import grafic.Sudoku.Sudoku
+import grafic.panels.funAux.SaveLoad
 import javax.swing._
 import javax.swing.filechooser.FileNameExtensionFilter
 import resolutionAlgorithm.FullExploration
@@ -83,6 +84,8 @@ object FileChooserMain extends App {
 
   loadFile.addActionListener((e:ActionEvent)=>{
     load=true
+    //if you load a game that you stopped you have to set the old time and score too
+    SaveLoad.read()
     initAndUpload(mainFrame,"temp")
   })
   exitMenu.addActionListener((e: ActionEvent) => {
