@@ -66,15 +66,19 @@ object FileChooserMain extends App {
   mainFrame.setVisible(true)
 
   openEasy.addActionListener((e: ActionEvent) => {
-    initAndReUpload(mainFrame, "easy")
+    initAndUpload(mainFrame, "easy")
   })
 
   openMedium.addActionListener((e: ActionEvent) => {
-    initAndReUpload(mainFrame, "medium")
+    initAndUpload(mainFrame, "medium")
   })
 
   openHard.addActionListener((e: ActionEvent) => {
-    initAndReUpload(mainFrame, "hard")
+    initAndUpload(mainFrame, "hard")
+  })
+
+  loadFile.addActionListener((e:ActionEvent)=>{
+    initAndUpload(mainFrame,"temp")
   })
   exitMenu.addActionListener((e: ActionEvent) => {
     sys.exit(0)
@@ -86,7 +90,7 @@ object FileChooserMain extends App {
   })
 
 
-  def initAndReUpload(frame: JFrame, modality: String): Unit = {
+  def initAndUpload(frame: JFrame, modality: String): Unit = {
     import grafic.Helpers._
     //val jfc = new JFileChooser("input")
     //se si vuole riportare senza interfaccia togli come argomento JFrame, anche da Open
