@@ -12,7 +12,7 @@ package object panels {
   val refreshList = new JButton("Refresh")
 
   val saveButton = new JButton("Save")
-  val loadButton= new JButton("Load")
+
 
   val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
 

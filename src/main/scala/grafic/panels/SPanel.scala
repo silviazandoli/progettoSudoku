@@ -59,7 +59,7 @@ object SPanel {
     saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
     pb.add(saveButton)
 
-    pb.add(loadButton)
+
 
     this.add(pb)
     this.setPreferredSize(dim)
