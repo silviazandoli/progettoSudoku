@@ -1,14 +1,20 @@
 package grafic.panels.funAux
 
+import java.io.{BufferedReader, FileReader}
+
+import grafic.textTime
 import grafic.util.FileWork
+
+import scala.util.Using
 
 object SaveLoad {
 
   import java.io.{BufferedWriter, File, FileWriter}
+
   import grafic.FileChooserMain.load
   import grafic.panels.AuxFunctSPanel.timeInit
   import grafic.util.score
-  import grafic.{masks, textTime, tfCells}
+  import grafic.{masks, tfCells}
   import utility.dimSudoku
 
   def save(): Unit = {
@@ -39,24 +45,53 @@ object SaveLoad {
     //you save the score and the time
 
     FileWork.createFile()
-    val scoreFile = new BufferedWriter(new FileWriter(new File("score/timer.txt")))
-    val text = textTime.getText()
-    scoreFile.write(text)
+
+    val scoreFile = new BufferedWriter(new FileWriter(new File("score/score.txt")))
+    val sco = score.toString
+
+    scoreFile.write(sco)
     scoreFile.close()
+
+    FileWork.createFile()
+    try {
+      val timerFile = new BufferedWriter(new FileWriter(new File("score/timer.txt")))
+      val text = textTime.getText
+      val time = text.substring(27, text.length)
+      timerFile.write(time)
+      timerFile.close()
+    } catch {
+      case _: Throwable => println("You have to save only after you have stopped the game!")
+    }
   }
 
-  def read(): Unit= {
-    val bufferedSource = scala.io.Source.fromFile("score/timer.txt")
-    if(!load){
-      timeInit=0
-      score=0
-    }else {
-      for (lines <- bufferedSource.getLines()) {
-        println(lines)
-      }
-      timeInit=3
-      score=3
+  def read(): Unit = {
+
+    //the first if the case you open a new game
+    if (!load) {
+      timeInit = 0
+      score = 0
+
+    } else {
+      /*for (lines <- bufferedSourceTimer.getLines) {
+        lines.toList
+      }*/
+      val linesTimer: String =
+        Using.resource(new BufferedReader(new FileReader("score/timer.txt"))) { reader =>
+          Iterator.continually(reader.readLine()).takeWhile(_ != null).toSeq.toList.toString()
+
+        }
+
+      val linesScore: String =
+        Using.resource(new BufferedReader(new FileReader("score/score.txt"))) { reader =>
+          Iterator.continually(reader.readLine()).takeWhile(_ != null).toSeq.toList.toString()
+        }
+      val timel = linesTimer.count(a => a.isDigit)
+      val scorel = linesScore.count(a => a.isDigit)
+
+      timeInit = linesTimer.substring(5, (5 + timel)).toLong
+      score = linesScore.substring(5, (5 + scorel)).toInt
+      //println(lunghezza)
     }
-    bufferedSource.close()
+
   }
 }

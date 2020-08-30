@@ -1,6 +1,7 @@
 package grafic.panels
 
 import grafic.panels.funAux.SaveLoad
+import grafic.FileChooserMain.load
 
 object AuxFunctSPanel {
 
@@ -13,8 +14,10 @@ object AuxFunctSPanel {
   var stopVar = false
   var firstTime = true
 
-  //deve leggere il file del time (nel caso non sia in funzione load score e time partono da 0)
-  SaveLoad.read()
+  //if you load a game that you stopped you have to set the old time and score too
+  if(load) {
+    SaveLoad.read()
+  }
 
   var thread = new Thread {
     override def run() {
