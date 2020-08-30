@@ -37,9 +37,21 @@ object SaveLoad {
     //you save the score and the time
 
     FileWork.createFile()
-    val score = new BufferedWriter(new FileWriter(new File("score/timer.txt")))
+    val scoreFile = new BufferedWriter(new FileWriter(new File("score/timer.txt")))
     val text = textTime.getText()
-    score.write(text)
-    score.close()
+    scoreFile.write(text)
+    scoreFile.close()
+  }
+
+  def read(): Unit= {
+    val bufferedSource = scala.io.Source.fromFile("score/timer.txt")
+    if(bufferedSource.isEmpty){
+
+    }else {
+      for (lines <- bufferedSource.getLines()) {
+        println(lines)
+      }
+    }
+    bufferedSource.close()
   }
 }
