@@ -14,6 +14,7 @@ import utility.getPuzzle
 
 object FileChooserMain extends App {
   // by zandoli
+  var load=false
   val mainFrame = new JFrame("Sudoku")
 
   mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
@@ -66,18 +67,22 @@ object FileChooserMain extends App {
   mainFrame.setVisible(true)
 
   openEasy.addActionListener((e: ActionEvent) => {
+    load=false
     initAndUpload(mainFrame, "easy")
   })
 
   openMedium.addActionListener((e: ActionEvent) => {
+    load=false
     initAndUpload(mainFrame, "medium")
   })
 
   openHard.addActionListener((e: ActionEvent) => {
+    load=false
     initAndUpload(mainFrame, "hard")
   })
 
   loadFile.addActionListener((e:ActionEvent)=>{
+    load=true
     initAndUpload(mainFrame,"temp")
   })
   exitMenu.addActionListener((e: ActionEvent) => {

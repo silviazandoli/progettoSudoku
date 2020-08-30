@@ -5,11 +5,12 @@ import grafic.util.FileWork
 object SaveLoad {
 
   import java.io.{BufferedWriter, File, FileWriter}
-
+  import grafic.FileChooserMain.load
   import grafic.panels.AuxFunctSPanel.timeInit
   import grafic.util.score
   import grafic.{masks, textTime, tfCells}
   import utility.dimSudoku
+
   def save(): Unit = {
     FileWork.deleteFile()
     FileWork.createFile()
@@ -46,13 +47,15 @@ object SaveLoad {
 
   def read(): Unit= {
     val bufferedSource = scala.io.Source.fromFile("score/timer.txt")
-    if(bufferedSource.isEmpty){
+    if(!load){
       timeInit=0
       score=0
     }else {
       for (lines <- bufferedSource.getLines()) {
         println(lines)
       }
+      timeInit=3
+      score=3
     }
     bufferedSource.close()
   }

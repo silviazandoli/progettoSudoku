@@ -1,5 +1,7 @@
 package grafic.panels
 
+import grafic.panels.funAux.SaveLoad
+
 object AuxFunctSPanel {
 
   import java.awt.Color
@@ -11,9 +13,13 @@ object AuxFunctSPanel {
   var stopVar = false
   var firstTime = true
 
+  //deve leggere il file del time (nel caso non sia in funzione load score e time partono da 0)
+  SaveLoad.read()
+
   var thread = new Thread {
     override def run() {
       while (true) {
+
         if (!stopVar) {
 
 
@@ -52,8 +58,9 @@ object AuxFunctSPanel {
   def startGame(): Unit = {
     stopVar = false
     if (firstTime) {
-      timeInit = System.currentTimeMillis() / factSecond
+      timeInit = System.currentTimeMillis() / factSecond - timeInit
       firstTime = false
+
       thread.start()
     }
   }
