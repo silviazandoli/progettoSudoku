@@ -68,7 +68,7 @@ object SaveLoad {
       score = 0
 
     } else {
-      /*for (lines <- bufferedSourceTimer.getLines) {
+      /*for (lines <- bufferedSourceTimer.getLines) {f
         lines.toList
       }*/
       val linesTimer: String =
