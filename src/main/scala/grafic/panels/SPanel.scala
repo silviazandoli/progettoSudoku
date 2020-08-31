@@ -1,7 +1,5 @@
 package grafic.panels
 
-import grafic.FileChooser
-
 object SPanel {
   import java.awt.event.ActionEvent
   import java.awt.{BorderLayout, Color, Dimension, EventQueue}
@@ -61,8 +59,8 @@ object SPanel {
     saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
     pb.add(saveButton)
 
-    loadButton.addActionListener((_:ActionEvent)=>FileChooser.initAndReUpload("input/loadOld"))
-    pb.add(loadButton)
+    //loadButton.addActionListener((_:ActionEvent)=>FileChooser.initAndReUpload("input/loadOld"))
+    //pb.add(loadButton)
 
 
     this.add(pb)
