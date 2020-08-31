@@ -20,7 +20,7 @@ object SaveLoad {
   def save(): Unit = {
     FileWork.deleteFile()
     FileWork.createFile()
-    val bw = new BufferedWriter(new FileWriter(new File("input/loadOld/tmp.txt")))
+    val bw = new BufferedWriter(new FileWriter(new File("input/loadold/tmp.txt")))
 
     //you save the file
     for (i <- 0 until dimSudoku; j <- 0 until dimSudoku) {
