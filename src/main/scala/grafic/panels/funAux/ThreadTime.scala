@@ -23,7 +23,6 @@ sealed trait ThreadTime extends Thread {
               textTime.append("\nYour time = " + time)
             }
 
-            //startStopButton.setBackground(Color.green)
           } catch {
             case _: NumberFormatException =>
           }

@@ -23,10 +23,7 @@ object SaveLoad {
     val bw = new BufferedWriter(new FileWriter(new File("input/loadOld/tmp.txt")))
 
     //you save the file
-    for {
-      i <- 0 until dimSudoku
-      j <- 0 until dimSudoku
-    } {
+    for (i <- 0 until dimSudoku; j <- 0 until dimSudoku) {
       if (masks(i)(j)) {
         val text = tfCells(i)(j).getText
         val number = text.charAt(0)
@@ -43,7 +40,6 @@ object SaveLoad {
     bw.close()
 
     //you save the score and the time
-
     FileWork.createFile()
 
     val scoreFile = new BufferedWriter(new FileWriter(new File("score/score.txt")))

@@ -60,6 +60,7 @@ object SPanel {
 
     saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
     pb.add(saveButton)
+
     loadButton.addActionListener((_:ActionEvent)=>FileChooser.initAndReUpload("input/loadOld"))
     pb.add(loadButton)
 

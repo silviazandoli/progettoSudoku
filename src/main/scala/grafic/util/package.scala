@@ -30,6 +30,5 @@ package object util {
   val NUMBER_LIST = "Insert list of numbers"
 
   val factSecond = 1000
-
   var score = 0
 }
