@@ -2,9 +2,10 @@ package grafic.event.moduleListener
 
 protected[event] object ControlNumbersAndFinish {
   import grafic.{cp, setPressed, utentSolved}
-
+  import grafic.FileChooser
   import java.awt.Color
   import javax.swing.{JOptionPane, JTextArea}
+
 
   def seeVision(possibleValues: Set[Int], number: Int, t: JTextArea): Unit = {
     if (possibleValues.contains(number)) {
@@ -33,7 +34,7 @@ protected[event] object ControlNumbersAndFinish {
          // reupload of the sudoku f
           //the interface of Sudoku remains open, so you don't have to write anything here
           //when you finish the game click the exit button in the matrix and open a new file from the interface n
-
+          FileChooser.initAndReUpload("input")
 
           //FileChooserMain.initAndReUpload(null)
         case 1 => System.exit(0)
