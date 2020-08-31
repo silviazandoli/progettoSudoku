@@ -5,13 +5,14 @@ import java.awt.event.{ActionEvent, KeyEvent}
 import java.io.File
 
 import grafic.Sudoku.Sudoku
-import grafic.panels.funAux.SaveLoad
+import grafic.panels.funAux.{SaveLoad, ThreadTime}
 import javax.swing._
 import javax.swing.filechooser.FileNameExtensionFilter
 import resolutionAlgorithm.FullExploration
 import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
+import grafic.panels.AuxFunctSPanel.{stopVar, thread}
 
 object FileChooserMain extends App {
   // by zandoli
@@ -135,6 +136,10 @@ object FileChooserMain extends App {
     sudoku.create()
 
   }
+
+  thread = ThreadTime() //
+  stopVar = true
+  thread.start()
 
   //initAndReUpload()
 }

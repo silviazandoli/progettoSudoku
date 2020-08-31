@@ -20,7 +20,6 @@ object Sudoku {
       CreateMatrix.createMatrix()
 
       cp.add(SPanel(new Dimension(MATRIX_WIDTH / 2, MATRIX_HEIGHT / 2)), BorderLayout.WEST)
-
       cp.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT))
       pack()
       //handle window closing si fa in FileChooserMain così se chiudo la matrice del Sudoku l'interfaccia
