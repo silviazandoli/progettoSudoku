@@ -13,7 +13,6 @@ package object panels {
 
   val saveButton = new JButton("Save")
 
-
   val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
 
   val ButtonsHeight = 20 //sudoku display its 580 pixels high
