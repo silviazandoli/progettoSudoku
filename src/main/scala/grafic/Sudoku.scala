@@ -26,6 +26,7 @@ object Sudoku {
       pack()
       //handle window closing si fa in FileChooserMain così se chiudo la matrice del Sudoku l'interfaccia
       //dell'upload rimane
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 
       this.addWindowListener(new WindowAdapter {
         override def windowClosed(e: WindowEvent) {
