@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 8
+=======
+6
+>>>>>>> 2daaee0c6ceefacab08fbcc61beb0436393078c5
