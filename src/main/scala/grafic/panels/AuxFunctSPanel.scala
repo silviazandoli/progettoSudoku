@@ -1,11 +1,10 @@
 package grafic.panels
 
-import grafic.textTime
-
 object AuxFunctSPanel {
   import java.awt.Color
   import grafic.util.{AssociateListener, factSecond}
   import grafic.panels.funAux.ThreadTime
+  import grafic.textTime
 
   var timeInit: Long = 0
   var stopVar = false

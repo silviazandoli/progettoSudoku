@@ -1,20 +1,14 @@
 package grafic.panels.funAux
 
-import java.io.{BufferedReader, FileReader}
-
-import grafic.textTime
-import grafic.util.FileWork
-
-import scala.util.Using
-
 object SaveLoad {
 
-  import java.io.{BufferedWriter, File, FileWriter}
+  import java.io.{BufferedReader, FileReader, BufferedWriter, File, FileWriter}
+  import scala.util.Using
 
   import grafic.FileChooserMain.load
   import grafic.panels.AuxFunctSPanel.timeInit
-  import grafic.util.score
-  import grafic.{masks, tfCells}
+  import grafic.util.{score, FileWork}
+  import grafic.{masks, tfCells, textTime}
   import utility.dimSudoku
 
   def save(): Unit = {

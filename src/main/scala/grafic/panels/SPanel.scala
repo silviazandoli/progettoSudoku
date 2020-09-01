@@ -1,15 +1,13 @@
 package grafic.panels
 
-import grafic.FileChooser
-
 object SPanel {
   import java.awt.event.ActionEvent
   import java.awt.{BorderLayout, Color, Dimension, EventQueue}
+  import javax.swing.JPanel
 
   import grafic.panels.funAux.SaveLoad
   import grafic.util.FONT_MATLIST
-  import grafic.{showNumberList, textTime, tfCells}
-  import javax.swing.JPanel
+  import grafic.{showNumberList, textTime, tfCells, FileChooser}
   import utility.dimSudoku
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)

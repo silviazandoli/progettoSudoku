@@ -10,11 +10,8 @@ package object panels {
   //you have the possibility to write the number in the square
   val startStopButton = new JButton("StartStop")
   val refreshList = new JButton("Refresh")
-
   val saveButton = new JButton("Save")
-
   val loadButton= new JButton("Load")
-
 
   val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
 

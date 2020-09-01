@@ -1,7 +1,5 @@
 package grafic
 
-import java.awt.event.{WindowAdapter, WindowEvent}
-
 import scala.swing.event.Event
 
 //evento che ti può dare la possibilità di cliccare sulla casella
@@ -9,6 +7,7 @@ case class SudokuEvent(x: Int, y: Int) extends Event
 
 object Sudoku {
   import java.awt.{Dimension, _}
+  import java.awt.event.{WindowAdapter, WindowEvent}
   import grafic.panels.SPanel
   import grafic.util._
   import grafic.panels.AuxFunctSPanel.{timeInit, stopVar}
