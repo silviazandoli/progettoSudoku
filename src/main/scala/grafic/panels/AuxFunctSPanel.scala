@@ -24,24 +24,13 @@ object AuxFunctSPanel {
     }
   }
 
-  def startGame() = {
-    //textTime.setText("")
+  def startGame(): Unit = {
     stopVar = false
     if (firstTime) {
-      timeInit = System.currentTimeMillis() / factSecond
+      timeInit = System.currentTimeMillis() / factSecond - timeInit
       firstTime = false
 
       myThread.start() // thread
     }
   }
-
-  /*
-  def startGame(): Unit = {
-    synchronized {
-      textTime.setText("")
-    }
-    if (timeInit <= 0) timeInit = System.currentTimeMillis() / factSecond
-    stopVar = false
-  }
-   */
 }

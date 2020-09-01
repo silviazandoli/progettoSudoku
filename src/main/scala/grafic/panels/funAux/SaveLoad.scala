@@ -58,7 +58,7 @@ object SaveLoad {
 
     //the first if the case you open a new game
     if (!load) {
-      timeInit = System.currentTimeMillis() / factSecond
+      timeInit = 0
       score = 0
 
     } else {
@@ -81,9 +81,6 @@ object SaveLoad {
       timeInit = linesTimer.substring(5, (5 + timel)).toLong
       score = linesScore.substring(5, (5 + scorel)).toInt
       //println(lunghezza)
-
-      println("timeInit = " + timeInit)
-      println("score = " + score)
     }
 
   }
