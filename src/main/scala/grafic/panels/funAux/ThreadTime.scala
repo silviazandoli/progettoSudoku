@@ -9,10 +9,11 @@ sealed trait ThreadTime extends Thread {
     while (true) {
       if (!stopVar) {
         synchronized {
+          println("timeInit = " + timeInit)
           textTime.setText("Your Time: " + ((System.currentTimeMillis() / factSecond) - timeInit))
         }
       } else {
-        val text = textTime.getText()
+        val text: String = textTime.getText()
         if (!text.isEmpty) {
           try {
             val time = text.substring(11, text.length).toInt

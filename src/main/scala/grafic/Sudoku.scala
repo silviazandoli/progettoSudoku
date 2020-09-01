@@ -7,10 +7,8 @@ case class SudokuEvent(x: Int, y: Int) extends Event
 
 object Sudoku {
   import java.awt.{Dimension, _}
-  import java.awt.event.{WindowAdapter, WindowEvent}
   import grafic.panels.SPanel
   import grafic.util._
-  import grafic.panels.AuxFunctSPanel.{timeInit, stopVar}
   import javax.swing.JFrame
 
   sealed trait SudokuTrait extends JFrame {
@@ -26,8 +24,10 @@ object Sudoku {
       pack()
       //handle window closing si fa in FileChooserMain così se chiudo la matrice del Sudoku l'interfaccia
       //dell'upload rimane
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 
+      //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+
+      /*
       this.addWindowListener(new WindowAdapter {
         override def windowClosed(e: WindowEvent) {
           synchronized {
@@ -39,6 +39,7 @@ object Sudoku {
           super.windowClosed(e)
         }
       })
+       */
 
       showNumberList.setEditable(false)
       showNumberList.setEnabled(false)
