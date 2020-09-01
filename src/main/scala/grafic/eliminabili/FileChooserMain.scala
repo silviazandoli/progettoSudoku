@@ -12,7 +12,7 @@ import resolutionAlgorithm.FullExploration
 import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
-import grafic.panels.AuxFunctSPanel.{stopVar, thread}
+import grafic.panels.AuxFunctSPanel.{stopVar /*, thread*/}
 
 object FileChooserMain extends App {
   // by zandoli
@@ -137,9 +137,9 @@ object FileChooserMain extends App {
 
   }
 
-  thread = ThreadTime() //
+  //thread = ThreadTime() //prima
   stopVar = true
-  thread.start()
+  //thread.start() //prima
 
   //initAndReUpload()
 }
