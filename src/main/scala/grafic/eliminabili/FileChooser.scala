@@ -1,18 +1,8 @@
 package grafic
 
-import java.io.File
-
-import grafic.Sudoku.Sudoku
-import javax.swing._
-import javax.swing.filechooser.FileNameExtensionFilter
-import resolutionAlgorithm.FullExploration
-import sudoku.MatListOperation.initList
-import sudoku.SudokuLoad.loadPuzzle
-import utility.getPuzzle
-
 object FileChooser extends App {
 
-  def uploadLoad():Unit={
+ /* def uploadLoad():Unit={
    /* import grafic.HelpersFile._
     val jfl="temp".filechooser()
     val retValue=jfl.open()
@@ -50,7 +40,7 @@ object FileChooser extends App {
 
     }
   }
-
+  
   initAndReUpload("input")
 }
 
@@ -75,6 +65,6 @@ object HelpersFile {
 
     //def multipleFiles() = jfc.getSelectedFiles()
     def multipleFiles() = jfc.getSelectedFiles()
-  }
+  }*/
 
 }

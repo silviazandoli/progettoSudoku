@@ -1,9 +1,9 @@
 package grafic.event.moduleListener
 
 protected[event] object ControlNumbersAndFinish {
-  import grafic.{cp, setPressed, utentSolved}
-  import grafic.FileChooser
   import java.awt.Color
+
+  import grafic.{cp, setPressed, utentSolved}
   import javax.swing.{JOptionPane, JTextArea}
 
 
@@ -34,7 +34,7 @@ protected[event] object ControlNumbersAndFinish {
          // reupload of the sudoku f
           //the interface of Sudoku remains open, so you don't have to write anything here
           //when you finish the game click the exit button in the matrix and open a new file from the interface n
-          FileChooser.initAndReUpload("input")
+        //  FileChooser.initAndReUpload("input")
 
           //FileChooserMain.initAndReUpload(null)
         case 1 => System.exit(0)

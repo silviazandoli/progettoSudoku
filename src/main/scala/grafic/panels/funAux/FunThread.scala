@@ -1,13 +1,8 @@
 package grafic.panels.funAux
 
-import grafic.panels.AuxFunctSPanel.stopVar
-import grafic.textTime
-import grafic.panels.AuxFunctSPanel.timeInit
-import grafic.util.{factSecond, score}
-
 object FunThread {
 
-  var myThread = new Thread() {
+  /*var myThread = new Thread() {
     override def run() {
       while (true) {
         println("stopVar = " + stopVar)
@@ -32,5 +27,5 @@ object FunThread {
         }
       }
     }
-  }
+  }*/
 }

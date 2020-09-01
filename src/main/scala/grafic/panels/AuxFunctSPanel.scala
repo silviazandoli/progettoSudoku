@@ -1,17 +1,49 @@
+
 package grafic.panels
 
 object AuxFunctSPanel {
-  import java.awt.Color
-  import grafic.util.{AssociateListener, factSecond}
-  import grafic.panels.funAux.ThreadTime
-  import grafic.panels.funAux.FunThread.myThread
-  import grafic.textTime
 
-  var timeInit: Long = 0 //= (System.currentTimeMillis() / factSecond)
-  var stopVar = true
+  import java.awt.Color
+
+  import grafic.textTime
+  import grafic.util.{AssociateListener, factSecond, score}
+
+  var timeInit: Long = 0
+  var stopVar = false
   var firstTime = true
 
-  //var thread: ThreadTime = _
+  //if you load a game that you stopped you have to set the old time and score too
+  /* if(load) {
+     SaveLoad.read()
+   }*/
+
+  var thread = new Thread {
+    override def run() {
+      while (true) {
+
+        if (!stopVar) {
+
+
+          textTime.setText("Your Time: " + ((System.currentTimeMillis() / factSecond) - timeInit))
+        } else {
+          val text = textTime.getText()
+          if (!text.isEmpty) {
+            try {
+              val time = text.substring(11, text.length).toInt
+
+              textTime.setText("")
+              textTime.append("Your score = " + score)
+              textTime.append("\nYour time = " + time)
+
+              startStopButton.setBackground(Color.green)
+            } catch {
+              case _: NumberFormatException =>
+            }
+          }
+        }
+      }
+    }
+  }
 
   def startStop(): Unit = {
     if (startStopButton.getBackground == Color.green) {
@@ -30,7 +62,7 @@ object AuxFunctSPanel {
       timeInit = System.currentTimeMillis() / factSecond - timeInit
       firstTime = false
 
-      myThread.start() // thread
+      thread.start()
     }
   }
 }
