@@ -12,7 +12,9 @@ import resolutionAlgorithm.FullExploration
 import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
-import grafic.panels.AuxFunctSPanel.{stopVar, thread}
+
+import grafic.panels.AuxFunctSPanel.timeInit
+import grafic.util.factSecond
 
 import grafic.panels.funAux.FunThread.myThread // aggiunta
 
@@ -100,7 +102,6 @@ object FileChooserMain extends App {
       "Silvia Zandoli\n" + " Alberto Antonelli", "About", JOptionPane.DEFAULT_OPTION)
   })
 
-
   def initAndUpload(frame: JFrame, modality: String): Unit = {
     import grafic.Helpers._
     //val jfc = new JFileChooser("input")
@@ -136,14 +137,10 @@ object FileChooserMain extends App {
 
     val sudoku = Sudoku()
     sudoku.create()
-
   }
 
   // thread = ThreadTime() prima
-
-  stopVar = true
   // thread.start() prima
-  myThread.start()
 
   //initAndReUpload()
 }

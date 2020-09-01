@@ -7,7 +7,7 @@ object SaveLoad {
 
   import grafic.FileChooserMain.load
   import grafic.panels.AuxFunctSPanel.timeInit
-  import grafic.util.{score, FileWork}
+  import grafic.util.{score, FileWork, factSecond}
   import grafic.{masks, tfCells, textTime}
   import utility.dimSudoku
 
@@ -58,7 +58,7 @@ object SaveLoad {
 
     //the first if the case you open a new game
     if (!load) {
-      timeInit = 0
+      timeInit = System.currentTimeMillis() / factSecond
       score = 0
 
     } else {
@@ -81,6 +81,9 @@ object SaveLoad {
       timeInit = linesTimer.substring(5, (5 + timel)).toLong
       score = linesScore.substring(5, (5 + scorel)).toInt
       //println(lunghezza)
+
+      println("timeInit = " + timeInit)
+      println("score = " + score)
     }
 
   }

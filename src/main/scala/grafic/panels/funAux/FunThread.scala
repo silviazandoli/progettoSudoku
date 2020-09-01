@@ -17,16 +17,15 @@ object FunThread {
           }
         } else {
           val text: String = textTime.getText()
+          println("text = " + text)
           if (!text.isEmpty) {
             try {
               val time = text.substring(11, text.length).toInt
-
               synchronized {
                 textTime.setText("")
                 textTime.append("Your score = " + score)
                 textTime.append("\nYour time = " + time)
               }
-
             } catch {
               case _: NumberFormatException =>
             }

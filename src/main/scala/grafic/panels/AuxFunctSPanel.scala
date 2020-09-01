@@ -5,9 +5,10 @@ object AuxFunctSPanel {
   import grafic.util.{AssociateListener, factSecond}
   import grafic.panels.funAux.ThreadTime
   import grafic.panels.funAux.FunThread.myThread
+  import grafic.textTime
 
-  var timeInit: Long = 0
-  var stopVar = false
+  var timeInit: Long = 0 //= (System.currentTimeMillis() / factSecond)
+  var stopVar = true
   var firstTime = true
 
   //var thread: ThreadTime = _
@@ -24,9 +25,10 @@ object AuxFunctSPanel {
   }
 
   def startGame() = {
+    //textTime.setText("")
     stopVar = false
     if (firstTime) {
-      timeInit = System.currentTimeMillis() / factSecond - timeInit
+      timeInit = System.currentTimeMillis() / factSecond
       firstTime = false
 
       myThread.start() // thread
