@@ -7,7 +7,7 @@ object SaveLoad {
 
   import grafic.FileChooserMain.load
   import grafic.panels.AuxFunctSPanel.timeInit
-  import grafic.util.{score, FileWork, factSecond}
+  import grafic.util.{score, FileWork}
   import grafic.{masks, tfCells, textTime}
   import utility.dimSudoku
 

@@ -6,7 +6,6 @@ object SPanel {
   import javax.swing.JPanel
 
   import grafic.panels.funAux.SaveLoad
-  import grafic.panels.startStopButton
   import grafic.util.FONT_MATLIST
   import grafic.{showNumberList, textTime, tfCells}
   import utility.dimSudoku
@@ -62,7 +61,6 @@ object SPanel {
 
    /* loadButton.addActionListener((_:ActionEvent)=>FileChooser.initAndReUpload("input/loadold"))
     pb.add(loadButton)*/
-
 
     this.add(pb)
     this.setPreferredSize(dim)
