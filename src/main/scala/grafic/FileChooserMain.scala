@@ -16,8 +16,6 @@ import utility.getPuzzle
 import grafic.panels.AuxFunctSPanel.timeInit
 import grafic.util.factSecond
 
-import grafic.panels.funAux.FunThread.myThread // aggiunta
-
 object FileChooserMain extends App {
   // by zandoli
   var load=false
