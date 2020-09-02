@@ -1,6 +1,8 @@
 
 package grafic.panels
 
+import grafic.panels.funAux.ThreadTime
+
 object AuxFunctSPanel {
 
   import java.awt.Color
@@ -17,13 +19,11 @@ object AuxFunctSPanel {
      SaveLoad.read()
    }*/
 
+  /*
   var thread = new Thread {
     override def run() {
       while (true) {
-
         if (!stopVar) {
-
-
           textTime.setText("Your Time: " + ((System.currentTimeMillis() / factSecond) - timeInit))
         } else {
           val text = textTime.getText()
@@ -44,6 +44,8 @@ object AuxFunctSPanel {
       }
     }
   }
+   */
+  var thread = ThreadTime()
 
   def startStop(): Unit = {
     if (startStopButton.getBackground == Color.green) {
