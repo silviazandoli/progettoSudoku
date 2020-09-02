@@ -86,7 +86,7 @@ object FileChooserMain extends App {
     load=true
     //if you load a game that you stopped you have to set the old time and score too
     SaveLoad.read()
-    initAndUpload(mainFrame,"input/loadold")
+    initAndUpload(mainFrame,"temp")
   })
   exitMenu.addActionListener((e: ActionEvent) => {
     sys.exit(0)

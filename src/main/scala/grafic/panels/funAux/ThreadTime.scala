@@ -13,8 +13,6 @@ sealed trait ThreadTime extends Thread {
       if (!stopVar) {
         synchronized {
 
-          //println("timeInit = " + timeInit)
-
           textTime.setText("Your Time: " + ((System.currentTimeMillis() / factSecond) - timeInit))
         }
       } else {

@@ -5,7 +5,7 @@ import resolutionAlgorithm.FullExploration
 import resolutionAlgorithm.HiddenSingles.{hiddenSingles, totalHiddenSingles}
 import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
-import utility.{getPuzzle, display, displayNoTitle}
+import utility.getPuzzle
 
 class testHiddenSingles extends FunSuite {
 
@@ -44,13 +44,9 @@ class testHiddenSingles extends FunSuite {
     totalHiddenSingles()
     val sudokuInput = getPuzzle
 
-    display(sudokuInput)("input")
-
     val solver = FullExploration(getPuzzle)
     solver.solve(0, 0)
     val sudokuSolved = solver.returnPuzzle()
-
-    display(sudokuSolved)("output")
 
     assert(sudokuInput(0)(1) == sudokuSolved(0)(1))
     assert(sudokuInput(2)(4) == sudokuSolved(2)(4))
