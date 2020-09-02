@@ -69,24 +69,24 @@ object FileChooserMain extends App {
 
   openEasy.addActionListener((e: ActionEvent) => {
     load=false
-    initAndUpload(mainFrame, "easy")
+    initAndUpload(mainFrame, "input/easy")
   })
 
   openMedium.addActionListener((e: ActionEvent) => {
     load=false
-    initAndUpload(mainFrame, "medium")
+    initAndUpload(mainFrame, "input/medium")
   })
 
   openHard.addActionListener((e: ActionEvent) => {
     load=false
-    initAndUpload(mainFrame, "hard")
+    initAndUpload(mainFrame, "input/hard")
   })
 
   loadFile.addActionListener((e:ActionEvent)=>{
     load=true
     //if you load a game that you stopped you have to set the old time and score too
     SaveLoad.read()
-    initAndUpload(mainFrame,"temp")
+    initAndUpload(mainFrame,"input/loadold")
   })
   exitMenu.addActionListener((e: ActionEvent) => {
     sys.exit(0)
