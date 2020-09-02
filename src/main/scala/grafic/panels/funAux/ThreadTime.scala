@@ -12,6 +12,10 @@ sealed trait ThreadTime extends Thread {
     while (true) {
       if (!stopVar) {
         synchronized {
+<<<<<<< HEAD
+=======
+          //println("timeInit = " + timeInit)
+>>>>>>> ccaf503fe275272793e5150370ccd80b22cfc2d3
           textTime.setText("Your Time: " + ((System.currentTimeMillis() / factSecond) - timeInit))
         }
       } else {
