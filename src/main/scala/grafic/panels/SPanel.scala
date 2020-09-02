@@ -6,8 +6,9 @@ object SPanel {
   import javax.swing.JPanel
 
   import grafic.panels.funAux.SaveLoad
+  import grafic.panels.startStopButton
   import grafic.util.FONT_MATLIST
-  import grafic.{showNumberList, textTime, tfCells, FileChooser}
+  import grafic.{showNumberList, textTime, tfCells}
   import utility.dimSudoku
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)

@@ -1,7 +1,10 @@
 package grafic.panels.funAux
 
+import java.awt.Color
+
 import grafic.textTime
 import grafic.panels.AuxFunctSPanel.{stopVar, timeInit}
+import grafic.panels.startStopButton
 import grafic.util.{factSecond, score}
 
 sealed trait ThreadTime extends Thread {
@@ -23,7 +26,7 @@ sealed trait ThreadTime extends Thread {
               textTime.append("Your score = " + score)
               textTime.append("\nYour time = " + time)
             }
-
+            startStopButton.setBackground(Color.green)
           } catch {
             case _: NumberFormatException =>
           }
