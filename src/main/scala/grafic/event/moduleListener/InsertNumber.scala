@@ -31,6 +31,7 @@ protected[event] object InsertNumber {
         /* TODO: Check */
         MatListOperation.updateList((row,col),number)
         UpdateListUser.updateListUser((row,col),number)
+        t.setEditable(false)
 
         score = score + 1
 

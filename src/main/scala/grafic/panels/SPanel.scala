@@ -38,18 +38,23 @@ object SPanel {
     pb.add(startStopButton)
 
     refreshList.addActionListener((_: ActionEvent) =>
-        for (i <- 0 until dimSudoku; j <- 0 until dimSudoku
-             if tfCells(i)(j).getList.nonEmpty) {
-          System.out.println("riga "+i + " colonna "+j+ " controllata")
-          val t = new Thread(() => tfCells(i)(j).displayList())
-          //SwingUtilities.invokeAndWait(() => t.run())
-          try if (EventQueue.isDispatchThread) t.run()
-          else EventQueue.invokeAndWait(t)
-          catch {
-            case e: Exception =>
-              System.out.println(e)
+      synchronized {
+        for (i <- 0 until dimSudoku) {
+          for (j <- 0 until dimSudoku) {
+            if (tfCells(i)(j).getList.nonEmpty) {
+              val t = new Thread(() => tfCells(i)(j).displayList(/*tfCells(i)(j)*/))
+              System.out.println("riga " + i + " colonna " + j + " controllata")
+              try
+                if (EventQueue.isDispatchThread) t.start()
+                else EventQueue.invokeAndWait(() => t.run())
+              catch {
+                case e: Exception => System.out.println(e)
+              }
+            }
           }
+        }
         })
+
 
     pb.add(refreshList)
     textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)); // dim
