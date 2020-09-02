@@ -39,22 +39,17 @@ object SPanel {
 
     refreshList.addActionListener((_: ActionEvent) =>
       synchronized {
-        for (i <- 0 until dimSudoku) {
-          for (j <- 0 until dimSudoku) {
+        for (i <- 0 until dimSudoku; j <- 0 until dimSudoku) {
             if (tfCells(i)(j).getList.nonEmpty) {
               val t = new Thread(() => tfCells(i)(j).displayList(/*tfCells(i)(j)*/))
-              System.out.println("riga " + i + " colonna " + j + " controllata")
+              println("riga " + i + " colonna " + j + " controllata")
               try
                 if (EventQueue.isDispatchThread) t.start()
                 else EventQueue.invokeAndWait(() => t.run())
-              catch {
-                case e: Exception => System.out.println(e)
-              }
+              catch {case e: Exception => println(e)}
             }
           }
-        }
         })
-
 
     pb.add(refreshList)
     textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)); // dim

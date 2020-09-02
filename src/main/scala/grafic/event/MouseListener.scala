@@ -34,6 +34,5 @@ sealed trait MouseListener extends MouseAdapter {
 
 object MouseListener {
   def apply(row: Int, col: Int): MouseListener = MouseListenerImplements(row: Int, col: Int)
-
   private case class MouseListenerImplements(row: Int, col: Int) extends MouseListener
 }

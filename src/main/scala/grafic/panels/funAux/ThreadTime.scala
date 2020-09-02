@@ -37,6 +37,5 @@ sealed trait ThreadTime extends Thread {
 }
 object ThreadTime {
   def apply(): ThreadTime = ThreadTimeImpl()
-
   private case class ThreadTimeImpl() extends ThreadTime
 }

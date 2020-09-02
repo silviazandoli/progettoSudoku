@@ -2,11 +2,11 @@ package grafic.event.moduleListener
 
 protected[event] object MatListVision {
   import grafic.panels.TextOpNumber.TextOpNumber
-  import grafic.util.{FONT_MINILIST, NUMBER}
-  import grafic.{setPressed, setWrite, showNumberList}
+  import grafic.util.FONT_MINILIST
+  import grafic.{setPressed, showNumberList}
 
  /*@Antonelli*/
-  def seeVision(possibleValues: Set[Int], t: TextOpNumber) = {
+  def seeVision(possibleValues: Set[Int], t: TextOpNumber): Unit = {
     var textIns : String = ""
     showNumberList.setText("")
 
@@ -15,7 +15,7 @@ protected[event] object MatListVision {
       showNumberList.append(textIns)
     })
     setPressed(-1, -1)
-    t.setFont(FONT_MINILIST);
+    t.setFont(FONT_MINILIST)
     t.setEditable(true)
 
     showNumberList.setEditable(false)

@@ -48,12 +48,9 @@ object WriteOnCell {
   import java.awt.Container
 
   def apply(row: Int, col: Int): WriteOnCell = WriteOnCellImpl(row, col)
-
   private case class WriteOnCellImpl(row: Int, col: Int) extends WriteOnCell {
     val container: Container = cp
-
     override def keyTyped(e: KeyEvent): Unit = {}
-
     override def keyPressed(e: KeyEvent): Unit = {}
   }
 }

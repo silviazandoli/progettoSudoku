@@ -1,7 +1,6 @@
 package grafic.panels.funAux
 
 object SaveLoad {
-
   import java.io.{BufferedReader, FileReader, BufferedWriter, File, FileWriter}
   import scala.util.Using
 
@@ -55,7 +54,6 @@ object SaveLoad {
   }
 
   def read(): Unit = {
-
     //the first if the case you open a new game
     if (!load) {
       timeInit = 0
@@ -78,10 +76,9 @@ object SaveLoad {
       val timel = linesTimer.count(a => a.isDigit)
       val scorel = linesScore.count(a => a.isDigit)
 
-      timeInit = linesTimer.substring(5, (5 + timel)).toLong
-      score = linesScore.substring(5, (5 + scorel)).toInt
+      timeInit = linesTimer.substring(5, 5 + timel).toLong
+      score = linesScore.substring(5, 5 + scorel).toInt
       //println(lunghezza)
     }
-
   }
 }

@@ -1,7 +1,6 @@
 package grafic.panels
 
 object AuxFunctSPanel {
-
   import java.awt.Color
   import grafic.util.{AssociateListener, factSecond}
   import grafic.panels.funAux.ThreadTime
