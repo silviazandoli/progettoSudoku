@@ -19,12 +19,28 @@ package object grafic {
 
   def utentSolved(): Boolean = masks.flatten.forall(_ == true)
 
-  def setWrite(writeString: String): Unit = {write = writeString}
-  def getWrite: String = write
+  trait setGet[T] {
+    def set(elem: T)
+    def get: T
+  }
 
-  def setPuzzleResolt(puzzleResolt: Array[Array[Int]]): Unit = {this.puzzleResolt = puzzleResolt}
-  def getPuzzleResolt: Array[Array[Int]] = puzzleResolt
+  def set [T: setGet](elem : T): Unit = {implicitly[setGet[T]].set(elem)}
+  def get [T: setGet] : T = {implicitly[setGet[T]].get}
 
-  def setPressed(row: Int, col: Int): Unit = {rowPressed = row; colPressed = col}
-  def getPressed: (Int, Int) = (rowPressed, colPressed)
+  object setGet {
+    implicit object stringSetGet extends setGet[String] {
+      override def set(str: String): Unit = {write = str}
+      override def get: String = write
+    }
+
+    implicit object puzzleSetGet extends setGet[Array[Array[Int]]] {
+      override def set(setPuzzleResolt: Array[Array[Int]]): Unit = {puzzleResolt = setPuzzleResolt}
+      override def get: Array[Array[Int]] = puzzleResolt
+    }
+
+    implicit object pressedSetGet extends setGet[(Int, Int)] {
+      override def set(rowCol: (Int, Int)): Unit = {rowPressed = rowCol._1; colPressed = rowCol._2}
+      override def get: (Int, Int) = (rowPressed, colPressed)
+    }
+  }
 }

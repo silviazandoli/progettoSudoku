@@ -21,11 +21,15 @@ protected[event] object InsertNumber {
   }
 
   def writeNumber(row: Int, col: Int, number: Int, t: TextOpNumber): Unit = {
-    getPuzzleResolt(row)(col) match {
+    //getPuzzleResolt(row)(col) match {
+
+    val array = get[Array[Array[Int]]]
+    array(row)(col) match {
       case `number` =>
         operationOnGUI(row, col, number, t)
         //messa a comodo
-        setPressed(row, col)
+        //setPressed(row, col)
+        set(row, col)
         //in case of finish
         actionUtent()
         /* TODO: Check */
@@ -37,7 +41,7 @@ protected[event] object InsertNumber {
 
       case _ =>
         t.setForeground(Color.red)
-        setPressed(-1, -1)
+        set((-1, -1))
 
         t.setEditable(true) // si dò 2° chanche
 

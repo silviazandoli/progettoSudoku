@@ -5,12 +5,12 @@ import org.scalatest.{BeforeAndAfter, FlatSpec}
 import sudoku.MatListOperation.initList
 import utility.getPuzzle
 import sudoku.SudokuLoad.loadPuzzle
-import grafic.{getPressed, masks, setPuzzleResolt, utentSolved}
+import grafic.{get, masks, set, utentSolved}
 import resolutionAlgorithm.FullExploration
 
 class testComplete extends FlatSpec with BeforeAndAfter {
 
-  val input = "input/"
+  val input = "input/easy/"
   val outputSolved = "outputSolved/"
 
   object InitTest {
@@ -21,7 +21,8 @@ class testComplete extends FlatSpec with BeforeAndAfter {
       val sudokuSolver = FullExploration(getPuzzle)
       sudokuSolver.solve(0, 0)
 
-      setPuzzleResolt(sudokuSolver.returnPuzzle())
+      //setPuzzleResolt(sudokuSolver.returnPuzzle())
+      set[Array[Array[Int]]](sudokuSolver.returnPuzzle())
 
       val sudoku = Sudoku()
       sudoku.create()
@@ -50,8 +51,10 @@ class testComplete extends FlatSpec with BeforeAndAfter {
 
     Thread.sleep(6500)
 
-    val rowPressed = getPressed._1
-    val colPressed = getPressed._2
+    val rowCol = get[(Int, Int)]
+
+    val rowPressed = rowCol._1
+    val colPressed = rowCol._2
     if (rowPressed >= 0 && colPressed >= 0) {
       assert(masks(rowPressed)(colPressed))
     }

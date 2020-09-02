@@ -3,7 +3,7 @@ package grafic.event.moduleListener
 protected[event] object ControlNumbersAndFinish {
   import java.awt.Color
 
-  import grafic.{cp, setPressed, utentSolved}
+  import grafic.{cp, set, utentSolved}
   import javax.swing.{JOptionPane, JTextArea}
 
   def seeVision(possibleValues: Set[Int], number: Int, t: JTextArea): Unit = {
@@ -13,7 +13,7 @@ protected[event] object ControlNumbersAndFinish {
       JOptionPane.showMessageDialog(cp, messageOk,
         "Message", JOptionPane.WARNING_MESSAGE)
     } else {
-      setPressed(-1, -1)
+      set[(Int, Int)](-1, -1)
 
       t.setForeground(Color.red)
       var message = "The number is not correct! Possible values: "

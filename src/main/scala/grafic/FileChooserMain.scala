@@ -128,7 +128,8 @@ object FileChooserMain extends App {
     val sudokuSolver = FullExploration(getPuzzle)
     sudokuSolver.solve(0, 0)
 
-    setPuzzleResolt(sudokuSolver.returnPuzzle())
+    //setPuzzleResolt(sudokuSolver.returnPuzzle())
+    set(sudokuSolver.returnPuzzle())
 
     val sudoku = Sudoku()
     sudoku.create()

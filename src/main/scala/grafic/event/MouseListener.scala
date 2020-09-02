@@ -4,7 +4,8 @@ import java.awt.event.{MouseAdapter, MouseEvent}
 
 import grafic.panels.TextOpNumber.TextOpNumber
 import grafic.event.moduleListener.{MatListVision, SayHelp}
-import grafic.setWrite
+import grafic.setGet
+import grafic.set
 import grafic.util.{FONT_MATLIST, FONT_MINILIST, NUMBER, NUMBER_LIST}
 import javax.swing.JOptionPane
 import utility.matList
@@ -24,10 +25,10 @@ sealed trait MouseListener extends MouseAdapter {
     val n = JOptionPane.showOptionDialog(null, "How to proceed?", "User mode", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options(3))
 
     n match {
-      case 1 => t.setText(""); t.setFont(FONT_MINILIST); setWrite(NUMBER_LIST)
+      case 1 => t.setText(""); t.setFont(FONT_MINILIST); set[String](NUMBER_LIST) //setWrite(NUMBER_LIST)
       case 2 => MatListVision.seeVision(matList(row)(col).toSet, t)
       case 3 => SayHelp.sayHelp(row,col,t)
-      case _ => t.setText(""); t.setFont(FONT_MATLIST); setWrite(NUMBER)
+      case _ => t.setText(""); t.setFont(FONT_MATLIST); set[String](NUMBER)
     }
   }
 }

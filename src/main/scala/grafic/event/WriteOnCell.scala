@@ -29,7 +29,8 @@ sealed trait WriteOnCell extends KeyListener {
       val number = retText.toInt
       t.setEditable(true)
 
-      getWrite match {
+      //getWrite match {
+      get[String] match {
         case NUMBER_LIST =>
           val possibleValues = matList(row)(col).toSet
           WriteListUser.writePossibileElements(possibleValues, number, t)

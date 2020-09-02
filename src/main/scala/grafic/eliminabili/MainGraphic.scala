@@ -1,7 +1,7 @@
 package grafic.eliminabili
 
 import grafic.Sudoku.Sudoku
-import grafic.setPuzzleResolt
+import grafic.set
 import javafx.event.{ActionEvent, EventHandler}
 import resolutionAlgorithm.FullExploration
 import scalafx.application
@@ -138,7 +138,7 @@ object MainGraphic extends JFXApp {
               val sudokuSolver = FullExploration(getPuzzle)
               sudokuSolver.solve(0, 0)
 
-              setPuzzleResolt(sudokuSolver.returnPuzzle())
+              set(sudokuSolver.returnPuzzle())
 
               val sudoku = Sudoku()
               sudoku.create()
