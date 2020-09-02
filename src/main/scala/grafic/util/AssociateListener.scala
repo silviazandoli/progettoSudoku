@@ -1,13 +1,12 @@
 package grafic.util
 
-import grafic.panels.TextOpNumber.TextOpNumber
-
-import scala.swing.{Color, Font}
-
 object AssociateListener {
   import grafic.event.{MouseListener, WriteOnCell}
+  import grafic.panels.TextOpNumber.TextOpNumber
   import utility.{dimSudoku, puzzle}
   import grafic._
+
+  import scala.swing.{Color, Font}
 
   def associateListener(): Unit = {
     for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
