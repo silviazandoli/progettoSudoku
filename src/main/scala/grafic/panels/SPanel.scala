@@ -57,6 +57,9 @@ object SPanel {
     saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
     pb.add(saveButton)
 
+    adviceButton.addActionListener((_: ActionEvent) => Advice.suggerisci())
+    pb.add(adviceButton)
+
     this.add(pb)
     this.setPreferredSize(dim)
   }
