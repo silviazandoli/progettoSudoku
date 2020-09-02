@@ -19,6 +19,7 @@ protected[event] object UpdateListUser {
     for (k <- 0 until dimSudoku) {
       remove(tfCells(row)(k), number)
       remove(tfCells(k)(col), number)
+      remove(tfCells(row)(col), k+1)
       /*
       tfCells(row)(k).removeFromList(number)
       tfCells(k)(col).removeFromList(number)

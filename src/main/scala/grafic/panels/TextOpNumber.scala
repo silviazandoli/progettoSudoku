@@ -10,19 +10,22 @@ object TextOpNumber {
       setNumber += number
     }
     def removeNumber(number: Int): Unit = {
+      System.out.println("-- elimino il numero "+ number)
       setNumber -= number
+      System.out.println("-- rimane "+ setNumber)
     }
     def getList: Set[Int] = setNumber
 
     def displayList(): Unit = {
       setText(" ")
-
+      System.out.println("LA SETNUMBER prima del for È "+ setNumber)
       for (elem <- setNumber) {
         append(elem + ",")
       }
 
       val text = this.getText
       setText(text)
+      System.out.println("text "+ text)
 
       if (!text.isEmpty) {
         val len = this.getText.length
@@ -30,6 +33,7 @@ object TextOpNumber {
       }
       setVisible(true)
     }
+
 
     /*
     def removeFromList(num:Int):Unit={
