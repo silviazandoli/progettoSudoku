@@ -52,15 +52,10 @@ object SPanel {
         })
 
     pb.add(refreshList)
-
     textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)); // dim
     pb.add(textTime)
-
     saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
     pb.add(saveButton)
-
-   /* loadButton.addActionListener((_:ActionEvent)=>FileChooser.initAndReUpload("input/loadold"))
-    pb.add(loadButton)*/
 
     this.add(pb)
     this.setPreferredSize(dim)
