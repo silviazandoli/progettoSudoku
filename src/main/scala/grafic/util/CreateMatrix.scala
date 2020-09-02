@@ -4,15 +4,20 @@ object CreateMatrix {
   import javax.swing.{JPanel,BorderFactory}
   import java.awt.{Dimension, GridLayout, Color}
   import utility.{dimSudoku, puzzle}
-  import grafic.{cp, tfCells, masks}
+  import grafic.{cp, tfCells}
   import grafic.panels.TextOpNumber.TextOpNumber
 
-  def createMatrix(): Unit = {
+  private def getMatrixGame: JPanel = {
     val matrixGame = new JPanel()
 
     matrixGame.setPreferredSize(new Dimension(MATRIX_WIDTH, MATRIX_HEIGHT))
     matrixGame.setLayout(new GridLayout(dimSudoku, dimSudoku))
 
+    matrixGame
+  }
+
+  def createMatrix(): Unit = {
+    val matrixGame = getMatrixGame
     cp.add(matrixGame)
 
     for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
@@ -22,25 +27,24 @@ object CreateMatrix {
 
       puzzle(row)(col) match {
         case 0 =>
-          tfCells(row)(col).setText("")
-          tfCells(row)(col).setBackground(OPEN_CELL_BGCOLOR)
-
-          masks(row)(col) = false
+          AssociateListener.writeTextEmpty(tfCells(row)(col), row, col,
+            editFlag = true,
+            FONT_NUMBERS, OPEN_CELL_BGCOLOR, OPEN_CELL_TEXT_YES)
 
         case _ =>
-          tfCells(row)(col).setText(puzzle(row)(col) + "")
-          tfCells(row)(col).setEditable(false)
-          tfCells(row)(col).setBackground(CLOSED_CELL_BGCOLOR)
-          tfCells(row)(col).setForeground(CLOSED_CELL_TEXT)
-
-          masks(row)(col) = true
+          AssociateListener.writeText(tfCells(row)(col), row, col,
+            editFlag = false,
+            FONT_NUMBERS, CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT)(puzzle(row)(col) + "")
       }
 
       // Beautify all the cells
       tfCells(row)(col).setAlignmentX(10)
-      tfCells(row)(col).setFont(FONT_NUMBERS)
     }
 
+    createBorder()
+  }
+
+  private def createBorder(): Unit = {
     for (i <- 0 until dimSudoku; j <- 2 until dimSudoku by 3) {
       tfCells(i)(j).setBorder(BorderFactory.createMatteBorder(1,1,1,3,Color.red))
     }

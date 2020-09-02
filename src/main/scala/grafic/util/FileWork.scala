@@ -6,7 +6,6 @@ object FileWork {
   implicit class FileMonads(f: File) {
     def remove(): Unit = if (f.exists()) f.delete()
     def create(): Boolean = f.createNewFile()
-
   }
 
   def deleteFile(): Unit =

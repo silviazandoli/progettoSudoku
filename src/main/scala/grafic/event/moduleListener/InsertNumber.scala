@@ -6,7 +6,7 @@ protected[event] object InsertNumber {
 
   import grafic.event.moduleListener.ControlNumbersAndFinish.actionUtent
   import grafic.event.moduleListener.moduleUpdate.UpdateListUser
-  import grafic.util.{CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT, FONT_NUMBERS, score}
+  import grafic.util.{AssociateListener, CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT, FONT_NUMBERS, score}
   import grafic.panels.TextOpNumber.TextOpNumber
   import grafic._
   import sudoku.MatListOperation
@@ -15,13 +15,9 @@ protected[event] object InsertNumber {
     t.setForeground(Color.green)
     JOptionPane.showMessageDialog(cp, "Good! The number is in Puzzle", "Message", JOptionPane.DEFAULT_OPTION)
 
-    t.setEditable(false)
-    t.setText(""+number)
-    t.setFont(FONT_NUMBERS)
-    t.setBackground(CLOSED_CELL_BGCOLOR)
-    t.setForeground(CLOSED_CELL_TEXT)
-
-    masks(row)(col) = true
+    AssociateListener.writeText(tfCells(row)(col), row, col,
+      editFlag = false,
+      FONT_NUMBERS, CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT)("" + number)
   }
 
   def writeNumber(row: Int, col: Int, number: Int, t: TextOpNumber): Unit = {
