@@ -25,6 +25,7 @@ object Sudoku {
       pack()
       //handle window closing si fa in FileChooserMain così se chiudo la matrice del Sudoku l'interfaccia
       //dell'upload rimane
+      //qui c'era una exit on close
 
       showNumberList.setEditable(false)
       showNumberList.setEnabled(false)
