@@ -11,7 +11,7 @@ import grafic.util.{FONT_MATLIST, FONT_MINILIST, NUMBER, NUMBER_LIST}
 import utility.matList
 
 /**
- * Made By Pacini (Alert Dialog with control of numbers made by Zandoli, n match made by Pacini)
+ * Made By Pacini (Alert Dialog made by Zandoli, n match made by Pacini)
  */
 sealed trait MouseListener extends MouseAdapter {
   val row: Int

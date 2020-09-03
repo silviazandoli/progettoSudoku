@@ -1,17 +1,18 @@
 package grafic.panels.funAux
 
 /**
- * Method save until create file tmp.txt made by Pacini, the rest made by Zandoli
+ * * Method saveGame made by Pacini, the rest made by Zandoli (methods scoreGame, timerGame and read)
  */
 object SaveLoad {
-  import java.io.{BufferedReader, FileReader, BufferedWriter, File, FileWriter}
-  import scala.util.Using
+  import java.io._
 
   import grafic.FileChooserMain.load
   import grafic.panels.AuxFunctSPanel.timeInit
-  import grafic.util.{score, FileWork, factSecond}
-  import grafic.{masks, tfCells, textTime}
+  import grafic.util.{FileWork, score}
+  import grafic.{masks, tfCells}
   import utility.dimSudoku
+
+  import scala.util.Using
 
   private def saveGame(): Unit = {
     FileWork.deleteFile()
