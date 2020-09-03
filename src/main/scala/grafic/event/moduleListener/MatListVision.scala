@@ -3,7 +3,7 @@ package grafic.event.moduleListener
 protected[event] object MatListVision {
   import grafic.panels.TextOpNumber.TextOpNumber
   import grafic.util.FONT_MINILIST
-  import grafic.{showNumberList, set}
+  import grafic.{showNumberList, graficSet}
 
  /*@Antonelli*/
   def seeVision(possibleValues: Set[Int], t: TextOpNumber): Unit = {
@@ -15,7 +15,7 @@ protected[event] object MatListVision {
       showNumberList.append(textIns)
     })
 
-    set[(Int, Int)](-1, -1)
+    graficSet[(Int, Int)](-1, -1)
     t.setFont(FONT_MINILIST)
     t.setEditable(true)
 

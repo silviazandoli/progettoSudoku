@@ -116,7 +116,7 @@ object FileChooserMain extends App {
     sudokuSolver.solve(0, 0)
 
     //setPuzzleResolt(sudokuSolver.returnPuzzle())
-    set(sudokuSolver.returnPuzzle())
+    graficSet(sudokuSolver.returnPuzzle())
 
     val sudoku = Sudoku()
     sudoku.create()

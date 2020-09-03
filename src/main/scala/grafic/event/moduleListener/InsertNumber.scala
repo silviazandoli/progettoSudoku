@@ -25,12 +25,12 @@ protected[event] object InsertNumber {
   }
 
   def writeNumber(row: Int, col: Int, number: Int, t: TextOpNumber): Unit = {
-    val array = get[Array[Array[Int]]]
+    val array = graficGet[Array[Array[Int]]]
     array(row)(col) match {
       case `number` =>
         operationOnGUI(row, col, number, t)
 
-        set(row, col)
+        graficSet(row, col)
         //in case of finish
         actionUtent()
 
@@ -42,7 +42,7 @@ protected[event] object InsertNumber {
       case _ =>
         t.setForeground(Color.red)
         t.setEditable(true) // si dò 2° chanche
-        set((-1, -1))
+        graficSet((-1, -1))
         JOptionPane.showMessageDialog(cp, "Bad! The number Not in puzzle!", "Message", JOptionPane.DEFAULT_OPTION)
     }
   }

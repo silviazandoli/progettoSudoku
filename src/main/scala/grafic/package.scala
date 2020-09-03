@@ -27,8 +27,8 @@ package object grafic {
     def get: T
   }
 
-  def set [T: setGet](elem : T): Unit = {implicitly[setGet[T]].set(elem)}
-  def get [T: setGet] : T = {implicitly[setGet[T]].get}
+  def graficSet [T: setGet](elem : T): Unit = {implicitly[setGet[T]].set(elem)}
+  def graficGet [T: setGet] : T = {implicitly[setGet[T]].get}
 
   object setGet {
     implicit object stringSetGet extends setGet[String] {
