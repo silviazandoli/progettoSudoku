@@ -1,17 +1,17 @@
 package sudoku
 
-import resolutionAlgorithm.FullExploration
-import resolutionAlgorithm.HiddenSingles.{totalHiddenSingles, hiddenSingles}
-import resolutionAlgorithm.HiddenPair.solveHiddenPair
-import resolutionAlgorithm.NakedPairs.solveNakedPair
-import strategies.{Strategy, StrategyImpl}
-import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
-import sudoku.SudokuLoad.loadPuzzle
-import util.TimeStamp
-import utility.{display, puzzle, puzzleSolved}
-
 object SudokuEngine extends App {
-  val nameFile = "input/sudoku05.txt"
+  import resolutionAlgorithm.FullExploration
+  import resolutionAlgorithm.HiddenSingles.totalHiddenSingles
+  import resolutionAlgorithm.HiddenPair.solveHiddenPair
+  import resolutionAlgorithm.NakedPairs.solveNakedPair
+  import strategies.{Strategy, StrategyImpl}
+  import sudoku.MatListOperation.{initList, minList, setUnitList, updateList}
+  import sudoku.SudokuLoad.loadPuzzle
+  import util.TimeStamp
+  import utility.{display, puzzle, puzzleSolved}
+
+  val nameFile = "input/easy/sudoku05.txt"
 
   /*
   strategia con assegnazione numero di liste unitarie
