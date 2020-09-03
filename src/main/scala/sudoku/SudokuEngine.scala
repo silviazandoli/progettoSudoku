@@ -39,7 +39,7 @@ object SudokuEngine extends App {
 
     /**
      * strategy 2 made by Lorenzo Pacini
-     * strategy 3 made by Lorenzo Pacini e Silvia Zandoli
+     * strategy 3 made by Lorenzo Pacini and Silvia Zandoli
      */
 
     val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
