@@ -2,12 +2,12 @@ package grafic.event
 
 import java.awt.Color
 import java.awt.event.{KeyEvent, KeyListener}
+import javax.swing.JOptionPane
 
 import grafic._
 import grafic.event.moduleListener.{InsertNumber, WriteListUser}
 import grafic.panels.TextOpNumber.TextOpNumber
 import grafic.util._
-import javax.swing.JOptionPane
 import utility.matList
 
 /**

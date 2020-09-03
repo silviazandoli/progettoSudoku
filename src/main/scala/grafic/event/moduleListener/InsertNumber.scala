@@ -1,7 +1,7 @@
 package grafic.event.moduleListener
 
 /**
-Made by Pacini
+ * Made by Pacini
  */
 protected[event] object InsertNumber {
   import java.awt.Color

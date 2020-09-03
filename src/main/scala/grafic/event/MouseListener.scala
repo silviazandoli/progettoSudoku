@@ -1,13 +1,12 @@
 package grafic.event
 
 import java.awt.event.{MouseAdapter, MouseEvent}
+import javax.swing.JOptionPane
 
 import grafic.panels.TextOpNumber.TextOpNumber
 import grafic.event.moduleListener.{MatListVision, SayHelp}
-import grafic.setGet
 import grafic.set
 import grafic.util.{FONT_MATLIST, FONT_MINILIST, NUMBER, NUMBER_LIST}
-import javax.swing.JOptionPane
 import utility.matList
 
 /**
