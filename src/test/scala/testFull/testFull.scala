@@ -3,7 +3,7 @@ package testFull
 import org.scalatest.FunSuite
 import resolutionAlgorithm.FullExploration
 import sudoku.SudokuLoad.loadPuzzle
-import utility.{getPuzzle, confrontPuzzle, displayNoTitle}
+import utility.{getPuzzle, confrontPuzzle}
 
 /**
  * Made by Pacini

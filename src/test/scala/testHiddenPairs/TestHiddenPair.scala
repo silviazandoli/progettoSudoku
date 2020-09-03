@@ -10,7 +10,7 @@ import utility._
 class TestHiddenPair extends FunSuite {
 
 /*made by Zandoli*/
-  
+
   test("Hidden Pair Sudoku02") {
     //init
     val nameFile = "input/easy/sudoku02.txt"

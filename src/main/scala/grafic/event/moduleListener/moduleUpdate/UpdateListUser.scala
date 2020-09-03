@@ -1,7 +1,7 @@
 package grafic.event.moduleListener.moduleUpdate
 
 /**
- * made by Pacini
+ * Made by Pacini
  */
 protected[event] object UpdateListUser {
   import grafic.panels.TextOpNumber.TextOpNumber
