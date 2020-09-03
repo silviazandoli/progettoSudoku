@@ -1,5 +1,8 @@
 package grafic.event.moduleListener
 
+/**
+Made by Pacini
+ */
 protected[event] object InsertNumber {
   import java.awt.Color
   import javax.swing.JOptionPane
@@ -28,23 +31,21 @@ protected[event] object InsertNumber {
       case `number` =>
         operationOnGUI(row, col, number, t)
         //messa a comodo
-        //setPressed(row, col)
         set(row, col)
         //in case of finish
         actionUtent()
-        /* TODO: Check */
+
         MatListOperation.updateList((row,col),number)
         UpdateListUser.updateListUser((row,col),number)
-        t.setEditable(false)
+
+        //t.setEditable(false) (prova)
 
         score = score + 1
 
       case _ =>
         t.setForeground(Color.red)
-        set((-1, -1))
-
         t.setEditable(true) // si dò 2° chanche
-
+        set((-1, -1))
         JOptionPane.showMessageDialog(cp, "Bad! The number Not in puzzle!", "Message", JOptionPane.DEFAULT_OPTION)
     }
   }

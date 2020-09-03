@@ -10,6 +10,9 @@ import grafic.util._
 import javax.swing.JOptionPane
 import utility.matList
 
+/**
+Made by Pacini (Alert dialog made by Zandoli)
+ */
 sealed trait WriteOnCell extends KeyListener {
   val row: Int
   val col: Int
@@ -29,7 +32,6 @@ sealed trait WriteOnCell extends KeyListener {
       val number = retText.toInt
       t.setEditable(true)
 
-      //getWrite match {
       get[String] match {
         case NUMBER_LIST =>
           val possibleValues = matList(row)(col).toSet

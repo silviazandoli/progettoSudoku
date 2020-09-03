@@ -1,5 +1,8 @@
 package grafic
 
+/**
+ * Made by Pacini
+ */
 package object panels {
   import java.awt.{Color, FlowLayout}
   import javax.swing.{JButton, JPanel}

@@ -1,5 +1,8 @@
 package grafic
 
+/**
+ * Made by Pacini
+ */
 package object util {
   import java.awt.{Color, Font}
   import utility.dimSudoku

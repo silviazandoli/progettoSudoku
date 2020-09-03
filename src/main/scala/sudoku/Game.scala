@@ -5,8 +5,11 @@ import MatListOperation.initList
 import resolutionAlgorithm.FullExploration
 import utility.{display, displayList, getPuzzle, puzzle}
 
+/**
+ * Made by Pacini
+ */
 object Game extends App {
-  val nameFile = "input/sudoku05.txt"
+  val nameFile = "input/easy/sudoku05.txt"
 
   print("Puzzle: " + nameFile)
   loadPuzzle(nameFile)

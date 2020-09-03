@@ -7,6 +7,9 @@ import grafic.panels.AuxFunctSPanel.{stopVar, timeInit}
 import grafic.panels.startStopButton
 import grafic.util.{factSecond, score}
 
+/**
+ * Made by Pacini
+ */
 sealed trait ThreadTime extends Thread {
   override def run() {
     while (true) {

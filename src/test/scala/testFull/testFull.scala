@@ -6,7 +6,7 @@ import sudoku.SudokuLoad.loadPuzzle
 import utility.{getPuzzle, confrontPuzzle, displayNoTitle}
 
 /**
- * Fatto da Pacini
+ * Made by Pacini
  */
 class testFull extends FunSuite {
   test("TestSudoku11") {

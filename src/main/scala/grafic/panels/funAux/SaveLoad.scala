@@ -1,5 +1,8 @@
 package grafic.panels.funAux
 
+/**
+ * Method save until create file tmp.txt made by Pacini, the rest made by Zandoli
+ */
 object SaveLoad {
   import java.io.{BufferedReader, FileReader, BufferedWriter, File, FileWriter}
   import scala.util.Using

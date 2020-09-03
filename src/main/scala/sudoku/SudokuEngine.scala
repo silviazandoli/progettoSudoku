@@ -38,7 +38,7 @@ object SudokuEngine extends App {
     }
 
     /**
-     * strategie 2/3 fatte da Lorenzo Pacini
+     * strategies 2/3 made by Lorenzo Pacini
      */
 
     val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
@@ -51,7 +51,7 @@ object SudokuEngine extends App {
     val strat5 = new StrategyImpl {override def resolutionMethod():Unit= solveNakedPair()}
 
     /**
-     * motore fatto da Lorenzo Pacini
+     * engine made by Lorenzo Pacini
      */
     val strategies = List[Strategy](strat1, strat2, strat3,strat4,strat5)
     strategies.foreach(el => if (!puzzleSolved()) el.strategy())

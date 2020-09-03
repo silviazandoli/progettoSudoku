@@ -1,5 +1,8 @@
 package sudoku
 
+/**
+ * Made by Pacini
+ */
 object SudokuLoad {
   import scala.annotation.tailrec
   import scala.io.Source

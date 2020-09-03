@@ -1,5 +1,8 @@
 package grafic.util
 
+/**
+ * Made by Pacini
+ */
 object FileWork {
   import java.io.File
 

@@ -1,5 +1,8 @@
 package grafic.panels
 
+/**
+ * Made by Pacini
+ */
 object TextOpNumber {
   import javax.swing.JTextArea
 

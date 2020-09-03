@@ -1,5 +1,8 @@
 package resolutionAlgorithm
 
+/**
+ * Made by Pacini
+ */
 object HiddenSingles {
   import utility.{puzzle, dimSudoku, matList, contains}
   import sudoku.MatListOperation.updateList

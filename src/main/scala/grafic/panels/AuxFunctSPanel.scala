@@ -1,5 +1,8 @@
 package grafic.panels
 
+/**
+ * Made by Pacini
+ */
 object AuxFunctSPanel {
   import java.awt.Color
   import grafic.util.{AssociateListener, factSecond}

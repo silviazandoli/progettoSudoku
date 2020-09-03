@@ -1,3 +1,6 @@
+/**
+ * Made by Pacini
+ */
 package object grafic {
   import java.awt.Container
   import javax.swing.JTextArea

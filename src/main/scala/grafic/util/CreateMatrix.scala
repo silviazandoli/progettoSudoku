@@ -1,5 +1,8 @@
 package grafic.util
 
+/**
+ * Made by Pacini
+ */
 object CreateMatrix {
   import javax.swing.{JPanel,BorderFactory}
   import java.awt.{Dimension, GridLayout, Color}

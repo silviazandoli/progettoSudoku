@@ -1,5 +1,8 @@
 package grafic.panels
 
+/**
+ * Made by Pacini (function refresh made by Antonelli)
+ */
 object SPanel {
   import java.awt.event.ActionEvent
   import java.awt.{BorderLayout, Color, Dimension, EventQueue}

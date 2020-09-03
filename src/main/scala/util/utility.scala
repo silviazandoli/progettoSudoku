@@ -1,5 +1,5 @@
 /**
- * Fatto da Lorenzo Pacini
+ * Made by Lorenzo Pacini
  **/
 package object utility {
   import scala.annotation.tailrec

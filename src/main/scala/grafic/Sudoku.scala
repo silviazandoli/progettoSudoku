@@ -2,6 +2,9 @@ package grafic
 
 import scala.swing.event.Event
 
+/**
+ * Made by Pacini
+ */
 //evento che ti può dare la possibilità di cliccare sulla casella
 case class SudokuEvent(x: Int, y: Int) extends Event
 

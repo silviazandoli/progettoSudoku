@@ -4,7 +4,7 @@ object MatListOperation {
   import utility.{dimSudoku, matList, puzzle}
 
   /**
-   * fatto da Lorenzo Pacini
+   * Made by Lorenzo Pacini
    */
   def initList(): Unit = {
     (0 until dimSudoku).foreach(i => {
@@ -43,7 +43,7 @@ object MatListOperation {
   // ==================== //
 
   /**
-   * fatto da Lorenzo Pacini
+   * Made by Lorenzo Pacini
    */
   def minList(): (Int, Int) = {
     var ijMin = (0, 0)
@@ -59,6 +59,9 @@ object MatListOperation {
     ijMin
   }
 
+  /**
+   * Made by Lorenzo Pacini
+   */
   def setUnitList(rowCol: (Int, Int)): Int = matList(rowCol._1)(rowCol._2).length match {
     case 1 =>
       val elem = matList(rowCol._1)(rowCol._2).head
@@ -69,6 +72,9 @@ object MatListOperation {
     case _ => 0
   }
 
+  /**
+   * Made by Lorenzo Pacini
+   */
   def updateList(rowCol: (Int, Int), elem: Int): Unit = {
     val row = rowCol._1
     val col = rowCol._2

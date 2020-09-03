@@ -2,6 +2,9 @@ package strategies
 
 import utility.calculateEmpty
 
+/**
+ * Made by Pacini
+ */
 sealed trait Strategy {
   def resolutionMethod()
 

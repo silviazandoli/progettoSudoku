@@ -1,5 +1,8 @@
 package util
 
+/**
+ * Made by Pacini
+ */
 sealed trait TimeStamp {
   def timeStart: Long
 
