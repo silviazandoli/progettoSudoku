@@ -33,7 +33,6 @@ sealed trait ThreadTime extends Thread {
   override def run() {
     while (true) {
       if (!stopVar) {
-        println("timeInit = " + timeInit)
         synchronized {
           textTime.setText("Your Time: " + ((System.currentTimeMillis() / factSecond) - timeInit))
         }
