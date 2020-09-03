@@ -17,44 +17,34 @@ object FileChooserMain extends App {
 
   //Made by Zandoli
 
-  var load=false
   val mainFrame = new JFrame("Sudoku")
+  val menuBar = new JMenuBar()
 
   mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 
   mainFrame.setPreferredSize(new Dimension(400, 300))
-  val menuBar = new JMenuBar()
-
   val menu = new JMenu("File")
-  menu.setMnemonic(KeyEvent.VK_F)
-
-  // menu.getAccessibleContext.setAccessibleDescription("The only menu in this program that has menu items")
-  menuBar.add(menu)
-
-
   val openEasy = new JMenuItem("Open Easy",
     KeyEvent.VK_O)
+  menu.setMnemonic(KeyEvent.VK_F)
+
+  menuBar.add(menu)
+  val openMedium = new JMenuItem("Open Intermedium", KeyEvent.VK_F)
   openEasy.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_O, ActionEvent.ALT_MASK))
-
-  val openMedium = new JMenuItem("Open Intermedium", KeyEvent.VK_F)
+  val openHard = new JMenuItem(" Open Hard", KeyEvent.VK_D)
   openMedium.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_F, ActionEvent.ALT_MASK))
-
-  val openHard = new JMenuItem(" Open Hard", KeyEvent.VK_D)
+  val loadFile = new JMenuItem("Load Old", KeyEvent.VK_Y)
   openHard.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_D, ActionEvent.ALT_MASK))
-
-  val loadFile=new JMenuItem("Load Old", KeyEvent.VK_Y)
+  val aboutMenu = new JMenuItem("About", KeyEvent.VK_U)
   loadFile.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_Y, ActionEvent.ALT_MASK))
-
-
-  val aboutMenu = new JMenuItem("About", KeyEvent.VK_U)
+  val exitMenu = new JMenuItem("Exit", KeyEvent.VK_X)
   aboutMenu.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_U, ActionEvent.ALT_MASK))
-
-  val exitMenu = new JMenuItem("Exit", KeyEvent.VK_X)
+  var load = false
   exitMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK))
 
 
@@ -70,25 +60,25 @@ object FileChooserMain extends App {
   mainFrame.setVisible(true)
 
   openEasy.addActionListener((e: ActionEvent) => {
-    load=false
+    load = false
     initAndUpload(mainFrame, "input/easy")
   })
 
   openMedium.addActionListener((e: ActionEvent) => {
-    load=false
+    load = false
     initAndUpload(mainFrame, "input/medium")
   })
 
   openHard.addActionListener((e: ActionEvent) => {
-    load=false
+    load = false
     initAndUpload(mainFrame, "input/hard")
   })
 
-  loadFile.addActionListener((e:ActionEvent)=>{
-    load=true
+  loadFile.addActionListener((e: ActionEvent) => {
+    load = true
     //if you load a game that you stopped you have to set the old time and score too
     SaveLoad.read()
-    initAndUpload(mainFrame,"temp")
+    initAndUpload(mainFrame, "temp")
   })
   exitMenu.addActionListener((e: ActionEvent) => {
     sys.exit(0)
@@ -101,16 +91,11 @@ object FileChooserMain extends App {
 
   def initAndUpload(frame: JFrame, modality: String): Unit = {
     import grafic.Helpers._
-    //val jfc = new JFileChooser("input")
-    //se si vuole riportare senza interfaccia togli come argomento JFrame, anche da Open
-    //e metti showOpenDialog(null)
-    //implicit
 
-    // val jfc = "input".filechooser()
+    //use of implicit
+
     val jfc = modality.filechooser()
 
-
-    //val retValue = jfc.showOpenDialog(null)
     val retValue = jfc.open(frame)
     if (retValue == JFileChooser.APPROVE_OPTION) {
       //val file = jfc.multipleFiles()
@@ -136,11 +121,7 @@ object FileChooserMain extends App {
     val sudoku = Sudoku()
     sudoku.create()
   }
-
-  // thread = ThreadTime() prima
-  // thread.start() prima
-
-  //initAndReUpload()
+  
 }
 
 //using of the pattern implicit
