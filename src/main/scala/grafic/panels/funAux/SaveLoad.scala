@@ -13,7 +13,7 @@ object SaveLoad {
   import grafic.{masks, tfCells, textTime}
   import utility.dimSudoku
 
-  def save(): Unit = {
+  private def saveGame(): Unit = {
     FileWork.deleteFile()
     FileWork.createFile()
     val bw = new BufferedWriter(new FileWriter(new File("temp/tmp.txt")))
@@ -34,8 +34,9 @@ object SaveLoad {
     }
 
     bw.close()
+  }
 
-    //you save the score and the time
+  private def scoreGame(): Unit = {
     FileWork.createFile()
 
     val scoreFile = new BufferedWriter(new FileWriter(new File("score/score.txt")))
@@ -43,7 +44,9 @@ object SaveLoad {
 
     scoreFile.write(sco)
     scoreFile.close()
+  }
 
+  private def timerGame(): Unit = {
     FileWork.createFile()
     try {
       val timerFile = new BufferedWriter(new FileWriter(new File("score/timer.txt")))
@@ -54,6 +57,12 @@ object SaveLoad {
     } catch {
       case _: Throwable => println("You have to save only after you have stopped the game!")
     }
+  }
+
+  def save(): Unit = {
+    saveGame()
+    scoreGame()
+    timerGame()
   }
 
   def read(): Unit = {

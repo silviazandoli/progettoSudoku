@@ -12,7 +12,7 @@ object AuxFunctSPanel {
   var stopVar = false
   var firstTime = true
 
-  var thread = ThreadTime()
+  var thread: ThreadTime = ThreadTime()
 
   def startStop(): Unit = {
     if (startStopButton.getBackground == Color.green) {
