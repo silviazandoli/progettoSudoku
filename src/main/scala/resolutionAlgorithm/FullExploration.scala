@@ -7,7 +7,7 @@ sealed trait FullExploration {
 
   /**
    *
-   * Zandoli
+   * made by Zandoli
    */
   def validate(position: (Int, Int), value: Int): Boolean = {
     //for each row, column and block 3*3

@@ -1,7 +1,7 @@
 package grafic.event.moduleListener
 
 /**
-Made by Pacini
+Made by Pacini, the altert dialogs with control of the numbers are made by Zandoli
  */
 protected[event] object InsertNumber {
   import java.awt.Color

@@ -6,10 +6,11 @@ import utility.{dimSudoku, matList}
  two squares in a row, column, or block, but those two numbers aren't the only ones in their squares.
  */
 
+/*
+ Done by Zandoli
+  */
 object HiddenPair {
-  /*
-  Done by Zandoli
-   */
+
   def solveHiddenPair(): Unit = {
     val rows = (0 until dimSudoku).toList.map(checkRow)
     //we go to get the indexes

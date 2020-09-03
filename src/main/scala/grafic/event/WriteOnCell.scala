@@ -11,7 +11,7 @@ import javax.swing.JOptionPane
 import utility.matList
 
 /**
-Made by Pacini (Alert dialog made by Zandoli)
+Made by Pacini (Alert dialog with control of numbers made by Zandoli)
  */
 sealed trait WriteOnCell extends KeyListener {
   val row: Int

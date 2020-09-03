@@ -2,16 +2,15 @@ package grafic.event
 
 import java.awt.event.{MouseAdapter, MouseEvent}
 
-import grafic.panels.TextOpNumber.TextOpNumber
 import grafic.event.moduleListener.{MatListVision, SayHelp}
-import grafic.setGet
+import grafic.panels.TextOpNumber.TextOpNumber
 import grafic.set
 import grafic.util.{FONT_MATLIST, FONT_MINILIST, NUMBER, NUMBER_LIST}
 import javax.swing.JOptionPane
 import utility.matList
 
 /**
- * Made By Pacini (Alert Dialog made by Zandoli, n match made by Pacini)
+ * Made By Pacini (Alert Dialog with control of numbers made by Zandoli, n match made by Pacini)
  */
 sealed trait MouseListener extends MouseAdapter {
   val row: Int
