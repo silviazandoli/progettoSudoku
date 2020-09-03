@@ -1,11 +1,8 @@
 package grafic.event.moduleListener
 
 /**
-<<<<<<< HEAD
 Made by Pacini, the altert dialogs with control of the numbers are made by Zandoli
-=======
- * Made by Pacini
->>>>>>> 0ff42b8bfd007ad07745a66a1a1caba0d87d88db
+
  */
 protected[event] object InsertNumber {
   import java.awt.Color

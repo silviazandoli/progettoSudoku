@@ -4,10 +4,9 @@ import java.awt.event.{MouseAdapter, MouseEvent}
 import javax.swing.JOptionPane
 
 import grafic.event.moduleListener.{MatListVision, SayHelp}
-<<<<<<< HEAD
+
 import grafic.panels.TextOpNumber.TextOpNumber
-=======
->>>>>>> 0ff42b8bfd007ad07745a66a1a1caba0d87d88db
+
 import grafic.set
 import grafic.util.{FONT_MATLIST, FONT_MINILIST, NUMBER, NUMBER_LIST}
 import utility.matList
