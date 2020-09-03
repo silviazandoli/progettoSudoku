@@ -61,15 +61,13 @@ object SPanel {
     startStopButtonMake()
 
     refreshList.addActionListener((_: ActionEvent) =>
-        for (i <- 0 until dimSudoku; j <- 0 until dimSudoku) {
-            if (tfCells(i)(j).getList.nonEmpty) {
-              val t = new Thread(() => synchronized {tfCells(i)(j).displayList()})
-              println("riga " + i + " colonna " + j + " controllata")
-              try
-                if (EventQueue.isDispatchThread) t.start()
-                else EventQueue.invokeAndWait(() => t.run())
-              catch {case e: Exception => println(e)}
-            }
+        for (i <- 0 until dimSudoku; j <- 0 until dimSudoku; if tfCells(i)(j).getList.nonEmpty) {
+            val t = new Thread(() => synchronized {tfCells(i)(j).displayList()})
+            println("riga " + i + " colonna " + j + " controllata")
+            try
+              if (EventQueue.isDispatchThread) t.start()
+              else EventQueue.invokeAndWait(() => t.run())
+            catch {case e: Exception => println(e)}
         })
 
     addButtons()
