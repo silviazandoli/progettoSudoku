@@ -25,21 +25,17 @@ protected[event] object InsertNumber {
   }
 
   def writeNumber(row: Int, col: Int, number: Int, t: TextOpNumber): Unit = {
-    //getPuzzleResolt(row)(col) match {
-
     val array = get[Array[Array[Int]]]
     array(row)(col) match {
       case `number` =>
         operationOnGUI(row, col, number, t)
-        //messa a comodo
+
         set(row, col)
         //in case of finish
         actionUtent()
 
         MatListOperation.updateList((row,col),number)
         UpdateListUser.updateListUser((row,col),number)
-
-        //t.setEditable(false) (prova)
 
         score = score + 1
 

@@ -18,7 +18,7 @@ package object grafic {
   val showNumberList = new JTextArea()
   val textTime = new JTextArea()
 
-  val tfCells = Array.ofDim[TextOpNumber](dimSudoku, dimSudoku)
+  val tfCells: Array[Array[TextOpNumber]] = Array.ofDim[TextOpNumber](dimSudoku, dimSudoku)
 
   def utentSolved(): Boolean = masks.flatten.forall(_ == true)
 

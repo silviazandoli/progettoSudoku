@@ -4,7 +4,6 @@ import java.awt.event.{MouseAdapter, MouseEvent}
 import javax.swing.JOptionPane
 
 import grafic.event.moduleListener.{MatListVision, SayHelp}
-
 import grafic.panels.TextOpNumber.TextOpNumber
 
 import grafic.set
