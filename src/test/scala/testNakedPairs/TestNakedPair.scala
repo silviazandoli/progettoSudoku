@@ -1,8 +1,7 @@
-package testFull
+package testNakedPairs
 
 import org.scalatest.FunSuite
-import resolutionAlgorithm.FullExploration
-import resolutionAlgorithm.HiddenSingles.{hiddenSingles, totalHiddenSingles}
+import resolutionAlgorithm.{FullExploration}
 import sudoku.SudokuLoad.loadPuzzle
 import sudoku.MatListOperation.initList
 import utility.getPuzzle
@@ -14,10 +13,10 @@ import utility._
 class TestNakedPair extends FunSuite {
   test("Sudoku test with change MatList in row") {
 
-    val nameFile = "input/sudokuText.txt"
+    val nameFile = "input/sudoku31.txt"
     loadPuzzle(nameFile)
 
-    display(puzzle)
+    displayNoTitle(puzzle)
     initList()
     for (i <- 0 to 8) {
       println("MatList riga " + 0 + " colonna" + i + " è " + matList(0)(i).toString)
@@ -38,10 +37,10 @@ class TestNakedPair extends FunSuite {
 
   test("Sudoku test change Matlist in subSquare") {
     //init
-    val nameFile = "input/sudokuTest2.txt"
+    val nameFile = "input/sudoku30.txt"
     loadPuzzle(nameFile)
 
-    display(puzzle)
+    displayNoTitle(puzzle)
     initList()
     for (i <- 6 to 8) {
       for(j <- 0 to 3)
@@ -75,10 +74,10 @@ class TestNakedPair extends FunSuite {
   }
 
   test("Sudoku Test Row") {
-    val nameFile = "input/sudokuText.txt"
+    val nameFile = "input/sudoku31.txt"
     loadPuzzle(nameFile)
 
-    display(puzzle)
+    displayNoTitle(puzzle)
     initList()
     for (i <- 0 to 8) {
       println("MatList riga " + 2 + " colonna" + i + " è " + matList(2)(i).toString)
@@ -96,24 +95,28 @@ class TestNakedPair extends FunSuite {
     println("matList finale "+ finishMat)
     assert(initMat != finishMat)
   }
-  test("Sudoku06 - check if not destroy matList") {
-    val nameFile = "input/sudoku06.txt"
+  test("Sudoku23 - check if not destroy matList") {
+    val nameFile = "input/sudoku23.txt"
+
+    loadPuzzle(nameFile)
+    initList()
+    val solverWithout = FullExploration(getPuzzle)
+    solverWithout.solve(0, 0)
 
     loadPuzzle(nameFile)
     initList()
     findCouple(7,true)
     findCoupleSubSquare(0,0)
     findCouple(7,false)
-    hiddenSingles(7, 0)
-    val sudokuInput = getPuzzle
+    val solverWith = FullExploration(getPuzzle)
+    solverWith.solve(0, 0)
+    assert(solverWithout.returnPuzzle()(2)(2) == solverWith.returnPuzzle()(2)(2))
+    assert(solverWithout.returnPuzzle()(5)(2) == solverWith.returnPuzzle()(5)(2))
 
-    val solver = FullExploration(getPuzzle)
-    solver.solve(0, 0)
-
-    assert(sudokuInput(7)(0) == solver.returnPuzzle()(7)(0))
   }
-  test("Sudoku05") {
-    val nameFile = "input/sudoku01.txt"
+
+  /*test("Sudoku05") {
+    val nameFile = "input/sudoku06.txt"
 
     loadPuzzle(nameFile)
     initList()
@@ -127,6 +130,6 @@ class TestNakedPair extends FunSuite {
     assert(sudokuInput(2)(2) == solver.returnPuzzle()(2)(2))
     assert(sudokuInput(5)(2) == solver.returnPuzzle()(5)(2))
 
-  }
+  }*/
 
 }

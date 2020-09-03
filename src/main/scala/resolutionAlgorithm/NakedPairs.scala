@@ -82,7 +82,6 @@ object NakedPairs {
           k <- 0 until dimSudoku
           if matList(row)(k) != Nil && matList(row)(k).size == 2 && i != j && matList(row)(k).contains(i) && matList(row)(k).contains(j)
         } {
-          println(matList(row)(k) + "found +1 "+ row + k)
           found = found + 1
 
           if (found == 1) {
@@ -95,7 +94,6 @@ object NakedPairs {
         }
       })
     })
-    println(found)
     found match {
       case 2 | 4 => (first, second) //restituisce le posizioni
       case _ => (-1, -1)
@@ -188,7 +186,6 @@ object NakedPairs {
     for {i <- r1 until r1 + 3
          j <- c1 until c1 + 3} {
       if (j != c1 && j != c2 && i != r1 && i != r2) {
-        println("first "+ first + " second " + second)
         removeElementBlock(first, second, n1)
         removeElementBlock(first, second, n2)
       }
