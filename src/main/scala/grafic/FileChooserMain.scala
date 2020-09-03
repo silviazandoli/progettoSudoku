@@ -146,5 +146,4 @@ object Helpers {
     //def multipleFiles() = jfc.getSelectedFiles()
     def selectedFile() = jfc.getSelectedFile()
   }
-
 }
