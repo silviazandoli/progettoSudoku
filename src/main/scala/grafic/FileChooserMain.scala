@@ -14,7 +14,9 @@ import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
 
 object FileChooserMain extends App {
+
   //Made by Zandoli
+
   var load=false
   val mainFrame = new JFrame("Sudoku")
 
