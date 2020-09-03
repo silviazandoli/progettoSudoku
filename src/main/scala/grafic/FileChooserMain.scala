@@ -5,6 +5,7 @@ import java.awt.event.{ActionEvent, KeyEvent}
 import java.io.File
 
 import grafic.Sudoku.Sudoku
+import grafic.panels.AuxFunctSPanel
 import grafic.panels.funAux.SaveLoad
 import javax.swing._
 import javax.swing.filechooser.FileNameExtensionFilter
@@ -94,6 +95,8 @@ object FileChooserMain extends App {
 
     //use of implicit
 
+    AuxFunctSPanel.firstTime = true
+
     val jfc = modality.filechooser()
 
     val retValue = jfc.open(frame)
@@ -121,7 +124,6 @@ object FileChooserMain extends App {
     val sudoku = Sudoku()
     sudoku.create()
   }
-  
 }
 
 //using of the pattern implicit

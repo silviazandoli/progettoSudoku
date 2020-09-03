@@ -50,9 +50,7 @@ object SaveLoad {
     FileWork.createFile()
     try {
       val timerFile = new BufferedWriter(new FileWriter(new File("score/timer.txt")))
-      val text = textTime.getText
-      val time = text.substring(27, text.length)
-      timerFile.write(time)
+      timerFile.write(timeInit + "")
       timerFile.close()
     } catch {
       case _: Throwable => println("You have to save only after you have stopped the game!")
@@ -89,9 +87,6 @@ object SaveLoad {
 
       timeInit = linesTimer.substring(5, 5 + timel).toLong
       score = linesScore.substring(5, 5 + scorel).toInt
-      //println(lunghezza)
-
-      timeInit = (System.currentTimeMillis() / factSecond) - timeInit
     }
   }
 }

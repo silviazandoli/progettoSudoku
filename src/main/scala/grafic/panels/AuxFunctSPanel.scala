@@ -1,5 +1,7 @@
 package grafic.panels
 
+import grafic.FileChooserMain.load
+
 /**
  * Made by Pacini
  */
@@ -9,7 +11,7 @@ object AuxFunctSPanel {
   import grafic.panels.funAux.ThreadTime
 
   var timeInit: Long = 0
-  var stopVar = false
+  var stopVar = true
   var firstTime = true
 
   var thread: ThreadTime = ThreadTime()
@@ -26,12 +28,13 @@ object AuxFunctSPanel {
   }
 
   def startGame(): Unit = {
+    // no loaded and not stopped before
     stopVar = false
     if (firstTime) {
-      timeInit = System.currentTimeMillis() / factSecond - timeInit
+      if (!load) timeInit = System.currentTimeMillis() / factSecond
       firstTime = false
 
-      thread.start()
+      if (!thread.isAlive) thread.start()
     }
   }
 }
