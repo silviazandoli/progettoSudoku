@@ -15,7 +15,13 @@ import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
 
+<<<<<<< HEAD
 //Made by Zandoli
+=======
+import javax.swing.WindowConstants.EXIT_ON_CLOSE
+
+object FileChooserMain extends App {
+>>>>>>> 5bb2355887b2d463b51fdc09d3194d1862e5c714
 
 object FileChooserMain extends App {
 
@@ -63,7 +69,11 @@ object FileChooserMain extends App {
   mainFrame.pack()
   mainFrame.setVisible(true)
 
+<<<<<<< HEAD
   //mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+=======
+  mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE)
+>>>>>>> 5bb2355887b2d463b51fdc09d3194d1862e5c714
 
   openEasy.addActionListener((e: ActionEvent) => {
     load = false
