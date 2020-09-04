@@ -13,6 +13,7 @@ object AuxFunctSPanel {
   var stopVar = true
   var firstTime = true
 
+
   var thread: ThreadTime = ThreadTime()
 
   def startStop(): Unit = {

@@ -1,5 +1,7 @@
 package grafic
 
+import grafic.FileChooserMain.mainFrame
+
 import scala.swing.event.Event
 
 /**
@@ -23,9 +25,8 @@ object Sudoku {
       cp.add(SPanel(new Dimension(MATRIX_WIDTH / 2, MATRIX_HEIGHT / 2)), BorderLayout.WEST)
       cp.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT))
       pack()
-      //handle window closing si fa in FileChooserMain così se chiudo la matrice del Sudoku l'interfaccia
-      //dell'upload rimane
-      //qui c'era una exit on close
+
+      mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 
       showNumberList.setEditable(false)
       showNumberList.setEnabled(false)
