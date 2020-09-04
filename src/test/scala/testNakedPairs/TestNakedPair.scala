@@ -13,7 +13,7 @@ import utility._
 class TestNakedPair extends FunSuite {
   test("Sudoku test with change MatList in row") {
 
-    val nameFile = "input/sudoku31.txt"
+    val nameFile = "input/easy/sudoku30.txt"
     loadPuzzle(nameFile)
 
     displayNoTitle(puzzle)
@@ -37,7 +37,7 @@ class TestNakedPair extends FunSuite {
 
   test("Sudoku test change Matlist in subSquare") {
     //init
-    val nameFile = "input/sudoku30.txt"
+    val nameFile = "input/easy/sudoku31.txt"
     loadPuzzle(nameFile)
 
     displayNoTitle(puzzle)
@@ -60,7 +60,7 @@ class TestNakedPair extends FunSuite {
     assert(initMat != finishMat)
   }
   test("Sudoku 01") {
-    val nameFile = "input/sudoku01.txt"
+    val nameFile = "input/easy/sudoku01.txt"
 
     loadPuzzle(nameFile)
     initList()
@@ -74,7 +74,7 @@ class TestNakedPair extends FunSuite {
   }
 
   test("Sudoku Test Row") {
-    val nameFile = "input/sudoku31.txt"
+    val nameFile = "input/easy/sudoku30.txt"
     loadPuzzle(nameFile)
 
     displayNoTitle(puzzle)
@@ -96,7 +96,7 @@ class TestNakedPair extends FunSuite {
     assert(initMat != finishMat)
   }
   test("Sudoku23 - check if not destroy matList") {
-    val nameFile = "input/sudoku23.txt"
+    val nameFile = "input/easy/sudoku23.txt"
 
     loadPuzzle(nameFile)
     initList()
