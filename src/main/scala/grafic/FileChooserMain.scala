@@ -7,7 +7,7 @@ import java.io.File
 import grafic.Sudoku.Sudoku
 import grafic.panels.AuxFunctSPanel
 import grafic.panels.AuxFunctSPanel.{startGame, startStop}
-import grafic.panels.funAux.{SaveLoad, ThreadTime}
+import grafic.panels.funAux.SaveLoad
 import javax.swing._
 import javax.swing.filechooser.FileNameExtensionFilter
 import resolutionAlgorithm.FullExploration
@@ -20,6 +20,7 @@ import utility.getPuzzle
 object FileChooserMain extends App {
 
   var count = 1
+  var load = false
   val mainFrame = new JFrame("Sudoku")
   val menuBar = new JMenuBar()
   val menu = new JMenu("File")
@@ -45,10 +46,10 @@ object FileChooserMain extends App {
 
   loadFile.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_Y, ActionEvent.ALT_MASK))
-  var thread: ThreadTime = ThreadTime()
+
   aboutMenu.setAccelerator(KeyStroke.getKeyStroke(
     KeyEvent.VK_U, ActionEvent.ALT_MASK))
-  var load = false
+
   exitMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK))
 
 
