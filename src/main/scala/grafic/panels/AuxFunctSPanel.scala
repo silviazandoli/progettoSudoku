@@ -7,7 +7,7 @@ import grafic.FileChooserMain.load
  */
 object AuxFunctSPanel {
   import java.awt.Color
-  import grafic.util.{AssociateListener, factSecond}
+  import grafic.util.{AssociateListener, factSecond, score}
   import grafic.panels.funAux.ThreadTime
 
   var timeInit: Long = 0
@@ -31,7 +31,10 @@ object AuxFunctSPanel {
     // no loaded and not stopped before
     stopVar = false
     if (firstTime) {
-      if (!load) timeInit = System.currentTimeMillis() / factSecond
+      if (!load) {
+        timeInit = System.currentTimeMillis() / factSecond
+        score = 0
+      }
       firstTime = false
 
       if (!thread.isAlive) thread.start()
