@@ -21,8 +21,6 @@ object FileChooserMain extends App {
   val mainFrame = new JFrame("Sudoku")
   val menuBar = new JMenuBar()
 
-  mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
-
   mainFrame.setPreferredSize(new Dimension(400, 300))
   val menu = new JMenu("File")
   val openEasy = new JMenuItem("Open Easy",
@@ -59,6 +57,8 @@ object FileChooserMain extends App {
   mainFrame.setJMenuBar(menuBar)
   mainFrame.pack()
   mainFrame.setVisible(true)
+
+  mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 
   openEasy.addActionListener((e: ActionEvent) => {
     load = false
