@@ -1,12 +1,11 @@
 package grafic.panels
 
-import grafic.FileChooserMain.load
-
 /**
  * Made by Pacini
  */
 object AuxFunctSPanel {
   import java.awt.Color
+  import grafic.FileChooserMain.load
   import grafic.util.{AssociateListener, factSecond, score}
   import grafic.panels.funAux.ThreadTime
 

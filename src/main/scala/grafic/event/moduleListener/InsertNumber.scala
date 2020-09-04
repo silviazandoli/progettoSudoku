@@ -24,20 +24,22 @@ protected[event] object InsertNumber {
       FONT_NUMBERS, CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT)("" + number)
   }
 
+  private def operationOnNumber(row: Int, col: Int, number: Int, t: TextOpNumber): Unit = {
+    operationOnGUI(row, col, number, t)
+    graficSet(row, col)
+    //in case of finish
+    actionUtent()
+
+    MatListOperation.updateList((row,col),number)
+    UpdateListUser.updateListUser((row,col),number)
+    score = score + 1
+  }
+
   def writeNumber(row: Int, col: Int, number: Int, t: TextOpNumber): Unit = {
     val array = graficGet[Array[Array[Int]]]
     array(row)(col) match {
       case `number` =>
-        operationOnGUI(row, col, number, t)
-
-        graficSet(row, col)
-        //in case of finish
-        actionUtent()
-
-        MatListOperation.updateList((row,col),number)
-        UpdateListUser.updateListUser((row,col),number)
-
-        score = score + 1
+        operationOnNumber(row, col, number, t)
 
       case _ =>
         t.setForeground(Color.red)

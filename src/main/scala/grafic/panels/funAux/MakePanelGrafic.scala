@@ -1,6 +1,6 @@
 package grafic.panels.funAux
 
-object MakePanelGrafic {
+private[panels] object MakePanelGrafic {
   import java.awt.event.ActionEvent
   import java.awt.{Color, Dimension}
 
@@ -9,7 +9,7 @@ object MakePanelGrafic {
   import grafic.panels._
 
   def setDimension(): Unit = {
-    pb.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight)); // dim
+    pb.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight)) // dim
     pb.setBackground(WS)
 
     FL.setVgap(55)
@@ -35,7 +35,7 @@ object MakePanelGrafic {
 
   def addButtons(): Unit = {
     pb.add(refreshList)
-    textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)); // dim
+    textTime.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight*2)) // dim
     pb.add(textTime)
     saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
     pb.add(saveButton)

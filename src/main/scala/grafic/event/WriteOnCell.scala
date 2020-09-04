@@ -17,20 +17,26 @@ sealed trait WriteOnCell extends KeyListener {
   val row: Int
   val col: Int
 
+  private def extractNumber(t: TextOpNumber): Int = {
+    var retText = t.getText
+
+    if (retText.length > 1) {
+      val posLast = retText.length
+      val posInit = posLast - 1
+
+      retText = retText.substring(posInit, posLast)
+    }
+
+    val number = retText.toInt
+    t.setEditable(true)
+
+    number
+  }
+
   def keyReleased(e: KeyEvent): Unit = {
     val t: TextOpNumber = e.getSource.asInstanceOf[TextOpNumber]
     try {
-      var retText = t.getText
-
-      if (retText.length > 1) {
-        val posInit = retText.length - 1
-        val posLast = retText.length
-
-        retText = retText.substring(posInit, posLast)
-      }
-
-      val number = retText.toInt
-      t.setEditable(true)
+      val number = extractNumber(t: TextOpNumber)
 
       graficGet[String] match {
         case NUMBER_LIST =>

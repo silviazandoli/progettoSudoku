@@ -8,10 +8,9 @@ object SPanel {
   import java.awt.{BorderLayout, Dimension, EventQueue}
   import javax.swing.JPanel
 
+  import grafic.panels.funAux.MakePanelGrafic._
   import grafic.tfCells
   import utility.dimSudoku
-
-  import grafic.panels.funAux.MakePanelGrafic._
 
   def apply(dimension: Dimension): SPanel = SPanel(dimension)
 

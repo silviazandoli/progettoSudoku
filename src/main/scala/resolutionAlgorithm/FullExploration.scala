@@ -5,6 +5,11 @@ import utility.dimSudoku
 sealed trait FullExploration {
   val puzzleGame: Array[Array[Int]]
 
+  private val next: (Int, Int) => Boolean = (row: Int, col: Int) => col match {
+    case 8 => solve(row + 1, 0)
+    case _ => solve(row, col + 1)
+  }
+
   /**
    *
    * made by Zandoli
@@ -20,16 +25,8 @@ sealed trait FullExploration {
   }
 
   // ---- //
-  /**
-   * Pacini
-   */
-  def solve(row: Int, col: Int): Boolean = {
-    val next: (Int, Int) => Boolean = (row: Int, col: Int) => col match {
-      case 8 => solve(row + 1, 0)
-      case _ => solve(row, col + 1)
-    }
 
-    if (puzzleGame.flatten.forall(_.!=(0))) return true
+  private def computationMatrix(row: Int, col: Int): Boolean = {
     puzzleGame(row)(col) match {
       case 0 =>
         (1 to dimSudoku).filter(i => validate((row, col), i))
@@ -46,13 +43,19 @@ sealed trait FullExploration {
     }
   }
 
+  /**
+   * Pacini
+   */
+  def solve(row: Int, col: Int): Boolean = {
+    if (puzzleGame.flatten.forall(_.!=(0))) return true
+    computationMatrix(row, col)
+  }
+
   def returnPuzzle(): Array[Array[Int]] = puzzleGame
 }
 
 object FullExploration {
-
   def apply(puzzleGame: Array[Array[Int]]): FullExploration = FullExplorationImplements(puzzleGame)
-
   private case class FullExplorationImplements(override val puzzleGame: Array[Array[Int]]) extends FullExploration
 }
 
