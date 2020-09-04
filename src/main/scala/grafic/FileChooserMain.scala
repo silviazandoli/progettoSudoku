@@ -1,7 +1,7 @@
 package grafic
 
 import java.awt.Dimension
-import java.awt.event.{ActionEvent, KeyEvent}
+import java.awt.event.{ActionEvent, ActionListener, KeyEvent}
 import java.io.File
 
 import grafic.Sudoku.Sudoku
@@ -9,6 +9,7 @@ import grafic.panels.AuxFunctSPanel
 import grafic.panels.AuxFunctSPanel.{startGame, startStop}
 import grafic.panels.funAux.SaveLoad
 import javax.swing._
+
 import javax.swing.filechooser.FileNameExtensionFilter
 import resolutionAlgorithm.FullExploration
 import sudoku.MatListOperation.initList
@@ -17,98 +18,63 @@ import utility.getPuzzle
 
 //Made by Zandoli
 
+object MyMenuHelpers {
+  def createMenu(menu: JMenuItem*): JMenu = {
+    val menuItem = new JMenu("File")
+    menu.foreach(menuItem.add(_))
+    menuItem
+  }
+  // Uses an implicit conversion to shorten the code
+  implicit def functionActionListener(f: ActionEvent => Unit) =
+    new ActionListener {
+      def actionPerformed(event: ActionEvent) = f(event)
+    }
+}
+
 object FileChooserMain extends App {
 
   var count = 1
-  var load = false
+  var load=false
   val mainFrame = new JFrame("Sudoku")
-  val menuBar = new JMenuBar()
-  val menu = new JMenu("File")
-  val openEasy = new JMenuItem("Open Easy",
-    KeyEvent.VK_O)
   mainFrame.setPreferredSize(new Dimension(400, 300))
+  val menuBar = new JMenuBar()
+  val openEasy = new JMenuItem("Open Easy", KeyEvent.VK_O)
   val openMedium = new JMenuItem("Open Intermedium", KeyEvent.VK_F)
   val openHard = new JMenuItem(" Open Hard", KeyEvent.VK_D)
-  menu.setMnemonic(KeyEvent.VK_F)
   val loadFile = new JMenuItem("Load Old", KeyEvent.VK_Y)
-  openEasy.setAccelerator(KeyStroke.getKeyStroke(
-    KeyEvent.VK_O, ActionEvent.ALT_MASK))
-
-  menuBar.add(menu)
-
   val aboutMenu = new JMenuItem("About", KeyEvent.VK_U)
-  openMedium.setAccelerator(KeyStroke.getKeyStroke(
-    KeyEvent.VK_F, ActionEvent.ALT_MASK))
   val exitMenu = new JMenuItem("Exit", KeyEvent.VK_X)
-  openHard.setAccelerator(KeyStroke.getKeyStroke(
-    KeyEvent.VK_D, ActionEvent.ALT_MASK))
 
-
-  loadFile.setAccelerator(KeyStroke.getKeyStroke(
-    KeyEvent.VK_Y, ActionEvent.ALT_MASK))
-
-  aboutMenu.setAccelerator(KeyStroke.getKeyStroke(
-    KeyEvent.VK_U, ActionEvent.ALT_MASK))
-
+  openEasy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.ALT_MASK))
+  openMedium.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, ActionEvent.ALT_MASK))
+  openHard.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.ALT_MASK))
+  loadFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.ALT_MASK))
+  aboutMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, ActionEvent.ALT_MASK))
   exitMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK))
 
+  import grafic.MyMenuHelpers._
 
-  menu.add(openEasy)
-  menu.add(openMedium)
-  menu.add(openHard)
-  menu.add(loadFile)
-  menu.addSeparator()
-  menu.add(aboutMenu)
-  menu.add(exitMenu)
   mainFrame.setJMenuBar(menuBar)
+  val menu = createMenu(openEasy, openMedium, openHard, loadFile, aboutMenu, exitMenu)
+  menuBar.add(menu)
+
+  openEasy.addActionListener((_: ActionEvent) => (load=false,initAndUpload(mainFrame, "input/easy"), cont()))
+  openMedium.addActionListener((_: ActionEvent) => (load=false,initAndUpload(mainFrame, "input/medium"), cont()))
+  openHard.addActionListener((_: ActionEvent) => (load=false,initAndUpload(mainFrame, "input/hard"), cont()))
+ loadFile.addActionListener((_: ActionEvent) => (load=true,SaveLoad.read(),initAndUpload(mainFrame,"temp"),cont()))
+  val text="made by Pacini, Zandoli, Antonelli"
+  aboutMenu.addActionListener((_:ActionEvent)=>JOptionPane.showMessageDialog(mainFrame, s"Sudoku ${text}"))
+  exitMenu.addActionListener((_:ActionEvent)=>sys.exit(0))
+
   mainFrame.pack()
   mainFrame.setVisible(true)
 
-
-  openEasy.addActionListener((e: ActionEvent) => {
-    load = false
-    initAndUpload(mainFrame, "input/easy") 
-    cont()
-  })
-
-  openMedium.addActionListener((e: ActionEvent) => {
-    load = false
-    initAndUpload(mainFrame, "input/medium")
-    cont()
-  })
-
-  openHard.addActionListener((e: ActionEvent) => {
-    load = false
-    initAndUpload(mainFrame, "input/hard")
-    cont()
-  })
-
-  loadFile.addActionListener((e: ActionEvent) => {
-    load = true
-    //if you load a game that you stopped you have to set the old time and score too
-    SaveLoad.read()
-    initAndUpload(mainFrame, "temp")
-    cont()
-  })
-
-  exitMenu.addActionListener((e: ActionEvent) => {
-    sys.exit(0)
-  })
-
-  aboutMenu.addActionListener((e: ActionEvent) => {
-    val n = JOptionPane.showMessageDialog(null, "Project done by:\n" + " Lorenzo Pacini\n " +
-      "Silvia Zandoli\n" + " Alberto Antonelli", "About", JOptionPane.DEFAULT_OPTION)
-  })
-
   def initAndUpload(frame: JFrame, modality: String): Unit = {
-   import grafic.Helpers._
-
-    //use of implicit
+    import grafic.Helpers._
 
     AuxFunctSPanel.firstTime = true
-
+    //use of implicit
     val jfc = modality.filechooser()
-
     val retValue = jfc.open(frame)
     if (retValue == JFileChooser.APPROVE_OPTION) {
       //val file = jfc.multipleFiles()
@@ -116,7 +82,6 @@ object FileChooserMain extends App {
       //open one sudoku
       processFile(file)
       //file.foreach(processFile)
-
     }
   }
 
@@ -124,13 +89,10 @@ object FileChooserMain extends App {
     println(f)
     loadPuzzle(f.toString)
     initList()
-
     val sudokuSolver = FullExploration(getPuzzle)
     sudokuSolver.solve(0, 0)
-
     //setPuzzleResolt(sudokuSolver.returnPuzzle())
     graficSet(sudokuSolver.returnPuzzle())
-
     val sudoku = Sudoku()
     sudoku.create()
   }

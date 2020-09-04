@@ -6,11 +6,11 @@ package grafic.panels.funAux
 object SaveLoad {
   import java.io._
 
-  import grafic.FileChooserMain.load
   import grafic.panels.AuxFunctSPanel.timeInit
   import grafic.util.{FileWork, score}
   import grafic.{masks, tfCells}
   import utility.dimSudoku
+  import grafic.FileChooserMain.load
 
   import scala.util.Using
 
@@ -65,14 +65,12 @@ object SaveLoad {
   }
 
   def read(): Unit = {
-    //the first if the case you open a new game
+   //the first if the case you open a new game
     if (!load) {
       timeInit = 0
       score = 0
     } else {
-      /*for (lines <- bufferedSourceTimer.getLines) {f
-        lines.toList
-      }*/
+
       val linesTimer: String =
         Using.resource(new BufferedReader(new FileReader("score/timer.txt"))) { reader =>
           Iterator.continually(reader.readLine()).takeWhile(_ != null).toSeq.toList.toString()
