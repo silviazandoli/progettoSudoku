@@ -32,7 +32,7 @@ package object utility {
   }
 
   /*
-  si restituisce un nuovo oggetto, mai il riferimento
+  give a new object, never the reference
    */
   def getPuzzle: Array[Array[Int]] = {
     val puzzleTemp: Array[Array[Int]] = Array.ofDim[Int](dimSudoku, dimSudoku)
@@ -49,7 +49,7 @@ package object utility {
   }
 
   /*
-  stampa tutta la matrice di liste
+  print all matrix of lists
    */
   def printMatrixList[T](matPrint: Array[Array[List[T]]]): Unit = {
     println("Matrice delle liste ")
@@ -60,7 +60,7 @@ package object utility {
   }
 
   /*
-  stampa una matrice di gioco del sudoku
+  print a game matrix
    */
   def display[T](puzzleGame: Array[Array[T]]) (title: String): Unit = {
     val closureSudokuLine: Array[T] => String = {
@@ -84,7 +84,7 @@ package object utility {
   }
 
   /*
-  stampa una lista di interi riferita a una cella
+  print a list of integer referred to a cell
    */
   def displayList(row: Int, col: Int): Unit = {
     print("[" + row + " " + col + "]  ")

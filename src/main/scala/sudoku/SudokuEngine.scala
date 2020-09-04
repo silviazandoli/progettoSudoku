@@ -14,16 +14,16 @@ object SudokuEngine extends App {
   val nameFile = "input/easy/sudoku05.txt"
 
   /*
-  strategia con assegnazione numero di liste unitarie
+  strategy with assignment of the number of unitarian list
    */
   def strategyList(): Unit = {
     /**
-     * case class timestamp fatta da Lorenzo Pacini
+     * case class timestamp made by Lorenzo Pacini
      */
     val timeStamp = TimeStamp(System.currentTimeMillis())
 
     /**
-     * strategia1 fatta da Lorenzo Pacini
+     * strategia1 made by Lorenzo Pacini
      */
     val strat1 = new StrategyImpl {
       override def resolutionMethod(): Unit = {
@@ -32,7 +32,7 @@ object SudokuEngine extends App {
           val rowCol = minList()
           elem = setUnitList(rowCol)
 
-          if (elem != 0) updateList(rowCol, elem) // assegna valore lista unitaria
+          if (elem != 0) updateList(rowCol, elem) // assignment of value to unit list
         }
       }
     }

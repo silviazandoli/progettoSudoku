@@ -24,19 +24,19 @@ object MatListOperation {
    made by Silvia Zandoli
    */
   def possible(rowExcl: Set[Int], row:Int,col:Int):List[Int] = {
-    //escludo per colonna
+    //exclusion for column
     val colExcl = puzzle.toList.map(_ (col)).filter(_ != 0).toSet
 
-    //escludo per blocco 3*3
+    //exclusion for block 3*3
     val ci = row / 3
     val cj = col / 3
 
     val block = puzzle.grouped(3).toList(ci).flatMap { x => x.grouped(3).toList(cj) }.filter(_ != 0).toList.toSet
 
-    //faccio l'unione per riga, per blocco e colonna
+    //make the union for row, block and column
     val unity = rowExcl.union(colExcl).union(block)
 
-    //faccio un set differenza, in possible ci metti tutti i numeri che non sono nell'unione
+    //make a set for difference, in possible i put all number that aren't in the union
     (1 to dimSudoku).toSet.diff(unity).toList
   }
 
@@ -80,13 +80,16 @@ object MatListOperation {
     val col = rowCol._2
 
     /*
-    aggiornamento per riga e per colonna
+    update for row and column
      */
     for (i <- 0 until dimSudoku) yield {
       if (i != col && matList(row)(i) != null) matList(row)(i) = matList(row)(i).filter(e => e != elem)
       if (i != row && matList(i)(col) != null) matList(i)(col) = matList(i)(col).filter(e => e != elem)
     }
 
+    /*
+    update for block
+     */
     val r = (row / 3) * 3
     val c = (col / 3) * 3
 
