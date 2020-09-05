@@ -1,6 +1,6 @@
 package grafic
 
-object FileChooser extends App {
+object FileChoosers extends App {
 
  /* def uploadLoad():Unit={
    /* import grafic.HelpersFile._
