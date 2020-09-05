@@ -40,7 +40,10 @@ private[panels] object MakePanelGrafic {
     saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
     pb.add(saveButton)
 
-    adviceButton.addActionListener((_: ActionEvent) => Advice.suggerisci())
-    pb.add(adviceButton)
+    puzzleResolve.addActionListener((_: ActionEvent) => Resolve.resolve())
+    pb.add(puzzleResolve)
+
+    /*adviceButton.addActionListener((_: ActionEvent) => Advice.suggerisci())
+    pb.add(adviceButton)*/
   }
 }

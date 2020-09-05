@@ -16,6 +16,7 @@ package object panels {
   val saveButton = new JButton("Save")
   val loadButton= new JButton("Load")
   val adviceButton= new JButton("Advice")
+  val puzzleResolve = new JButton("Resolve")
 
   val WS = new Color(0xf5, 0xf5, 0xf5) //White Smoke
 
