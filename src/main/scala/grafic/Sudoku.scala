@@ -1,7 +1,5 @@
 package grafic
 
-import grafic.FileChooserMain.mainFrame
-
 import scala.swing.event.Event
 
 /**
@@ -12,9 +10,11 @@ case class SudokuEvent(x: Int, y: Int) extends Event
 
 object Sudoku {
   import java.awt.{Dimension, _}
+  import javax.swing.JFrame
+  import javax.swing.WindowConstants.EXIT_ON_CLOSE
   import grafic.panels.SPanel
   import grafic.util._
-  import javax.swing.JFrame
+  import grafic.FileChooserMain.mainFrame
 
   sealed trait SudokuTrait extends JFrame {
     def create(): Unit = {
@@ -26,7 +26,8 @@ object Sudoku {
       cp.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT))
       pack()
 
-      mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+      //mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+      mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE)
 
       showNumberList.setEditable(false)
       showNumberList.setEnabled(false)

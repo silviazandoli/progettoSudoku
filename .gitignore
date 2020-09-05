@@ -17,6 +17,10 @@ project/plugins/project/
 score/*
 temp/*
 
+score/score.txt
+score/timer.txt
+temp/tmp.txt
+
 ### Scala ###
 *.class
 *.log
