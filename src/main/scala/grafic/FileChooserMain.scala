@@ -15,7 +15,7 @@ object MyMenuHelpers {
     menu.foreach(menuItem.add(_))
     menuItem
   }
-  // Uses an implicit conversion to shorten the code
+  // Use of an implicit conversion to shorten the code
   implicit def functionActionListener(f: ActionEvent => Unit) =
     new ActionListener {
       def actionPerformed(event: ActionEvent) = f(event)
