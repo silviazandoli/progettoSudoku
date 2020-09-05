@@ -4,7 +4,7 @@ import java.awt.Dimension
 import java.awt.event.{ActionEvent, ActionListener, KeyEvent}
 
 import grafic.FileChooser.{cont, initAndUpload}
-import grafic.panels.funAux.SaveLoad
+import grafic.panels.funAux.SaveLoad.read
 import javax.swing._
 
 //Made by Zandoli
@@ -51,7 +51,7 @@ object FileChooserMain extends App {
   openEasy.addActionListener((_: ActionEvent) => (load=false,initAndUpload(mainFrame, "input/easy"), cont()))
   openMedium.addActionListener((_: ActionEvent) => (load=false,initAndUpload(mainFrame, "input/medium"), cont()))
   openHard.addActionListener((_: ActionEvent) => (load=false,initAndUpload(mainFrame, "input/hard"), cont()))
- loadFile.addActionListener((_: ActionEvent) => (load=true,SaveLoad.read(),initAndUpload(mainFrame,"temp"),cont()))
+ loadFile.addActionListener((_: ActionEvent) => (load=true,read(),initAndUpload(mainFrame,"temp"),cont()))
   val text="made by Pacini, Zandoli, Antonelli"
   aboutMenu.addActionListener((_:ActionEvent)=>JOptionPane.showMessageDialog(mainFrame, s"Sudoku ${text}"))
   exitMenu.addActionListener((_:ActionEvent)=>sys.exit(0))
