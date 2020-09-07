@@ -1,5 +1,8 @@
 package grafic.panels.funAux
 
+/**
+ *  Made by Pacini
+ */
 private[panels] object MakePanelGrafic {
   import java.awt.event.ActionEvent
   import java.awt.{Color, Dimension}
