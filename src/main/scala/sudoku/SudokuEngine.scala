@@ -37,18 +37,16 @@ object SudokuEngine extends App {
       }
     }
 
-    /**
-     * strategy 2 made by Lorenzo Pacini
-     * strategy 3 made by Lorenzo Pacini and Silvia Zandoli
-     */
-
+    /*Strategy 2 made by Lorenzo Pacini*/
     val strat2 = new StrategyImpl {override def resolutionMethod(): Unit = totalHiddenSingles()}
 
-    /*strategy 4 done by Silvia Zandoli*/
+    /*Strategy 3 done by Silvia Zandoli*/
     val strat3=new StrategyImpl {override def resolutionMethod():Unit= solveHiddenPair()}
 
+    /*Strategy 4 done by Alberto Antonelli*/
     val strat4 = new StrategyImpl {override def resolutionMethod():Unit= solveNakedPair()}
 
+    /*Strategy 5 done by Lorenzo Pacini and Silvia Zandoli*/
     val strat5 = new StrategyImpl {override def resolutionMethod(): Unit = FullExploration(puzzle).solve(0, 0)}
 
     /**

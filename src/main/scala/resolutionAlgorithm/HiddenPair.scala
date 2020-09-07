@@ -59,8 +59,8 @@ object HiddenPair {
         //we need to localize the two squares in the block
         List(p.cell1, p.cell2).foreach(c => {
           import resolutionAlgorithm.HiddenPairsHelpers._
+          //use of an implicit
           val converted=c.base3()
-          //val converted = base3(c)
           val ct = (converted._1 + shiftRow, converted._2 + shiftCol)
           matList(ct._1)(ct._2) = p.intersection.head.toList
         })
@@ -71,15 +71,6 @@ object HiddenPair {
     println("Hidden Pairs in blocks:" + blocks)
 
   }
-
-  // a function for converting to base 3
- /* def base3(num: Int): (Int, Int) = {
-    val one = num / 3
-    val first = num % 3
-    val second = one % 3
-    (second, first)
-  }*/
-
 
   def check(ml: List[(List[Int], Int)]): List[PossiblePair] = {
     //possiblePairs contains all the possibles pairs with their coordinates
