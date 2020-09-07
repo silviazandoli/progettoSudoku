@@ -18,7 +18,7 @@ object HiddenPair {
       val row = t._2
       t._1.foreach(p => {
         val newValues = p.intersection.head.toList
-        //in the two squares it return the newValues that are the values of the Hidden Pair with all other candidates removed
+        //in the two squares it returns the newValues that are the values of the Hidden Pair with all other candidates removed
         //we overwrite the squares
         matList(row)(p.cell1) = newValues
         matList(row)(p.cell2) = newValues
@@ -179,8 +179,7 @@ object HiddenPair {
     // from the list we only take the the subsets who have size two
     //it obtains a list of elems taken 2 per 2
     val l1 = l._1.toSet.subsets(2).toList
-
-    //memorizzo gli indici che mi sono arrivati su l
+    
     //I store the indexes that got to me on l and put them on l2
     val l2 = l._2
     (l1, l2)
