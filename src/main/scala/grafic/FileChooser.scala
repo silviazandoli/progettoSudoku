@@ -11,7 +11,7 @@ import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
 
-//made by Zandoli
+/*made by Zandoli*/
 
 object FileChooser {
   var count=1

@@ -7,7 +7,7 @@ import grafic.FileChooser.{cont, initAndUpload}
 import grafic.panels.funAux.SaveLoad.read
 import javax.swing._
 
-//Made by Zandoli
+/*Made by Zandoli*/
 
 object MyMenuHelpers {
   def createMenu(menu: JMenuItem*): JMenu = {
@@ -22,10 +22,11 @@ object MyMenuHelpers {
     }
 }
 
-object FileChooserMain extends App {
-
+object FileChooserMain {
   var load=false
   val mainFrame = new JFrame("Sudoku")
+
+  def createMainGraphic()={
   mainFrame.setPreferredSize(new Dimension(400, 300))
   val menuBar = new JMenuBar()
   val openEasy = new JMenuItem("Open Easy", KeyEvent.VK_O)
@@ -58,5 +59,5 @@ object FileChooserMain extends App {
 
   mainFrame.pack()
   mainFrame.setVisible(true)
-
+}
 }
