@@ -31,11 +31,10 @@ protected[event] object ControlNumbersAndFinish {
       val option = JOptionPane.showConfirmDialog(null, "New Game?", "Message", JOptionPane.YES_NO_CANCEL_OPTION)
       option match {
         case 0 =>
-        //cp.setVisible(false)
 
         // reupload of the sudoku
         //the interface of Sudoku remains open, so you don't have to write anything here
-        //when you finish the game click the exit button in the matrix and open a new file from the interface
+        //when you finish the game click the exit button in the sudoku matrix and open a new file from the interface
 
         case 1 => System.exit(0)
         case _ => System.out.println("cancel")
