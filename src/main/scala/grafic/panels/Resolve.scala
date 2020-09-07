@@ -16,13 +16,13 @@ import javax.swing.JFrame
 object Resolve {
 
 
-  def resolve(main : JFrame) = {
+  def resolve(cp : Container) = {
     //System.exit(0)
     initList()
     strategyList()
     stopVar = true;
-    main.dispose()
-    //main.setVisible(false)
+    //main.dispose()
+    cp.setVisible(false)
     val sudoku = Sudoku()
     sudoku.create()
 
