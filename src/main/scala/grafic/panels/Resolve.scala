@@ -3,7 +3,7 @@ package grafic.panels
 import grafic.Sudoku.Sudoku
 import sudoku.MatListOperation.initList
 import sudoku.SudokuEngine.strategyList
-import AuxFunctSPanel.thread
+import AuxFunctSPanel.stopVar
 
 
 /**
@@ -14,7 +14,7 @@ object Resolve {
   def resolve() = {
     initList()
     strategyList()
-    thread.stop()
+    stopVar = true;
     val sudoku = Sudoku()
     sudoku.create()
   }
