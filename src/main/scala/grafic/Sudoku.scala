@@ -17,8 +17,10 @@ object Sudoku {
   import grafic.FileChooserMain.mainFrame
 
   sealed trait SudokuTrait extends JFrame {
+
     def create(): Unit = {
       this.setLocation(300, 50) //center
+      var matrix = this
       cp = this.getContentPane
       CreateMatrix.createMatrix()
 

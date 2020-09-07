@@ -10,6 +10,7 @@ private[panels] object MakePanelGrafic {
   import grafic.util.FONT_MATLIST
   import grafic.{showNumberList, textTime}
   import grafic.panels._
+  import grafic.FileChooserMain.mainFrame
 
   def setDimension(): Unit = {
     pb.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight)) // dim
@@ -43,7 +44,7 @@ private[panels] object MakePanelGrafic {
     saveButton.addActionListener((_: ActionEvent) => SaveLoad.save())
     pb.add(saveButton)
 
-    puzzleResolve.addActionListener((_: ActionEvent) => Resolve.resolve())
+    puzzleResolve.addActionListener((_: ActionEvent) => Resolve.resolve(mainFrame))
     pb.add(puzzleResolve)
 
     /*adviceButton.addActionListener((_: ActionEvent) => Advice.suggerisci())
