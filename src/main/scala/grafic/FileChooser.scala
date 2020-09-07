@@ -1,4 +1,5 @@
 package grafic
+
 import java.io.File
 
 import grafic.Sudoku.Sudoku
@@ -14,9 +15,9 @@ import utility.getPuzzle
 /*made by Zandoli*/
 
 object FileChooser {
-  var count=1
-  
-//method for the upload of a sudoku
+  var count = 1
+
+  //method for the upload of a sudoku
   def initAndUpload(frame: JFrame, modality: String): Unit = {
     import grafic.Helpers._
 
@@ -76,4 +77,5 @@ object Helpers {
     //def multipleFiles() = jfc.getSelectedFiles()
     def selectedFile() = jfc.getSelectedFile()
   }
+
 }
