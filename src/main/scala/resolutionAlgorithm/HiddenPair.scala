@@ -179,7 +179,7 @@ object HiddenPair {
     // from the list we only take the the subsets who have size two
     //it obtains a list of elems taken 2 per 2
     val l1 = l._1.toSet.subsets(2).toList
-    
+
     //I store the indexes that got to me on l and put them on l2
     val l2 = l._2
     (l1, l2)
