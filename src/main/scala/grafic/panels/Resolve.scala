@@ -15,7 +15,6 @@ import javax.swing.JFrame
  */
 object Resolve {
 
-
   def resolve(cp : Container) = {
     //System.exit(0)
     initList()
