@@ -4,15 +4,22 @@ package grafic.panels.funAux
  * * Method saveGame made by Pacini, the rest made by Zandoli (methods scoreGame, timerGame and read)
  */
 object SaveLoad {
+
   import java.io._
 
+  import grafic.FileChooserMain.load
   import grafic.panels.AuxFunctSPanel.timeInit
   import grafic.util.{FileWork, score}
   import grafic.{masks, tfCells}
   import utility.dimSudoku
-  import grafic.FileChooserMain.load
 
   import scala.util.Using
+
+  def save(): Unit = {
+    saveGame()
+    scoreGame()
+    timerGame()
+  }
 
   private def saveGame(): Unit = {
     FileWork.deleteFile()
@@ -58,14 +65,8 @@ object SaveLoad {
     }
   }
 
-  def save(): Unit = {
-    saveGame()
-    scoreGame()
-    timerGame()
-  }
-
   def read(): Unit = {
-   //the first if the case you open a new game
+    //the first if the case you open a new game
     if (!load) {
       timeInit = 0
       score = 0
