@@ -28,7 +28,6 @@ object Sudoku {
       cp.setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT))
       pack()
 
-      //mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
       mainFrame.setDefaultCloseOperation(EXIT_ON_CLOSE)
 
       showNumberList.setEditable(false)

@@ -9,6 +9,10 @@ import grafic.util.{factSecond, score}
  */
 sealed trait ThreadTime extends Thread {
 
+  /**
+   * append time and score on textField for
+   * user to understand his/her performance
+   */
   private def appendScoreTime(): Unit = {
     val text: String = textTime.getText()
     if (!text.isEmpty) {
@@ -23,6 +27,9 @@ sealed trait ThreadTime extends Thread {
     }
   }
 
+  /**
+   * set current time on field of game time
+   */
   override def run() {
     while (true) {
       if (!stopVar) {

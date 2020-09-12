@@ -21,6 +21,11 @@ object SaveLoad {
     timerGame()
   }
 
+  /**
+   * save sudoku game on file tmp.txt.
+   * it is useful to user to load this file
+   * to play other games
+   */
   private def saveGame(): Unit = {
     FileWork.deleteFile()
     FileWork.createFile()
@@ -44,6 +49,9 @@ object SaveLoad {
     bw.close()
   }
 
+  /**
+   * saving user score on score.txt
+   */
   private def scoreGame(): Unit = {
     FileWork.createFile()
 
@@ -54,6 +62,10 @@ object SaveLoad {
     scoreFile.close()
   }
 
+  /**
+   * saving time of user's game on file timer.txt.
+   * this is useful for user to keep time track of last time.
+   */
   private def timerGame(): Unit = {
     FileWork.createFile()
     try {

@@ -15,6 +15,10 @@ object AuxFunctSPanel {
 
   var thread: ThreadTime = ThreadTime()
 
+  /**
+   *  when button is green, user can click to start game.
+   *  when button is red user can click to stop game and see his/her results.
+   */
   def startStop(): Unit = {
     if (startStopButton.getBackground == Color.green) {
       AssociateListener.associateListener()
@@ -26,6 +30,11 @@ object AuxFunctSPanel {
     }
   }
 
+  /**
+   * time init = actual if a new game is launched
+   * (not launched a previous game)
+   * if thread is not alive make execution of thread
+   */
   def startGame(): Unit = {
     // no loaded and not stopped before
     stopVar = false

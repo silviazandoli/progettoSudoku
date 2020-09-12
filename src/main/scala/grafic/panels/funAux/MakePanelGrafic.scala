@@ -2,16 +2,16 @@ package grafic.panels.funAux
 
 /**
  *  Made by Pacini
+ *  set dimension, color and coordinates of each component
+ *  of panel of the graphic (left panel)
  */
 private[panels] object MakePanelGrafic {
   import java.awt.event.ActionEvent
   import java.awt.{Color, Dimension}
 
-  import grafic.util.FONT_MATLIST
-  import grafic.{showNumberList, textTime}
   import grafic.panels._
-  import grafic.FileChooserMain.mainFrame
-  import grafic.cp
+  import grafic.util.FONT_MATLIST
+  import grafic.{cp, showNumberList, textTime}
 
   def setDimension(): Unit = {
     pb.setPreferredSize(new Dimension(ButtonsWidth, ButtonsHeight)) // dim
