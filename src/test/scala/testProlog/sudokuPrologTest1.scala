@@ -6,7 +6,9 @@ import alice.tuprolog.{Prolog, Theory}
 import org.scalatest.FunSuite
 
 class sudokuPrologTest1 extends FunSuite {
- /* file sudokuProlog and engine with tests made by Zandoli and Pacini*/
+
+  /* file sudokuProlog and engine with tests made by Zandoli and Pacini*/
+  
   val engine = new Prolog
   val fileSudoku = "prolog/SudokuProlog.pl"
 
@@ -25,7 +27,7 @@ class sudokuPrologTest1 extends FunSuite {
 
     val solution = "" + info.getSolution
 
-    assert(solution == "sudoku(1,9,6,4,7,8,3,2,5,"+
+    assert(solution == "sudoku(1,9,6,4,7,8,3,2,5," +
       "3,8,5,2,6,1,7,4,9," +
       "4,2,7,5,3,9,8,1,6," +
       "8,3,2,6,5,4,1,9,7," +
@@ -49,7 +51,7 @@ class sudokuPrologTest1 extends FunSuite {
 
     val solution = "" + info.getSolution
 
-    assert(solution == "sudoku(1,9,6,4,7,8,3,2,5,"+
+    assert(solution == "sudoku(1,9,6,4,7,8,3,2,5," +
       "3,8,5,2,6,1,7,4,9," +
       "4,2,7,5,3,9,8,1,6," +
       "8,3,2,6,5,4,1,9,7," +
