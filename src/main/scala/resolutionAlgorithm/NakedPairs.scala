@@ -1,5 +1,7 @@
 package resolutionAlgorithm
 
+
+/** made by antonelli */
 object NakedPairs {
   import utility.{dimSudoku, matList}
 

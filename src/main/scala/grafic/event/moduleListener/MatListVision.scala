@@ -5,7 +5,9 @@ protected[event] object MatListVision {
   import grafic.util.FONT_MINILIST
   import grafic.{showNumberList, graficSet}
 
- /*@Antonelli*/
+ /**
+  * Made by Antonelli
+  * */
   def seeVision(possibleValues: Set[Int], t: TextOpNumber): Unit = {
     var textIns : String = ""
     showNumberList.setText("")
