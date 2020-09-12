@@ -2,3 +2,4 @@ language:
   - scala
 scala:
   - 2.13.3
+export DISPLAY=:0.0

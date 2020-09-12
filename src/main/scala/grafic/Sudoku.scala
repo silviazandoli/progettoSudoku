@@ -18,9 +18,12 @@ object Sudoku {
 
   sealed trait SudokuTrait extends JFrame {
 
+    /**
+     * create panel for sudoku matrix and JTextField for
+     * show of possible numbers in each cell on list
+     */
     def create(): Unit = {
       this.setLocation(300, 50) //center
-      var matrix = this
       cp = this.getContentPane
       CreateMatrix.createMatrix()
 
