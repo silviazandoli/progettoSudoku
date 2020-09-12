@@ -1,45 +1,16 @@
 package prolog
 
-import alice.tuprolog._
-// libraryDependencies += "it.unibo.alice.tuprolog" % "tuprolog" % "3.3.0"
+object sudokuProlog extends App {
+  import java.io.FileInputStream
 
+  import alice.tuprolog.Prolog
+  import alice.tuprolog.Theory
 
-object Test1 {
-  @throws[Exception]
-  def main(args: Array[String]): Unit = {
-    val engine = new Prolog
-    val info = engine.solve(":- use_module(library(clpfd))." +
-     "sudoku(Rows) :-" +
-      "length(Rows, 9), maplist(same_length(Rows), Rows)," +
-      "append(Rows, Vs), Vs ins 1..9,"+
-      "maplist(all_distinct, Rows),"+
-      "transpose(Rows, Columns),"+
-      " maplist(all_distinct, Columns),"+
-      "Rows = [As,Bs,Cs,Ds,Es,Fs,Gs,Hs,Is],"+
-      "blocks(As, Bs, Cs),"+
-      "blocks(Ds, Es, Fs),"+
-      "blocks(Gs, Hs, Is)."+
-      "blocks([], [], [])."+
-      "blocks([N1,N2,N3|Ns1], [N4,N5,N6|Ns2], [N7,N8,N9|Ns3]) :-"+
-      "all_distinct([N1,N2,N3,N4,N5,N6,N7,N8,N9]),"+
-      "blocks(Ns1, Ns2, Ns3)."
+  val engine = new Prolog
 
-      //THIS is THE QUERY
-    /*"problem(1, [[_,_,_,_,_,_,_,_,_],"+
-      "[_,_,_,_,_,3,_,8,5],"+
-      "[_,_,1,_,2,_,_,_,_],"+
-      "[_,_,_,5,_,7,_,_,_],"+
-      "[_,_,4,_,_,_,1,_,_],"+
-      "[_,9,_,_,_,_,_,_,_],"+
-      "[5,_,_,_,_,_,_,7,3],"+
-      "[_,_,2,_,1,_,_,_,_],"+
-      "[_,_,_,_,4,_,_,_,9]])."*/
+  // add theory from a file
+  engine.addTheory(new Theory(new FileInputStream("prolog/sudokuProlog.pl")))
 
-
-
-
-    )
-    System.out.println(info.getSolution)
-    // "append([1],[2,3],[1,2,3])"
-  }
+  val info = engine.solve("sudoku(1, 9, 6, 4, 7, 8, 3, 2, 5,3, 8, 5, 2, 6, 1, 7, 4, 9,4, 2, 7, 5, 3, 9, 8, 1, 6,8, 3, 2, 6, 5, 4, 1, 9, 7,6, 1, 9, 8, 2, 7, 5, 3, 4,7, 5, 4, 9, 1, 3, 6, 8, 2,2, 7, 8, 1, 4, 6, 9, 5, 3,9, 4, 3, 7, 8, 5, 2, 6, 1,5, 6, 1, 3, 9, 2, 4, 7,_).")
+  println("" + info.getSolution)
 }
