@@ -1,6 +1,9 @@
 package prolog
 
 object sudokuProlog extends App {
+
+  /*file sudokuProlog and engine made by Zandoli and Pacini*/
+
   import java.io.FileInputStream
 
   import alice.tuprolog.Prolog

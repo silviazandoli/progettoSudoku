@@ -2,12 +2,12 @@ package testProlog
 
 import java.io.FileInputStream
 
-import alice.tuprolog.{Prolog, SolveInfo, Theory}
-import org.scalatest.{BeforeAndAfter, FunSuite}
+import alice.tuprolog.{Prolog, Theory}
+import org.scalatest.FunSuite
 
 class sudokuPrologTest1 extends FunSuite {
   val engine = new Prolog
-  val fileSudoku = "prolog/NuovoSudoku.pl"
+  val fileSudoku = "prolog/sudokuProlog.pl"
 
   engine.addTheory(new Theory(new FileInputStream(fileSudoku)))
 
