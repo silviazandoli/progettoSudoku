@@ -2,13 +2,12 @@ package resolutionAlgorithm
 
 import utility.{dimSudoku, matList}
 
+/*Made by Zandoli*/
+
 /*A hidden pair occurs when a pair of numbers appears in exactly
  two squares in a row, column, or block, but those two numbers aren't the only ones in their squares.
  */
 
-/*
- Done by Zandoli
-  */
 object HiddenPair {
 
   def solveHiddenPair(): Unit = {
@@ -132,7 +131,6 @@ object HiddenPair {
 
     //it gets the squares of the matList which have more than one element
     val ml = matList.map(_ (col)).zipWithIndex.filter(_._1.size > 1).toList
-    //  println(ml.toList)
     check(ml)
 
   }
@@ -155,7 +153,6 @@ object HiddenPair {
 
 
     } yield (i, j)
-    // println(square)
     val h = square.head
 
     //calc indexes of the block
