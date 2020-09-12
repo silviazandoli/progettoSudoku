@@ -66,7 +66,7 @@ object SaveLoad {
   }
 
   def read(): Unit = {
-    //the first if the case you open a new game
+    //the first in the case you open a new game
     if (!load) {
       timeInit = 0
       score = 0
