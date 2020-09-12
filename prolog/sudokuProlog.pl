@@ -74,10 +74,6 @@ solved(R1C1, R1C2, R1C3, R1C4, R1C5, R1C6, R1C7, R1C8, R1C9,
 
 % Determine if each square in either a row, column, or block are
 % different
-/*validate(A,B,C,D,E,F,G,H,I):- (all_numbers([A,B,C,D,E,F,G,H,I]), all_different([A,B,C,D,E,F,G,H,I])).
-
-all_numbers([A,B,C,D,E,F,G,H,I]):-num(A), num(B), num(C), num(D), num(E), num(F), num(G), num(H), num(I).*/
-
 
 
 validate(A, B, C, D, E, F, G, H, I) :- num(A), num(B), num(C), num(D), num(E), num(F), num(G), num(H), num(I), allDifferent(A,[B, C, D, E, F, G, H, I]), allDifferent(B,[C, D, E, F, G, H, I]), allDifferent(C,[D, E, F, G, H, I]), 
