@@ -79,9 +79,11 @@ solved(R1C1, R1C2, R1C3, R1C4, R1C5, R1C6, R1C7, R1C8, R1C9,
 
 
 
-validate(A, B, C, D, E, F, G, H, I) :- num(A), num(B), num(C), num(D), num(E), num(F), num(G), num(H), num(I), allDifferent(A,[B, C, D, E, F, G, H, I]), allDifferent(B,[C, D, E, F, G, H, I]), allDifferent(C,[D, E, F, G, H, I]), 
-																				allDifferent(D,[E, F, G, H, I]), allDifferent(E,[F, G, H, I]), allDifferent(F,[G, H, I]), 
-																				 allDifferent(G,[H, I]), allDifferent(H,[I]).
+validate(A, B, C, D, E, F, G, H, I) :- num(A), num(B), num(C), num(D), num(E), num(F), num(G), num(H), num(I),
+                                        allDifferent(A,[B, C, D, E, F, G, H, I]), allDifferent(B,[C, D, E, F, G, H, I]),
+                                        allDifferent(C,[D, E, F, G, H, I]), allDifferent(D,[E, F, G, H, I]),
+                                        allDifferent(E,[F, G, H, I]), allDifferent(F,[G, H, I]),
+										allDifferent(G,[H, I]), allDifferent(H,[I]).
 
 allDifferent(A, []). 
 allDifferent(A, [B|T]) :- A\=B, allDifferent(A, T).
