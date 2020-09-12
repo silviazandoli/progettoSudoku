@@ -6,8 +6,9 @@ import alice.tuprolog.{Prolog, Theory}
 import org.scalatest.FunSuite
 
 class sudokuPrologTest1 extends FunSuite {
+ /* file sudokuProlog and engine with tests made by Zandoli and Pacini*/
   val engine = new Prolog
-  val fileSudoku = "prolog/sudokuProlog.pl"
+  val fileSudoku = "prolog/SudokuProlog.pl"
 
   engine.addTheory(new Theory(new FileInputStream(fileSudoku)))
 
