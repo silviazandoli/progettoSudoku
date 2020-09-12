@@ -82,6 +82,7 @@ validate(A, B, C, D, E, F, G, H, I) :- num(A), num(B), num(C), num(D), num(E), n
                                         allDifferent(C,[D, E, F, G, H, I]), allDifferent(D,[E, F, G, H, I]),
                                         allDifferent(E,[F, G, H, I]), allDifferent(F,[G, H, I]),
 										allDifferent(G,[H, I]), allDifferent(H,[I]).
+										
 
 allDifferent(A, []). 
 allDifferent(A, [B|T]) :- A\=B, allDifferent(A, T).
