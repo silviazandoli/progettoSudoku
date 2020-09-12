@@ -59,7 +59,7 @@ object HiddenPair {
         List(p.cell1, p.cell2).foreach(c => {
           import resolutionAlgorithm.HiddenPairsHelpers._
           //use of an implicit
-          val converted=c.base3()
+          val converted = c.base3()
           val ct = (converted._1 + shiftRow, converted._2 + shiftCol)
           matList(ct._1)(ct._2) = p.intersection.head.toList
         })
@@ -83,8 +83,7 @@ object HiddenPair {
       PossiblePair(val1._2, val2._2, intersection)
 
     }).filter(_.intersection.nonEmpty) //those which have intersection nonEmpty could be the possible HiddenPairs
-
-    // println(possiblePairs)
+    
     //there are some cases as List(1,7,Set(Set(4,3),Set(5,6)). From row 34 to 38
     //I make sure to separate the different pairs in order to get
     // List(1,7,Set(Set(4,3))) e List(1,7,Set(Set(5,6)))
@@ -188,8 +187,9 @@ object HiddenPair {
 }
 
 //an implicit
-object HiddenPairsHelpers{
-  implicit class IntHelper(num:Int){
+object HiddenPairsHelpers {
+
+  implicit class IntHelper(num: Int) {
 
     def base3(): (Int, Int) = {
       val one = num / 3
@@ -198,4 +198,5 @@ object HiddenPairsHelpers{
       (second, first)
     }
   }
+
 }
