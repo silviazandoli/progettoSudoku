@@ -37,7 +37,7 @@ class sudokuPrologTest1 extends FunSuite {
   }
 
   test("TestSudoku01") {
-    val info = engine.solve("sudoku(1, 9, 6, 4, 7, 8, 3, 2, 5," +
+    val info = engine.solve("sudoku(_, 9, 6, 4, 7, 8, 3, 2, 5," +
       "\n        3, 8, 5, 2, 6, 1, 7, 4, 9," +
       "\n        4, 2, 7, 5, 3, 9, 8, 1, 6," +
       "\n        8, 3, 2, 6, 5, 4, 1, 9, 7," +
