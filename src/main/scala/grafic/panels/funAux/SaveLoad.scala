@@ -51,6 +51,7 @@ object SaveLoad {
 
   /**
    * saving user score on score.txt
+   * this is useful for user to keep track of last score
    */
   private def scoreGame(): Unit = {
     FileWork.createFile()
@@ -64,7 +65,7 @@ object SaveLoad {
 
   /**
    * saving time of user's game on file timer.txt.
-   * this is useful for user to keep time track of last time.
+   * this is useful for user to keep track of last time.
    */
   private def timerGame(): Unit = {
     FileWork.createFile()
@@ -83,7 +84,8 @@ object SaveLoad {
       timeInit = 0
       score = 0
     } else {
-
+      /*read the time and the score from timer.txt and score.txt in order to update the current values of time and score
+      * in case of the load of an old game */
       val linesTimer: String =
         Using.resource(new BufferedReader(new FileReader("score/timer.txt"))) { reader =>
           Iterator.continually(reader.readLine()).takeWhile(_ != null).toSeq.toList.toString()

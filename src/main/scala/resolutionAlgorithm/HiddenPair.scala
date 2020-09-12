@@ -83,7 +83,7 @@ object HiddenPair {
       PossiblePair(val1._2, val2._2, intersection)
 
     }).filter(_.intersection.nonEmpty) //those which have intersection nonEmpty could be the possible HiddenPairs
-    
+
     //there are some cases as List(1,7,Set(Set(4,3),Set(5,6)). From row 34 to 38
     //I make sure to separate the different pairs in order to get
     // List(1,7,Set(Set(4,3))) e List(1,7,Set(Set(5,6)))
