@@ -10,6 +10,9 @@ object CreateMatrix {
   import grafic.{cp, tfCells}
   import grafic.panels.TextOpNumber.TextOpNumber
 
+  /**
+   * creazione del pannello della matrice di gioco
+   */
   private def getMatrixGame: JPanel = {
     val matrixGame = new JPanel()
 
@@ -19,6 +22,11 @@ object CreateMatrix {
     matrixGame
   }
 
+  /**
+   * matrice di gioco dove in base al numero del puzzle caricato:
+   * se 0 vengono associati i 2 listener nella corrispondente cella
+   * se > 0 viene scritto il numero sulla matrice di gioco
+   */
   def createMatrix(): Unit = {
     val matrixGame = getMatrixGame
     cp.add(matrixGame)
@@ -47,6 +55,11 @@ object CreateMatrix {
     createBorder()
   }
 
+  /**
+   * imposta il bordo di ciascuna cella come nero, le celle di separazione,
+   * cioè quelle che stanno nelle righe e colonne di indice pari a partire
+   * da 2 sono colorate di rosso
+   */
   private def createBorder(): Unit = {
     for (i <- 0 until dimSudoku; j <- 2 until dimSudoku by 3) {
       tfCells(i)(j).setBorder(BorderFactory.createMatteBorder(1,1,1,3,Color.red))

@@ -11,6 +11,10 @@ object AssociateListener {
 
   import scala.swing.{Color, Font}
 
+  /**
+   * associa i listener per capire l'operazione da fare
+   * e per capire cosa ha premuto l'utente
+   */
   def associateListener(): Unit = {
     for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
       puzzle(row)(col) match {
@@ -22,6 +26,10 @@ object AssociateListener {
     }
   }
 
+  /**
+   *  scrive il numero su una cella della matrice di gioco,
+   *  impostandone colore di foreground e background
+   */
   def writeText(textOpNumber: TextOpNumber, row: Int, col: Int,
                 editFlag: Boolean,
                 font: Font, color1: Color, color2: Color) (strText: String): Unit = {
