@@ -17,7 +17,7 @@ import utility.getPuzzle
 object FileChooser {
   var count = 1
 
-  //method for the upload of a sudoku
+  //method for the upload of a sudoku, used in FileChooserMain
   def initAndUpload(frame: JFrame, modality: String): Unit = {
     import grafic.Helpers._
 

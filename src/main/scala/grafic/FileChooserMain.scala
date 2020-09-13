@@ -22,7 +22,7 @@ object MyMenuHelpers {
       def actionPerformed(event: ActionEvent) = f(event)
     }
 }
-
+//the main interface
 object FileChooserMain {
   val mainFrame = new JFrame("Sudoku")
   var load = false
