@@ -4,7 +4,7 @@ package grafic.util
  * Made by Pacini
  */
 object AssociateListener {
-  import grafic.event.{MouseListener, WriteOnCell}
+  import grafic.event.{MyMouseListener, WriteOnCell}
   import grafic.panels.TextOpNumber.TextOpNumber
   import utility.{dimSudoku, puzzle}
   import grafic._
@@ -19,7 +19,7 @@ object AssociateListener {
     for (row <- 0 until dimSudoku; col <- 0 until dimSudoku) {
       puzzle(row)(col) match {
         case 0 =>
-          tfCells(row)(col).addMouseListener(MouseListener(row, col))
+          tfCells(row)(col).addMouseListener(MyMouseListener(row, col))
           tfCells(row)(col).addKeyListener(WriteOnCell(row, col))
         case _ =>
       }

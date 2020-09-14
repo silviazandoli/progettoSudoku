@@ -1,11 +1,10 @@
 package grafic.event
 
-import java.awt.event.{MouseAdapter, MouseEvent}
-import javax.swing.JOptionPane
+import java.awt.event.{MouseEvent, MouseListener}
 
+import javax.swing.JOptionPane
 import grafic.event.moduleListener.{MatListVision, SayHelp}
 import grafic.panels.TextOpNumber.TextOpNumber
-
 import grafic.graficSet
 import grafic.util.{FONT_MATLIST, FONT_MINILIST, NUMBER, NUMBER_LIST}
 import utility.matList
@@ -13,17 +12,15 @@ import utility.matList
 /**
  * Made By Pacini (Alert Dialog made by Zandoli, n match made by Pacini)
  */
-sealed trait MouseListener extends MouseAdapter {
-  val row: Int
-  val col: Int
+sealed trait MyMouseListener extends CellListener with MouseListener {
 
-  //aggiunto evento per cliccare su ogni casella
-  override def mousePressed(e: MouseEvent): Unit = {
+  //add event to click over each cell
+  def mouseReleased(e: MouseEvent): Unit = {
     val t: TextOpNumber = e.getSource.asInstanceOf[TextOpNumber]
-    if (t.isEditable) {selectNumber(t: TextOpNumber)} //the called method on mouse click
+    if (t.isEditable) {actionCell(t: TextOpNumber)} //the called method on mouse click
   }
 
-  def selectNumber(t: TextOpNumber): Unit = {
+  def actionCell(t: TextOpNumber): Int = {
    val options = Array[AnyRef]("Insert numbers", "Insert list of numbers", "See matlist", "Help!")
     val n = JOptionPane.showOptionDialog(null, "How to proceed?", "User mode", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options(3))
 
@@ -33,10 +30,17 @@ sealed trait MouseListener extends MouseAdapter {
       case 3 => SayHelp.sayHelp(row,col,t)
       case _ => t.setText(""); t.setFont(FONT_MATLIST); graficSet[String](NUMBER)
     }
+
+    n
   }
 }
 
-object MouseListener {
-  def apply(row: Int, col: Int): MouseListener = MouseListenerImplements(row: Int, col: Int)
-  private case class MouseListenerImplements(row: Int, col: Int) extends MouseListener
+object MyMouseListener {
+  def apply(row: Int, col: Int): MyMouseListener = MouseListenerImplements(row: Int, col: Int)
+  private case class MouseListenerImplements(row: Int, col: Int) extends MyMouseListener {
+    override def mouseClicked(e: MouseEvent): Unit = {}
+    override def mousePressed(e: MouseEvent): Unit = {}
+    override def mouseEntered(e: MouseEvent): Unit = {}
+    override def mouseExited(e: MouseEvent): Unit = {}
+  }
 }

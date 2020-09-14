@@ -13,30 +13,12 @@ import utility.matList
 /**
 Made by Pacini (Alert dialog with control of numbers made by Zandoli)
  */
-sealed trait WriteOnCell extends KeyListener {
-  val row: Int
-  val col: Int
-
-  private def extractNumber(t: TextOpNumber): Int = {
-    var retText = t.getText
-
-    if (retText.length > 1) {
-      val posLast = retText.length
-      val posInit = posLast - 1
-
-      retText = retText.substring(posInit, posLast)
-    }
-
-    val number = retText.toInt
-    t.setEditable(true)
-
-    number
-  }
+sealed trait WriteOnCell extends CellListener with KeyListener {
 
   def keyReleased(e: KeyEvent): Unit = {
     val t: TextOpNumber = e.getSource.asInstanceOf[TextOpNumber]
     try {
-      val number = extractNumber(t: TextOpNumber)
+      val number = actionCell(t: TextOpNumber)
 
       graficGet[String] match {
         case NUMBER_LIST =>
@@ -50,6 +32,22 @@ sealed trait WriteOnCell extends KeyListener {
       case _: Throwable => t.setForeground(Color.red)
         JOptionPane.showMessageDialog(cp, "It wasn't inserted a number!", "Messaggio", JOptionPane.WARNING_MESSAGE)
     }
+  }
+
+  def actionCell(t: TextOpNumber): Int = {
+    var retText = t.getText
+
+    if (retText.length > 1) {
+      val posLast = retText.length
+      val posInit = posLast - 1
+
+      retText = retText.substring(posInit, posLast)
+    }
+
+    val number = retText.toInt
+    t.setEditable(true)
+
+    number
   }
 }
 
