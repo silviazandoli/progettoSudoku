@@ -10,6 +10,7 @@ import javax.swing._
 /*Made by Zandoli*/
 
 /*It creates the initial interface when you can choose a file to start the game*/
+
 object MyMenuHelpers {
   def createMenu(menu: JMenuItem*): JMenu = {
     val menuItem = new JMenu("File")
