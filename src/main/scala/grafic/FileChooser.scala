@@ -14,6 +14,8 @@ import utility.getPuzzle
 
 /*made by Zandoli*/
 
+/*It is useful for FileChooserMain*/
+
 object FileChooser {
   var count = 1
 
