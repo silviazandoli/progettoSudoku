@@ -77,14 +77,13 @@ solved(R1C1, R1C2, R1C3, R1C4, R1C5, R1C6, R1C7, R1C8, R1C9,
 % Determine if each square in either a row, column, or block are
 % different
 
-validate(A, B, C, D, E, F, G, H, I) :- num(A), num(B), num(C), num(D), num(E), num(F), num(G), num(H), num(I),
-                                        allDifferent(A,[B, C, D, E, F, G, H, I]), allDifferent(B,[C, D, E, F, G, H, I]),
-                                        allDifferent(C,[D, E, F, G, H, I]), allDifferent(D,[E, F, G, H, I]),
-                                        allDifferent(E,[F, G, H, I]), allDifferent(F,[G, H, I]),
-										allDifferent(G,[H, I]), allDifferent(H,[I]).
+    validate(A, B, C, D, E, F, G, H, I) :- num(A), num(B), num(C), num(D), num(E), num(F), num(G), num(H), num(I),different2([A, B, C, D, E, F, G, H, I]).
+
+	different2([]).
+	different2([H|T]) :- allDifferent(H, T), different2(T).
 
 
-allDifferent(A, []). 
+allDifferent(A, []).
 allDifferent(A, [B|T]) :- A\=B, allDifferent(A, T).
 
 % Initialize numbers
