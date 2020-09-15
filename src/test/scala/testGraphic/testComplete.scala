@@ -10,6 +10,7 @@ import resolutionAlgorithm.FullExploration
 
 class testComplete extends FlatSpec with BeforeAndAfter {
 
+  /*
   val input = "input/easy/"
   val outputSolved = "outputSolved/"
 
@@ -59,4 +60,5 @@ class testComplete extends FlatSpec with BeforeAndAfter {
       assert(masks(rowPressed)(colPressed))
     }
   }
+   */
 }
