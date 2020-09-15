@@ -10,7 +10,6 @@ import resolutionAlgorithm.FullExploration
 
 class testComplete extends FlatSpec with BeforeAndAfter {
 
-  /*
   val input = "input/easy/"
   val outputSolved = "outputSolved/"
 
@@ -34,7 +33,7 @@ class testComplete extends FlatSpec with BeforeAndAfter {
     /*
     la schermata si fà vedere all'utente per un secondo e mezzo
      */
-    Thread.sleep(500)
+    //Thread.sleep(500)
   }
 
   "A solved game" should "have all true in mask" in {
@@ -47,6 +46,7 @@ class testComplete extends FlatSpec with BeforeAndAfter {
     assert(!utentSolved())
   }
 
+  /*
   "A game" should "have not all true in mask" in {
     InitTest.initTest(input+"sudoku01.txt")
 
