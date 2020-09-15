@@ -5,7 +5,7 @@ import org.scalatest.{BeforeAndAfter, FlatSpec}
 import sudoku.MatListOperation.initList
 import utility.getPuzzle
 import sudoku.SudokuLoad.loadPuzzle
-import grafic.{graficSet, utentSolved}
+import grafic.{graficSet, graficGet, utentSolved, masks}
 import resolutionAlgorithm.FullExploration
 
 class testComplete extends FlatSpec with BeforeAndAfter {
@@ -21,7 +21,7 @@ class testComplete extends FlatSpec with BeforeAndAfter {
       val sudokuSolver = FullExploration(getPuzzle)
       sudokuSolver.solve(0, 0)
 
-      //graficSet[Array[Array[Int]]](sudokuSolver.returnPuzzle())
+      graficSet[Array[Array[Int]]](sudokuSolver.returnPuzzle())
 
       val sudoku = Sudoku()
       sudoku.create()
@@ -41,5 +41,16 @@ class testComplete extends FlatSpec with BeforeAndAfter {
   "A not solved game" should "have not all true in mask" in {
     InitTest.initTest(input+"sudoku01.txt")
     assert(!utentSolved())
+  }
+
+  "A game" should "have not all true in mask" in {
+    InitTest.initTest(input+"sudoku01.txt")
+    Thread.sleep(6500)
+    val rowCol = graficGet[(Int, Int)]
+    val rowPressed = rowCol._1
+    val colPressed = rowCol._2
+    if (rowPressed >= 0 && colPressed >= 0) {
+      assert(masks(rowPressed)(colPressed))
+    }
   }
 }
