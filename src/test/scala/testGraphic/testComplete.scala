@@ -21,7 +21,7 @@ class testComplete extends FlatSpec with BeforeAndAfter {
       val sudokuSolver = FullExploration(getPuzzle)
       sudokuSolver.solve(0, 0)
 
-      graficSet[Array[Array[Int]]](sudokuSolver.returnPuzzle())
+      //graficSet[Array[Array[Int]]](sudokuSolver.returnPuzzle())
 
       val sudoku = Sudoku()
       sudoku.create()
