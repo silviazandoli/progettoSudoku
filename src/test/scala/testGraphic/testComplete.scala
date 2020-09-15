@@ -23,8 +23,10 @@ class testComplete extends FlatSpec { //with BeforeAndAfter {
 
       graficSet[Array[Array[Int]]](sudokuSolver.returnPuzzle())
 
+      /*
       val sudoku = Sudoku()
       sudoku.create()
+       */
     }
   }
 
@@ -35,17 +37,19 @@ class testComplete extends FlatSpec { //with BeforeAndAfter {
   }
    */
 
+  /*
   "A solved game" should "have all true in mask" in {
     InitTest.initTest(outputSolved+"sudoku01.txt")
     assert(utentSolved())
   }
+   */
 
   "A not solved game" should "have not all true in mask" in {
     InitTest.initTest(input+"sudoku01.txt")
     assert(!utentSolved())
   }
 
-  ///*
+  /*
   "A game" should "have not all true in mask" in {
     InitTest.initTest(input+"sudoku01.txt")
 
