@@ -2,6 +2,3 @@ language: scala
 
 scala:
   - 2.13.3
-
-before_script:
-  - export DISPLAY="IP Address":0.0
