@@ -8,7 +8,7 @@ import sudoku.SudokuLoad.loadPuzzle
 import grafic.{graficGet, graficSet, masks, utentSolved}
 import resolutionAlgorithm.FullExploration
 
-class testComplete extends FlatSpec with BeforeAndAfter {
+class testComplete extends FlatSpec { //with BeforeAndAfter {
 
   val input = "input/easy/"
   val outputSolved = "outputSolved/"
@@ -21,7 +21,6 @@ class testComplete extends FlatSpec with BeforeAndAfter {
       val sudokuSolver = FullExploration(getPuzzle)
       sudokuSolver.solve(0, 0)
 
-      //setPuzzleResolt(sudokuSolver.returnPuzzle())
       graficSet[Array[Array[Int]]](sudokuSolver.returnPuzzle())
 
       val sudoku = Sudoku()
@@ -29,12 +28,12 @@ class testComplete extends FlatSpec with BeforeAndAfter {
     }
   }
 
+  /*
   after {
-    /*
-    la schermata si fà vedere all'utente per un secondo e mezzo
-     */
+    //la schermata si fà vedere all'utente per un secondo e mezzo
     //Thread.sleep(500)
   }
+   */
 
   "A solved game" should "have all true in mask" in {
     InitTest.initTest(outputSolved+"sudoku01.txt")
@@ -46,7 +45,7 @@ class testComplete extends FlatSpec with BeforeAndAfter {
     assert(!utentSolved())
   }
 
-  /*
+  ///*
   "A game" should "have not all true in mask" in {
     InitTest.initTest(input+"sudoku01.txt")
 
@@ -60,5 +59,5 @@ class testComplete extends FlatSpec with BeforeAndAfter {
       assert(masks(rowPressed)(colPressed))
     }
   }
-   */
+  // */
 }
