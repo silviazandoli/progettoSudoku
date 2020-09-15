@@ -8,7 +8,7 @@ import sudoku.SudokuLoad.loadPuzzle
 import grafic.{graficGet, graficSet, masks, utentSolved}
 import resolutionAlgorithm.FullExploration
 
-class testComplete extends FlatSpec { //with BeforeAndAfter {
+class testComplete extends FlatSpec with BeforeAndAfter {
 
   val input = "input/easy/"
   val outputSolved = "outputSolved/"
