@@ -81,7 +81,6 @@ object HiddenPair {
       //intersection are the pairs which are present in both
       val intersection = val1._1.toSet.intersect(val2._1.toSet)
       PossiblePair(val1._2, val2._2, intersection)
-
     }).filter(_.intersection.nonEmpty) //those which have intersection nonEmpty could be the possible HiddenPairs
 
     //there are some cases as List(1,7,Set(Set(4,3),Set(5,6)). From row 34 to 38
@@ -106,8 +105,6 @@ object HiddenPair {
       val c2 = exclusion.contains(p.intersection.head.tail.head)
       //if both the possible pairs aren't in exclusion they are an HIDDEN PAIR
       !c1 && !c2
-
-
     })
     hiddenPairs
   }
