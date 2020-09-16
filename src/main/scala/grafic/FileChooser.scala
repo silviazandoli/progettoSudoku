@@ -22,7 +22,6 @@ object FileChooser {
   //method for the upload of a sudoku, used in FileChooserMain
   def initAndUpload(frame: JFrame, modality: String): Unit = {
     import grafic.Helpers._
-
     AuxFunctSPanel.firstTime = true
     //use of implicit
     val jfc = modality.filechooser()
@@ -32,7 +31,6 @@ object FileChooser {
       val file = jfc.selectedFile()
       //open one sudoku
       processFile(file)
-      //file.foreach(processFile)
     }
   }
 
@@ -58,7 +56,6 @@ object FileChooser {
 
 //using of the pattern implicit
 object Helpers {
-
   implicit class MyStringHelper(str: String) {
     def filechooser() = {
       val jfc = new JFileChooser(str)
@@ -68,15 +65,11 @@ object Helpers {
       val filter = new FileNameExtensionFilter("Files txt", "txt")
       jfc.addChoosableFileFilter(filter)
       jfc
-
     }
   }
-
   implicit class MyFileChooserHelper(jfc: JFileChooser) {
     def open(frame: JFrame) = jfc.showOpenDialog(frame)
-
     //def multipleFiles() = jfc.getSelectedFiles()
     def selectedFile() = jfc.getSelectedFile()
   }
-
 }
