@@ -33,7 +33,7 @@ class testComplete extends FlatSpec with BeforeAndAfter {
     Thread.sleep(500)
   }
 
-  /*
+  /* // work locally but not on travis
   "A solved game" should "have all true in mask" in {
     InitTest.initTest(outputSolved+"sudoku01.txt")
     assert(utentSolved())
