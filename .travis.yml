@@ -4,3 +4,4 @@ scala:
   - 2.13.3
 
 unset DISPLAY
+export DISPLAY=:0
