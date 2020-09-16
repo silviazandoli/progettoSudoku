@@ -31,6 +31,7 @@ object FileChooser {
       val file = jfc.selectedFile()
       //open one sudoku
       processFile(file)
+      //file.foreach(processFile)
     }
   }
 
