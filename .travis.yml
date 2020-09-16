@@ -1,4 +1,6 @@
 language: scala
 
+"os": "windows"
+
 scala:
   - 2.13.3
