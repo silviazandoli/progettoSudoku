@@ -3,5 +3,4 @@ language: scala
 scala:
   - 2.13.3
 
-unset DISPLAY
-export DISPLAY=:0
+export DISPLAY=localhost:0.0
