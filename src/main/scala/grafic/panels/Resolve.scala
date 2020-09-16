@@ -11,8 +11,8 @@ import javax.swing.JFrame
 
 
 /**
- * @Antonelli => da implementare
- */
+ * @Antonelli
+ * */
 object Resolve {
 
   def resolve(cp : Container) = {
