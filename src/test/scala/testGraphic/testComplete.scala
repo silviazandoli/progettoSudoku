@@ -33,10 +33,12 @@ class testComplete extends FlatSpec with BeforeAndAfter {
     Thread.sleep(500)
   }
 
+  /*
   "A solved game" should "have all true in mask" in {
     InitTest.initTest(outputSolved+"sudoku01.txt")
     assert(utentSolved())
   }
+   */
 
   "A not solved game" should "have not all true in mask" in {
     InitTest.initTest(input+"sudoku01.txt")
