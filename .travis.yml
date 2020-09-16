@@ -3,4 +3,4 @@ language: scala
 scala:
   - 2.13.3
 
-export DISPLAY=localhost:20.0
+export DISPLAY=localhost:10.0
