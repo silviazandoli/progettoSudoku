@@ -8,7 +8,7 @@ protected[event] object InsertNumber {
   import java.awt.Color
   import javax.swing.JOptionPane
 
-  import grafic.event.moduleListener.ControlNumbersAndFinish.actionUtent
+  import grafic.event.moduleListener.ControlAndFinish.actionUtent
   import grafic.event.moduleListener.moduleUpdate.UpdateListUser
   import grafic.util.{AssociateListener, CLOSED_CELL_BGCOLOR, CLOSED_CELL_TEXT, FONT_NUMBERS, score}
   import grafic.panels.TextOpNumber.TextOpNumber

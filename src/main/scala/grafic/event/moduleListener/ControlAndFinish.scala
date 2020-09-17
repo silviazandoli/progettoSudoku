@@ -1,6 +1,6 @@
 package grafic.event.moduleListener
 
-protected[event] object ControlNumbersAndFinish {
+protected[event] object ControlAndFinish {
 
   import java.awt.Color
 
@@ -9,6 +9,7 @@ protected[event] object ControlNumbersAndFinish {
   import grafic.{cp, graficSet, utentSolved}
   import javax.swing.{JOptionPane, JTextArea}
 
+  // this method isn't used.
   def seeVision(possibleValues: Set[Int], number: Int, t: JTextArea): Unit = {
     if (possibleValues.contains(number)) {
       t.setForeground(Color.green)
@@ -25,6 +26,7 @@ protected[event] object ControlNumbersAndFinish {
     }
   }
 
+  //case of finish
   def actionUtent(): Unit = {
     if (utentSolved()) {
       JOptionPane.showMessageDialog(cp, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
