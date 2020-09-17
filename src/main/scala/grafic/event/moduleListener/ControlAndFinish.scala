@@ -26,7 +26,7 @@ protected[event] object ControlAndFinish {
     }
   }
 
-  //case of finish
+  //finish of the game
   def actionUtent(): Unit = {
     if (utentSolved()) {
       JOptionPane.showMessageDialog(cp, "Game end, Puzzle solved", "Message", JOptionPane.DEFAULT_OPTION)
