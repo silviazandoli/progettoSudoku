@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="sudoku:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/sudoku_jar2</output-path>
+    <root id="archive" name="sudoku.jar">
+      <element id="module-output" name="sudoku" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/it.unibo.alice.tuprolog/tuprolog/jars/tuprolog-3.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.13.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/com.google.code.gson/gson/jars/gson-2.6.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.scala-lang.modules/scala-swing_2.13/jars/scala-swing_2.13-2.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.scalafx/scalafx_2.13/jars/scalafx_2.13-14-R19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.13.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
