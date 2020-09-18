@@ -11,7 +11,7 @@ protected[event] object ControlAndFinish {
   import grafic.{cp, graficSet, utentSolved}
   import javax.swing.JOptionPane
 
-  // this method isn't used.
+  
   def seeVision(possibleValues: Set[Int], number: Int, t: TextOpNumber): Unit = {
     if (possibleValues.contains(number)) {
       t.setForeground(Color.green)
