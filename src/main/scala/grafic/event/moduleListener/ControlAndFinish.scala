@@ -12,7 +12,7 @@ protected[event] object ControlAndFinish {
   import javax.swing.JOptionPane
 
 //control on number lists
-  def seeVision(possibleValues: Set[Int], number: Int, t: TextOpNumber): Unit = {
+  def seeVisionErrors(possibleValues: Set[Int], number: Int, t: TextOpNumber): Unit = {
     if (possibleValues.contains(number)) {
       t.setForeground(Color.green)
       val messageOk = "The number belongs to list "
