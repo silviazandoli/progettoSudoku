@@ -1,5 +1,7 @@
 package grafic.event.moduleListener
 
+import grafic.panels.TextOpNumber.TextOpNumber
+
 protected[event] object ControlAndFinish {
 
   import java.awt.Color
@@ -7,10 +9,10 @@ protected[event] object ControlAndFinish {
   /*made by Zandoli*/
 
   import grafic.{cp, graficSet, utentSolved}
-  import javax.swing.{JOptionPane, JTextArea}
+  import javax.swing.JOptionPane
 
   // this method isn't used.
-  def seeVision(possibleValues: Set[Int], number: Int, t: JTextArea): Unit = {
+  def seeVision(possibleValues: Set[Int], number: Int, t: TextOpNumber): Unit = {
     if (possibleValues.contains(number)) {
       t.setForeground(Color.green)
       val messageOk = "The number belongs to list "
