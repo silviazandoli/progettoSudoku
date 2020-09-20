@@ -1,7 +1,11 @@
 package resolutionAlgorithm
 
 import utility.dimSudoku
-
+/**
+ * Made by Zandoli and Pacini
+ *
+ * the main resolution algorithm in brute force
+ * */
 sealed trait FullExploration {
   val puzzleGame: Array[Array[Int]]
 
@@ -11,8 +15,12 @@ sealed trait FullExploration {
   }
 
   /**
+   * Made by Zandoli
    *
-   * made by Zandoli
+   *it checks that a number is present only once for each row, column and block
+   * @param position row and column
+   * @param value the number
+   * @return if present
    */
   def validate(position: (Int, Int), value: Int): Boolean = {
     //for each row, column and block 3*3
@@ -44,7 +52,12 @@ sealed trait FullExploration {
   }
 
   /**
-   * Pacini
+   * Mde by Pacini
+   *
+   * it solves
+   * @param row
+   * @param col
+   * @return true if is all solved
    */
   def solve(row: Int, col: Int): Boolean = {
     if (puzzleGame.flatten.forall(_.!=(0))) return true

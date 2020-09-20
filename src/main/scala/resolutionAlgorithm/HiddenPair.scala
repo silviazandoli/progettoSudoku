@@ -2,14 +2,22 @@ package resolutionAlgorithm
 
 import utility.{dimSudoku, matList}
 
-/*Made by Zandoli*/
-
-/*A hidden pair occurs when a pair of numbers appears in exactly
- two squares in a row, column, or block, but those two numbers aren't the only ones in their squares.
+/**
+ * Made by Zandoli
+ *
+ * Solver with hidden pair technique
+ * A hidden pair occurs when a pair of numbers appears in exactly
+ * * two squares in a row, column, or block, but those two numbers aren't the only ones in their squares.
+ *
  */
 
 object HiddenPair {
 
+  /**
+   * it finds the hidden pair for every row and then overwrite the two squares with the values of the hidden pair
+   * Then the same thing is done for columns and then for the blocks.
+   *
+   */
   def solveHiddenPair(): Unit = {
     val rows = (0 until dimSudoku).toList.map(checkRow)
     //we go to get the indexes
@@ -71,8 +79,15 @@ object HiddenPair {
 
   }
 
+  /**
+   * it calculates the possible pairs with their coordinates and then it filters the hidden pairs
+   *
+   * @param ml the matlist
+   * @return the list of hidden Pairs with their coordinates
+   */
   def check(ml: List[(List[Int], Int)]): List[PossiblePair] = {
     //possiblePairs contains all the possibles pairs with their coordinates
+    //from ml it extrapolates the couples
     val possiblePairs = ml.map(couples).toSet.subsets(2).toList.map(e => {
       //the first
       val val1 = e.head //(List[Set[Int]],Int)
@@ -109,29 +124,45 @@ object HiddenPair {
     hiddenPairs
   }
 
-
+  /**
+   * it finds the hidden pair in a row
+   *
+   * @param row the row
+   * @return the hidden pair
+   */
   def checkRow(row: Int): List[PossiblePair] = {
 
     //it gets the squares of the matList which have more than one element
     //in the result with zipWithIndex we store also the indexes of the elements that we don't discard
     //in _1 there is the list
 
+    //for the row it gets the squares of the matList which have more than one element
     val ml = matList(row).toList.zipWithIndex.filter(_._1.size > 1)
 
     check(ml)
 
   }
 
-
+  /**
+   * it finds the hidden pair in a column
+   *
+   * @param col the column
+   * @return the hidden pair
+   */
   def checkColumn(col: Int): List[PossiblePair] = {
 
-    //it gets the squares of the matList which have more than one element
+    //for the col it gets the squares of the matList which have more than one element
     val ml = matList.map(_ (col)).zipWithIndex.filter(_._1.size > 1).toList
     check(ml)
 
   }
 
-
+  /**
+   * it finds the hidden pair in a block
+   *
+   * @param blk the block
+   * @return the Hidden Pair
+   */
   def checkBlock(blk: Int): List[PossiblePair] = {
     /*blk=0 i=0..2 j=0..2 ; blk=1 i=0..2 j=3..5; blk=2 i=0..2 j=6..8 ; blk=3 i=3..5 j=0..2; blk=4 i=3..5 j=3..5; blk=5 i=3..5 j=6..8
       blk=6 i=6..8 j=0..2 ; blk=7 i=6..8 j=3..5; blk=8 i=6..8 j=6..8
@@ -162,10 +193,11 @@ object HiddenPair {
     val ml = square.map(p => (matList(p._1)(p._2), calcindex(p._1, p._2))).toList
     // println(ml)
     check(ml)
-
-
   }
 
+  /**
+   * it finds all couples
+   */
   def couples(l: (List[Int], Int)): (List[Set[Int]], Int) = {
     //"subsets" create all possible combinations from the elements of a list
     //we have to sort the couples and to consider for example the case (4,5)=(5,4)
@@ -178,7 +210,13 @@ object HiddenPair {
     (l1, l2)
   }
 
-
+  /**
+   * Possible Pair identifies a square with its coordinates (row,col) and the values it contains (a couple)
+   *
+   * @param cell1        the row
+   * @param cell2        the col
+   * @param intersection the values in that square
+   */
   case class PossiblePair(cell1: Int, cell2: Int, intersection: Set[Set[Int]])
 
 }

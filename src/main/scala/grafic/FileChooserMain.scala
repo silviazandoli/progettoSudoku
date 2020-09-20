@@ -7,10 +7,15 @@ import grafic.FileChooser.{cont, initAndUpload}
 import grafic.panels.funAux.SaveLoad.read
 import javax.swing._
 
-/*Made by Zandoli*/
+/**
+ * Made by Zandoli
+ *
+ * the interface for the upload
+ */
 
-/*It creates the initial interface where you can choose a file to start the game*/
-
+/**
+ * implicit conversions and helpers for [[grafic.FileChooserMain]]
+ * */
 object MyMenuHelpers {
   def createMenu(menu: JMenuItem*): JMenu = {
     val menuItem = new JMenu("File")
@@ -24,7 +29,10 @@ object MyMenuHelpers {
       def actionPerformed(event: ActionEvent) = f(event)
     }
 }
-//the main interface
+
+/**
+ * It creates the initial interface where you can choose a file to start the game
+ * */
 object FileChooserMain {
   val mainFrame = new JFrame("Sudoku")
   var load = false
@@ -55,7 +63,7 @@ object FileChooserMain {
     openEasy.addActionListener((_: ActionEvent) => (load = false, initAndUpload(mainFrame, "input/easy"), cont()))
     openMedium.addActionListener((_: ActionEvent) => (load = false, initAndUpload(mainFrame, "input/medium"), cont()))
     openHard.addActionListener((_: ActionEvent) => (load = false, initAndUpload(mainFrame, "input/hard"), cont()))
-    loadFile.addActionListener((_: ActionEvent) => (load = true, read(), initAndUpload(mainFrame, "temp"),cont()))
+    loadFile.addActionListener((_: ActionEvent) => (load = true, read(), initAndUpload(mainFrame, "temp"), cont()))
     val text = "made by Pacini, Zandoli, Antonelli"
     aboutMenu.addActionListener((_: ActionEvent) => JOptionPane.showMessageDialog(mainFrame, s"Sudoku ${text}"))
     exitMenu.addActionListener((_: ActionEvent) => sys.exit(0))

@@ -1,10 +1,17 @@
 package sudoku
 
+/**
+ * Made by Zandoli and Pacini
+ *
+ * an object for developing the operations on the matList (which contains the possible numbers for every square)
+ *
+ * */
+
 object MatListOperation {
   import utility.{dimSudoku, matList, puzzle}
 
   /**
-   * Made by Lorenzo Pacini
+   * initialization of the matList
    */
   def initList(): Unit = {
     (0 until dimSudoku).foreach(i => {
@@ -20,8 +27,13 @@ object MatListOperation {
   // ==================== //
 
   /**
+   * Made by Zandoli
    *
-   made by Silvia Zandoli
+   * For every square it determines the possible values
+   * @param rowExcl values exclused in row
+   * @param row the row
+   * @param col the column
+   * @return the possible values
    */
   def possible(rowExcl: Set[Int], row:Int,col:Int):List[Int] = {
     //exclusion for column

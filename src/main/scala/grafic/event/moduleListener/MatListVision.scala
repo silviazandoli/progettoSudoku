@@ -8,6 +8,11 @@ protected[event] object MatListVision {
  /**
   * Made by Antonelli
   * */
+  /**
+   * See the possibles values for a cell
+   * @param possibleValues
+   * @param t the cell
+   */
   def seeVision(possibleValues: Set[Int], t: TextOpNumber): Unit = {
     var textIns : String = ""
     showNumberList.setText("")

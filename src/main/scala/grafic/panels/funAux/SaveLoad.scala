@@ -1,7 +1,8 @@
 package grafic.panels.funAux
 
-/**
- * Method saveGame made by Pacini, the rest made by Zandoli (methods scoreGame, timerGame and read)
+/**  Method saveGame made by Pacini, the rest made by Zandoli (methods scoreGame, timerGame and read)
+ *
+ * An object for managing the load of an old Sudoku
  */
 object SaveLoad {
 
@@ -78,24 +79,27 @@ object SaveLoad {
     }
   }
 
+  /**
+   * read the time and the score from timer.txt and score.txt in order to update the current values of time and score
+   *  in case of the load of an old game
+   */
   def read(): Unit = {
     //the first in the case you open a new game
     if (!load) {
       timeInit = 0
       score = 0
     } else {
-      /*read the time and the score from timer.txt and score.txt in order to update the current values of time and score
-      * in case of the load of an old game */
+
       val linesTimer: String =
         Using.resource(new BufferedReader(new FileReader("score/timer.txt"))) { reader =>
           Iterator.continually(reader.readLine()).takeWhile(_ != null).toSeq.toList.toString()
-
         }
 
       val linesScore: String =
         Using.resource(new BufferedReader(new FileReader("score/score.txt"))) { reader =>
           Iterator.continually(reader.readLine()).takeWhile(_ != null).toSeq.toList.toString()
         }
+
       val timel = linesTimer.count(a => a.isDigit)
       val scorel = linesScore.count(a => a.isDigit)
 

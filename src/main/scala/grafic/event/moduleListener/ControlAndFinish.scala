@@ -2,8 +2,9 @@ package grafic.event.moduleListener
 
 import grafic.panels.TextOpNumber.TextOpNumber
 
-/*made by Zandoli*/
-
+/**
+ * Made by Zandoli
+ */
 protected[event] object ControlAndFinish {
 
   import java.awt.Color
@@ -11,7 +12,7 @@ protected[event] object ControlAndFinish {
   import javax.swing.JOptionPane
 
   /**
-   * Controls if a number is contained in the list of numbers of a cell and shows a messaage dialog
+   * Controls if a number is contained in the list of numbers of a cell and shows a message dialog
    *
    * @param possibleValues the list of numbers
    * @param number         the number to control

@@ -12,14 +12,20 @@ import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
 
-/*made by Zandoli*/
-
-/*It is useful for FileChooserMain*/
+/**
+ * made by Zandoli
+ *
+ * object useful for FileChooserMain. It navigates in the file system */
 
 object FileChooser {
   var count = 1
 
-  //method for the upload of a sudoku, used in FileChooserMain
+  /**
+   * it enables to navigate the directories in the file system,and then choosing a file from a list
+   *
+   * @param frame    the frame of the interface
+   * @param modality the initial directory
+   */
   def initAndUpload(frame: JFrame, modality: String): Unit = {
     import grafic.Helpers._
     AuxFunctSPanel.firstTime = true
@@ -35,6 +41,11 @@ object FileChooser {
     }
   }
 
+  /**
+   * it creates a Sudoku to solve from a file
+   *
+   * @param f the file
+   */
   def processFile(f: File) = {
     println(f)
     loadPuzzle(f.toString)
@@ -46,6 +57,9 @@ object FileChooser {
     sudoku.create()
   }
 
+  /**
+   * used for starting the timer when you open a sudoku
+   */
   def cont() = {
     count = count + 1
     if (count != 1) {
@@ -55,8 +69,11 @@ object FileChooser {
   }
 }
 
-//using of the pattern implicit
+/**
+ * an object with implicit classes that are helpers for [[grafic.FileChooser]]
+ */
 object Helpers {
+
   implicit class MyStringHelper(str: String) {
     def filechooser() = {
       val jfc = new JFileChooser(str)
@@ -68,9 +85,12 @@ object Helpers {
       jfc
     }
   }
+
   implicit class MyFileChooserHelper(jfc: JFileChooser) {
     def open(frame: JFrame) = jfc.showOpenDialog(frame)
+
     //def multipleFiles() = jfc.getSelectedFiles()
     def selectedFile() = jfc.getSelectedFile()
   }
+
 }

@@ -9,7 +9,9 @@ import utility._
 
 class TestHiddenPair extends FunSuite {
 
-/*made by Zandoli*/
+/**
+ * made by Zandoli
+ * */
 
   test("Hidden Pair Sudoku02") {
     //init
