@@ -15,7 +15,7 @@ import utility.getPuzzle
 /**
  * made by Zandoli
  *
- * object useful for FileChooserMain. It navigates in the file system */
+ * object useful for FileChooserMain. */
 
 object FileChooser {
   var count = 1
