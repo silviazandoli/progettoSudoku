@@ -1,11 +1,13 @@
 package resolutionAlgorithm
 
 import utility.dimSudoku
+
 /**
- * Made by Zandoli and Pacini
+ * Made by Pacini and Zandoli
  *
  * the main resolution algorithm in brute force
  * */
+
 sealed trait FullExploration {
   val puzzleGame: Array[Array[Int]]
 
