@@ -8,6 +8,11 @@ protected[event] object UpdateListUser {
   import grafic.tfCells
   import utility.dimSudoku
 
+  /**
+   * Remove a number in the game cell
+   * @param cell of the game
+   * @param number to be removed
+   */
   private def remove(cell: TextOpNumber, number: Int): Unit = {
     val set = cell.getList
     if (set.nonEmpty && set.contains(number)) {
@@ -15,6 +20,11 @@ protected[event] object UpdateListUser {
     }
   }
 
+  /**
+   * Update the list of numbers in all the involved cells
+   * @param coord of the cell that has just been filled
+   * @param number to cancel in the other near cell, (all the row, all the column and all square of 3x3)
+   */
   def updateListUser(coord: (Int, Int), number: Int): Unit = {
     val row = coord._1
     val col = coord._2

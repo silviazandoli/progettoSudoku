@@ -1,7 +1,7 @@
 package grafic.panels.funAux
 
 /**
- * * Method saveGame made by Pacini, the rest made by Zandoli (methods scoreGame, timerGame and read)
+ * Method saveGame made by Pacini, the rest made by Zandoli (methods scoreGame, timerGame and read)
  */
 object SaveLoad {
 

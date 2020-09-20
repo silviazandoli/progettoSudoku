@@ -2,6 +2,7 @@ package grafic
 
 /**
  * Made by Pacini
+ * This object contains the buttons for game panel
  */
 package object panels {
   import java.awt.{Color, FlowLayout}

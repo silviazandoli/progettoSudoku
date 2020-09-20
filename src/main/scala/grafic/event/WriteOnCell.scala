@@ -15,6 +15,10 @@ Made by Pacini (Alert dialog with control of numbers made by Zandoli)
  */
 sealed trait WriteOnCell extends CellListener with KeyListener {
 
+  /**
+   * Insert number or a list of possible number
+   * @param e the event of key released
+   */
   def keyReleased(e: KeyEvent): Unit = {
     val t: TextOpNumber = e.getSource.asInstanceOf[TextOpNumber]
     try {
@@ -34,6 +38,10 @@ sealed trait WriteOnCell extends CellListener with KeyListener {
     }
   }
 
+  /**
+   * @param t the cell
+   * @return the number wrote by user
+   */
   def actionCell(t: TextOpNumber): Int = {
     var retText = t.getText
 

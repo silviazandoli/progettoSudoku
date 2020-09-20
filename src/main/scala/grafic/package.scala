@@ -20,16 +20,35 @@ package object grafic {
 
   val tfCells: Array[Array[TextOpNumber]] = Array.ofDim[TextOpNumber](dimSudoku, dimSudoku)
 
+  /**
+   * @return true if in each cell is present the correct number, false otherwise
+   */
   def utentSolved(): Boolean = masks.flatten.forall(_ == true)
 
+  /**
+   * @tparam T generic parameter of work
+   */
   trait setGet[T] {
     def set(elem: T)
     def get: T
   }
 
+  /**
+   * function to set an element (very useful)
+   * @param elem to set
+   * @tparam T the type
+   */
   def graficSet [T: setGet](elem : T): Unit = {implicitly[setGet[T]].set(elem)}
+
+  /**
+   * @tparam T the type
+   * @return the type previously set
+   */
   def graficGet [T: setGet] : T = {implicitly[setGet[T]].get}
 
+  /**
+   * implicit object to use the same function for different type element
+   */
   object setGet {
     implicit object stringSetGet extends setGet[String] {
       override def set(str: String): Unit = {write = str}

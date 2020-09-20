@@ -9,14 +9,28 @@ object TextOpNumber {
   sealed trait TextOpNumberTrait extends JTextArea {
     private var setNumber: Set[Int] = Set()
 
+    /**
+     * @param number to add to JTextArea (the cell)
+     */
     def addNumber(number: Int): Unit = {
       setNumber += number
     }
+
+    /**
+     * @param number to remove from the possible element list of the cell
+     */
     def removeNumber(number: Int): Unit = {
       setNumber -= number
     }
+
+    /**
+     * @return list of possible number
+     */
     def getList: Set[Int] = setNumber
 
+    /**
+     * display possible numbers in the cell
+     */
     def displayList(): Unit = {
       setText("")
       for (elem <- setNumber) {

@@ -14,17 +14,28 @@ import utility.matList
  */
 sealed trait MyMouseListener extends CellListener with MouseListener {
 
-  //add event to click over each cell
+  /**
+   * Add event to click over each cell
+   * @param e the mouseEvent on the cell
+   */
   def mouseReleased(e: MouseEvent): Unit = {
     val t: TextOpNumber = e.getSource.asInstanceOf[TextOpNumber]
     if (t.isEditable) {actionCell(t: TextOpNumber)} //the called method on mouse click
   }
 
-  def actionCell(t:TextOpNumber): Int = {
-  alert(t)
-  }
+  /**
+   * The user's operation on the cell
+   * @param t the JTeaxtArea (the cell)
+   * @return the user's operation
+   */
+  def actionCell(t:TextOpNumber): Int = { alert(t) }
 
-  def alert(t: TextOpNumber)={
+  /**
+   * Alert Dialog to let user doing his/her operation
+   * @param t the JTeaxtArea (the cell)
+   * @return the user's operation
+   */
+  def alert(t: TextOpNumber): Int={
     val options = Array[AnyRef]("Insert numbers", "Insert list of numbers", "See matlist", "Help!")
     val n = JOptionPane.showOptionDialog(null, "How to proceed?", "User mode", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options(3))
 

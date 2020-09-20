@@ -27,8 +27,17 @@ object AssociateListener {
   }
 
   /**
-   *  scrive il numero su una cella della matrice di gioco,
-   *  impostandone colore di foreground e background
+   *
+   * @param textOpNumber the JTextArea
+   * @param row the row
+   * @param col the column
+   * @param editFlag true if is editable
+   * @param font the growth of the font
+   * @param color1 background
+   * @param color2 foreground
+   * @param strText the string
+   * scrive il numero su una cella della matrice di gioco,
+   * impostandone colore di foreground e background
    */
   def writeText(textOpNumber: TextOpNumber, row: Int, col: Int,
                 editFlag: Boolean,
@@ -42,6 +51,9 @@ object AssociateListener {
     masks(row)(col) = !editFlag
   }
 
+  /**
+   * versione with no text
+   */
   def writeTextEmpty(textOpNumber: TextOpNumber, row: Int, col: Int,
                      editFlag: Boolean,
                      font: Font, color1: Color, color2: Color): Unit = {
