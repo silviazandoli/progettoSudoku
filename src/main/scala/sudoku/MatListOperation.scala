@@ -10,7 +10,7 @@ package sudoku
 object MatListOperation {
   import utility.{dimSudoku, matList, puzzle}
 
-  /**
+  /***
    * initialization of the matList
    */
   def initList(): Unit = {
