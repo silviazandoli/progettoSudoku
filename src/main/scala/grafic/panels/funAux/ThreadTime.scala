@@ -27,11 +27,34 @@ sealed trait ThreadTime extends Thread {
     }
   }
 
+  @annotation.tailrec
+  final override def run() : Unit = {
+    try {
+      if (!stopVar) {
+        textTime.setText("Your Time: " + ((System.currentTimeMillis() / factSecond) - timeInit))
+      } else {
+        appendScoreTime()
+      }
+    } catch {
+      case e: Exception =>
+    }
+    run()
+  }
+
+  def setVar(): Unit = {
+    if (!stopVar) {
+      textTime.setText("Your Time: " + ((System.currentTimeMillis() / factSecond) - timeInit))
+    } else {
+      appendScoreTime()
+    }
+  }
+
   /**
    * set current time on field of game time
    */
+    /*
   override def run() {
-    while (true) {
+    for (true) {
       if (!stopVar) {
         textTime.setText("Your Time: " + ((System.currentTimeMillis() / factSecond) - timeInit))
       } else {
@@ -39,6 +62,7 @@ sealed trait ThreadTime extends Thread {
       }
     }
   }
+     */
 }
 object ThreadTime {
   def apply(): ThreadTime = ThreadTimeImpl()
