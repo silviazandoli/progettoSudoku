@@ -52,7 +52,7 @@ sealed trait FullExploration {
   }
 
   /**
-   * Mde by Pacini
+   * Made by Pacini
    *
    * it solves
    * @param row
