@@ -7,6 +7,7 @@ import utility.{getPuzzle, confrontPuzzle}
 
 /**
  * Made by Pacini
+ * test of working of brute force
  */
 class testFull extends FunSuite {
   test("TestSudoku11") {

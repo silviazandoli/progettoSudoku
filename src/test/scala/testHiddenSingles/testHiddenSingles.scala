@@ -7,6 +7,10 @@ import sudoku.MatListOperation.initList
 import sudoku.SudokuLoad.loadPuzzle
 import utility.getPuzzle
 
+/**
+ * Made by Pacini
+ * Test of working of Hidden singles techniques
+ */
 class testHiddenSingles extends FunSuite {
 
   test("Sudoku01") {

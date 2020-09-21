@@ -14,6 +14,7 @@ class sudokuPrologTest1 extends FunSuite {
   val engine = new Prolog
   val fileSudoku = "prolog/sudokuProlog.pl"
 
+  // add the theory of the sudoku prolog
   engine.addTheory(new Theory(new FileInputStream(fileSudoku)))
 
   test("TestSudoku00") {

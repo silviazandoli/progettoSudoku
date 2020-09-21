@@ -8,12 +8,21 @@ import sudoku.SudokuLoad.loadPuzzle
 import grafic.{graficSet, graficGet, utentSolved, masks}
 import resolutionAlgorithm.FullExploration
 
+/**
+ * Made by Pacini
+ */
 class testComplete extends FlatSpec with BeforeAndAfter {
 
   val input = "input/easy/"
   val outputSolved = "outputSolved/"
 
   object InitTest {
+
+    /**
+     * Load a file for sudoku, solve it and display the game,
+     * (this can be uncompleted)
+     * @param file to load
+     */
     def initTest(file: String) {
       loadPuzzle(file)
       initList()
@@ -29,7 +38,8 @@ class testComplete extends FlatSpec with BeforeAndAfter {
   }
 
   after {
-    //la schermata si fà vedere all'utente per un secondo e mezzo
+    /* the screen can be see to the user for one
+    and half second */
     Thread.sleep(500)
   }
   
