@@ -11,6 +11,8 @@ class TestHiddenPair extends FunSuite {
 
 /**
  * made by Zandoli
+ *
+ * Test of working of Hidden Pairs techniques
  * */
 
   test("Hidden Pair Sudoku02") {
