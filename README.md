@@ -6,3 +6,5 @@ Implementazione del gioco del Sudoku con le varie strategie utilizzando il lingu
 All'interno del progetto è stata fatta anche una semplice implementazione del Sudoku con il linguaggio di programmazione prolog.
 
 Made by Lorenzo Pacini, Silvia Zandoli, Alberto Antonelli
+
+Progetto fatto per il corso di "Parasigmi di programmazione e sviluppo", Università di Bologna, anno 2020
