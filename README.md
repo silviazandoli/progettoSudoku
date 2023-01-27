@@ -7,4 +7,4 @@ All'interno del progetto è stata fatta anche una semplice implementazione del S
 
 Made by Lorenzo Pacini, Silvia Zandoli, Alberto Antonelli
 
-Progetto fatto per il corso di "Parasigmi di programmazione e sviluppo", Università di Bologna, anno 2020
+Progetto fatto per il corso di "Paradigmi di programmazione e sviluppo", Università di Bologna, anno 2020
