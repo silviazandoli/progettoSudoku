@@ -5,6 +5,6 @@
 Implementazione del gioco del Sudoku con le varie strategie utilizzando il linguaggio di programmazione Scala.
 All'interno del progetto è stata fatta anche una semplice implementazione del Sudoku con il linguaggio di programmazione prolog.
 
-Made by Lorenzo Pacini, Silvia Zandoli, Alberto Antonelli
+Made by Lorenzo, Silvia, Alberto 
 
 Progetto fatto per il corso di "Paradigmi di programmazione e sviluppo", Università di Bologna, anno 2020
